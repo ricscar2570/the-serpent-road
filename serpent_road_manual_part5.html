@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - Manuale Parte 5: Guida GM, Bestiario e Tabelle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--dark-sand) 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        
+        .cover {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover::before {
+            content: "🎭";
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+        }
+        
+        .cover h1 {
+            font-size: 48pt;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover .subtitle {
+            font-size: 18pt;
+            color: var(--sand);
+            font-style: italic;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover .part {
+            font-size: 14pt;
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover .version {
+            font-size: 12pt;
+            color: var(--dark-sand);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .navigation {
+            background: var(--sand);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--accent-gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navigation a {
+            background: var(--night-blue);
+            color: var(--accent-gold);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .navigation a:hover {
+            background: var(--desert-red);
+            color: white;
+        }
+        
+        .chapter {
+            margin-bottom: 50px;
+        }
+        
+        .chapter-header {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .chapter-number {
+            font-size: 14pt;
+            color: var(--sand);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .chapter-title {
+            font-size: 32pt;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+        
+        .chapter-intro {
+            font-size: 13pt;
+            color: var(--sand);
+            font-style: italic;
+        }
+        
+        h2 {
+            font-size: 20pt;
+            color: var(--night-blue);
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 10px;
+            margin: 30px 0 15px 0;
+        }
+        
+        h3 {
+            font-size: 16pt;
+            color: var(--desert-red);
+            margin: 25px 0 12px 0;
+        }
+        
+        h4 {
+            font-size: 13pt;
+            color: var(--text-dark);
+            margin: 15px 0 8px 0;
+            font-weight: bold;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        .creature-card {
+            border: 3px solid var(--desert-red);
+            background: linear-gradient(135deg, rgba(184, 92, 60, 0.1) 0%, rgba(184, 92, 60, 0.05) 100%);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(184, 92, 60, 0.3);
+        }
+        
+        .creature-card h4 {
+            color: var(--desert-red);
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-size: 14pt;
+        }
+        
+        .creature-stats {
+            background: rgba(232, 212, 176, 0.3);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 10pt;
+        }
+        
+        .intro-box {
+            background: linear-gradient(135deg, rgba(232, 212, 176, 0.3) 0%, rgba(196, 165, 116, 0.2) 100%);
+            border-left: 5px solid var(--accent-gold);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            border-radius: 5px;
+        }
+        
+        .example-box {
+            background: rgba(212, 175, 55, 0.15);
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .example-box h4 {
+            color: var(--accent-gold);
+            margin-top: 0;
+        }
+        
+        .warning-box {
+            background: rgba(196, 30, 58, 0.1);
+            border-left: 4px solid var(--desert-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box h4 {
+            color: var(--desert-red);
+            margin-top: 0;
+        }
+        
+        .tip-box {
+            background: rgba(45, 80, 22, 0.1);
+            border-left: 4px solid var(--serpent-green);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .tip-box h4 {
+            color: var(--serpent-green);
+            margin-top: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 10pt;
+        }
+        
+        th {
+            background: var(--night-blue);
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--dark-sand);
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(232, 212, 176, 0.3);
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .random-table {
+            background: var(--sand);
+            border: 2px solid var(--night-blue);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .random-table h4 {
+            color: var(--night-blue);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                padding: 15mm;
+            }
+            .navigation {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- COPERTINA -->
+        <div class="cover">
+            <h1>THE SERPENT ROAD</h1>
+            <p class="subtitle">Manuale Completo del Giocatore e del Game Master</p>
+            <p class="part">PARTE 5: GUIDA GM, BESTIARIO E TABELLE</p>
+            <p class="version">Capitoli 9-10-11 • Versione 1.0 • Ottobre 2025</p>
+        </div>
+        
+        <!-- NAVIGAZIONE -->
+        <div class="navigation">
+            <a href="serpent_road_manual_part4.html">← Parte 4</a>
+            <span style="color: var(--text-dark); font-weight: bold;">Parte 5 di 5 (FINALE)</span>
+            <a href="serpent_road_manual_part1.html">← Torna all'Inizio</a>
+        </div>
+        
+        <!-- CAPITOLO 9: GUIDA DEL GAME MASTER -->
+        <div class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-number">CAPITOLO 9</div>
+                <h1 class="chapter-title">Guida del Game Master</h1>
+                <p class="chapter-intro">Essere GM è arte e scienza. Impara a creare mondi, gestire giocatori, bilanciare sfide, e raccontare storie memorabili.</p>
+            </div>
+            
+            <h2>🎭 Filosofia del GM in The Serpent Road</h2>
+            
+            <p>Essere GM non significa essere avversario dei giocatori o romanziere solitario. Sei <strong>facilitatore collaborativo</strong> di una storia condivisa. Il tuo ruolo è creare situazioni interessanti e vedere come i giocatori rispondono.</p>
+            
+            <h3>Principi Fondamentali</h3>
+            
+            <div class="tip-box">
+                <h4>💡 I 5 Pilastri del Buon GM</h4>
+                <ol style="margin-top: 10px;">
+                    <li><strong>Sii Fan dei PG:</strong> Vuoi vederli vincere, ma guadagnandoselo. Crea sfide giuste, non impossibili.</li>
+                    <li><strong>Gioca per Scoprire:</strong> Non prepari tutto. Lascia spazio all'improvvisazione e alle sorprese.</li>
+                    <li><strong>Fai Domande:</strong> "Cosa fai?" "Come ti senti?" "Perché fai questo?" Coinvolgi giocatori attivamente.</li>
+                    <li><strong>Usa Ciò che Ti Danno:</strong> Background PG, Valori, scelte passate = materiale per trame future.</li>
+                    <li><strong>Descrivi, Non Prescrivere:</strong> Descrivi situazione, lascia PG decidere azioni. Non dire "Hai paura" → "Vedi X. Cosa fai?"</li>
+                </ol>
+            </div>
+            
+            <h2>📝 Preparazione Sessione</h2>
+            
+            <h3>Cosa Preparare (e Cosa NO)</h3>
+            
+            <p><strong>✅ PREPARA:</strong></p>
+            <ul>
+                <li><strong>Situazioni, non trame:</strong> "Banditi hanno catturato mercante" non "PG salveranno mercante combattendo boss"</li>
+                <li><strong>PNG con obiettivi:</strong> Cosa vuole ogni PNG importante? Come reagisce se PG interferiscono?</li>
+                <li><strong>Luoghi interessanti:</strong> 3-5 dettagli sensoriali per ogni locazione. Cosa si vede/sente/odora?</li>
+                <li><strong>Possibili conseguenze:</strong> Se PG fanno X, cosa succede? Se ignorano Y, come evolve?</li>
+                <li><strong>Mappe schematiche:</strong> Non dettagli pixel-perfect. Schizzi sufficienti.</li>
+            </ul>
+            
+            <p><strong>❌ NON PREPARARE:</strong></p>
+            <ul>
+                <li><strong>Trame lineari:</strong> "PG devono fare A poi B poi C" = rigido, frustrante</li>
+                <li><strong>Dialoghi scritti:</strong> Bullet points obiettivi PNG, non script verbatim</li>
+                <li><strong>Soluzione unica puzzle:</strong> Se preparti puzzle, accetta soluzioni creative fuori script</li>
+                <li><strong>Boss fight specifici:</strong> Prepara stat nemici, ma non "esattamente round 3 arriva rinforzo" — improvvisa basato su flusso</li>
+            </ul>
+            
+            <h3>Template Prep Veloce (30 Minuti)</h3>
+            
+            <div class="example-box">
+                <h4>Prep Sessione Tipo</h4>
+                <p><strong>1. Obiettivo Sessione (2 min):</strong> "PG esplorano Rovina Cristallo, cercano Cuore Cristallo"</p>
+                
+                <p><strong>2. Locazioni Chiave (10 min):</strong></p>
+                <ul>
+                    <li><strong>Ingresso Rovina:</strong> Porta sigillata (puzzle luce), sabbia ovunque, caldo opprimente</li>
+                    <li><strong>Sala Principale:</strong> Colonne alte 20m, cristalli pulsanti blu, eco riverbera</li>
+                    <li><strong>Camera Tesoro:</strong> Cuore Cristallo su piedistallo, trappola energia se toccato direttamente</li>
+                </ul>
+                
+                <p><strong>3. PNG/Antagonisti (5 min):</strong></p>
+                <ul>
+                    <li><strong>Guardiano Costrutto:</strong> Robot antico (18 PV, Armatura 2, attacco raggio 3d6)</li>
+                    <li><strong>Rivali:</strong> Squadra Corsari (leader Kara: vuole tesoro, negoziabile se PG offrono split)</li>
+                </ul>
+                
+                <p><strong>4. Complicazioni Possibili (5 min):</strong></p>
+                <ul>
+                    <li>Rovina inizia crollare se rimuovi Cuore (timer: 10 minuti fuga)</li>
+                    <li>Corsari arrivano mentre PG già dentro (competizione/alleanza?)</li>
+                    <li>Costrutto riattiva se combattimento fa troppo rumore</li>
+                </ul>
+                
+                <p><strong>5. Ganci per Futuro (3 min):</strong></p>
+                <ul>
+                    <li>Cuore ha iscrizione: coordinate altra rovina più grande</li>
+                    <li>Kara menziona: "Impero cerca questi. Pagano MOLTO. Ma perché?"</li>
+                </ul>
+                
+                <p><strong>6. Checklist Materiali (5 min):</strong></p>
+                <ul>
+                    <li>Stat Costrutto pronte</li>
+                    <li>Mappa rovina (schizzo)</li>
+                    <li>Note stat Corsari (se necessario combattimento)</li>
+                </ul>
+            </div>
+            
+            <h2>⚖️ Bilanciamento Difficoltà</h2>
+            
+            <h3>Incontri Combattimento</h3>
+            
+            <p>The Serpent Road è letale. Combattimento mal bilanciato = TPK (Total Party Kill). Usa queste linee guida:</p>
+            
+            <table>
+                <tr>
+                    <th>Difficoltà</th>
+                    <th>Composizione Nemici</th>
+                    <th>Quando Usare</th>
+                </tr>
+                <tr>
+                    <td><strong>Triviale</strong></td>
+                    <td>1 nemico debole (8-10 PV) per 2 PG</td>
+                    <td>Tutorial, dimostrare sistema. Non dovrebbe essere minaccia reale.</td>
+                </tr>
+                <tr>
+                    <td><strong>Facile</strong></td>
+                    <td>1 nemico normale (12-15 PV) per PG, o 2 deboli per PG</td>
+                    <td>Incontri casuali, consumo risorse minore. PG vincono senza grandi rischi.</td>
+                </tr>
+                <tr>
+                    <td><strong>Moderato</strong></td>
+                    <td>1 nemico forte (16-20 PV) per PG, o mix 1 forte + 2 deboli per gruppo</td>
+                    <td>Incontro tipico. PG vincono ma consumano risorse (PV, cariche, abilità).</td>
+                </tr>
+                <tr>
+                    <td><strong>Difficile</strong></td>
+                    <td>2 nemici forti per PG, o 1 boss (25-30 PV) + minion</td>
+                    <td>Scontro importante. Rischio reale morte. PG devono tattiche, teamwork.</td>
+                </tr>
+                <tr>
+                    <td><strong>Mortale</strong></td>
+                    <td>3+ nemici forti per PG, o boss (35+ PV) con rinforzi</td>
+                    <td>Climax campagna, battaglia finale. TPK possibile se PG non preparati. Usa raramente.</td>
+                </tr>
+            </table>
+            
+            <div class="warning-box">
+                <h4>⚠️ Sistema È Letale</h4>
+                <p>Con 16 PV medi e spada 2d6 (~7 danno medio), PG muore in 2-3 colpi. NON lanciare 5 nemici forti vs gruppo 4 PG come "incontro normale". È TPK garantito.</p>
+                <p><strong>Regola Empirica:</strong> Inizio campagna (PG livello 1-3 sessioni): Facile/Moderato. Metà campagna: Moderato/Difficile. Finale: Difficile/Mortale.</p>
+            </div>
+            
+            <h3>Escalation Durante Combattimento</h3>
+            
+            <p>Se combattimento troppo facile O troppo difficile mid-fight, aggiusta al volo:</p>
+            
+            <p><strong>Se troppo facile:</strong></p>
+            <ul>
+                <li>Rinforzi arrivano (2° ondata nemici)</li>
+                <li>Boss usa abilità speciale non prevista</li>
+                <li>Ambiente diventa ostile (fuoco si espande, pavimento crolla)</li>
+                <li>Timer: "Dovete finire prima che arrivi pattuglia" (3 round)</li>
+            </ul>
+            
+            <p><strong>Se troppo difficile:</strong></p>
+            <ul>
+                <li>Alcuni nemici fuggono ("Non vale morire per questo!")</li>
+                <li>Offri opportunità negoziazione mid-fight</li>
+                <li>Rinforzi PG (PNG alleato arriva? Crollo separa metà nemici?)</li>
+                <li>Nemici commettono errori tattici (si separano, espongono leader)</li>
+            </ul>
+            
+            <h2>🎬 Gestione Ritmo Sessione</h2>
+            
+            <h3>Struttura Sessione Ideale (3-4 Ore)</h3>
+            
+            <ol>
+                <li><strong>Recap (5-10 min):</strong> "Sessione scorsa: X, Y, Z. Eravate qui. Cosa fate?"</li>
+                <li><strong>Hook Iniziale (10-15 min):</strong> Situazione interessante immediata. NO "siete nella taverna, cosa fate?" → "Siete nella taverna quando ESPLOSIONE fuori. Cosa fate?"</li>
+                <li><strong>Esplorazione/Sociale (45-60 min):</strong> Investigare, negoziare, esplorare, interagire PNG</li>
+                <li><strong>Combattimento/Tensione (30-45 min):</strong> Azione, pericolo immediato, adrenalina</li>
+                <li><strong>Più Esplorazione/Sociale (30-45 min):</strong> Conseguenze azione, nuove informazioni, scelte</li>
+                <li><strong>Cliffhanger/Conclusione (10-15 min):</strong> Finisci su momento "OH NO!" o risoluzione soddisfacente se fine arco</li>
+            </ol>
+            
+            <p><strong>Nota:</strong> Questo è template flessibile, non rigido. Alcune sessioni = 100% sociale (negoziazioni complesse città). Altre = 70% combattimento (assedio). Varia.</p>
+            
+            <h3>Tecniche Gestione Ritmo</h3>
+            
+            <h4>Quando Rallentare</h4>
+            <p>Momenti emotivi importanti, decisioni morali complesse, rivelazioni narrative maggiori. Lascia respirare. Descrivi dettagli. Fai domande. "Come si sente X scoprendo questo?"</p>
+            
+            <h4>Quando Accelerare</h4>
+            <p>Shopping noioso, viaggi senza eventi, burocrazia. "Ok, compri equipaggiamento (10 minuti real-time gestione). 3 giorni viaggio, nulla notevole succede. Ora siete a destinazione." Montage > dettaglio tedioso.</p>
+            
+            <h4>Reset Energia</h4>
+            <p>Ogni 60-90 min: pausa 10 minuti. Bagno, snack, stretch. Ritorna freschi. Energia alta = gioco migliore.</p>
+            
+            <h2>🗣️ Gestione Giocatori</h2>
+            
+            <h3>Tipi Giocatore e Come Coinvolgerli</h3>
+            
+            <table>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Cosa Vuole</th>
+                    <th>Come Coinvolgere</th>
+                </tr>
+                <tr>
+                    <td><strong>Combattente</strong></td>
+                    <td>Tattiche, ottimizzazione, vincere scontri</td>
+                    <td>Combattimenti tattici interessanti. Nemici con debolezze. Ricompense meccaniche.</td>
+                </tr>
+                <tr>
+                    <td><strong>Esploratore</strong></td>
+                    <td>Scoprire segreti, esplorare, trovare tesori</td>
+                    <td>Stanze nascoste, indizi misteriosi, mappe incomplete. Ricompensa curiosità.</td>
+                </tr>
+                <tr>
+                    <td><strong>Attore</strong></td>
+                    <td>Roleplay, interpretare personaggio, momenti emotivi</td>
+                    <td>PNG con personalità forti. Dilemmi morali. Spotlight su background PG.</td>
+                </tr>
+                <tr>
+                    <td><strong>Risolutore</strong></td>
+                    <td>Puzzle, logica, problem-solving</td>
+                    <td>Puzzle meccanici. Investigazioni complesse. Misteri da risolvere.</td>
+                </tr>
+                <tr>
+                    <td><strong>Narratore</strong></td>
+                    <td>Storia bella, archi carattere, temi significativi</td>
+                    <td>Conseguenze scelte. Evoluzione PG. Trame collegate background.</td>
+                </tr>
+            </table>
+            
+            <p><strong>Nota:</strong> Ogni giocatore è mix questi tipi. Bilancia contenuti per includere tutti. Sessione solo combattimento = Esploratori annoiati. Sessione solo roleplay = Combattenti irrequieti.</p>
+            
+            <h3>Problemi Comuni e Soluzioni</h3>
+            
+            <div class="example-box">
+                <h4>Problema: Giocatore Domina Conversazione</h4>
+                <p><strong>Sintomo:</strong> Un giocatore parla sempre, altri silenziosi</p>
+                <p><strong>Soluzioni:</strong></p>
+                <ul>
+                    <li>Chiedi esplicitamente altri: "Malik, tu cosa ne pensi?"</li>
+                    <li>Crea situazioni dove dominante non può agire (separazione temporanea)</li>
+                    <li>Parla privatamente: "Noto parli molto. Fantastico entusiasmo! Ma vorrei sentire anche X e Y più spesso. Puoi aiutarmi coinvolgerli?"</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <h4>Problema: Giocatore Passivo (Non Contribuisce)</h4>
+                <p><strong>Sintomo:</strong> Giocatore silenzioso, sempre "Faccio quello che decidete voi"</p>
+                <p><strong>Soluzioni:</strong></p>
+                <ul>
+                    <li>Chiedi opinione diretta: "Zahra, il tuo personaggio è esperto rovine. Cosa suggerisce?"</li>
+                    <li>Crea situazione dove SOLO loro hanno skill rilevante</li>
+                    <li>Parla post-sessione: "Ti diverti? C'è qualcosa che vorresti fare più spesso?"</li>
+                    <li>Accetta: alcune persone felici ruolo supporto. Non forzare spotlight se non vogliono.</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <h4>Problema: Disaccordo Gruppo su Decisione</h4>
+                <p><strong>Sintomo:</strong> Gruppo dibatte 20+ minuti stessa decisione, stallo</p>
+                <p><strong>Soluzioni:</strong></p>
+                <ul>
+                    <li>Timer: "Avete 2 minuti decidere o nemici arrivano e decidono per voi"</li>
+                    <li>Voto: "Ok, votiamo. Maggioranza decide."</li>
+                    <li>Compromesso: "Perché non provate entrambe idee sequenzialmente?"</li>
+                    <li>Conseguenze: "Non decidete? Ok, mentre dibattete, guardia vi nota. Ora cosa?"</li>
+                </ul>
+            </div>
+            
+            <h2>🌍 Costruire Campagna</h2>
+            
+            <h3>Struttura Campagna Tipica</h3>
+            
+            <p><strong>Campagna The Serpent Road = 15-25 sessioni</strong> (4-6 mesi giocando settimanale)</p>
+            
+            <p><strong>Arco 1: Sopravvivenza e Scoperta (Sessioni 1-5)</strong></p>
+            <ul>
+                <li>PG imparano meccaniche, mondo, fazioni</li>
+                <li>Avventure locali: guidare carovana, esplorare rovina minore, risolvere disputa città</li>
+                <li>Introduci mistero centrale: "Tremori aumentano. Marchiati vedono stesso sogno. Cosa significa?"</li>
+                <li>Fine Arco: PG ottengono primo artefatto significativo O scoprono indizio importante</li>
+            </ul>
+            
+            <p><strong>Arco 2: Fazioni e Conflitto (Sessioni 6-12)</strong></p>
+            <ul>
+                <li>PG coinvolti politica fazioni. Devono scegliere alleati</li>
+                <li>Missioni più grandi: infiltrare avamposto nemico, negoziare trattato, trovare artefatto leggendario</li>
+                <li>Mistero approfondisce: "Impero cerca 5 Cuori Cristallo. Perché? Cosa succede se li attivano?"</li>
+                <li>Fine Arco: Evento maggiore (battaglia, tradimento, rivelazione shock)</li>
+            </ul>
+            
+            <p><strong>Arco 3: Rivelazione e Climax (Sessioni 13-20)</strong></p>
+            <ul>
+                <li>Verità su Serpente/Collasso emerge (parzialmente — mantieni ambiguità)</li>
+                <li>Minaccia esistenziale: Impero vuole attivare tecnologia antica pericolosa? Serpente si risveglia? Altro Collasso imminente?</li>
+                <li>PG devono compiere scelte difficili: salvare mondo ma tradire alleati? Sacrificare qualcosa prezioso?</li>
+                <li>Fine Arco: Confronto finale con antagonista principale</li>
+            </ul>
+            
+            <p><strong>Arco 4: Conseguenze ed Epilogo (Sessioni 21-25)</strong></p>
+            <ul>
+                <li>Mondo cambiato da azioni PG. Esplora conseguenze</li>
+                <li>Risolvi thread narrativi personali PG</li>
+                <li>Scelte finali: cosa fanno PG ora? Ricostruiscono? Partono? Governano?</li>
+                <li>Epilogo: Narrativa finale. Dove sono PG 5 anni dopo? Cosa successo mondo?</li>
+            </ul>
+            
+            <h3>Principi Campagna Forte</h3>
+            
+            <ol>
+                <li><strong>Mistero Centrale Ambiguo:</strong> Non dare risposta definitiva subito. Indizi contrastanti. Lascia giocatori speculare.</li>
+                <li><strong>Nessuna Fazione Puramente Buona:</strong> Tutti hanno difetti. Impero = ordine ma brutale. Corsari = libertà ma caotici. Scelte difficili.</li>
+                <li><strong>Azioni Hanno Conseguenze:</strong> Se PG distruggono carovana banditi, famiglie banditi cercano vendetta. Se alleano con Impero, Corsari diventano nemici.</li>
+                <li><strong>Scala Gradualmente:</strong> Inizio: sopravvivi deserto. Fine: salva mondo. Transizione graduale, non salto.</li>
+                <li><strong>Usa Background PG:</strong> Nemico personale, famiglia perduta, promessa antica = materiale oro per sottotrame.</li>
+            </ol>
+            
+            <h2>🎲 Improvvisazione</h2>
+            
+            <p>PG faranno cose impreviste. Sempre. Improvvisare bene = skill GM essenziale.</p>
+            
+            <h3>Tecniche Improvvisazione</h3>
+            
+            <h4>1. Sì, E...</h4>
+            <p>Quando giocatore propone idea creativa, default = "Sì, e [aggiungi complicazione]" non "No".</p>
+            <p><strong>Esempio:</strong> PG: "Voglio convincere guardia che sono ispettore imperiale in incognito."<br>
+            GM: "Sì! Tira Persuasione. Se successo, ci crede... E ti chiede di ispezionare anche lui (pensa sia test). Come rispondi?"</p>
+            
+            <h4>2. Chiedi Domande, Usa Risposte</h4>
+            <p>Non sai risposta? Chiedi giocatore, incorpora.</p>
+            <p><strong>Esempio:</strong> PG: "Riconosco questo simbolo?"<br>
+            GM (non preparato): "Buona domanda. Zahra, tu sei studiosa Celesti. Dove HAI VISTO questo simbolo prima?" [Giocatore inventa, tu incorpori]</p>
+            
+            <h4>3. Ri-usa e Ricicla</h4>
+            <p>Preparato PNG/locazione che PG non hanno incontrato? Riusa in contesto diverso. Mercante che dovevano incontrare a Porto Marea? Ora è prigioniero banditi in rovina.</p>
+            
+            <h4>4. Complicazioni Standard</h4>
+            <p>Quando non sai cosa succede dopo, aggiungi complicazione da questa lista:</p>
+            <ul>
+                <li>Qualcuno arriva inaspettato</li>
+                <li>Tempo stringe (timer)</li>
+                <li>Risorsa si esaurisce (acqua, luce, munizioni)</li>
+                <li>Alleato si rivela problema</li>
+                <li>Informazione era falsa/incompleta</li>
+                <li>Ambiente diventa ostile</li>
+            </ul>
+            
+        </div>
+        
+        <!-- CAPITOLO 10: BESTIARIO -->
+        <div class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-number">CAPITOLO 10</div>
+                <h1 class="chapter-title">Bestiario del Deserto</h1>
+                <p class="chapter-intro">Il deserto brulica di vita. Non tutta amichevole. Creature affamate, predatori notturni, costrutti antichi, e abomini mutati aspettano nelle sabbie.</p>
+            </div>
+            
+            <h2>🦂 Creature Naturali</h2>
+            
+            <div class="creature-card">
+                <h4>🦂 SCORPIONE GIGANTE</h4>
+                <p><strong>Descrizione:</strong> Scorpione dimensioni cane grande (1m lunghezza). Carapace nero lucido, pungiglione gocciolante veleno. Notturno. Caccia vibrazioni sabbia.</p>
+                
+                <div class="creature-stats">
+<strong>PV:</strong> 14 | <strong>Armatura:</strong> 2 (carapace duro)
+<strong>Movimento:</strong> 8m | <strong>Percezione:</strong> d8 (vibrazioni)
+<strong>Attacco Chele:</strong> +d6 Combattimento, 2d6 danno
+<strong>Attacco Pungiglione:</strong> +d8 Combattimento, 1d6+veleno
+<strong>Veleno:</strong> Resistenza Diff 11 o 2d6 danno extra + Svantaggio 3 round
+                </div>
+                
+                <p><strong>Comportamento:</strong> Imboscata. Attende sepolto sotto sabbia, emerge quando preda vicina. Se ferito gravemente (sotto 7 PV), fugge sottoterra.</p>
+                
+                <p><strong>Tattica:</strong> Chele per afferrare (tiro contrapposto Atletica), poi pungiglione su bersaglio immobilizzato (Vantaggio).</p>
+                
+                <p><strong>Tesoro:</strong> Ghiandola veleno (vale 30d, usabile creare 3 dosi veleno). Carapace (Armatura 1 se lavorato, 20d valore).</p>
+            </div>
+            
+            <div class="creature-card">
+                <h4>🦅 AVVOLTOIO DEL DESERTO</h4>
+                <p><strong>Descrizione:</strong> Uccello rapace apertura alare 2m. Piume nere/marroni, becco uncinato. Circola alto, cerca carogne o creature deboli.</p>
+                
+                <div class="creature-stats">
+<strong>PV:</strong> 8 | <strong>Armatura:</strong> 0
+<strong>Movimento:</strong> 15m volo | <strong>Percezione:</strong> d10 (vista acuta)
+<strong>Attacco Becco:</strong> +d6 Combattimento, 1d6+1 danno
+<strong>Attacco Artigli (picchiata):</strong> +d8, 2d6 danno
+                </div>
+                
+                <p><strong>Comportamento:</strong> Non attacca gruppo sano. Segue gruppo ferito/debole da distanza, aspetta opportunità (membro isolato, PG incosciente). Codardo: fugge se ferito.</p>
+                
+                <p><strong>Picchiata:</strong> Se attacca da 10m+ altezza: Vantaggio, +1d6 danno. Dopo picchiata: vola via 15m (difficile colpire distanza).</p>
+                
+                <p><strong>Gruppo:</strong> 2d6 avvoltoi di solito. Se uno attacca, altri seguono (frenesia alimentare).</p>
+            </div>
+            
+            <div class="creature-card">
+                <h4>🐺 PREDATORE NOTTURNO (Hyena Mutata)</h4>
+                <p><strong>Descrizione:</strong> Ibrido inquietante hyena/lupo, dimensioni pony. Pelo grigio macchiato, occhi gialli brillano buio. Risa isteriche terrificanti. Mutazione minore da esposizione rovine Celesti?</p>
+                
+                <div class="creature-stats">
+<strong>PV:</strong> 18 | <strong>Armatura:</strong> 1 (pelo spesso)
+<strong>Movimento:</strong> 12m | <strong>Percezione:</strong> d10 (olfato eccellente)
+<strong>Attacco Morso:</strong> +d8 Combattimento, 2d6+1 danno
+<strong>Inseguimento Tenace:</strong> +1d6 Atletica inseguire prede
+                </div>
+                
+                <p><strong>Comportamento:</strong> Branco (3-8 individui). Tattiche branco: accerchiano, uno distrae frontalmente mentre altri attaccano fianchi/retro. Intelligenza quasi umana (inquietante).</p>
+                
+                <p><strong>Risa Isteriche:</strong> Inizio combattimento, tutti ridono simultaneamente. PG tira Resistenza Diff 9 o Svantaggio primo round (paura primordiale).</p>
+                
+                <p><strong>Tenaci:</strong> Non fuggono facilmente. Combattono finché metà branco morto.</p>
+                
+                <p><strong>Tesoro:</strong> Nessuno, ma pelli vendibili (10d/pelle).</p>
+            </div>
+            
+            <h2>🤖 Costrutti Celesti</h2>
+            
+            <div class="creature-card">
+                <h4>🤖 GUARDIANO SENTINEL</h4>
+                <p><strong>Descrizione:</strong> Robot umanoide 2m, metallo argenteo ossidato, singolo occhio rosso frontale. Antico guardiano rovine Celesti. Ancora operativo dopo secoli. Pattuglia corridoi, attacca intrusi.</p>
+                
+                <div class="creature-stats">
+<strong>PV:</strong> 25 | <strong>Armatura:</strong> 3 (piastre metalliche)
+<strong>Movimento:</strong> 10m | <strong>Percezione:</strong> d12 (sensori)
+<strong>Attacco Pugno:</strong> +d10 Combattimento, 2d6+2 danno
+<strong>Raggio Energia:</strong> +d8, portata 20m, 3d6 danno
+<strong>Immune:</strong> Veleno, paura, persuasione
+<strong>Vulnerabile:</strong> Elettricità (+50% danno)
+                </div>
+                
+                <p><strong>Comportamento:</strong> Logica semplice: "Proteggi area. Elimina intrusi." Non negoziabile. Combatte fino distruzione.</p>
+                
+                <p><strong>Tattica:</strong> Preferisce distanza (raggio). Se nemico si avvicina mischia: pugni devastanti. Ignora nemici deboli, focus su minacce maggiori (più danni inflitti, più PV).</p>
+                
+                <p><strong>Ricarica Raggio (3 cariche):</strong> Dopo 3 raggi, deve ricaricare (1 azione). Durante ricarica: solo pugni.</p>
+                
+                <p><strong>Tesoro:</strong> Nucleo energia (50d, 5 cariche trasferibili altro artefatto). Componenti metallo (30d materiali).</p>
+                
+                <p><strong>Hack:</strong> Sapienza Diff 15 + Kit Scasso/Lente Analitica: disattiva o riprogram (diventa alleato temporaneo 10 minuti).</p>
+            </div>
+            
+            <div class="creature-card">
+                <h4>🕷️ SCARABEO COSTRUTTO</h4>
+                <p><strong>Descrizione:</strong> Scarabeo meccanico dimensioni gatto, ottone e cristallo blu. Scorre su 6 zampe articolate. Occhi cristallo pulsano. Sciame questi = mortale.</p>
+                
+                <div class="creature-stats">
+<strong>PV:</strong> 6 (individuale) | <strong>Armatura:</strong> 1
+<strong>Movimento:</strong> 8m (arrampica pareti)
+<strong>Attacco Morso Energetico:</strong> +d6, 1d6+shock
+<strong>Shock:</strong> Target Resistenza Diff 9 o paralisi 1 round
+<strong>Sciame (10+ scarabei):</strong> Conta come singola creatura
+    - <strong>PV Sciame:</strong> 40 (collettivo)
+    - <strong>Attacco Sciame:</strong> +d8, 3d6 danno (coprono vittima)
+    - <strong>Difficile Colpire:</strong> Attacchi mischia -1d6 (troppo piccoli)
+                </div>
+                
+                <p><strong>Comportamento:</strong> Difensivi. Attivano se intrusi toccano specifici oggetti (tesori, pannelli controllo). Emergono da fessure pareti.</p>
+                
+                <p><strong>Debolezza:</strong> Attacchi area (olio+fuoco, esplosioni) danneggiano sciame efficacemente (x2 danno).</p>
+                
+                <p><strong>Tesoro:</strong> Ogni scarabeo: componente cristallo (3d). Sciame 10 = 30d totale.</p>
+            </div>
+            
+            <h2>👻 Creature Corrotte (Marchiati)</h2>
+            
+            <div class="creature-card">
+                <h4>😱 MARCHIATO DEGRADATO</h4>
+                <p><strong>Descrizione:</strong> Ex-umano esposto troppo al Velo/Serpente. Corpo mutato: pelle squamosa verde, occhi gialli pupilla verticale, movimenti serpentini. Mente persa — parla lingue morte, vede cose che non ci sono. Pericoloso ma tragico.</p>
+                
+                <div class="creature-stats">
+<strong>PV:</strong> 20 | <strong>Armatura:</strong> 1 (scaglie)
+<strong>Movimento:</strong> 10m
+<strong>Attacco Artiglio:</strong> +d8 Combattimento, 2d6 danno
+<strong>Tocco Corruzione:</strong> +d6, 1d6 danno + Resistenza Diff 13 o guadagni 1 punto Corruzione (vedi sotto)
+<strong>Rigenerazione:</strong> Recupera 1d6 PV/round (mentre in ombra/buio)
+                </div>
+                
+                <p><strong>Comportamento:</strong> Erratico. Alterna momenti lucidità ("Aiutami... cosa mi sta succedendo?") e violenza cieca. Attirato da artefatti Celesti (ne sente "richiamo").</p>
+                
+                <p><strong>Corruzione:</strong> PG toccato da Marchiato accumula punti Corruzione:</p>
+                <ul style="margin-top: 5px;">
+                    <li>1 punto: Sogni strani (no effetto meccanico)</li>
+                    <li>3 punti: Percezione Serpente (Vantaggio Percezione cose Celesti, ma -1d6 sociale con normali)</li>
+                    <li>5 punti: Mutazione minore (GM sceglie: scaglie patch pelle, occhi cambiano colore)</li>
+                    <li>10 punti: Rischio diventare Marchiato (Resistenza Diff 17/giorno o degrada)</li>
+                </ul>
+                
+                <p><strong>Cura Corruzione:</strong> Riposo 1 settimana luogo sicuro: -1 punto. Rituale Osservatori Velo (500d): -3 punti. Artefatto raro purificatore: -tutti punti.</p>
+                
+                <p><strong>Pietà:</strong> Alcuni PG vorranno salvarlo non ucciderlo. Possibile catturare, portare Osservatori, tentare cura. Successo? GM decide — forse reversibile nelle prime fasi.</p>
+            </div>
+            
+            <h2>🐉 Boss/Creature Uniche</h2>
+            
+            <div class="creature-card">
+                <h4>🐍 MANIFESTAZIONE MINORE DEL SERPENTE</h4>
+                <p><strong>Descrizione:</strong> Serpente gigante semitrasparente, 10m lunghezza, scaglie verdi iridescenti. Non completamente reale — phasa dentro/fuori realtà. Occhi oro ipnotici. Apparizione rara, significativa. Messaggero? Test? Punizione?</p>
+                
+                <div class="creature-stats">
+<strong>PV:</strong> 50 | <strong>Armatura:</strong> 2 (scaglie + intangibilità parziale)
+<strong>Movimento:</strong> 15m (slither, ignora terreno difficile)
+<strong>Percezione:</strong> d12 (sente intenzioni, non solo vista)
+<strong>Attacco Morso:</strong> +d12 Combattimento, 3d6+2 danno
+<strong>Avvolgimento:</strong> Atletica contrapposta, se vince: stringe 2d6/round, bersaglio immobilizzato
+<strong>Sguardo Ipnotico:</strong> Azione. Target Resistenza Diff 15 o affascinato (non attacca Serpente, difende se altri attaccano)
+<strong>Phasing:</strong> 1/combattimento: diventa intangibile 1 round (immune tutto danno fisico)
+                </div>
+                
+                <p><strong>Comportamento:</strong> NON sempre ostile. A volte osserva. A volte parla (telepatia). A volte testa PG ("Sei degno conoscenza?"). A volte attacca (perché? Capriccio? Protezione qualcosa?)</p>
+                
+                <p><strong>Dialogo:</strong> Se PG tentano comunicare: Persuasione Diff 13. Successo: Serpente parla (enigmatico). Forse offre informazione. Forse chiede favore. Forse propone "prova".</p>
+                
+                <p><strong>Morte:</strong> Se ucciso: corpo dissolve in energia verde. Lascia 1 Scaglia Serpente (artefatto unico, GM decide potere).</p>
+                
+                <p><strong>Significato Narrativo:</strong> Apparizione deve significare qualcosa narrativamente. Non "incontro casuale". Usa per:</p>
+                <ul style="margin-top: 5px;">
+                    <li>Momento rivelazione importante</li>
+                    <li>Test PG (morale, potere, lealtà)</li>
+                    <li>Introdurre nuovo mistero</li>
+                    <li>Climax arco narrativo</li>
+                </ul>
+            </div>
+            
+            <h2>👥 PNG Umanoidi</h2>
+            
+            <div class="creature-card">
+                <h4>⚔️ SOLDATO IMPERIALE</h4>
+                <div class="creature-stats">
+<strong>PV:</strong> 16 | <strong>Armatura:</strong> 2 (cotta maglia)
+<strong>Combattimento:</strong> d8 | <strong>Atletica:</strong> d6 | <strong>Percezione:</strong> d6
+<strong>Arma:</strong> Spada (2d6) + Scudo (+1 Armatura totale 3)
+<strong>Addestramento:</strong> +1d6 quando combatte in formazione con alleati
+                </div>
+                <p><strong>Tattica:</strong> Disciplinati, combattono gruppo, coprono alleati. Obbediscono ordini superiore anche se suicidi.</p>
+            </div>
+            
+            <div class="creature-card">
+                <h4>🏴‍☠️ CORSARO VETERANO</h4>
+                <div class="creature-stats">
+<strong>PV:</strong> 18 | <strong>Armatura:</strong> 1 (cuoio)
+<strong>Combattimento:</strong> d10 | <strong>Furtività:</strong> d8 | <strong>Atletica:</strong> d8
+<strong>Armi:</strong> Scimitarra (2d6) + Pugnale (1d6, lanciabile)
+<strong>Attacco Furtivo:</strong> Se attacca da ombra/stealth: +2d6 danno
+                </div>
+                <p><strong>Tattica:</strong> Mobile, colpisce-fugge, sfrutta terreno. Pragmatico: fugge se combattimento va male.</p>
+            </div>
+            
+            <div class="creature-card">
+                <h4>📚 OSSERVATORE VELO (Mistico)</h4>
+                <div class="creature-stats">
+<strong>PV:</strong> 14 | <strong>Armatura:</strong> 0 (vesti)
+<strong>Sapienza:</strong> d10 | <strong>Percezione:</strong> d10 | <strong>Persuasione:</strong> d8
+<strong>Arma:</strong> Bastone (1d6+1, non letale)
+<strong>Conoscenza Profonda:</strong> +2d6 qualsiasi tiro riguarda Celesti, artefatti, Serpente
+<strong>Visione Mistica:</strong> 3/giorno: vede attraverso illusioni, rivela invisibile, sente bugie
+                </div>
+                <p><strong>Ruolo:</strong> Non combattente tipicamente. Supporto, conoscenza, guida spirituale. Difende solo se necessario.</p>
+            </div>
+            
+        </div>
+        
+        <!-- CAPITOLO 11: TABELLE CASUALI -->
+        <div class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-number">CAPITOLO 11</div>
+                <h1 class="chapter-title">Tabelle Casuali e Generatori</h1>
+                <p class="chapter-intro">Quando hai bisogno di improvvisare rapidamente: incontri casuali, tesori, PNG, eventi. Tira e narra.</p>
+            </div>
+            
+            <h2>🎲 Incontri Casuali nel Deserto</h2>
+            
+            <div class="random-table">
+                <h4>TABELLA INCONTRI DIURNI (2d6)</h4>
+                <table>
+                    <tr>
+                        <th>2d6</th>
+                        <th>Incontro</th>
+                        <th>Dettagli</th>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Tempesta Improvvisa</strong></td>
+                        <td>Tempesta sabbia. Visibilità 5m, 1d6 ore durata. Navigazione impossibile.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Predatore Affamato</strong></td>
+                        <td>1d6 Predatori Notturni (disperati, cacciano giorno). Ostili.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Rovine Minori</strong></td>
+                        <td>Edificio Celeste mezzo sepolto. 1d6 stanze, possibile tesoro (50%).</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Nomadi</strong></td>
+                        <td>2d6 nomadi con cammelli. Neutrali. Possibile commercio (prezzi x1.5).</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>Carovana Mercanti</strong></td>
+                        <td>Gilda mercanti, 3-5 PNG + guardie. Amichevoli. Commercio normale. Info regione.</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>Nulla Notevole</strong></td>
+                        <td>Viaggio tranquillo. Descrivi paesaggio interessante ma nessun evento.</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><strong>Oasi Nascosta</strong></td>
+                        <td>Percezione Diff 11 notare. Acqua fresca illimitata. Palme (ombra). Possibile riposo sicuro.</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><strong>Pattuglia Imperiale</strong></td>
+                        <td>4 Soldati Imperiali. Chiedono documenti. Ostili se PG criminali/sospetti.</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><strong>Banditi Corsari</strong></td>
+                        <td>3-6 Corsari. Vogliono bottino. Possibile negoziazione (Persuasione Diff 13).</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><strong>Costrutto Malfunzionante</strong></td>
+                        <td>1 Guardiano Sentinel danneggiato. Attacca tutto. Possibile hack/disattivazione.</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><strong>Fenomeno Strano</strong></td>
+                        <td>Tira su Tabella Fenomeni Mistici (sotto)</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="random-table">
+                <h4>TABELLA INCONTRI NOTTURNI (2d6)</h4>
+                <table>
+                    <tr>
+                        <th>2d6</th>
+                        <th>Incontro</th>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Branco Predatori:</strong> 2d6 Predatori Notturni. Tattiche branco coordinate. Molto pericoloso.</td>
+                    </tr>
+                    <tr>
+                        <td>3-4</td>
+                        <td><strong>Scorpioni Giganti:</strong> 1d6 scorpioni caccia. Imboscata da sotto sabbia.</td>
+                    </tr>
+                    <tr>
+                        <td>5-6</td>
+                        <td><strong>Banditi Notturni:</strong> Corsari tendono imboscata campo. Furtività vs Percezione.</td>
+                    </tr>
+                    <tr>
+                        <td>7-8</td>
+                        <td><strong>Calma Notturna:</strong> Notte tranquilla. Stelle brillanti. Bellezza deserto. Riposo pieno.</td>
+                    </tr>
+                    <tr>
+                        <td>9-10</td>
+                        <td><strong>Viaggiatori:</strong> Altro gruppo viaggiatori (nomadi/mercanti). Campo vicino. Possibile alleanza temporanea.</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><strong>Spiriti Erranti:</strong> Luci strane danzano distanza. Seguirle? Percezione Diff 13 capire natura (pericoloso/innocuo).</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><strong>Visione Serpente:</strong> PG ha sogno vivido Serpente. Messaggio? Avvertimento? Risveglia tutta gruppo.</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h2>✨ Fenomeni Mistici (d6)</h2>
+            
+            <div class="random-table">
+                <table>
+                    <tr>
+                        <th>d6</th>
+                        <th>Fenomeno</th>
+                        <th>Effetto</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Miraggio Vivido</strong></td>
+                        <td>Città fantasma appare orizzonte. Sembra reale. Avvicinarsi? Percezione Diff 13 capire è illusione. Seguirla = perdersi (+1d6 km distanza).</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Aurore Deserto</strong></td>
+                        <td>Luci colorate cielo notturno (verde/blu/oro). Bellissime. Artefatti malfunzionano (tira 1d6: 1-2 = 1 artefatto casuale spento 1d6 ore). Sogni vividi questa notte.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Eco Temporale</strong></td>
+                        <td>Vedi/senti evento passato ripetersi ghostlike (battaglia antica? Processione Celeste?). Dura 1d6 minuti. Sapienza Diff 13 capire significato storico.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Zona Gravità Anomala</strong></td>
+                        <td>Gravità ridotta 50% area 30m raggio. Durata 1 ora. Saltare doppio distanza, oggetti levitano lentamente. Disorientante (Atletica -1d6 prima di adattarsi).</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Sussurri nel Vento</strong></td>
+                        <td>Tutti sentono voci parlare lingua sconosciuta (Celeste antico?). Percezione Diff 15 distinguere parole: "Sveglia", "Ritorno", "Giudizio". Inquietante.</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>Manifestazione Serpente</strong></td>
+                        <td>Forma serpente gigante appare sabbia/cielo (ombra? proiezione?). Osserva gruppo 1 minuto. Poi scompare. Nessun danno fisico ma impatto psicologico forte. Cosa significa?</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h2>💎 Generatore Tesori</h2>
+            
+            <div class="random-table">
+                <h4>TESORO MINORE (d20) - Rovine Piccole, Banditi</h4>
+                <table>
+                    <tr>
+                        <th>d20</th>
+                        <th>Tesoro</th>
+                        <th>Valore</th>
+                    </tr>
+                    <tr>
+                        <td>1-5</td>
+                        <td>Denaro (monete)</td>
+                        <td>2d6 x 10 dinar</td>
+                    </tr>
+                    <tr>
+                        <td>6-8</td>
+                        <td>Gemme (2d6 pietre semi-preziose)</td>
+                        <td>10d ciascuna</td>
+                    </tr>
+                    <tr>
+                        <td>9-10</td>
+                        <td>Arte/Manufatto storico</td>
+                        <td>50-200d (collezionisti pagano di più)</td>
+                    </tr>
+                    <tr>
+                        <td>11-12</td>
+                        <td>Equipaggiamento qualità (arma/armatura)</td>
+                        <td>Valore standard +50%</td>
+                    </tr>
+                    <tr>
+                        <td>13-14</td>
+                        <td>Mappa (locazione interessante)</td>
+                        <td>50d, conduce a dungeon/tesoro</td>
+                    </tr>
+                    <tr>
+                        <td>15-16</td>
+                        <td>Documenti (informazioni utili)</td>
+                        <td>Variabile. Segreti fazioni? Coordinate?</td>
+                    </tr>
+                    <tr>
+                        <td>17-18</td>
+                        <td>Artefatto Comune</td>
+                        <td>Lampada Eterna, Bussola, Regolatore (tira casuale)</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>Artefatto Non Comune</td>
+                        <td>500-1,200d valore</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>Artefatto Raro (JACKPOT!)</td>
+                        <td>2,000-10,000d valore. GM sceglie quale appropriato.</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h2>👤 Generatore PNG Veloci</h2>
+            
+            <div class="random-table">
+                <h4>TRATTO DISTINTIVO (d12)</h4>
+                <table>
+                    <tr>
+                        <th>d12</th>
+                        <th>Tratto Fisico</th>
+                        <th>Tratto Personalità</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Cicatrice vistosa viso</td>
+                        <td>Paranoico, diffidente</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Occhio colore insolito (viola, dorato)</td>
+                        <td>Eccessivamente amichevole</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Tatuaggi tribali elaborati</td>
+                        <td>Onesto fino ingenuità</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Manca dito/mano</td>
+                        <td>Avido, mercenario</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Voce rauca/stridula</td>
+                        <td>Codardo nascosto da bravate</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Altezza insolita (molto alto/basso)</td>
+                        <td>Orgoglioso, facilmente offeso</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Porta amuleto/talismano ovvio</td>
+                        <td>Superstizioso estremo</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Capelli/barba stile eccentrico</td>
+                        <td>Mentitore compulsivo</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Veste colori vivaci (deserto = insolito)</td>
+                        <td>Curioso, fa troppe domande</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Zoppica leggermente</td>
+                        <td>Cinico ma buon cuore</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Sempre sporco/sabbioso</td>
+                        <td>Ossessionato pulizia/ordine</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Strano tic nervoso</td>
+                        <td>Segreto oscuro pesa su</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="random-table">
+                <h4>MOTIVAZIONE PNG (d8)</h4>
+                <table>
+                    <tr>
+                        <th>d8</th>
+                        <th>Vuole...</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Ricchezza:</strong> Cerca tesori, disposto rischiare molto</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Fuga:</strong> Scappa qualcosa/qualcuno (debiti? Crimine? Passato?)</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Conoscenza:</strong> Ossessionato scoprire verità (Celesti? Serpente?)</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Vendetta:</strong> Cerca qualcuno specifico per punire</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Protezione:</strong> Difende qualcuno/qualcosa caro</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>Redenzione:</strong> Espia errore passato grave</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>Potere:</strong> Ambizione politica/militare/sociale</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><strong>Sopravvivenza:</strong> Semplicemente vuole vivere un altro giorno</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h2>🎪 Complicazioni Improvvise (d10)</h2>
+            
+            <p><strong>Quando non sai cosa succede dopo, tira qui:</strong></p>
+            
+            <div class="random-table">
+                <table>
+                    <tr>
+                        <th>d10</th>
+                        <th>Complicazione</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Qualcuno Arriva:</strong> PNG/creatura inaspettato appare. Chi? Amico/nemico? Tira su altra tabella.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Equipaggiamento Guasto:</strong> Qualcosa si rompe (arma, armatura, artefatto). Riparazione richiede tempo/risorse.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Tempo Stringe:</strong> Scopri hai solo X tempo (1 ora? 10 minuti?) prima evento negativo (rinforzi nemici, crollo, tempesta).</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Informazione Falsa:</strong> Qualcosa credevi vero è sbagliato. Mappa errata? Alleato mentì? Traduzione testo sbagliata?</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Risorsa Esaurita:</strong> Acqua finita, munizioni esaurite, artefatto 0 cariche. Ora cosa?</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>Ambiente Ostile:</strong> Tempesta improvvisa, crollo parziale, incendio, sabbie mobili, qualcosa ambientale peggiora situazione.</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>Alleato Problematico:</strong> PNG alleato fa errore (tradimento involontario? Panico? Incompetenza?). Danni relazione.</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><strong>Scoperta Inaspettata:</strong> Trovi qualcosa non cercavi. Può essere buono (tesoro nascosto) o cattivo (nido predatori).</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><strong>Testimone:</strong> Qualcuno vede azioni PG (buone o cattive). Conseguenze sociali/politiche future.</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><strong>Malinteso:</strong> Comunicazione fallita causa problema (interpretano male parole, gesti offendono culturalmente, linguaggio barriera).</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h2>📝 Conclusione e Crediti</h2>
+            
+            <div class="intro-box">
+                <p style="text-align: center; font-size: 14pt;"><strong>Questo è The Serpent Road.</strong></p>
+                
+                <p style="margin-top: 20px;">Hai tutto ciò che serve per giocare, creare personaggi, esplorare deserto, combattere nemici, scoprire artefatti, e svelare misteri Celesti.</p>
+                
+                <p>Il deserto aspetta. Il Serpente osserva. Cosa farai?</p>
+                
+                <p style="margin-top: 20px; text-align: center;"><em>"Ogni viaggio inizia con un passo nella sabbia.<br>Ogni leggenda inizia con una scelta."</em></p>
+                
+                <p style="margin-top: 30px; text-align: center; font-weight: bold;">— Buona Fortuna, Viaggiatori del Deserto —</p>
+            </div>
+            
+            <h3>Quick Reference: Link Utili</h3>
+            
+            <ul>
+                <li><strong>Parte 1:</strong> Introduzione + Mondo del Deserto</li>
+                <li><strong>Parte 2:</strong> Creazione Personaggio</li>
+                <li><strong>Parte 3:</strong> Sistema di Gioco + Combattimento</li>
+                <li><strong>Parte 4:</strong> Viaggi + Equipaggiamento + Artefatti</li>
+                <li><strong>Parte 5:</strong> Guida GM + Bestiario + Tabelle (questa parte)</li>
+            </ul>
+            
+            <p style="margin-top: 30px;"><strong>Versione:</strong> 1.0 (Ottobre 2025)</p>
+            <p><strong>Sistema:</strong> The Serpent Road RPG</p>
+            <p><strong>Pagine Totali:</strong> ~250 pagine equivalenti</p>
+            
+        </div>
+        
+        <!-- NAVIGAZIONE FINE -->
+        <div class="navigation">
+            <a href="serpent_road_manual_part4.html">← Parte 4</a>
+            <span style="color: var(--text-dark); font-weight: bold;">🎉 MANUALE COMPLETO!</span>
+            <a href="serpent_road_manual_part1.html">← Torna all'Inizio</a>
+        </div>
+        
+    </div>
+</body>
+</html>

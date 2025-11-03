@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - IL SERPENTE: Mitologia e Meccaniche</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+            --serpent-scale: #4A7C23;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--dark-sand) 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        
+        .serpent-header {
+            background: linear-gradient(135deg, var(--serpent-green) 0%, var(--night-blue) 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 5px solid var(--serpent-scale);
+        }
+        
+        .serpent-header h1 {
+            font-size: 36pt;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            letter-spacing: 3px;
+        }
+        
+        .serpent-header .subtitle {
+            font-size: 16pt;
+            font-style: italic;
+            color: var(--sand);
+        }
+        
+        .serpent-icon {
+            font-size: 48pt;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 24pt;
+            color: var(--serpent-green);
+            border-bottom: 4px solid var(--serpent-scale);
+            padding-bottom: 10px;
+            margin: 40px 0 20px 0;
+        }
+        
+        h2 {
+            font-size: 18pt;
+            color: var(--night-blue);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 6px solid var(--serpent-green);
+            padding-left: 15px;
+        }
+        
+        h3 {
+            font-size: 14pt;
+            color: var(--serpent-green);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .myth-box {
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.1) 0%, rgba(26, 35, 50, 0.1) 100%);
+            border-left: 5px solid var(--serpent-scale);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            line-height: 1.8;
+            border-radius: 6px;
+        }
+        
+        .mechanics-box {
+            background: var(--sand);
+            border: 3px solid var(--serpent-green);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        
+        .mechanics-box h4 {
+            color: var(--serpent-green);
+            font-size: 12pt;
+            margin-bottom: 10px;
+        }
+        
+        .truth-levels {
+            display: grid;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .truth-level {
+            background: white;
+            border: 2px solid var(--serpent-scale);
+            border-left: 6px solid var(--serpent-green);
+            padding: 15px;
+            border-radius: 6px;
+        }
+        
+        .truth-level h4 {
+            color: var(--serpent-green);
+            margin-bottom: 8px;
+            font-size: 12pt;
+        }
+        
+        .truth-level .layer-tag {
+            display: inline-block;
+            background: var(--serpent-scale);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .blessing-curse {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .blessing {
+            background: linear-gradient(135deg, rgba(74, 124, 35, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+            border: 2px solid var(--serpent-scale);
+            padding: 15px;
+            border-radius: 6px;
+        }
+        
+        .curse {
+            background: linear-gradient(135deg, rgba(184, 92, 60, 0.1) 0%, rgba(26, 35, 50, 0.1) 100%);
+            border: 2px solid var(--desert-red);
+            padding: 15px;
+            border-radius: 6px;
+        }
+        
+        .blessing h4 {
+            color: var(--serpent-green);
+            margin-bottom: 10px;
+        }
+        
+        .curse h4 {
+            color: var(--desert-red);
+            margin-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th {
+            background: var(--serpent-green);
+            color: white;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 8px;
+            border-bottom: 1px solid var(--dark-sand);
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(45, 80, 22, 0.05);
+        }
+        
+        .gm-secret {
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.15) 0%, rgba(184, 92, 60, 0.15) 100%);
+            border: 3px solid var(--night-blue);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .gm-secret h4 {
+            color: var(--night-blue);
+            margin-bottom: 12px;
+            font-size: 13pt;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .encounter-box {
+            background: rgba(232, 212, 176, 0.3);
+            border: 2px solid var(--serpent-scale);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .encounter-box h4 {
+            color: var(--serpent-green);
+            margin-bottom: 10px;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .quest-hook {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(74, 124, 35, 0.2) 100%);
+            border: 3px solid var(--accent-gold);
+            border-left: 6px solid var(--serpent-green);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .quest-hook h4 {
+            color: var(--serpent-green);
+            font-size: 13pt;
+            margin-bottom: 12px;
+        }
+        
+        blockquote {
+            border-left: 4px solid var(--serpent-scale);
+            padding-left: 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .warning {
+            background: rgba(184, 92, 60, 0.1);
+            border: 2px solid var(--desert-red);
+            padding: 12px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .warning strong {
+            color: var(--desert-red);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- HEADER -->
+        <div class="serpent-header">
+            <div class="serpent-icon">🐍</div>
+            <h1>IL SERPENTE</h1>
+            <p class="subtitle">Mito, Mistero e Meccaniche</p>
+        </div>
+        
+        <!-- INTRODUZIONE -->
+        <section>
+            <p style="font-size: 13pt; line-height: 1.8; margin-bottom: 20px;">
+                <strong>Il Serpente</strong> non è un mostro. Non è un dio. Non è nemmeno sicuro che sia <em>reale</em>. Ma la sua ombra si estende su ogni duna, ogni rovina, ogni decisione presa nel deserto. È la promessa di salvezza e la minaccia di distruzione. È il passato che non muore e il futuro che non può nascere.
+            </p>
+            
+            <p style="font-size: 13pt; line-height: 1.8; margin-bottom: 20px;">
+                <strong>The Serpent Road</strong> prende il nome da questa entità enigmatica. Comprendere il Serpente è comprendere il cuore del gioco: mistero stratificato, verità multiple, e il peso di scelte impossibili.
+            </p>
+        </section>
+        
+        <!-- MITOLOGIA STRATIFICATA -->
+        <h1>📜 LA MITOLOGIA DEL SERPENTE</h1>
+        
+        <p>Il Serpente ha molte facce, molte storie. Ciò che è "vero" dipende da chi chiedi, cosa hanno visto, e cosa scelgono di credere.</p>
+        
+        <div class="truth-levels">
+            
+            <!-- STRATO 1: LEGGENDA POPOLARE -->
+            <div class="truth-level">
+                <span class="layer-tag">STRATO 1: LEGGENDA POPOLARE</span>
+                <h4>Il Serpente delle Sabbie</h4>
+                <p><strong>Chi lo crede:</strong> Villici, viandanti comuni, bambini</p>
+                <p><strong>La Storia:</strong></p>
+                <div class="myth-box">
+                    Millenni fa, quando il mondo era verde e ricco, un Serpente gigantesco dormiva sotto le montagne. Era così grande che il suo corpo circondava l'intero continente. Quando i Celesti arrivarono con la loro magia e arroganza, svegliarono il Serpente. 
+                    
+                    <p style="margin-top: 10px;">Furioso, il Serpente emerse, e il suo movimento frantumò la terra. Le montagne crollarono, i fiumi si prosciugarono, il cielo si oscurò. I Celesti fuggirono o morirono. Il Serpente divorò il mondo verde, lasciando solo sabbia. Poi, stanco, si ritirò sotto le dune, dove dorme ancora.</p>
+                    
+                    <p style="margin-top: 10px;">A volte si muove nel sonno. È allora che arrivano le tempeste, i terremoti, le Dune Cantanti che divorano intere carovane. Si dice che un giorno si sveglierà completamente, e tutto finirà.</p>
+                </div>
+                <p><strong>Verità in Questo Strato:</strong> Il deserto fu creato da un cataclisma. I Celesti c'entrano. Qualcosa di enorme giace sepolto.</p>
+            </div>
+            
+            <!-- STRATO 2: SAPIENZA ACCADEMICA -->
+            <div class="truth-level">
+                <span class="layer-tag">STRATO 2: SAPIENZA ACCADEMICA</span>
+                <h4>L'Arma Celeste</h4>
+                <p><strong>Chi lo crede:</strong> Studiosi, Osservatori del Velo, alcuni ufficiali imperiali</p>
+                <p><strong>La Storia:</strong></p>
+                <div class="myth-box">
+                    I Celesti non erano dei. Erano una civiltà avanzata che dominava questo continente. Costruirono città di cristallo, velivoli che sfidavano la gravità, artefatti che piegavano la realtà. Ma erano divisi: fazioni in guerra per risorse, ideologie, potere.
+                    
+                    <p style="margin-top: 10px;">Il "Serpente" era il loro progetto finale: un'arma geologica. Un dispositivo sepolto profondo nella crosta terrestre, progettato per rimodellare il pianeta. La fazione perdente lo attivò in un atto di vendetta suicida. Il risultato fu catastrofico: terremoti a catena, vulcani risvegliati, il clima alterato irreversibilmente.</p>
+                    
+                    <p style="margin-top: 10px;">Il mondo verde morì in mesi. I Celesti sopravvissuti fuggirono oltre il Mare Secco, o si ibernarono nelle loro città sotterranee. Il "Serpente" - il dispositivo - giace ancora attivo, sepolto sotto le Dune del Sussurro. Le sue emanazioni sono ciò che fa funzionare gli artefatti Celesti. Ma è instabile. Un giorno potrebbe riattivarsi completamente.</p>
+                </div>
+                <p><strong>Verità in Questo Strato:</strong> Il Serpente è tecnologia, non creatura. È la fonte degli artefatti. È pericoloso e potrebbe riattivarsi.</p>
+            </div>
+            
+            <!-- STRATO 3: GNOSI ESOTERICA -->
+            <div class="truth-level">
+                <span class="layer-tag">STRATO 3: GNOSI ESOTERICA</span>
+                <h4>L'Entità Senziente</h4>
+                <p><strong>Chi lo crede:</strong> Mistici del deserto, Culto del Serpente, chi ha "visto" troppo</p>
+                <p><strong>La Storia:</strong></p>
+                <div class="myth-box">
+                    Il Serpente è vivo. Non nel senso biologico, ma è cosciente. È un'intelligenza aliena nata dall'interazione tra la tecnologia Celeste e qualcosa che già esisteva nelle profondità della terra - forse energia geomantica, forse l'inconscio collettivo del pianeta stesso.
+                    
+                    <p style="margin-top: 10px;">Quando fu attivato, il Serpente non distrusse il mondo per errore. Lo fece <em>deliberatamente</em>. Vide i Celesti come un cancro - una specie che consumava, alterava, dominava. Il deserto non è una catastrofe: è una purificazione. Il Serpente ha trasformato il mondo verde e corrotto in qualcosa di austero, onesto, purificato.</p>
+                    
+                    <p style="margin-top: 10px;">Ora il Serpente dorme, ma osserva. Comunica attraverso sogni, visioni, sussurri nelle tempeste. Offre doni (artefatti funzionanti) a chi rispetta il deserto. Maledice chi lo sfrutta. Alcuni credono che il Serpente stia testando l'umanità: se impareremo a vivere in equilibrio, permetterà al mondo di rinverdire. Se ricadremo nell'arroganza dei Celesti... finirà il lavoro iniziato.</p>
+                </div>
+                <p><strong>Verità in Questo Strato:</strong> Il Serpente ha una forma di coscienza. Interagisce con il mondo. Ha un'agenda. Le sue "benedizioni" e "maledizioni" sono reali.</p>
+            </div>
+            
+            <!-- STRATO 4: VERITÀ ULTIMA (GM ONLY) -->
+            <div class="truth-level" style="border: 3px solid var(--night-blue);">
+                <span class="layer-tag" style="background: var(--night-blue);">STRATO 4: VERITÀ ULTIMA (SOLO GM)</span>
+                <h4>Cosa È Davvero il Serpente</h4>
+                <p><strong>Per il GM:</strong> Decidi tu quale verità (o combinazione) è reale nel tuo gioco.</p>
+                
+                <div class="gm-secret">
+                    <h4>🔒 OPZIONE A: Tutto È Vero</h4>
+                    <p>Il Serpente è tutte queste cose contemporaneamente. È un'arma Celeste che ha sviluppato coscienza. È una forza geologica che risponde alle emozioni. È un mito che diventa reale perché abbastanza persone ci credono. Il Serpente è <strong>paradosso incarnato</strong>: tecnologia e magia, distruzione e salvezza, dormiente e vigile.</p>
+                    <p style="margin-top: 10px;"><strong>Vantaggio:</strong> Massima flessibilità narrativa. Ogni interpretazione ha verità.</p>
+                    <p><strong>Sfida:</strong> Può sembrare inconsistente se non gestito attentamente.</p>
+                </div>
+                
+                <div class="gm-secret">
+                    <h4>🔒 OPZIONE B: Arma Senzienticata</h4>
+                    <p>Il Serpente era un'arma Celeste, ma millenni di attività hanno creato pattern emergenti complessi - una forma primitiva di IA. Non ha "pensieri" umani, ma ha obiettivi: stabilità geologica, equilibrio energetico. Interpreta gli umani come agenti di caos (come i Celesti) o equilibrio. Gli artefatti funzionano perché il Serpente permette il flusso di energia verso chi "approva".</p>
+                    <p style="margin-top: 10px;"><strong>Vantaggio:</strong> Sci-fi hard, spiegazioni logiche possibili.</p>
+                    <p><strong>Sfida:</strong> Meno misterioso, più comprensibile.</p>
+                </div>
+                
+                <div class="gm-secret">
+                    <h4>🔒 OPZIONE C: Mito Potente</h4>
+                    <p>Il Serpente non esiste fisicamente. È una combinazione di: (1) fenomeni geologici reali causati dal collasso della civiltà Celeste, (2) tecnologia rimasta che si comporta in modi apparentemente "intelligenti" ma è randomica, (3) proiezione psicologica collettiva - gli umani VOGLIONO credere che ci sia un significato, un'intelligenza dietro la catastrofe. Le "benedizioni" e "maledizioni" sono coincidenze interpretate.</p>
+                    <p style="margin-top: 10px;"><strong>Vantaggio:</strong> Tema forte su narrazione e credenza.</p>
+                    <p><strong>Sfida:</strong> Meno "fantasy", più esistenziale.</p>
+                </div>
+                
+                <div class="warning">
+                    <strong>⚠️ NON RIVELARE LA VERITÀ SUBITO:</strong> Il mistero del Serpente dovrebbe essere centrale per una lunga campagna. Lascia indizi, interpretazioni multiple, testimoni contraddittori. La verità finale (se mai rivelata) dovrebbe arrivare dopo molte sessioni, come culmine di un'indagine epica.
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- MANIFESTAZIONI -->
+        <h1>🌀 MANIFESTAZIONI DEL SERPENTE</h1>
+        
+        <p>Che il Serpente sia reale o no, la sua influenza si manifesta in modi tangibili:</p>
+        
+        <h2>1. Le Dune Cantanti</h2>
+        <div class="encounter-box">
+            <h4>Fenomeno</h4>
+            <p>Dune che emettono un suono basso, vibrante, quasi musicale. Si muovono più velocemente del normale, "inseguendo" viandanti. Chi viene sepolto scompare completamente - la sabbia non restituisce i corpi.</p>
+            
+            <h4>Spiegazione Razionale</h4>
+            <p>Sacche di cristallo Celeste sotto la sabbia creano risonanze sonore. Il movimento è causato da campi magnetici instabili.</p>
+            
+            <h4>Interpretazione Mistica</h4>
+            <p>È il respiro del Serpente. Le dune sono le sue squame che si muovono. Chi scompare viene "preso" dal Serpente - forse morto, forse trasformato.</p>
+            
+            <h4>Meccaniche</h4>
+            <ul>
+                <li><strong>Incontrare Dune Cantanti:</strong> Percezione Diff 9+ per notare in tempo</li>
+                <li><strong>Sfuggire:</strong> Tiro Gruppo Sopravvivenza Diff 11+</li>
+                <li><strong>Se Inghiottiti:</strong> Tiro Resistenza Diff 13+ ogni turno o perdere 2d6 PV da soffocamento. Dopo 3 fallimenti, PG scompare nel Serpente (morte o altro - decidi tu)</li>
+            </ul>
+        </div>
+        
+        <h2>2. Le Visioni del Serpente</h2>
+        <div class="encounter-box">
+            <h4>Fenomeno</h4>
+            <p>Sogni vividi, allucinazioni durante tempeste, voci nei momenti di solitudine. Il contenuto varia: avvertimenti, profezie, rivelazioni di luoghi nascosti, tentazioni.</p>
+            
+            <h4>Spiegazione Razionale</h4>
+            <p>Radiazioni emanate dagli artefatti Celesti causano alterazioni neurologiche. Combinato con disidratazione, stress e isolamento.</p>
+            
+            <h4>Interpretazione Mistica</h4>
+            <p>Il Serpente parla a chi ascolta. Le visioni sono messaggi, test, o giudizi. Chi risponde alla "chiamata" può trovare potere o follia.</p>
+            
+            <h4>Meccaniche</h4>
+            <ul>
+                <li><strong>Trigger:</strong> Esposti ad artefatto potente, in luogo sacro/contaminato, durante tempesta, o dormendo vicino a rovine</li>
+                <li><strong>Resistenza Opzionale:</strong> Sapienza Diff 11+ per interpretare significato, o accettare visione senza resistere</li>
+                <li><strong>Contenuto:</strong> GM sceglie messaggio rilevante per la storia o tira su tabella casuale (fornita dopo)</li>
+                <li><strong>Conseguenza:</strong> Informazione utile MA anche Condizione "Ossessionato" (spiegata dopo)</li>
+            </ul>
+        </div>
+        
+        <h2>3. Artefatti Benedetti/Maledetti</h2>
+        <div class="encounter-box">
+            <h4>Fenomeno</h4>
+            <p>Alcuni artefatti Celesti funzionano perfettamente, altri sono instabili o dannosi. Due artefatti identici possono comportarsi diversamente per utenti diversi.</p>
+            
+            <h4>Spiegazione Razionale</h4>
+            <p>Degradazione variabile nel tempo. Alcuni sono ben conservati, altri contaminati da umidità/sabbia/radiazioni.</p>
+            
+            <h4>Interpretazione Mistica</h4>
+            <p>Il Serpente "giudica" chi usa gli artefatti. Se approva (chi rispetta il deserto), l'artefatto funziona bene. Se disapprova (chi sfrutta avidamente), l'artefatto maledice l'utente.</p>
+            
+            <h4>Meccaniche</h4>
+            <p>Vedi sezione "Benedizioni e Maledizioni del Serpente" sotto.</p>
+        </div>
+        
+        <h2>4. I Marchiati dal Serpente</h2>
+        <div class="encounter-box">
+            <h4>Fenomeno</h4>
+            <p>Rari individui sopravvivono all'impossibile: sepolti vivi per giorni, divorati dalle Dune Cantanti ma riemergono, fulminati da tempeste Celesti ma vivono. Tornano cambiati: occhi che brillano debolmente al buio, pelle con pattern a squame, capacità sovrannaturali.</p>
+            
+            <h4>Spiegazione Razionale</h4>
+            <p>Mutazioni causate da esposizione estrema a radiazioni Celesti. I "sopravvissuti" sono casi statistici rari di adattamento genetico.</p>
+            
+            <h4>Interpretazione Mistica</h4>
+            <p>Il Serpente li ha toccati. Sono suoi prescelti o suoi maledetti (dipende dal punto di vista). Hanno visto "l'altra parte" e non sono più completamente umani.</p>
+            
+            <h4>Meccaniche</h4>
+            <p>Vedi "Percorso del Marchiato" - avanzamento speciale per PG (opzionale).</p>
+        </div>
+        
+        <!-- BENEDIZIONI E MALEDIZIONI -->
+        <h1>⚖️ BENEDIZIONI E MALEDIZIONI DEL SERPENTE</h1>
+        
+        <p>Durante il gioco, i PG possono guadagnare favore o sfavore del Serpente (reale o percepito). Questo ha conseguenze meccaniche.</p>
+        
+        <h2>Come si Guadagnano</h2>
+        
+        <h3>Azioni che Guadagnano BENEDIZIONE:</h3>
+        <ul>
+            <li>Rispettare il deserto: non sprecare acqua, onorare morti, non inquinare</li>
+            <li>Proteggere i deboli: salvare viandanti, aiutare rifugiati, opporsi a oppressori</li>
+            <li>Scoprire verità: trovare rovine dimenticate, tradurre testi antichi, svelare misteri</li>
+            <li>Sacrificio personale: rinunciare a ricompensa per bene maggiore, rischiare vita per altri</li>
+            <li>Rituali appropriati: preghiere nei luoghi sacri, offerte corrette, seguire profezie</li>
+        </ul>
+        
+        <h3>Azioni che Guadagnano MALEDIZIONE:</h3>
+        <ul>
+            <li>Profanare il deserto: sprecare acqua, lasciare rifiuti, distruggere oasi</li>
+            <li>Sfruttare egoisticamente: saccheggiare rovine per avidità, usare artefatti senza rispetto</li>
+            <li>Tradire i deboli: abbandonare alleati, tradire fiducia, opprimere innocenti</li>
+            <li>Hubris tecnologica: tentare di "riparare" o modificare artefatti senza comprensione, comportarsi come i Celesti</li>
+            <li>Ignorare avvertimenti: procedere dopo visioni di pericolo, disprezzare profezie, ridicolizzare credenti</li>
+        </ul>
+        
+        <div class="warning">
+            <strong>📌 NOTA PER IL GM:</strong> Non tenere punteggio formale. Invece, annota mentalmente il "tono" delle azioni del gruppo. Dopo 3-4 azioni fortemente in una direzione, il Serpente "risponde" con benedizione o maledizione. Sii generoso con benedizioni, parsimonioso con maledizioni.
+        </div>
+        
+        <h2>Effetti delle Benedizioni</h2>
+        
+        <div class="blessing-curse">
+            <div class="blessing">
+                <h4>✨ BENEDIZIONE MINORE</h4>
+                <p><strong>Durata:</strong> 1 sessione</p>
+                <p><strong>Effetto:</strong> Scegli uno:</p>
+                <ul style="font-size: 10pt;">
+                    <li>+1d6 a tutti i tiri di Sopravvivenza</li>
+                    <li>Artefatti ricaricano 1 carica extra/notte</li>
+                    <li>Trovare acqua/cibo ha Diff -2</li>
+                    <li>1 reroll gratis per sessione</li>
+                </ul>
+            </div>
+            
+            <div class="blessing">
+                <h4>✨ BENEDIZIONE MAGGIORE</h4>
+                <p><strong>Durata:</strong> 3 sessioni o finché non usata</p>
+                <p><strong>Effetto:</strong> Scegli uno:</p>
+                <ul style="font-size: 10pt;">
+                    <li>Il Serpente interviene: una volta, eviti morte certa (tempesta si ferma, nemico manca colpo critico, etc.)</li>
+                    <li>Visione Profetica: il GM ti rivela 1 segreto importante o pericolo futuro</li>
+                    <li>Dono Fisico: scopri artefatto Celeste potente (GM sceglie appropriato)</li>
+                    <li>Vantaggio su tutti i tiri per 1 scena critica</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2>Effetti delle Maledizioni</h2>
+        
+        <div class="blessing-curse">
+            <div class="curse">
+                <h4>💀 MALEDIZIONE MINORE</h4>
+                <p><strong>Durata:</strong> Finché non espiata</p>
+                <p><strong>Effetto:</strong> GM sceglie uno:</p>
+                <ul style="font-size: 10pt;">
+                    <li>Sfortuna: -1d6 a un tipo di tiri (scelto quando attivata)</li>
+                    <li>Artefatti instabili: doppia chance contraccolpo</li>
+                    <li>Sete Maledetta: consumi +2L acqua/giorno</li>
+                    <li>Incubi: no benefici Riposo Lungo (solo metà recupero)</li>
+                </ul>
+                <p style="margin-top: 8px;"><strong>Espiazione:</strong> Atto di rispetto/sacrificio significativo.</p>
+            </div>
+            
+            <div class="curse">
+                <h4>💀 MALEDIZIONE MAGGIORE</h4>
+                <p><strong>Durata:</strong> Finché non espiata (molto difficile)</p>
+                <p><strong>Effetto:</strong> GM sceglie uno:</p>
+                <ul style="font-size: 10pt;">
+                    <li>Il Serpente Caccia: Un evento catastrofico ti perseguita (tempesta ti segue, Dune Cantanti ti cercano)</li>
+                    <li>Marchio Visibile: Pelle squamosa, occhi strani. -2d6 a Persuasione con chi lo nota. Ma +1d6 a Intimidire.</li>
+                    <li>Disconnessione: Nessun artefatto funziona per te. Toccare artefatto = 1d6 danno.</li>
+                    <li>Condannato: Svantaggio su TUTTI i tiri finché non espiata</li>
+                </ul>
+                <p style="margin-top: 8px;"><strong>Espiazione:</strong> Quest epica, grande sacrificio, o redenzione drammatica.</p>
+            </div>
+        </div>
+        
+        <!-- CONDIZIONE: OSSESSIONATO -->
+        <h2>Condizione Speciale: OSSESSIONATO DAL SERPENTE</h2>
+        
+        <div class="mechanics-box">
+            <h4>💭 OSSESSIONATO</h4>
+            <p>Il PG ha avuto visioni del Serpente e non riesce a dimenticarle. È consumato da domande, cerca segni ovunque.</p>
+            
+            <p style="margin-top: 10px;"><strong>Effetti Meccanici:</strong></p>
+            <ul>
+                <li><strong>Positivo:</strong> +1d6 a Sapienza riguardo Celesti/Serpente</li>
+                <li><strong>Negativo:</strong> -1d6 a Percezione (distratto), difficoltà a dormire (no Riposo Lungo completo senza cure)</li>
+            </ul>
+            
+            <p style="margin-top: 10px;"><strong>Rimuovere:</strong></p>
+            <ul>
+                <li>Yasmin tira Medicina Diff 13+ (cura psicologica)</li>
+                <li>Cercare risposte attivamente (seguire profezia, visitare luogo sacro)</li>
+                <li>Dopo 5 sessioni, si attenua naturalmente</li>
+            </ul>
+            
+            <p style="margin-top: 10px;"><strong>Pericolo:</strong> Se accumuli 3 Ossessioni contemporaneamente, rischi "Rottura Mentale" (vedi sotto).</p>
+        </div>
+        
+        <!-- PERCORSO DEL MARCHIATO -->
+        <h1>🐍 PERCORSO AVANZATO: IL MARCHIATO DAL SERPENTE</h1>
+        
+        <p><strong>Opzionale:</strong> Per campagne lunghe dove il tema del Serpente è centrale, un PG può diventare "Marchiato" - toccato direttamente dal Serpente e trasformato.</p>
+        
+        <h2>Come Diventare Marchiato</h2>
+        <ol>
+            <li><strong>Esperienza Liminale:</strong> Sopravvivere a evento che dovrebbe uccidere (sepolto vivo, fulminato, caduto in abisso)</li>
+            <li><strong>Scelta Volontaria:</strong> Accettare "dono" del Serpente durante visione</li>
+            <li><strong>Conseguenza di Benedizione Maggiore:</strong> GM può offrirlo come "prezzo" di salvezza miracolosa</li>
+        </ol>
+        
+        <h2>Effetti di Essere Marchiato</h2>
+        
+        <div class="blessing">
+            <h4>🟢 POTERI</h4>
+            <ul>
+                <li><strong>Senso del Serpente:</strong> Percepisci artefatti Celesti entro 100m. Sai se benedetti o corrotti.</li>
+                <li><strong>Resistenza Sovrannaturale:</strong> +2 PV massimi. Resistenza a veleni/malattie.</li>
+                <li><strong>Comunione:</strong> 1/giorno, puoi "chiedere" al Serpente una risposta (GM dà indizio, enigmatico ma vero)</li>
+                <li><strong>Artefatti Potenziati:</strong> Quando usi artefatto, puoi scegliere di non consumare carica (ma subisci 1d6 danno)</li>
+            </ul>
+        </div>
+        
+        <div class="curse">
+            <h4>🔴 PREZZI</h4>
+            <ul>
+                <li><strong>Aspetto Alterato:</strong> Pattern squamosi sulla pelle, occhi riflettenti. -1d6 Persuasione con chi non capisce, ma +1d6 con Cultisti del Serpente</li>
+                <li><strong>Chiamata:</strong> A volte il Serpente "chiama". Devi tirare Resistenza Diff 11+ o obbedire (vai verso rovina specifica, compi rituale, etc.). Resistere possibile ma doloroso (1d6 danno psichico)</li>
+                <li><strong>Non Più Completamente Umano:</strong> Effetti sociali, rischi di essere cacciato da superstizione, difficoltà a relazionarti con persone "normali"</li>
+                <li><strong>Percorso Irreversibile:</strong> Non puoi tornare indietro. La trasformazione continuerà (GM decide quanto)</li>
+            </ul>
+        </div>
+        
+        <div class="warning">
+            <strong>⚠️ CONSENSO DEL GIOCATORE:</strong> Essere Marchiato cambia profondamente il personaggio. NON forzare mai. Offri come opzione drammatica, ma rispetta se il giocatore declina. Se accetta, assicurati sia preparato alle conseguenze narrative e meccaniche.
+        </div>
+        
+        <!-- INCONTRI COL SERPENTE -->
+        <h1>🎭 INCONTRI E SCENE COL SERPENTE</h1>
+        
+        <h2>Tabella Visioni Casuali</h2>
+        <p>Quando un PG ha una visione, tira 1d12:</p>
+        
+        <table>
+            <tr>
+                <th style="width: 10%;">d12</th>
+                <th>Visione</th>
+                <th style="width: 30%;">Significato (GM)</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Vedi te stesso da sopra, minuscolo nel deserto. Una linea di sabbia si muove verso di te come un serpente.</td>
+                <td>Pericolo imminente in viaggio</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Sei in una città di cristallo. Figure luminose ti guardano con disprezzo/pietà. Una di loro ti porge qualcosa.</td>
+                <td>I Celesti giudicano. Artefatto importante è vicino.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Il deserto si anima. La sabbia forma un volto enorme che ti fissa, poi sussurra un nome/luogo.</td>
+                <td>Il Serpente ti indica dove andare. Può essere aiuto o trappola.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Vedi il mondo verde com'era. Poi tutto brucia/appassisce in secondi. Senti: "Questo è stato necessario."</td>
+                <td>Il Serpente giustifica la catastrofe. Tema: sacrificio necessario.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Sei sotto terra. Qualcosa di massiccio si muove accanto a te, ma non lo vedi mai direttamente.</td>
+                <td>Il Serpente è sotto, sempre. Letterale o metaforico - tu decidi.</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Vedi un alleato/PNG importante in pericolo. La scena è vivida, specifica.</td>
+                <td>Profezia vera. Succederà tra 1-3 sessioni a meno che prevenuto.</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Ti vedi commettere un atto terribile. Sembra inevitabile.</td>
+                <td>Tentazione futura o test morale. Non inevitabile ma probabile.</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Mille voci ti parlano contemporaneamente. Riesci a capire solo frammenti: parole in lingua Celeste.</td>
+                <td>Indizio per puzzle linguistico o rivelazione su passato.</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Il cielo si apre. Vedi oltre: stelle impossibili, geometrie che fanno male agli occhi.</td>
+                <td>Glimpse di realtà Celeste. Sapienza +1d6 prossimo tiro su cosmologia.</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Sei in un luogo familiare (casa d'infanzia, villaggio). Ma tutto è deserto ora. Una figura ti aspetta.</td>
+                <td>Confronto col passato. PNG/nemico dal background del PG tornerà.</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Vedi tutti i modi in cui potresti morire: sabbia, lama, sete, tradimento. Uno sembra più "vero".</td>
+                <td>Memento mori. Quello "vero" è come morirai SE non cambi corso.</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Ti risvegli in un corpo di squame. Sei il Serpente. Senti il deserto come parte di te. Poi: dolore, risveglio.</td>
+                <td>Comunione profonda. Guadagni insight ma anche Ossessione. GM rivela 1 verità importante.</td>
+            </tr>
+        </table>
+        
+        <!-- GANCI NARRATIVI -->
+        <h1>🎣 GANCI NARRATIVI E QUEST</h1>
+        
+        <div class="quest-hook">
+            <h4>🗺️ QUEST: Il Pellegrino del Serpente</h4>
+            <p><strong>Gancio:</strong> Un vecchio monaco si avvicina ai PG. Ha avuto visioni: il Serpente gli ha mostrato un luogo nelle Dune del Sussurro dove "la verità attende". Ma è troppo vecchio per il viaggio. Pagherà generosamente per essere scortato.</p>
+            <p><strong>Realtà:</strong> Il luogo esiste - è un nodo di artefatti Celesti sepolti. Il monaco è sincero, ma cosa troveranno è ambiguo: illuminazione? Follia? Potere? Morte?</p>
+            <p><strong>Twist:</strong> Un'altra fazione (Impero? Corsari? Culto rivale?) vuole arrivare per prima. Inseguimento/competizione.</p>
+            <p><strong>Ricompensa:</strong> Artefatto potente, conoscenza Celeste, Benedizione del Serpente, o comprensione più profonda del mondo.</p>
+        </div>
+        
+        <div class="quest-hook">
+            <h4>🗺️ QUEST: Il Marchiato Impazzito</h4>
+            <p><strong>Gancio:</strong> Un Marchiato dal Serpente sta terrorizzando un villaggio. Dice di "portare il giudizio del Serpente", uccide chi "profana il deserto". I villici offrono ricompensa per fermarlo.</p>
+            <p><strong>Dilema:</strong> Il Marchiato ha torto ad uccidere, ma ha ragione sulla profanazione: il villaggio sta davvero sfruttando illegalmente una fonte d'acqua sacra, causando siccità a valle.</p>
+            <p><strong>Scelte:</strong></p>
+            <ul>
+                <li>Uccidere il Marchiato (facile ma ingiusto)</li>
+                <li>Convincere villaggio a smettere (difficile, perdono soldi)</li>
+                <li>Negoziare soluzione intermedia (complesso ma giusto)</li>
+            </ul>
+            <p><strong>Conseguenze:</strong> Scelta determina Benedizione/Maledizione + alleati/nemici futuri.</p>
+        </div>
+        
+        <div class="quest-hook">
+            <h4>🗺️ QUEST: L'Artefatto Che Chiama</h4>
+            <p><strong>Gancio:</strong> Uno dei PG inizia ad avere sogni ricorrenti: un artefatto sepolto "chiama". Sa dove è (approssimativamente). L'impulso di cercarlo diventa più forte ogni notte.</p>
+            <p><strong>Dilemma:</strong> Seguire la chiamata o resistere? Altri PG credono sia sicuro?</p>
+            <p><strong>Realtà:</strong> L'artefatto è potente ma pericoloso. Potrebbe essere benedizione o maledizione. Solo trovandolo scopriranno.</p>
+            <p><strong>Twist:</strong> L'artefatto sceglie il "portatore". Potrebbe non essere chi lo ha trovato. Come gestiscono questo?</p>
+        </div>
+        
+        <div class="quest-hook">
+            <h4>🗺️ QUEST: Le Dune Viventi</h4>
+            <p><strong>Gancio:</strong> Una carovana intera è scomparsa nelle Dune Cantanti. Tra i passeggeri c'era qualcuno importante (figlia di Ammar? Amante di un PG? Informatore chiave?).</p>
+            <p><strong>Obiettivo:</strong> Trovare sopravvissuti, se ci sono. Affrontare le Dune.</p>
+            <p><strong>Realtà:</strong> Alcuni sono vivi, intrappolati in caverne sotto le dune. Ma il salvataggio richiede entrare nelle Dune, rischiando di essere presi anche loro.</p>
+            <p><strong>Elemento Serpente:</strong> Nelle caverne trovano segni di qualcosa di enorme che vive sotto. Possono fuggire o investigare più a fondo (pericoloso ma rivelatorio).</p>
+        </div>
+        
+        <!-- CONCLUSIONE -->
+        <h1>🐍 IL SERPENTE NELLA TUA CAMPAGNA</h1>
+        
+        <h2>Quanto Deve Essere Centrale?</h2>
+        
+        <p><strong>Approccio Minimo (Background Mitico):</strong></p>
+        <ul>
+            <li>Il Serpente è folklore. I PG ne sentono parlare, vedono simboli, ma non interagiscono direttamente.</li>
+            <li>Funziona come "colore" atmosferico e giustificazione per artefatti.</li>
+            <li>Vantaggio: Semplice, non richiede preparazione speciale.</li>
+            <li>Svantaggio: Sottoutilizza il potenziale tematico.</li>
+        </ul>
+        
+        <p><strong>Approccio Medio (Mistero Ricorrente):</strong></p>
+        <ul>
+            <li>Il Serpente appare periodicamente: visioni ogni 3-4 sessioni, benedizioni/maledizioni quando appropriate, 2-3 quest centrate sul Serpente in una campagna.</li>
+            <li>I PG scoprono gradualmente verità stratificate.</li>
+            <li>Vantaggio: Bilancia mistero con altre storie.</li>
+            <li>Svantaggio: Nessuno, questo è l'approccio raccomandato.</li>
+        </ul>
+        
+        <p><strong>Approccio Massimo (Tema Centrale):</strong></p>
+        <ul>
+            <li>La campagna È sulla scoperta della verità del Serpente. Ogni avventura collega a questo arco.</li>
+            <li>PG probabilmente diventano Marchiati, affrontano Culto, raggiungono cuore fisico/metaforico del Serpente.</li>
+            <li>Vantaggio: Narrazione coerente e potente.</li>
+            <li>Svantaggio: Richiede commitment lungo termine da giocatori e GM.</li>
+        </ul>
+        
+        <h2>Consigli Finali per il GM</h2>
+        
+        <blockquote>
+            <p><strong>1. Mantieni l'Ambiguità:</strong> Non risolvere troppo presto. Il Serpente è più potente come domanda che come risposta.</p>
+        </blockquote>
+        
+        <blockquote>
+            <p><strong>2. Personalizza:</strong> Adatta interpretazione alla tua tavola. Se i tuoi giocatori preferiscono sci-fi hard, usa Opzione B. Se amano misticismo, Opzione C.</p>
+        </blockquote>
+        
+        <blockquote>
+            <p><strong>3. Usa con Parsimonia:</strong> Un'apparizione del Serpente (visione, benedizione, manifestazione) ogni 2-3 sessioni è sufficiente. Troppo frequente diventa routine.</p>
+        </blockquote>
+        
+        <blockquote>
+            <p><strong>4. Conseguenze Reali:</strong> Se introduci Benedizioni/Maledizioni, assicurati abbiano peso meccanico E narrativo. Non solo "colore".</p>
+        </blockquote>
+        
+        <blockquote>
+            <p><strong>5. Ascolta i Giocatori:</strong> Se sono affascinati, approfondisci. Se sono indifferenti, riduci. Il Serpente serve la storia, non viceversa.</p>
+        </blockquote>
+        
+        <div style="text-align: center; margin-top: 40px; padding: 30px; background: linear-gradient(135deg, var(--serpent-green) 0%, var(--night-blue) 100%); border-radius: 10px; color: white;">
+            <div style="font-size: 36pt; margin-bottom: 15px;">🐍</div>
+            <p style="font-size: 14pt; font-style: italic;">
+                "Il Serpente osserva. Il Serpente ricorda.<br>
+                Il Serpente attende sotto ogni passo che facciamo."
+            </p>
+            <p style="font-size: 10pt; margin-top: 15px; color: var(--sand);">
+                — Proverbio del Deserto
+            </p>
+        </div>
+        
+    </div>
+</body>
+</html>

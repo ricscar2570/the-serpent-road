@@ -1,0 +1,196 @@
+# 🐍 THE SERPENT ROAD - PACCHETTO COMPLETO
+
+## 📦 Cosa Hai Scaricato
+
+Questa cartella contiene **TUTTO** il necessario per caricare The Serpent Road su GitHub e renderlo giocabile online!
+
+---
+
+## 📂 CONTENUTO PACCHETTO
+
+### ✅ **FILE DEL GIOCO** (14 files HTML - ~755KB)
+
+1. **index.html** (60KB) - ⭐ PAGINA PRINCIPALE - Inizia da qui!
+2. **serpent_road_manual_part1.html** (62KB) - Manuale Parte 1: Mondo
+3. **serpent_road_manual_part2.html** (62KB) - Manuale Parte 2: Personaggi
+4. **serpent_road_manual_part3.html** (55KB) - Manuale Parte 3: Sistema
+5. **serpent_road_manual_part4.html** (68KB) - Manuale Parte 4: Viaggi
+6. **serpent_road_manual_part5.html** (62KB) - Manuale Parte 5: GM
+7. **serpent_road_quickstart_adventure.html** (65KB) - Avventura Quickstart
+8. **serpent_road_character_sheet.html** (34KB) - Scheda Personaggio
+9. **serpent_road_journey_tracker.html** (42KB) - Tracker Viaggi
+10. **serpent_road_glossario.html** (31KB) - Glossario
+11. **serpent_road_il_serpente.html** (41KB) - Appendice: Il Serpente
+12. **serpent_road_artefatti_celesti.html** (61KB) - Catalogo Artefatti
+13. **serpent_road_rovine_celesti.html** (70KB) - Guida Rovine
+14. **serpent_road_quick_reference.html** (26KB) - Quick Reference
+
+### 📚 **DOCUMENTAZIONE**
+
+- **README.md** (7.4KB) - README per GitHub (descrizione progetto)
+- **GUIDA_GITHUB.md** (7.8KB) - Guida passo-passo per caricare su GitHub
+- **setup_github.sh** (8.9KB) - Script automatico per upload (opzionale)
+
+---
+
+## 🚀 COSA FARE ADESSO
+
+### OPZIONE A: Carica su GitHub (CONSIGLIATO) 🌐
+
+Per rendere il gioco accessibile online gratuitamente:
+
+1. **Leggi** → `GUIDA_GITHUB.md` (contiene istruzioni dettagliate)
+2. **Vai su** → [github.com](https://github.com) e crea un account (se non ce l'hai)
+3. **Crea** → Nuovo repository chiamato `the-serpent-road`
+4. **Carica** → Trascina TUTTI i file .html e .md nel repository
+5. **Attiva** → GitHub Pages (Settings → Pages)
+6. **FATTO!** → Il gioco sarà online a `https://[tuo-username].github.io/the-serpent-road/`
+
+⏱️ **Tempo**: 10-15 minuti per tutto
+
+### OPZIONE B: Usa in Locale (Offline) 💻
+
+Per giocare sul tuo computer senza internet:
+
+1. **Apri** → `index.html` con il browser
+2. **Naviga** → Tutti i link funzionano in locale
+3. **Stampa** → Cheat sheets e riferimenti se vuoi
+
+⏱️ **Tempo**: Immediato!
+
+### OPZIONE C: Condividi via Dropbox/Drive ☁️
+
+Per condividere con amici:
+
+1. **Carica** → Tutti i file su Dropbox/Google Drive
+2. **Condividi** → Link pubblico della cartella
+3. **Comunica** → Agli amici di scaricare e aprire `index.html`
+
+---
+
+## 🎮 COME INIZIARE A GIOCARE
+
+### 🗺️ Per una sessione VELOCE (oggi!)
+
+1. Apri → **serpent_road_quickstart_adventure.html**
+2. Leggi → Regole base (10 minuti)
+3. Usa → PG pre-generati inclusi
+4. Gioca → "La Carovana Scomparsa" (3-4 ore)
+
+### 📖 Per una CAMPAGNA completa
+
+1. Apri → **index.html** (pagina principale)
+2. Leggi → Manuale Parte 1 (mondo)
+3. Crea → Personaggi con Parte 2
+4. Gioca → Usando Parte 3 come riferimento
+
+---
+
+## ❓ DOMANDE FREQUENTI
+
+**Q: Dove sono i file delle cheat sheets e session zero?**  
+A: Alcuni file linkati nell'index potrebbero non esistere ancora. Puoi:
+- Crearli tu basandoti sul manuale
+- Usare solo i file presenti (già sufficienti per giocare!)
+- Aspettare versioni future
+
+**Q: Posso modificare i file?**  
+A: Sì! Sono tutti file HTML. Aprili con un editor di testo e personalizza a piacere.
+
+**Q: Funziona su mobile/tablet?**  
+A: Sì! Tutti i file HTML sono responsive. Gli strumenti interattivi funzionano su touch.
+
+**Q: Serve internet per giocare?**  
+A: No! Una volta scaricati i file, funzionano offline.
+
+**Q: Come aggiorno i file su GitHub?**  
+A: Basta caricare i nuovi file sovrascrivendo i vecchi. GitHub Pages si aggiorna automaticamente.
+
+---
+
+## 📊 STATISTICHE PROGETTO
+
+- **Files totali**: 14 HTML + 3 documentazione = 17 files
+- **Dimensione**: ~770KB totale
+- **Pagine equivalenti**: ~315 pagine
+- **Parole**: ~100.000+ parole
+- **Completezza**: 100% pronto da giocare
+
+---
+
+## ✅ CHECKLIST PRIMA DI CARICARE SU GITHUB
+
+Prima di caricare, verifica di avere:
+
+- ✅ Tutti i 14 file .html
+- ✅ README.md (descrizione progetto)
+- ✅ (Opzionale) .gitignore
+- ✅ (Opzionale) LICENSE (scegli una licenza)
+
+---
+
+## 🛠️ STRUTTURA RACCOMANDATA GITHUB
+
+```
+the-serpent-road/
+│
+├── README.md                                  ← Descrizione progetto
+├── LICENSE                                    ← Licenza (opzionale)
+├── .gitignore                                 ← File da ignorare (opzionale)
+│
+├── index.html                                 ← ⭐ PAGINA PRINCIPALE
+│
+├── serpent_road_manual_part1.html
+├── serpent_road_manual_part2.html
+├── serpent_road_manual_part3.html
+├── serpent_road_manual_part4.html
+├── serpent_road_manual_part5.html
+│
+├── serpent_road_quickstart_adventure.html
+├── serpent_road_character_sheet.html
+├── serpent_road_journey_tracker.html
+│
+├── serpent_road_glossario.html
+├── serpent_road_il_serpente.html
+├── serpent_road_artefatti_celesti.html
+├── serpent_road_rovine_celesti.html
+└── serpent_road_quick_reference.html
+```
+
+---
+
+## 🎨 PERSONALIZZAZIONI CONSIGLIATE
+
+Prima di pubblicare, potresti voler:
+
+1. **Aggiungere copertina** - Crea `cover.png` (1200x630px)
+2. **Scegliere licenza** - Aggiungi file `LICENSE`
+3. **Personalizzare README** - Modifica con i tuoi contatti
+4. **Aggiungere screenshot** - Mostra l'interfaccia
+5. **Creare .gitignore** - File da escludere da Git
+
+---
+
+## 📞 SUPPORTO
+
+**Guide disponibili:**
+- 📖 GUIDA_GITHUB.md - Istruzioni dettagliate caricamento
+- 📄 README.md - Descrizione progetto per GitHub
+- 🤖 setup_github.sh - Script automatico (utenti avanzati)
+
+**Problemi?**
+- Verifica che tutti i file siano nella stessa cartella
+- Assicurati che index.html sia nella root
+- Controlla che i nomi file siano esatti (maiuscole/minuscole)
+
+---
+
+## 🐍 PRONTO?
+
+Hai tutto ciò che serve! Scegli un'opzione sopra e inizia.
+
+**Il deserto ti aspetta!** 🏜️✨
+
+---
+
+*The Serpent Road RPG - Versione 1.0 - Ottobre 2025*

@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - Manuale Parte 2: Creazione del Personaggio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--dark-sand) 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        
+        .cover {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover::before {
+            content: "👤";
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+        }
+        
+        .cover h1 {
+            font-size: 48pt;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover .subtitle {
+            font-size: 18pt;
+            color: var(--sand);
+            font-style: italic;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover .part {
+            font-size: 14pt;
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover .version {
+            font-size: 12pt;
+            color: var(--dark-sand);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .navigation {
+            background: var(--sand);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--accent-gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navigation a {
+            background: var(--night-blue);
+            color: var(--accent-gold);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .navigation a:hover {
+            background: var(--desert-red);
+            color: white;
+        }
+        
+        .chapter {
+            margin-bottom: 50px;
+        }
+        
+        .chapter-header {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .chapter-number {
+            font-size: 14pt;
+            color: var(--sand);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .chapter-title {
+            font-size: 32pt;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+        
+        .chapter-intro {
+            font-size: 13pt;
+            color: var(--sand);
+            font-style: italic;
+        }
+        
+        h2 {
+            font-size: 20pt;
+            color: var(--night-blue);
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 10px;
+            margin: 30px 0 15px 0;
+        }
+        
+        h3 {
+            font-size: 16pt;
+            color: var(--desert-red);
+            margin: 25px 0 12px 0;
+        }
+        
+        h4 {
+            font-size: 13pt;
+            color: var(--text-dark);
+            margin: 15px 0 8px 0;
+            font-weight: bold;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        .intro-box {
+            background: linear-gradient(135deg, rgba(232, 212, 176, 0.3) 0%, rgba(196, 165, 116, 0.2) 100%);
+            border-left: 5px solid var(--accent-gold);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            border-radius: 5px;
+        }
+        
+        .example-box {
+            background: rgba(212, 175, 55, 0.15);
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .example-box h4 {
+            color: var(--accent-gold);
+            margin-top: 0;
+        }
+        
+        .warning-box {
+            background: rgba(196, 30, 58, 0.1);
+            border-left: 4px solid var(--desert-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box h4 {
+            color: var(--desert-red);
+            margin-top: 0;
+        }
+        
+        .tip-box {
+            background: rgba(45, 80, 22, 0.1);
+            border-left: 4px solid var(--serpent-green);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .tip-box h4 {
+            color: var(--serpent-green);
+            margin-top: 0;
+        }
+        
+        .stat-block {
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.05) 0%, rgba(184, 92, 60, 0.05) 100%);
+            border: 2px solid var(--desert-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .stat-block h4 {
+            color: var(--desert-red);
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .character-sheet {
+            border: 3px solid var(--night-blue);
+            padding: 20px;
+            margin: 20px 0;
+            background: rgba(232, 212, 176, 0.2);
+            border-radius: 10px;
+        }
+        
+        .character-sheet h3 {
+            text-align: center;
+            color: var(--night-blue);
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 10pt;
+        }
+        
+        th {
+            background: var(--night-blue);
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--dark-sand);
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(232, 212, 176, 0.3);
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                padding: 15mm;
+            }
+            .navigation {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- COPERTINA -->
+        <div class="cover">
+            <h1>THE SERPENT ROAD</h1>
+            <p class="subtitle">Manuale Completo del Giocatore e del Game Master</p>
+            <p class="part">PARTE 2: CREAZIONE DEL PERSONAGGIO</p>
+            <p class="version">Capitolo 3 • Versione 1.0 • Ottobre 2025</p>
+        </div>
+        
+        <!-- NAVIGAZIONE -->
+        <div class="navigation">
+            <a href="serpent_road_manual_part1.html">← Parte 1</a>
+            <span style="color: var(--text-dark); font-weight: bold;">Parte 2 di 5</span>
+            <a href="serpent_road_manual_part3.html">Parte 3 →</a>
+        </div>
+        
+        <!-- CAPITOLO 3: CREAZIONE DEL PERSONAGGIO -->
+        <div class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-number">CAPITOLO 3</div>
+                <h1 class="chapter-title">Creazione del Personaggio</h1>
+                <p class="chapter-intro">Chi sei nel deserto? Un sopravvissuto? Un cercatore? Un esule? Questa è la tua storia da scrivere.</p>
+            </div>
+            
+            <h2>👤 Panoramica del Processo</h2>
+            
+            <p>Creare un personaggio in The Serpent Road richiede <strong>30-45 minuti</strong> per giocatori nuovi, <strong>15-20 minuti</strong> per veterani. Il processo è strutturato in 8 passi sequenziali che costruiscono gradualmente il tuo sopravvissuto del deserto.</p>
+            
+            <p><strong>I Tuoi Strumenti:</strong></p>
+            <ul>
+                <li>Scheda personaggio (scaricabile o carta bianca)</li>
+                <li>Matita ed gomma</li>
+                <li>Set dadi poliedrici (d4, d6, d8, d10, d12)</li>
+                <li>Questo capitolo come guida</li>
+                <li>Immaginazione e voglia di creare storie</li>
+            </ul>
+            
+            <div class="intro-box">
+                <p><strong>💡 Consiglio:</strong> Se è la tua prima volta, leggi tutto il capitolo prima di iniziare. Se hai esperienza con GdR, puoi seguire i passi direttamente. Se vuoi giocare SUBITO senza creare, usa i personaggi pre-generati (Zahra, Malik, Yasmin) disponibili separatamente.</p>
+            </div>
+            
+            <h2>📋 Gli 8 Passi della Creazione</h2>
+            
+            <ol style="font-size: 12pt; font-weight: bold; color: var(--desert-red);">
+                <li>Concept e Visione</li>
+                <li>Scegliere l'Archetipo</li>
+                <li>Distribuire le Abilità</li>
+                <li>Calcolare Punti Vita</li>
+                <li>Definire i Valori</li>
+                <li>Scrivere il Background</li>
+                <li>Equipaggiamento Iniziale</li>
+                <li>Tocchi Finali e Dettagli</li>
+            </ol>
+            
+            <h2>🎨 PASSO 1: Concept e Visione</h2>
+            
+            <p>Prima dei numeri, prima delle meccaniche, devi rispondere a una domanda fondamentale: <strong>Chi è questo personaggio?</strong></p>
+            
+            <p>Non serve una biografia completa. Serve un'idea centrale, un'immagine nella tua mente. Pensa a questi elementi:</p>
+            
+            <h3>Domande Fondanti</h3>
+            
+            <h4>1. Chi Eri Prima?</h4>
+            <p>Nessuno nasce "avventuriero". Tutti hanno un passato. Eri:</p>
+            <ul>
+                <li>Contadino di un'oasi che sognava avventure?</li>
+                <li>Soldato imperiale stanco di guerre?</li>
+                <li>Mercante fallito che cerca riscatto?</li>
+                <li>Studioso ossessionato da mistero Celeste?</li>
+                <li>Nomade che ha perso la sua tribù?</li>
+                <li>Criminale in fuga dalla giustizia?</li>
+                <li>Altro? (la tua immaginazione è il limite)</li>
+            </ul>
+            
+            <h4>2. Cosa Ti Ha Spinto a Questa Vita?</h4>
+            <p>Perché hai lasciato la vita precedente? Cosa ti ha trasformato in ciò che sei ora?</p>
+            <ul>
+                <li><strong>Tragedia:</strong> Perdita famiglia, distruzione casa, tradimento</li>
+                <li><strong>Opportunità:</strong> Scoperta mappa tesoro, offerta lavoro, invito maestro</li>
+                <li><strong>Fuga:</strong> Debiti, crimine, passato vergognoso</li>
+                <li><strong>Chiamata:</strong> Visione, profezia, senso destino</li>
+                <li><strong>Curiosità:</strong> Semplice desiderio scoprire, esplorare, conoscere</li>
+                <li><strong>Vendetta:</strong> Qualcuno ti ha fatto del male. Vuoi giustizia.</li>
+            </ul>
+            
+            <h4>3. Cosa Cerchi Ora?</h4>
+            <p>Qual è il tuo obiettivo? Cosa ti fa alzare ogni mattina?</p>
+            <ul>
+                <li><strong>Ricchezza:</strong> Abbastanza denaro per vivere bene (o salvare qualcuno)</li>
+                <li><strong>Conoscenza:</strong> Svelare misteri Celesti, capire il Serpente</li>
+                <li><strong>Potere:</strong> Influenza, controllo, capacità di cambiare il mondo</li>
+                <li><strong>Redenzione:</strong> Espiare errori passati, diventare migliore</li>
+                <li><strong>Vendetta:</strong> Punire chi ti ha ferito</li>
+                <li><strong>Famiglia:</strong> Proteggere/ritrovare persone care</li>
+                <li><strong>Libertà:</strong> Vivere senza catene, senza doveri</li>
+                <li><strong>Sopravvivenza:</strong> Semplicemente... continuare a vivere</li>
+            </ul>
+            
+            <h4>4. Come Ti Vedi?</h4>
+            <p>Sei l'eroe? Il cinico? Il pragmatico? Il sognatore?</p>
+            <ul>
+                <li><strong>L'Idealista:</strong> Credi in giustizia, bene, ordine</li>
+                <li><strong>Il Pragmatico:</strong> Fai ciò che serve per sopravvivere</li>
+                <li><strong>Il Ribelle:</strong> Sfidi autorità, combatti oppressione</li>
+                <li><strong>Il Protettore:</strong> Metti altri prima di te</li>
+                <li><strong>Il Solitario:</strong> Ti fidi solo di te stesso</li>
+                <li><strong>Il Cercatore:</strong> Domande sono più importanti di risposte</li>
+            </ul>
+            
+            <div class="example-box">
+                <h4>Esempio di Concept: Zahra la Navigatrice</h4>
+                <p><strong>Chi era:</strong> Cartografa imperiale. Lavorava per Archivi Celesti mappando rovine.</p>
+                <p><strong>Evento scatenante:</strong> Rifiutò ordine di distruggere mappe che mostravano rovina contenente segreti imbarazzanti per Impero. Fu dichiarata traditrice.</p>
+                <p><strong>Cosa cerca:</strong> Espiazione aiutando innocenti. Prova che Impero può essere riformato dall'interno (o deve essere rovesciato).</p>
+                <p><strong>Come si vede:</strong> Ex-idealista diventata pragmatica. Vuole credere nel bene ma ha visto troppa corruzione.</p>
+                <p><strong>Frase che la definisce:</strong> "Ho dedicato 10 anni a servire l'Impero. Mi hanno insegnato che lealtà significa obbedienza. Hanno sbagliato."</p>
+            </div>
+            
+            <h3>Scrivere il Concept (Una Frase)</h3>
+            
+            <p>Condensa le tue risposte in UNA frase che cattura essenza del personaggio. Formato suggerito:</p>
+            
+            <p style="text-align: center; font-style: italic; font-size: 13pt; padding: 15px; background: rgba(212,175,55,0.1); border-radius: 5px;">
+                "[Cosa eri] che [evento scatenante] e ora [cosa fai] cercando [obiettivo]"
+            </p>
+            
+            <p><strong>Esempi:</strong></p>
+            <ul>
+                <li>"Ex-soldato imperiale che disertò dopo massacro civili e ora lavora come mercenario cercando redenzione"</li>
+                <li>"Studiosa ossessionata dai Celesti che perse famiglia in crollo rovina e ora esplora rovine cercando risposte"</li>
+                <li>"Corsaro nato libero che vide tribù distrutta dall'Impero e ora combatte per libertà cercando vendetta"</li>
+                <li>"Mercante fallito che perse tutto in truffa e ora trasporta merci pericolose cercando ricchezza"</li>
+            </ul>
+            
+            <h2>🎭 PASSO 2: Scegliere l'Archetipo</h2>
+            
+            <p>Gli archetipi in The Serpent Road NON sono classi rigide. Sono <strong>suggerimenti flessibili</strong> che ti aiutano definire ruolo nel gruppo e suggeriscono quali abilità prioritizzare. Puoi mescolare elementi di archetipi diversi liberamente.</p>
+            
+            <h3>I 7 Archetipi</h3>
+            
+            <div class="stat-block">
+                <h4>🧭 NAVIGATORE — La Guida del Deserto</h4>
+                <p><strong>Descrizione:</strong> Esperti della sopravvivenza nel deserto. Conoscono terreno, clima, pericoli. Guidano carovane attraverso dune mortali. Trovano oasi dove altri vedono solo sabbia.</p>
+                <p><strong>Ruolo Gruppo:</strong> Esplorazione, sopravvivenza, orientamento</p>
+                <p><strong>Abilità Chiave:</strong> Percezione, Resistenza, Sapienza</p>
+                <p><strong>Abilità Secondarie:</strong> Atletica, Persuasione</p>
+                <p><strong>Background Tipici:</strong> Nomade tribale, guida carovane, esploratore, ranger</p>
+                <p><strong>Equipaggiamento Distintivo:</strong> Bussola, mappe, corda, razioni extra</p>
+                <p><strong>Perché Giocare:</strong> Se vuoi essere essenziale per sopravvivenza gruppo. Se ami esplorazione e scoperta. Se ti piace conoscere segreti del terreno.</p>
+            </div>
+            
+            <div class="stat-block">
+                <h4>⚔️ GUERRIERO — Il Difensore Disciplinato</h4>
+                <p><strong>Descrizione:</strong> Combattenti addestrati. Ex-soldati imperiali, guardie, duellisti. Disciplinati, letali, affidabili in battaglia. Proteggono gruppo con vita se necessario.</p>
+                <p><strong>Ruolo Gruppo:</strong> Combattimento frontale, protezione alleati, tattiche</p>
+                <p><strong>Abilità Chiave:</strong> Combattimento, Atletica, Resistenza</p>
+                <p><strong>Abilità Secondarie:</strong> Percezione, Persuasione (comando)</p>
+                <p><strong>Background Tipici:</strong> Soldato imperiale, guardia città, gladiatore, duellista</p>
+                <p><strong>Equipaggiamento Distintivo:</strong> Armatura pesante, scudo, arma qualità, kit riparazione</p>
+                <p><strong>Perché Giocare:</strong> Se vuoi essere tank del gruppo. Se ti piace combattimento tattico. Se vuoi ruolo protettore.</p>
+            </div>
+            
+            <div class="stat-block">
+                <h4>🏴‍☠️ CORSARO — Il Predone Mobile</h4>
+                <p><strong>Descrizione:</strong> Banditi romantici. Pirati del deserto. Veloci, letali, indipendenti. Vivono di assalti carovane ma hanno codice d'onore (discutibile). Esperti mobilità e colpi rapidi.</p>
+                <p><strong>Ruolo Gruppo:</strong> DPS (damage per second), infiltrazione, sorprese</p>
+                <p><strong>Abilità Chiave:</strong> Combattimento, Furtività, Atletica</p>
+                <p><strong>Abilità Secondarie:</strong> Percezione, Resistenza</p>
+                <p><strong>Background Tipici:</strong> Bandito, pirata, scout, assassino</p>
+                <p><strong>Equipaggiamento Distintivo:</strong> Armi doppie leggere, mantello mimetico, kit scasso</p>
+                <p><strong>Perché Giocare:</strong> Se vuoi combattimento agile e mortale. Se ti piace infiltrazione. Se preferisci libertà a disciplina.</p>
+            </div>
+            
+            <div class="stat-block">
+                <h4>📚 STUDIOSO — L'Esperto dei Celesti</h4>
+                <p><strong>Descrizione:</strong> Archeologi, scienziati, storici. Ossessionati da civiltà Celeste. Decifrano iscrizioni, identificano artefatti, comprendono tecnologie antiche. Cervello del gruppo.</p>
+                <p><strong>Ruolo Gruppo:</strong> Conoscenza, analisi artefatti, problem-solving</p>
+                <p><strong>Abilità Chiave:</strong> Sapienza, Percezione</p>
+                <p><strong>Abilità Secondarie:</strong> Persuasione, Resistenza (mentale)</p>
+                <p><strong>Background Tipici:</strong> Ricercatore Archivi, Osservatore Velo, professore, antiquario</p>
+                <p><strong>Equipaggiamento Distintivo:</strong> Lente analisi, diario ricerche, libri, strumenti</p>
+                <p><strong>Perché Giocare:</strong> Se vuoi svelare misteri. Se ti piace risolvere puzzle. Se preferisci cervello a muscoli.</p>
+            </div>
+            
+            <div class="stat-block">
+                <h4>🕊️ CUSTODE — Il Guaritore Compassionevole</h4>
+                <p><strong>Descrizione:</strong> Medici, diplomatici, sacerdoti. Curano ferite fisiche ed emotive. Mediano conflitti. Portano speranza dove c'è disperazione. Cuore morale del gruppo.</p>
+                <p><strong>Ruolo Gruppo:</strong> Supporto, guarigione, diplomazia</p>
+                <p><strong>Abilità Chiave:</strong> Persuasione, Sapienza (medicina)</p>
+                <p><strong>Abilità Secondarie:</strong> Percezione (empatia), Resistenza</p>
+                <p><strong>Background Tipici:</strong> Medico, sacerdote, diplomatico, consigliere</p>
+                <p><strong>Equipaggiamento Distintivo:</strong> Kit medico, simboli sacri, incensi, bende</p>
+                <p><strong>Perché Giocare:</strong> Se vuoi tenere gruppo vivo. Se ti piace roleplay sociale. Se vuoi essere voce morale.</p>
+            </div>
+            
+            <div class="stat-block">
+                <h4>🔮 VEGGENTE — Il Mistico Sensibile</h4>
+                <p><strong>Descrizione:</strong> Sensitivi, mistici, profeti. Connessione particolare col Velo (realtà sottostante). Vedono ciò che altri non vedono. Sentono il Serpente. Pericolosi e preziosi.</p>
+                <p><strong>Ruolo Gruppo:</strong> Percezione mistica, intuizioni, interazione Serpente</p>
+                <p><strong>Abilità Chiave:</strong> Percezione, Sapienza (misticismo)</p>
+                <p><strong>Abilità Secondarie:</strong> Resistenza (per non impazzire), Persuasione</p>
+                <p><strong>Background Tipici:</strong> Oracolo, sciamano nomade, Marchiato, visionario</p>
+                <p><strong>Equipaggiamento Distintivo:</strong> Talismani, cristalli, testi mistici, incensi</p>
+                <p><strong>Perché Giocare:</strong> Se vuoi esplorare aspetto mistico. Se ti affascina il Serpente. Se vuoi ruolo unico e rischioso.</p>
+            </div>
+            
+            <div class="stat-block">
+                <h4>💰 MERCANTE — Il Commerciante Astuto</h4>
+                <p><strong>Descrizione:</strong> Affaristi, negoziatori, networker. Conoscono valore di tutto e tutti. Hanno contatti ovunque. Trasformano informazioni in denaro e denaro in potere.</p>
+                <p><strong>Ruolo Gruppo:</strong> Risorse, contatti, negoziazione, economia</p>
+                <p><strong>Abilità Chiave:</strong> Persuasione, Sapienza (commercio)</p>
+                <p><strong>Abilità Secondarie:</strong> Percezione (valutare), Furtività (quando serve)</p>
+                <p><strong>Background Tipici:</strong> Mercante Gilda, contrabbandiere, broker informazioni, cambiavalute</p>
+                <p><strong>Equipaggiamento Distintivo:</strong> Denaro extra, bilancia, contatti, documenti</p>
+                <p><strong>Perché Giocare:</strong> Se vuoi gestire economia gruppo. Se ti piace negoziazione e intrigo. Se credi che denaro = potere.</p>
+            </div>
+            
+            <div class="tip-box">
+                <h4>💡 Mescolando Archetipi</h4>
+                <p>Non sei limitato a un archetipo. Esempi di mix:</p>
+                <ul style="margin-top: 10px;">
+                    <li><strong>Guerriero-Studioso:</strong> Ex-soldato diventato archeologo (Indiana Jones del deserto)</li>
+                    <li><strong>Corsaro-Mercante:</strong> Contrabbandiere che conosce tutti e tutto</li>
+                    <li><strong>Navigatore-Veggente:</strong> Nomade con visioni mistiche che guidano</li>
+                    <li><strong>Custode-Guerriero:</strong> Paladino del deserto, protettore compassionevole ma letale</li>
+                </ul>
+                <p style="margin-top: 10px;">Scegli archetipo primario per concept, ma distribuisci abilità come preferisci.</p>
+            </div>
+            
+            <h2>🎲 PASSO 3: Distribuire le Abilità</h2>
+            
+            <p>Ogni personaggio ha <strong>7 abilità</strong> che rappresentano competenze e talenti. Ogni abilità è rappresentata da un dado (d4, d6, d8, d10, d12) che riflette il tuo livello di expertise.</p>
+            
+            <h3>Sistema di Distribuzione</h3>
+            
+            <p>Hai questi dadi da assegnare alle 7 abilità:</p>
+            
+            <div style="background: var(--night-blue); color: white; padding: 20px; border-radius: 8px; text-align: center; margin: 20px 0;">
+                <p style="font-size: 16pt; font-weight: bold; margin-bottom: 15px;">📊 POOL DI DADI</p>
+                <ul style="list-style: none; margin: 0; padding: 0;">
+                    <li style="font-size: 14pt; margin: 8px 0;"><strong>1x d10</strong> — La tua specialità primaria (maestria)</li>
+                    <li style="font-size: 14pt; margin: 8px 0;"><strong>2x d8</strong> — Competenze forti (esperto)</li>
+                    <li style="font-size: 14pt; margin: 8px 0;"><strong>2x d6</strong> — Competenze medie (competente)</li>
+                    <li style="font-size: 14pt; margin: 8px 0;"><strong>2x d4</strong> — Debolezze o abilità minori (principiante)</li>
+                </ul>
+            </div>
+            
+            <p><strong>Regola Importante:</strong> Devi usare TUTTI i dadi. Non puoi avere due d10 o saltare i d4. Questo crea personaggi con punti forti E punti deboli (più interessanti narrativamente).</p>
+            
+            <h3>Le 7 Abilità Spiegate</h3>
+            
+            <table>
+                <tr>
+                    <th>Abilità</th>
+                    <th>Cosa Copre</th>
+                    <th>Esempi di Uso</th>
+                </tr>
+                <tr>
+                    <td><strong>COMBATTIMENTO</strong></td>
+                    <td>Attaccare, difendere, tattiche di battaglia</td>
+                    <td>Colpire nemico con spada, parare attacco, identificare vulnerabilità boss, disarmare avversario</td>
+                </tr>
+                <tr>
+                    <td><strong>ATLETICA</strong></td>
+                    <td>Forza fisica, agilità, coordinazione, resistenza fisica</td>
+                    <td>Arrampicare muro, saltare crepaccio, nuotare, sollevare pesante, inseguire/fuggire, forzare porta</td>
+                </tr>
+                <tr>
+                    <td><strong>FURTIVITÀ</strong></td>
+                    <td>Nascondersi, muoversi silenziosamente, borseggiare</td>
+                    <td>Evitare guardie, tendere imboscata, rubare chiave, seguire senza essere visto, mimetizzarsi</td>
+                </tr>
+                <tr>
+                    <td><strong>PERCEZIONE</strong></td>
+                    <td>Notare dettagli, cercare, intuire, orientarsi</td>
+                    <td>Trovare trappola nascosta, leggere linguaggio corporeo, orientarsi con stelle, notare inseguitore, trovare acqua</td>
+                </tr>
+                <tr>
+                    <td><strong>SAPIENZA</strong></td>
+                    <td>Conoscenza, memoria, deduzione logica, educazione</td>
+                    <td>Riconoscere artefatto Celeste, ricordare storia antica, decifrare iscrizione, diagnosticare malattia, sapere veleno</td>
+                </tr>
+                <tr>
+                    <td><strong>PERSUASIONE</strong></td>
+                    <td>Convincere, ingannare, intimidire, comandare, sedurre</td>
+                    <td>Negoziare prezzo, mentire credibilmente, intimidire guardia, ispirare alleati, sedurre informatore, comandare truppe</td>
+                </tr>
+                <tr>
+                    <td><strong>RESISTENZA</strong></td>
+                    <td>Sopportare fatica, dolore, veleni, paura, magia</td>
+                    <td>Resistere calore deserto, ignorare dolore ferita, non crollare sotto tortura, resistere veleno, non impazzire</td>
+                </tr>
+            </table>
+            
+            <h3>Come Decidere la Distribuzione</h3>
+            
+            <h4>Metodo 1: Basato su Archetipo (Consigliato per Nuovi)</h4>
+            
+            <p>Segui suggerimenti dell'archetipo scelto. Ogni archetipo ha distribuzione "tipica":</p>
+            
+            <table>
+                <tr>
+                    <th>Archetipo</th>
+                    <th>d10</th>
+                    <th>d8 (2x)</th>
+                    <th>d6 (2x)</th>
+                    <th>d4 (2x)</th>
+                </tr>
+                <tr>
+                    <td><strong>Navigatore</strong></td>
+                    <td>Percezione</td>
+                    <td>Sapienza, Resistenza</td>
+                    <td>Atletica, Persuasione</td>
+                    <td>Combattimento, Furtività</td>
+                </tr>
+                <tr>
+                    <td><strong>Guerriero</strong></td>
+                    <td>Combattimento</td>
+                    <td>Atletica, Resistenza</td>
+                    <td>Percezione, Persuasione</td>
+                    <td>Sapienza, Furtività</td>
+                </tr>
+                <tr>
+                    <td><strong>Corsaro</strong></td>
+                    <td>Combattimento</td>
+                    <td>Furtività, Atletica</td>
+                    <td>Percezione, Resistenza</td>
+                    <td>Sapienza, Persuasione</td>
+                </tr>
+                <tr>
+                    <td><strong>Studioso</strong></td>
+                    <td>Sapienza</td>
+                    <td>Percezione, Persuasione</td>
+                    <td>Resistenza, Furtività</td>
+                    <td>Combattimento, Atletica</td>
+                </tr>
+                <tr>
+                    <td><strong>Custode</strong></td>
+                    <td>Persuasione</td>
+                    <td>Sapienza, Percezione</td>
+                    <td>Resistenza, Atletica</td>
+                    <td>Combattimento, Furtività</td>
+                </tr>
+                <tr>
+                    <td><strong>Veggente</strong></td>
+                    <td>Percezione</td>
+                    <td>Sapienza, Resistenza</td>
+                    <td>Persuasione, Furtività</td>
+                    <td>Combattimento, Atletica</td>
+                </tr>
+                <tr>
+                    <td><strong>Mercante</strong></td>
+                    <td>Persuasione</td>
+                    <td>Sapienza, Percezione</td>
+                    <td>Furtività, Resistenza</td>
+                    <td>Combattimento, Atletica</td>
+                </tr>
+            </table>
+            
+            <h4>Metodo 2: Basato su Concept (Per Giocatori Esperti)</h4>
+            
+            <p>Ignora archetipi. Assegna dadi basandoti su chi VUOI essere:</p>
+            <ul>
+                <li><strong>d10:</strong> Cosa fai meglio di chiunque altro?</li>
+                <li><strong>d8:</strong> Cosa fai molto bene?</li>
+                <li><strong>d6:</strong> Cosa fai decentemente?</li>
+                <li><strong>d4:</strong> Cosa NON sai fare (debolezze narrative interessanti)</li>
+            </ul>
+            
+            <div class="example-box">
+                <h4>Esempio: Zahra la Navigatrice</h4>
+                <p><strong>Concept:</strong> Ex-cartografa imperiale. Esperta orientamento e sopravvivenza. Non combattente.</p>
+                
+                <p><strong>Distribuzione:</strong></p>
+                <ul>
+                    <li><strong>Percezione d10:</strong> Specialità — vedere ciò che altri non vedono. Trova pericoli, opportunità, dettagli cruciali</li>
+                    <li><strong>Sapienza d8:</strong> Anni studio mappe e storia. Sa molto su Celesti, geografia, politica</li>
+                    <li><strong>Persuasione d8:</strong> Deve negoziare per vivere ora. Ha imparato diplomazia</li>
+                    <li><strong>Atletica d6:</strong> Viaggia molto, fisicamente capace ma non eccezionale</li>
+                    <li><strong>Resistenza d6:</strong> Sopravvive deserto da anni, temprata</li>
+                    <li><strong>Combattimento d4:</strong> Debolezza — mai addestrata combattimento. Evita scontri</li>
+                    <li><strong>Furtività d4:</strong> Non è furtiva. È cartografa, non ladra</li>
+                </ul>
+                
+                <p><strong>Risultato:</strong> Personaggio eccellente esplorazione/navigazione, buona socialmente e intellettualmente, ma vulnerabile in combattimento (deve affidarsi ad alleati).</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Evita Queste Trappole</h4>
+                <ul style="margin-top: 10px;">
+                    <li><strong>Tutto Bilanciato:</strong> Non cercare di essere "ok in tutto". Specializzazione + debolezze = più interessante</li>
+                    <li><strong>Solo Combattimento:</strong> Non mettere d10+d8+d8 in abilità combat-related. Lascia spazio altri ruoli</li>
+                    <li><strong>Ignorare Concept:</strong> Se concept dice "studioso pacifista", non mettere d10 in Combattimento solo perché "è utile"</li>
+                </ul>
+            </div>
+            
+            <h2>❤️ PASSO 4: Calcolare Punti Vita</h2>
+            
+            <p>I Punti Vita (PV) rappresentano quanto danno puoi subire prima di cadere incosciente o morire.</p>
+            
+            <div style="background: var(--night-blue); color: var(--accent-gold); padding: 20px; border-radius: 8px; text-align: center; margin: 20px 0; font-size: 16pt; font-weight: bold;">
+                PV = 10 (base) + Dado Resistenza
+            </div>
+            
+            <p><strong>Spiegazione:</strong></p>
+            <ul>
+                <li>Tutti iniziano con <strong>10 PV base</strong></li>
+                <li>Aggiungi il <strong>numero del dado Resistenza</strong> (non tirare, usa il numero massimo del dado)</li>
+            </ul>
+            
+            <p><strong>Esempi:</strong></p>
+            <ul>
+                <li>Resistenza d4 → 10 + 4 = <strong>14 PV</strong> (fragile)</li>
+                <li>Resistenza d6 → 10 + 6 = <strong>16 PV</strong> (medio)</li>
+                <li>Resistenza d8 → 10 + 8 = <strong>18 PV</strong> (robusto)</li>
+                <li>Resistenza d10 → 10 + 10 = <strong>20 PV</strong> (molto resistente)</li>
+            </ul>
+            
+            <div class="tip-box">
+                <h4>💡 Quanto Sono 16 PV?</h4>
+                <p>Per contestualizzare:</p>
+                <ul style="margin-top: 10px;">
+                    <li>Spada normale fa ~7 danno medio</li>
+                    <li>Predatore deserto fa ~10 danno</li>
+                    <li>Boss può fare ~15-20 danno</li>
+                </ul>
+                <p>Quindi 16 PV ti permettono sopravvivere 2-3 colpi da nemici normali, 1-2 da boss. Combattimento è LETALE — evitare danno è cruciale.</p>
+            </div>
+            
+            <h3>Armatura</h3>
+            
+            <p>Separata da PV ma correlata a sopravvivenza. <strong>Armatura riduce danno</strong> che subisci.</p>
+            
+            <table>
+                <tr>
+                    <th>Tipo Armatura</th>
+                    <th>Valore Armatura</th>
+                    <th>Costo</th>
+                    <th>Note</th>
+                </tr>
+                <tr>
+                    <td>Vesti normali</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>Nessuna protezione</td>
+                </tr>
+                <tr>
+                    <td>Cuoio</td>
+                    <td>1</td>
+                    <td>50 dinar</td>
+                    <td>Leggera, comune</td>
+                </tr>
+                <tr>
+                    <td>Cotta maglia</td>
+                    <td>2</td>
+                    <td>200 dinar</td>
+                    <td>Media, militare</td>
+                </tr>
+                <tr>
+                    <td>Piastre</td>
+                    <td>3</td>
+                    <td>500 dinar</td>
+                    <td>Pesante, rara</td>
+                </tr>
+            </table>
+            
+            <p><strong>Armatura iniziale:</strong></p>
+            <ul>
+                <li><strong>Guerriero:</strong> Inizi con Armatura 1 (cuoio) gratis</li>
+                <li><strong>Corsaro:</strong> Inizi con Armatura 1 (cuoio) gratis</li>
+                <li><strong>Altri archetipi:</strong> Armatura 0 (ma hai 50 dinar per comprare)</li>
+            </ul>
+            
+            <h2>⭐ PASSO 5: Definire i Valori</h2>
+            
+            <p>I Valori sono principi morali, obiettivi personali, o linee che non attraversi. Definiscono il TUO personaggio (non solo meccaniche ma anima).</p>
+            
+            <p><strong>Regola:</strong> Scegli <strong>2-3 Valori</strong>. Non di più (diventano diluiti). Non di meno (personaggio piatto).</p>
+            
+            <h3>Perché i Valori Sono Importanti</h3>
+            
+            <ol>
+                <li><strong>Definizione Personaggio:</strong> Due Guerrieri con stesse abilità ma Valori diversi sono MOLTO diversi narrativamente</li>
+                <li><strong>Guida Decisioni:</strong> Quando incerto cosa fare, chiedi: "Quale Valore è prioritario qui?"</li>
+                <li><strong>Bonus Meccanico:</strong> Quando agisci secondo un Valore, GM può darti <strong>Vantaggio</strong> (tira 3d6, tieni 2 migliori + abilità)</li>
+            </ol>
+            
+            <h3>Esempi di Valori</h3>
+            
+            <table>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Esempi di Valori</th>
+                </tr>
+                <tr>
+                    <td><strong>Protezione</strong></td>
+                    <td>
+                        • Proteggere gli innocenti<br>
+                        • Non lasciare indietro nessuno<br>
+                        • Difendere i deboli<br>
+                        • La famiglia prima di tutto
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Verità</strong></td>
+                    <td>
+                        • Scoprire la verità sui Celesti<br>
+                        • Non mentire mai<br>
+                        • Esporre corruzione<br>
+                        • La conoscenza è sacra
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Libertà</strong></td>
+                    <td>
+                        • Combattere oppressione<br>
+                        • Nessuno dovrebbe essere schiavo<br>
+                        • Vivere senza catene<br>
+                        • L'Impero deve cadere
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Vendetta</strong></td>
+                    <td>
+                        • Vendicare [persona morta]<br>
+                        • Distruggere [fazione/persona]<br>
+                        • Giustizia ad ogni costo<br>
+                        • Occhio per occhio
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Ordine</strong></td>
+                    <td>
+                        • Mantenere legge e ordine<br>
+                        • Rispettare autorità legittima<br>
+                        • Il caos è il vero nemico<br>
+                        • Le regole esistono per proteggere
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Sopravvivenza</strong></td>
+                    <td>
+                        • Sopravvivere ad ogni costo<br>
+                        • Il forte prospera<br>
+                        • Pragmatismo sopra morale<br>
+                        • Non fidati di nessuno completamente
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Spirituale</strong></td>
+                    <td>
+                        • Servire il Serpente<br>
+                        • Comprendere il Velo<br>
+                        • Il mistico è reale<br>
+                        • Rispettare forze superiori
+                    </td>
+                </tr>
+            </table>
+            
+            <h3>Valori in Conflitto (Interessante!)</h3>
+            
+            <p>I migliori personaggi hanno Valori che a volte si scontrano. Crea tensione interna e decisioni difficili.</p>
+            
+            <div class="example-box">
+                <h4>Esempio: Valori in Conflitto</h4>
+                <p><strong>Personaggio:</strong> Guardia cittadina</p>
+                <p><strong>Valori:</strong></p>
+                <ul>
+                    <li>"Proteggere gli innocenti"</li>
+                    <li>"Rispettare la legge"</li>
+                </ul>
+                <p><strong>Scenario:</strong> La legge dice di arrestare una bambina che ha rubato pane per fame. Arrestarla rispetta legge ma non protegge innocente. Lasciarla andare protegge innocente ma viola legge.</p>
+                <p><strong>Risultato:</strong> Scelta difficile, momento di caratterizzazione, crescita personaggio.</p>
+            </div>
+            
+            <div class="example-box">
+                <h4>Valori di Zahra</h4>
+                <ul>
+                    <li><strong>"La verità deve essere protetta":</strong> Non distruggerà mai conoscenza, anche pericolosa</li>
+                    <li><strong>"Aiutare chi ne ha bisogno":</strong> Non può ignorare sofferenza innocenti</li>
+                    <li><strong>"L'Impero può essere riformato":</strong> Crede ancora che Impero possa tornare ai suoi ideali originali (anche se dubbio cresce)</li>
+                </ul>
+            </div>
+            
+            <h2>📖 PASSO 6: Scrivere il Background</h2>
+            
+            <p>Ora hai meccaniche. Ora dai vita al personaggio con storia. Non serve romanzo — <strong>2-4 frasi</strong> bastano.</p>
+            
+            <h3>Cosa Includere (Checklist)</h3>
+            
+            <ul>
+                <li>✅ <strong>Origine:</strong> Dove sei nato/cresciuto? (Città? Nomade? Altro?)</li>
+                <li>✅ <strong>Evento Definitivo:</strong> Cosa ti ha portato a vita attuale? (Quello del Passo 1)</li>
+                <li>✅ <strong>Relazione con Fazione:</strong> Come ti relazioni con almeno 1 fazione maggiore?</li>
+                <li>✅ <strong>Obiettivo Attuale:</strong> Cosa stai cercando ADESSO? (A breve termine)</li>
+            </ul>
+            
+            <div class="example-box">
+                <h4>Esempio Background: Zahra</h4>
+                <p>Nata a Samarkandara in famiglia di studiosi. Fin da giovane affascinata da mappe e rovine Celesti. A 20 anni assunta come cartografa imperiale negli Archivi Celesti — il sogno della sua vita realizzato.</p>
+                <p>Per 10 anni servì lealmente, mappando rovine pericolose attraverso il deserto. Poi, 2 anni fa, scoprì documenti che provavano corruzione ai vertici imperiali — ordini di distruggere mappe che mostravano rovina contenente prove imbarazzanti. Quando rifiutò di obbedire, fu dichiarata traditrice. Fuggì con le mappe originali.</p>
+                <p>Ora vive da fuggitiva, lavorando come guida per sopravvivere. Cerca di espiare quello che vede come il suo fallimento nel servire un Impero corrotto. Spera ancora che l'Impero possa essere riformato dall'interno, ma il dubbio cresce.</p>
+                <p>Obiettivo attuale: Trovare alleati che condividano visione di Impero riformato. O, se impossibile, prove definitive che giustifichino rovesciarlo.</p>
+            </div>
+            
+            <h3>Consigli per Background Efficace</h3>
+            
+            <ul>
+                <li><strong>Specifico > Generico:</strong> "Persi famiglia in assalto Corsari" > "Ho passato difficile"</li>
+                <li><strong>Lascia Domande Aperte:</strong> "Mia sorella scomparve 5 anni fa" invita GM creare trama</li>
+                <li><strong>Connetti ad Altri PG:</strong> Conosci qualcuno nel gruppo? Come?</li>
+                <li><strong>Dai Hook al GM:</strong> Nemici, debiti, promesse = materiale per avventure</li>
+            </ul>
+            
+            <h3>Opzionale: Connessioni col Gruppo</h3>
+            
+            <p>Se crei personaggi insieme (consigliato), decide come vi conoscete. Scegliete insieme oppure tirate d6:</p>
+            
+            <table>
+                <tr>
+                    <th>d6</th>
+                    <th>Connessione</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Vecchi Alleati:</strong> Avete lavorato insieme su lavoro precedente (com'è andata?)</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Debiti:</strong> Uno deve qualcosa all'altro (denaro? Vita? Favore?)</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Famiglia:</strong> Siete imparentati (fratelli? Cugini? O "famiglia scelta"?)</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Rivali:</strong> Competete per stesso obiettivo (ma rispetto reciproco)</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Salvato:</strong> Uno ha salvato vita dell'altro (come? Quando?)</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Appena Incontrati:</strong> Vi conoscete da pochi giorni (come?)</td>
+                </tr>
+            </table>
+            
+            <h2>⚔️ PASSO 7: Equipaggiamento Iniziale</h2>
+            
+            <p>Ora che hai personaggio definito, equipaggialo per sopravvivere.</p>
+            
+            <h3>Budget e Kit Base</h3>
+            
+            <p><strong>Tutti iniziano con:</strong></p>
+            <ul>
+                <li><strong>50 dinar</strong> (moneta standard)</li>
+                <li><strong>1 arma base</strong> (scelta tua dalla lista sotto)</li>
+                <li><strong>Armatura base</strong> (Guerriero/Corsaro: Armatura 1; Altri: Armatura 0)</li>
+                <li><strong>Kit professionale</strong> (basato su archetipo)</li>
+                <li><strong>Equipaggiamento base survival</strong> (borraccia, sacco a pelo, acciarino)</li>
+            </ul>
+            
+            <h3>Armi Iniziali (Scegli 1 Gratis)</h3>
+            
+            <table>
+                <tr>
+                    <th>Arma</th>
+                    <th>Danno</th>
+                    <th>Proprietà</th>
+                    <th>Valore</th>
+                </tr>
+                <tr>
+                    <td>Pugnale</td>
+                    <td>1d6</td>
+                    <td>Leggero, nascondibile</td>
+                    <td>10d</td>
+                </tr>
+                <tr>
+                    <td>Spada Corta</td>
+                    <td>2d6</td>
+                    <td>Standard, versatile</td>
+                    <td>50d</td>
+                </tr>
+                <tr>
+                    <td>Spada Lunga</td>
+                    <td>2d6</td>
+                    <td>Standard, elegante</td>
+                    <td>60d</td>
+                </tr>
+                <tr>
+                    <td>Scimitarra</td>
+                    <td>2d6</td>
+                    <td>Standard, tradizionale</td>
+                    <td>55d</td>
+                </tr>
+                <tr>
+                    <td>Lancia</td>
+                    <td>2d6</td>
+                    <td>Portata 3m, 2 mani</td>
+                    <td>30d</td>
+                </tr>
+                <tr>
+                    <td>Ascia da Battaglia</td>
+                    <td>2d6+2</td>
+                    <td>Pesante, 2 mani</td>
+                    <td>70d</td>
+                </tr>
+                <tr>
+                    <td>Arco Corto</td>
+                    <td>2d6</td>
+                    <td>Distanza 50m, 2 mani</td>
+                    <td>40d</td>
+                </tr>
+                <tr>
+                    <td>Arco Lungo</td>
+                    <td>2d6+2</td>
+                    <td>Distanza 100m, 2 mani</td>
+                    <td>80d</td>
+                </tr>
+                <tr>
+                    <td>Bastone</td>
+                    <td>1d6+1</td>
+                    <td>Non letale, 2 mani</td>
+                    <td>5d</td>
+                </tr>
+            </table>
+            
+            <h3>Kit Professionali per Archetipo</h3>
+            
+            <table>
+                <tr>
+                    <th>Archetipo</th>
+                    <th>Kit Incluso</th>
+                </tr>
+                <tr>
+                    <td><strong>Navigatore</strong></td>
+                    <td>Bussola, mappa regione, corda 15m, razioni 5 giorni, tenda, attrezzi sopravvivenza</td>
+                </tr>
+                <tr>
+                    <td><strong>Guerriero</strong></td>
+                    <td>Armatura Cuoio (Armatura 1), scudo (+1 Armatura quando usato), kit riparazione armi, pietra affilatura</td>
+                </tr>
+                <tr>
+                    <td><strong>Corsaro</strong></td>
+                    <td>Seconda arma leggera (pugnale), kit scasso (lockpicks), mantello mimetico (+1d6 Furtività deserto), corda scalata</td>
+                </tr>
+                <tr>
+                    <td><strong>Studioso</strong></td>
+                    <td>Lente analisi artefatti, diario ricerche (vuoto, 200 pagine), 3 libri (scegli argomenti), strumenti scrittura</td>
+                </tr>
+                <tr>
+                    <td><strong>Custode</strong></td>
+                    <td>Kit medico (3 usi, guarisce 2d6 PV), simbolo sacro, incensi (3 dosi), bende, erbe medicinali</td>
+                </tr>
+                <tr>
+                    <td><strong>Veggente</strong></td>
+                    <td>Talismani protettivi (3), cristalli divinatori, testi mistici (2), incensi rari (2 dosi), tarocchi/rune</td>
+                </tr>
+                <tr>
+                    <td><strong>Mercante</strong></td>
+                    <td>+50 dinar extra (100 totali!), bilancia portatile, contatti in 3 città (scegli quali), libretto commercio</td>
+                </tr>
+            </table>
+            
+            <h3>Equipaggiamento Opzionale (Usa 50 Dinar)</h3>
+            
+            <table>
+                <tr>
+                    <th>Oggetto</th>
+                    <th>Costo</th>
+                    <th>Utilità</th>
+                </tr>
+                <tr>
+                    <td>Armatura Cuoio</td>
+                    <td>50d</td>
+                    <td>Armatura 1 (se non hai già)</td>
+                </tr>
+                <tr>
+                    <td>Scudo</td>
+                    <td>30d</td>
+                    <td>+1 Armatura quando usato attivamente</td>
+                </tr>
+                <tr>
+                    <td>Kit Medico</td>
+                    <td>30d</td>
+                    <td>Guarisce 2d6 PV, 3 usi</td>
+                </tr>
+                <tr>
+                    <td>Razioni (5 giorni)</td>
+                    <td>10d</td>
+                    <td>Cibo per 5 giorni</td>
+                </tr>
+                <tr>
+                    <td>Corda (15m)</td>
+                    <td>10d</td>
+                    <td>Essenziale esplorazione</td>
+                </tr>
+                <tr>
+                    <td>Torcia (5x)</td>
+                    <td>5d</td>
+                    <td>Luce, 1 ora ciascuna</td>
+                </tr>
+                <tr>
+                    <td>Lampada ad Olio + Olio</td>
+                    <td>15d</td>
+                    <td>Luce migliore, 8 ore</td>
+                </tr>
+                <tr>
+                    <td>Kit Scasso</td>
+                    <td>25d</td>
+                    <td>Aprire serrature</td>
+                </tr>
+                <tr>
+                    <td>Veleno (1 dose)</td>
+                    <td>40d</td>
+                    <td>+2d6 danno, target -1d6 round successivo</td>
+                </tr>
+                <tr>
+                    <td>Antidoto (1 dose)</td>
+                    <td>30d</td>
+                    <td>Cura 1 veleno</td>
+                </tr>
+            </table>
+            
+            <p><strong>Nota:</strong> Non devi spendere tutti i 50 dinar ora. Puoi conservare per emergenze.</p>
+            
+            <h2>✨ PASSO 8: Tocchi Finali e Dettagli</h2>
+            
+            <p>Ora hai numeri e storia. Aggiungi dettagli che rendono il personaggio VIVO.</p>
+            
+            <h3>Nome</h3>
+            
+            <p>Scegli nome appropriato al setting. Suggerimenti:</p>
+            
+            <div class="grid-2">
+                <div>
+                    <h4>Nomi Femminili</h4>
+                    <p>Zahra, Yasmin, Amira, Leyla, Soraya, Naia, Kira, Zara, Selene, Rasha, Farida, Laila, Sahira, Zaina, Jamila</p>
+                </div>
+                <div>
+                    <h4>Nomi Maschili</h4>
+                    <p>Malik, Rashid, Karim, Tariq, Zafir, Arkan, Omar, Hassan, Idris, Jamal, Nasir, Samir, Faisal, Aziz, Khalid</p>
+                </div>
+            </div>
+            
+            <h4>Nomi Nomadi (Neutri)</h4>
+            <p>Ash, Sand, Dune, Star, Wind, Storm, Crow, Hawk, Viper, Scorpion, Ember, Shade, Thunder, Echo, Horizon</p>
+            
+            <h3>Aspetto Fisico</h3>
+            
+            <p>Come appari? Non serve descrizione dettagliata — 2-3 tratti distintivi bastano:</p>
+            
+            <ul>
+                <li><strong>Corporatura:</strong> Atletico? Magro? Robusto? Scarno?</li>
+                <li><strong>Pelle:</strong> Bruciata dal sole? Pallida (raro)? Tatuaggi? Cicatrici?</li>
+                <li><strong>Capelli:</strong> Lunghi? Rasati? Colore? Stile?</li>
+                <li><strong>Occhi:</strong> Colore? Espressione tipica (vigili? Gentili? Freddi?)</li>
+                <li><strong>Abbigliamento:</strong> Vestiti pratici? Eleganti? Tradizionali? Mismatched?</li>
+                <li><strong>Dettaglio Unico:</strong> Qualcosa che ti rende immediatamente riconoscibile</li>
+            </ul>
+            
+            <div class="example-box">
+                <h4>Esempio: Aspetto Zahra</h4>
+                <p>Donna 32 anni, corporatura snella e atletica da anni viaggi. Pelle abbronzata, capelli neri legati in treccia pratica. Occhi marroni sempre vigili — scansiona costantemente ambiente. Veste tuniche color sabbia (mimetiche nel deserto) con molte tasche per mappe e strumenti. Porta sempre bussola d'ottone appesa al collo — regalo padre morto. Cicatrice sottile sulla guancia sinistra — ricordo del giorno fuggì Samarkandara.</p>
+            </div>
+            
+            <h3>Peculiarità/Manierismo</h3>
+            
+            <p>Piccolo dettaglio comportamentale che rende personaggio memorabile. Scegli 1-2:</p>
+            
+            <ul>
+                <li>Porta sempre amuleto/oggetto specifico</li>
+                <li>Non beve mai alcol (voto personale/religioso)</li>
+                <li>Parla sempre in modo formale / sempre informale</li>
+                <li>Colleziona qualcosa (sabbia da ogni luogo, pietre, storielle)</li>
+                <li>Cicatrice insolita (forma serpente? Simbolo Celeste?)</li>
+                <li>Sogna sempre stesso luogo (rovina mai vista)</li>
+                <li>Conta ossessivamente (OCD leggero)</li>
+                <li>Teme specifico (buio totale? Altezze? Acqua?)</li>
+                <li>Canticchia quando nervoso</li>
+                <li>Tatuaggio che sembra muoversi</li>
+                <li>Parla lingue straniere quando stressato</li>
+                <li>Non dorme mai su letti (solo terra)</li>
+            </ul>
+            
+            <h3>Quote Personale</h3>
+            
+            <p>Una frase che il tuo personaggio dice spesso, o che lo definisce:</p>
+            
+            <div class="example-box">
+                <ul>
+                    <li><strong>Zahra:</strong> "Le mappe non mentono mai. Le persone sì."</li>
+                    <li><strong>Guerriero:</strong> "La disciplina è libertà. Il caos è schiavitù."</li>
+                    <li><strong>Corsaro:</strong> "L'Impero chiama 'ordine' quello che io chiamo 'oppressione'."</li>
+                    <li><strong>Studioso:</strong> "La domanda giusta vale più di cento risposte sbagliate."</li>
+                </ul>
+            </div>
+            
+            <h3>Paure e Desideri Segreti</h3>
+            
+            <p><strong>Paura:</strong> Cosa temi veramente? (Utile per GM creare tensione)</p>
+            <p><strong>Desiderio Segreto:</strong> Cosa vuoi ma non ammetti? (Crea profondità)</p>
+            
+            <div class="example-box">
+                <h4>Zahra</h4>
+                <ul>
+                    <li><strong>Paura:</strong> Diventare come i corrotti che combatte — compromettere principi per sopravvivenza</li>
+                    <li><strong>Desiderio Segreto:</strong> Tornare a Samarkandara da eroina, perdonata, Archivi riaperti a lei. Vuole che Impero ammetta errore.</li>
+                </ul>
+            </div>
+            
+            <h2>📄 Scheda Personaggio Compilata</h2>
+            
+            <p>A questo punto dovresti avere tutti elementi per compilare scheda. Ecco esempio completo:</p>
+            
+            <div class="character-sheet">
+                <h3>🗺️ ZAHRA AL-KARIM — Navigatrice</h3>
+                
+                <p><strong>Concept:</strong> Ex-cartografa imperiale in fuga dopo aver rifiutato ordine immorale</p>
+                
+                <h4>Abilità:</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li>🎯 <strong>Percezione d10</strong></li>
+                    <li>• <strong>Sapienza d8</strong></li>
+                    <li>• <strong>Persuasione d8</strong></li>
+                    <li>• <strong>Atletica d6</strong></li>
+                    <li>• <strong>Resistenza d6</strong></li>
+                    <li>• <strong>Combattimento d4</strong></li>
+                    <li>• <strong>Furtività d4</strong></li>
+                </ul>
+                
+                <h4>Punti Vita e Difesa:</h4>
+                <ul>
+                    <li><strong>PV:</strong> 16 (10 base + 6 Resistenza)</li>
+                    <li><strong>Armatura:</strong> 0 (vesti normali)</li>
+                </ul>
+                
+                <h4>Valori:</h4>
+                <ol>
+                    <li>La verità deve essere protetta</li>
+                    <li>Aiutare chi ne ha bisogno</li>
+                    <li>L'Impero può essere riformato</li>
+                </ol>
+                
+                <h4>Equipaggiamento:</h4>
+                <ul>
+                    <li><strong>Arma:</strong> Pugnale (1d6)</li>
+                    <li><strong>Kit Navigatore:</strong> Bussola d'ottone (ricordo padre), mappe regione Dune Centrali, corda 15m, razioni 5 giorni, tenda, kit sopravvivenza</li>
+                    <li><strong>Extra Acquistato:</strong> Kit Medico (30d), Lampada+Olio (15d)</li>
+                    <li><strong>Denaro Rimasto:</strong> 5 dinar</li>
+                </ul>
+                
+                <h4>Background:</h4>
+                <p style="font-size: 10pt;">Nata Samarkandara, famiglia studiosi. Cartografa imperiale 10 anni. Rifiutò ordine distruggere mappe compromettenti, dichiarata traditrice. Fuggì con mappe originali. Ora guida e fuggitiva, cerca espiazione e riforma Impero.</p>
+                
+                <h4>Aspetto:</h4>
+                <p style="font-size: 10pt;">32 anni, snella, pelle abbronzata, capelli neri in treccia, occhi marroni vigili. Tuniche sabbia con molte tasche. Bussola ottone al collo. Cicatrice guancia sinistra.</p>
+                
+                <h4>Peculiarità:</h4>
+                <p style="font-size: 10pt;">Controlla ossessivamente mappe prima di dormire. Non si fida mai completamente di nessuno tranne gruppo attuale. Parla con bussola quando sola.</p>
+            </div>
+            
+            <h2>🎉 Sei Pronto!</h2>
+            
+            <p>Congratulazioni! Hai creato il tuo personaggio per The Serpent Road. Ora:</p>
+            
+            <ol>
+                <li><strong>Presenta al gruppo:</strong> Nome, concept breve, cosa puoi fare</li>
+                <li><strong>Definisci connessioni:</strong> Come conosci altri PG?</li>
+                <li><strong>Prepara per prima sessione:</strong> GM ti dirà scenario iniziale</li>
+            </ol>
+            
+            <div class="tip-box">
+                <h4>💡 Ricorda</h4>
+                <p>Il personaggio evolverà giocando. Background può espandersi. Valori possono cambiare. Relazioni svilupparsi. La scheda è punto di partenza, non destinazione finale.</p>
+                <p>Buon viaggio nel deserto! 🐍🏜️</p>
+            </div>
+            
+        </div>
+        
+        <!-- NAVIGAZIONE FINE -->
+        <div class="navigation">
+            <a href="serpent_road_manual_part1.html">← Parte 1</a>
+            <span style="color: var(--text-dark); font-weight: bold;">Fine Parte 2</span>
+            <a href="serpent_road_manual_part3.html">Continua: Parte 3 →</a>
+        </div>
+        
+    </div>
+</body>
+</html>

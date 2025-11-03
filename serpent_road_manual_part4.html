@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - Manuale Parte 4: Viaggi, Equipaggiamento e Artefatti</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+            --artifact-blue: #4A90E2;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--dark-sand) 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        
+        .cover {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover::before {
+            content: "🗺️";
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+        }
+        
+        .cover h1 {
+            font-size: 48pt;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover .subtitle {
+            font-size: 18pt;
+            color: var(--sand);
+            font-style: italic;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover .part {
+            font-size: 14pt;
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover .version {
+            font-size: 12pt;
+            color: var(--dark-sand);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .navigation {
+            background: var(--sand);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--accent-gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navigation a {
+            background: var(--night-blue);
+            color: var(--accent-gold);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .navigation a:hover {
+            background: var(--desert-red);
+            color: white;
+        }
+        
+        .chapter {
+            margin-bottom: 50px;
+        }
+        
+        .chapter-header {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .chapter-number {
+            font-size: 14pt;
+            color: var(--sand);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .chapter-title {
+            font-size: 32pt;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+        
+        .chapter-intro {
+            font-size: 13pt;
+            color: var(--sand);
+            font-style: italic;
+        }
+        
+        h2 {
+            font-size: 20pt;
+            color: var(--night-blue);
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 10px;
+            margin: 30px 0 15px 0;
+        }
+        
+        h3 {
+            font-size: 16pt;
+            color: var(--desert-red);
+            margin: 25px 0 12px 0;
+        }
+        
+        h4 {
+            font-size: 13pt;
+            color: var(--text-dark);
+            margin: 15px 0 8px 0;
+            font-weight: bold;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        .artifact-card {
+            border: 3px solid var(--artifact-blue);
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(74, 144, 226, 0.05) 100%);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+        }
+        
+        .artifact-card h4 {
+            color: var(--artifact-blue);
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-size: 14pt;
+        }
+        
+        .artifact-rarity {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 9pt;
+            margin-left: 10px;
+        }
+        
+        .rarity-common { background: #95a5a6; color: white; }
+        .rarity-uncommon { background: #27ae60; color: white; }
+        .rarity-rare { background: #3498db; color: white; }
+        .rarity-legendary { background: #9b59b6; color: white; }
+        .rarity-mythic { background: #e74c3c; color: white; }
+        
+        .intro-box {
+            background: linear-gradient(135deg, rgba(232, 212, 176, 0.3) 0%, rgba(196, 165, 116, 0.2) 100%);
+            border-left: 5px solid var(--accent-gold);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            border-radius: 5px;
+        }
+        
+        .example-box {
+            background: rgba(212, 175, 55, 0.15);
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .example-box h4 {
+            color: var(--accent-gold);
+            margin-top: 0;
+        }
+        
+        .warning-box {
+            background: rgba(196, 30, 58, 0.1);
+            border-left: 4px solid var(--desert-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box h4 {
+            color: var(--desert-red);
+            margin-top: 0;
+        }
+        
+        .tip-box {
+            background: rgba(45, 80, 22, 0.1);
+            border-left: 4px solid var(--serpent-green);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .tip-box h4 {
+            color: var(--serpent-green);
+            margin-top: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 10pt;
+        }
+        
+        th {
+            background: var(--night-blue);
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--dark-sand);
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(232, 212, 176, 0.3);
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .journey-track {
+            background: var(--sand);
+            border: 2px solid var(--night-blue);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-family: monospace;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                padding: 15mm;
+            }
+            .navigation {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- COPERTINA -->
+        <div class="cover">
+            <h1>THE SERPENT ROAD</h1>
+            <p class="subtitle">Manuale Completo del Giocatore e del Game Master</p>
+            <p class="part">PARTE 4: VIAGGI, EQUIPAGGIAMENTO E ARTEFATTI</p>
+            <p class="version">Capitoli 6-7-8 • Versione 1.0 • Ottobre 2025</p>
+        </div>
+        
+        <!-- NAVIGAZIONE -->
+        <div class="navigation">
+            <a href="serpent_road_manual_part3.html">← Parte 3</a>
+            <span style="color: var(--text-dark); font-weight: bold;">Parte 4 di 5</span>
+            <a href="serpent_road_manual_part5.html">Parte 5 →</a>
+        </div>
+        
+        <!-- CAPITOLO 6: VIAGGI E SOPRAVVIVENZA -->
+        <div class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-number">CAPITOLO 6</div>
+                <h1 class="chapter-title">Viaggi e Sopravvivenza nel Deserto</h1>
+                <p class="chapter-intro">Il deserto non perdona. Ogni viaggio è una sfida. Acqua, cibo, calore, predatori — tutto cospira contro di te. Ma chi conosce il deserto può non solo sopravvivere, ma prosperare.</p>
+            </div>
+            
+            <h2>🗺️ Sistema di Viaggio</h2>
+            
+            <p>Viaggiare nel deserto non è semplice "cammini 3 giorni e arrivi". È gestione risorse, navigazione, sopravvivenza, incontri casuali. Questo sistema bilancia realismo e divertimento.</p>
+            
+            <h3>Scala Temporale del Viaggio</h3>
+            
+            <p><strong>1 Giorno di Viaggio = 3 Turni</strong></p>
+            <ul>
+                <li><strong>Turno Mattina</strong> (Alba → Mezzogiorno, 6 ore): Temperatura crescente, visibilità ottima</li>
+                <li><strong>Turno Pomeriggio</strong> (Mezzogiorno → Tramonto, 6 ore): Calore massimo, affaticamento</li>
+                <li><strong>Turno Notte</strong> (Tramonto → Alba, 12 ore): Fresco, buio, predatori notturni</li>
+            </ul>
+            
+            <h3>Distanza Percorsa</h3>
+            
+            <table>
+                <tr>
+                    <th>Passo</th>
+                    <th>Distanza/Turno</th>
+                    <th>Distanza/Giorno</th>
+                    <th>Fatica</th>
+                </tr>
+                <tr>
+                    <td><strong>Lento</strong></td>
+                    <td>5 km</td>
+                    <td>15 km</td>
+                    <td>Nessuna</td>
+                </tr>
+                <tr>
+                    <td><strong>Normale</strong></td>
+                    <td>8 km</td>
+                    <td>24 km</td>
+                    <td>Normale (vedi sotto)</td>
+                </tr>
+                <tr>
+                    <td><strong>Veloce</strong></td>
+                    <td>12 km</td>
+                    <td>36 km</td>
+                    <td>+1 Fatica extra/turno</td>
+                </tr>
+            </table>
+            
+            <p><strong>Con Cavalcature (cammelli):</strong> x1.5 distanza (es: passo normale = 12 km/turno, 36 km/giorno)</p>
+            
+            <h3>Anatomia di un Turno di Viaggio</h3>
+            
+            <p>Ogni turno (6 o 12 ore) segui questa sequenza:</p>
+            
+            <ol>
+                <li><strong>Navigazione</strong> — Ti orienti correttamente?</li>
+                <li><strong>Incontro Casuale</strong> — Qualcosa/qualcuno appare?</li>
+                <li><strong>Consumo Risorse</strong> — Mangi, bevi, usi equipaggiamento</li>
+                <li><strong>Fatica</strong> — Accumuli stanchezza?</li>
+                <li><strong>Descrizione</strong> — GM descrive viaggio, giocatori reagiscono</li>
+            </ol>
+            
+            <h2>🧭 Navigazione</h2>
+            
+            <p>Perdersi nel deserto = morte. Orientarsi è cruciale.</p>
+            
+            <h3>Tiro Navigazione</h3>
+            
+            <p><strong>Chi tira:</strong> Chi guida gruppo (tipicamente chi ha Percezione più alta o equipaggiamento navigazione)</p>
+            <p><strong>Quando:</strong> Inizio ogni turno viaggio</p>
+            <p><strong>Abilità:</strong> Percezione o Sapienza (geografia)</p>
+            
+            <table>
+                <tr>
+                    <th>Situazione</th>
+                    <th>Difficoltà</th>
+                </tr>
+                <tr>
+                    <td>Strada ben marcata / Con guida esperta</td>
+                    <td>7 (auto-successo, no tiro)</td>
+                </tr>
+                <tr>
+                    <td>Terreno aperto, riferimenti visibili</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>Deserto uniforme, pochi riferimenti</td>
+                    <td>11</td>
+                </tr>
+                <tr>
+                    <td>Tempesta di sabbia, visibilità limitata</td>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <td>Notte senza luna, nessuna stella</td>
+                    <td>15</td>
+                </tr>
+            </table>
+            
+            <p><strong>Risultati:</strong></p>
+            <ul>
+                <li><strong>Successo:</strong> Procedi correttamente verso destinazione</li>
+                <li><strong>Successo con Tocchi:</strong> +1 Tocco = scopri scorciatoia (-3 km); +2 Tocchi = trovi oasi nascosta; +3 Tocchi = eviti pericolo prima che ti noti</li>
+                <li><strong>Fallimento (1-2 sotto):</strong> Ti perdi leggermente. +3 km distanza da destinazione. Ripeti tiro prossimo turno</li>
+                <li><strong>Fallimento Grave (3+ sotto):</strong> Perso completamente. Direzione sbagliata. +6 km distanza. Morale gruppo -1d6</li>
+            </ul>
+            
+            <h3>Strumenti di Navigazione</h3>
+            
+            <table>
+                <tr>
+                    <th>Strumento</th>
+                    <th>Bonus</th>
+                    <th>Costo</th>
+                </tr>
+                <tr>
+                    <td>Mappa Dettagliata Regione</td>
+                    <td>-2 Diff</td>
+                    <td>50d</td>
+                </tr>
+                <tr>
+                    <td>Bussola Standard</td>
+                    <td>-1 Diff</td>
+                    <td>30d</td>
+                </tr>
+                <tr>
+                    <td><strong>Bussola Vera (Artefatto)</strong></td>
+                    <td>-3 Diff, punta sempre destinazione</td>
+                    <td>Rara, ~500d</td>
+                </tr>
+                <tr>
+                    <td>Guida Esperta (PNG)</td>
+                    <td>-2 Diff, costa 10d/giorno</td>
+                    <td>Variabile</td>
+                </tr>
+                <tr>
+                    <td>Stelle (notte serena)</td>
+                    <td>-1 Diff</td>
+                    <td>Gratis</td>
+                </tr>
+            </table>
+            
+            <h2>💧 Gestione Risorse — Acqua e Cibo</h2>
+            
+            <p>Nel deserto, acqua > oro. La scarsità è meccanica centrale.</p>
+            
+            <h3>Consumo Acqua</h3>
+            
+            <p><strong>Regola Base:</strong> Ogni PG consuma <strong>2 litri acqua/giorno</strong> (1 litro = 1 "carica acqua")</p>
+            
+            <table>
+                <tr>
+                    <th>Condizione</th>
+                    <th>Consumo</th>
+                </tr>
+                <tr>
+                    <td>Riposo completo (non viaggiare)</td>
+                    <td>1 litro/giorno</td>
+                </tr>
+                <tr>
+                    <td>Viaggio normale</td>
+                    <td>2 litri/giorno</td>
+                </tr>
+                <tr>
+                    <td>Viaggio veloce o combattimento</td>
+                    <td>3 litri/giorno</td>
+                </tr>
+                <tr>
+                    <td>Calore estremo (40°C+)</td>
+                    <td>+1 litro/giorno</td>
+                </tr>
+                <tr>
+                    <td>Armatura pesante (piastre)</td>
+                    <td>+1 litro/giorno</td>
+                </tr>
+            </table>
+            
+            <h3>Effetti Disidratazione</h3>
+            
+            <table>
+                <tr>
+                    <th>Giorni Senza Acqua</th>
+                    <th>Effetto</th>
+                </tr>
+                <tr>
+                    <td>1 giorno</td>
+                    <td>Sete. Svantaggio su Atletica e Resistenza</td>
+                </tr>
+                <tr>
+                    <td>2 giorni</td>
+                    <td>Disidratazione seria. Svantaggio su TUTTI i tiri. -1d6 PV ogni 6 ore</td>
+                </tr>
+                <tr>
+                    <td>3 giorni</td>
+                    <td>Morte (tiro Resistenza Diff 15 per ritardare 6 ore)</td>
+                </tr>
+            </table>
+            
+            <div class="warning-box">
+                <h4>⚠️ Acqua è Vita</h4>
+                <p>Con consumo 2 litri/giorno e borraccia standard (4 litri), hai <strong>2 giorni autonomia</strong>. Pianifica rifornimenti. Oasi ogni 2-3 giorni viaggio nelle Dune Centrali. Nel Deserto Profondo? Porti acqua o muori.</p>
+            </div>
+            
+            <h3>Fonti Acqua</h3>
+            
+            <table>
+                <tr>
+                    <th>Fonte</th>
+                    <th>Disponibilità</th>
+                    <th>Costo/Note</th>
+                </tr>
+                <tr>
+                    <td>Oasi Naturale</td>
+                    <td>Gratis, illimitata</td>
+                    <td>Trova con Percezione Diff 11. ~ogni 30km Dune Centrali</td>
+                </tr>
+                <tr>
+                    <td>Pozzo Città</td>
+                    <td>Gratis o 1d/10 litri</td>
+                    <td>Affidabile ma richiede raggiungere città</td>
+                </tr>
+                <tr>
+                    <td>Cactus Acqua</td>
+                    <td>1 litro/cactus</td>
+                    <td>Trova Sapienza Diff 11. Raccogli Atletica Diff 9 (spine!)</td>
+                </tr>
+                <tr>
+                    <td>Condensa Notturna</td>
+                    <td>0.5 litri/notte</td>
+                    <td>Con telo e setup. Sapienza Diff 11. Tempo 2 ore</td>
+                </tr>
+                <tr>
+                    <td><strong>Fiaschetta Infinita (Artefatto)</strong></td>
+                    <td>5 litri/giorno</td>
+                    <td>Rara. Risolve problema acqua per 2-3 PG</td>
+                </tr>
+            </table>
+            
+            <h3>Consumo Cibo</h3>
+            
+            <p><strong>Regola Base:</strong> 1 razione/PG/giorno</p>
+            
+            <p><strong>Effetti Fame:</strong></p>
+            <ul>
+                <li><strong>1 giorno senza cibo:</strong> Fame. -1d6 tiri Atletica e Combattimento</li>
+                <li><strong>3 giorni:</strong> Indebolito. Svantaggio tutti tiri. -1 PV/giorno</li>
+                <li><strong>7 giorni:</strong> Morente. Tiro Resistenza Diff 13 ogni giorno o morte</li>
+            </ul>
+            
+            <p><strong>Nota:</strong> Fame uccide MOLTO più lentamente che sete. Gruppo può sopravvivere settimane senza cibo (male, ma vivi). Senza acqua? 3 giorni massimo.</p>
+            
+            <h3>Caccia e Foraggiamento</h3>
+            
+            <p><strong>Caccia (richiede 3 ore, arma distanza):</strong></p>
+            <ul>
+                <li>Tiro Percezione Diff 11 per trovare preda</li>
+                <li>Tiro Combattimento o Furtività Diff 11 per catturare</li>
+                <li>Successo: 1d6 razioni carne (dura 2 giorni senza conservazione)</li>
+            </ul>
+            
+            <p><strong>Foraggiamento (richiede 2 ore):</strong></p>
+            <ul>
+                <li>Tiro Sapienza o Percezione Diff 13</li>
+                <li>Successo: 1d6-2 razioni vegetali (radici, frutti deserto)</li>
+                <li>Fallimento: Nulla, o peggio (bacca velenosa?)</li>
+            </ul>
+            
+            <h2>😰 Sistema Fatica</h2>
+            
+            <p>Viaggiare stanca. Stanchezza accumula, degrada performance.</p>
+            
+            <p><strong>Accumulo Fatica:</strong></p>
+            <ul>
+                <li><strong>Viaggio Normale:</strong> 1 Fatica/giorno</li>
+                <li><strong>Viaggio Veloce:</strong> 2 Fatica/giorno</li>
+                <li><strong>Senza Riposo (24h+):</strong> +2 Fatica</li>
+                <li><strong>Combattimento Intenso:</strong> +1 Fatica</li>
+                <li><strong>Ferite Gravi (sotto 50% PV):</strong> +1 Fatica/giorno</li>
+            </ul>
+            
+            <p><strong>Effetti Fatica:</strong></p>
+            <table>
+                <tr>
+                    <th>Livello Fatica</th>
+                    <th>Effetto</th>
+                </tr>
+                <tr>
+                    <td>0-2</td>
+                    <td>Nessuno (normale)</td>
+                </tr>
+                <tr>
+                    <td>3-4</td>
+                    <td>Affaticato: -1d6 su Atletica e Combattimento</td>
+                </tr>
+                <tr>
+                    <td>5-6</td>
+                    <td>Esausto: Svantaggio su tutti tiri fisici</td>
+                </tr>
+                <tr>
+                    <td>7+</td>
+                    <td>Collasso: -1 PV/ora. Devi riposare o muori</td>
+                </tr>
+            </table>
+            
+            <p><strong>Recupero Fatica:</strong></p>
+            <ul>
+                <li><strong>Riposo Breve (1 ora):</strong> -1 Fatica</li>
+                <li><strong>Riposo Lungo (8 ore sonno):</strong> -3 Fatica</li>
+                <li><strong>Giorno Completo Riposo:</strong> -Tutta Fatica</li>
+            </ul>
+            
+            <h2>🎲 Incontri Casuali</h2>
+            
+            <p>Il deserto non è vuoto. Ogni turno viaggio, tira per incontro.</p>
+            
+            <h3>Frequenza Incontri</h3>
+            
+            <p><strong>Inizio ogni turno viaggio:</strong> GM tira <strong>1d6</strong></p>
+            
+            <table>
+                <tr>
+                    <th>Regione</th>
+                    <th>Incontro su...</th>
+                </tr>
+                <tr>
+                    <td>Dune Centrali (civilizzata)</td>
+                    <td>1-2</td>
+                </tr>
+                <tr>
+                    <td>Dune Cantanti (remota)</td>
+                    <td>1-3</td>
+                </tr>
+                <tr>
+                    <td>Deserto Profondo (pericoloso)</td>
+                    <td>1-4</td>
+                </tr>
+            </table>
+            
+            <p>Se numero corrisponde, tira su <strong>Tabella Incontri Casuali</strong> (vedi Capitolo 11).</p>
+            
+            <h3>Tipi Incontri Comuni</h3>
+            
+            <ul>
+                <li><strong>Carovana Mercantile:</strong> Possibilità commercio, informazioni, aiuto</li>
+                <li><strong>Nomadi:</strong> Neutri o amichevoli se rispettati. Possibile guida/riparo</li>
+                <li><strong>Corsari/Banditi:</strong> Ostili. Vogliono bottino. Negoziabili?</li>
+                <li><strong>Pattuglia Imperiale:</strong> Chiedono documenti. Alleati o nemici secondo status PG</li>
+                <li><strong>Predatore Deserto:</strong> Affamato. Attacca se PG sembrano deboli</li>
+                <li><strong>Rovine Minori:</strong> Possibile riparo, tesoro, pericolo</li>
+                <li><strong>Fenomeno Strano:</strong> Miraggio, tempesta improvvisa, manifestazione Serpente</li>
+            </ul>
+            
+            <div class="example-box">
+                <h4>Esempio: Gestione Incontro</h4>
+                <p><strong>Turno Mattina, Giorno 2:</strong> GM tira 1d6 = 2 (Incontro!)</p>
+                <p><strong>Tipo:</strong> Tira su Tabella → "Carovana Mercanti"</p>
+                <p><strong>GM descrive:</strong> "All'orizzonte, polvere sale. Distingui 4 cammelli, 3 figure umane. Carovana. Si avvicinano. Sembrano pacifici ma guardinghi."</p>
+                <p><strong>PG decidono:</strong> Avvicinarsi? Evitare? Preparare imboscata (stupido ma possibile)?</p>
+                <p><strong>Zahra:</strong> "Mi avvicino con mani alzate. Voglio negoziare acqua."</p>
+                <p><strong>GM:</strong> "Tira Persuasione..." [continua...]</p>
+            </div>
+            
+            <h2>🌡️ Condizioni Ambientali</h2>
+            
+            <h3>Calore e Freddo</h3>
+            
+            <table>
+                <tr>
+                    <th>Temperatura</th>
+                    <th>Effetto</th>
+                    <th>Prevenzione</th>
+                </tr>
+                <tr>
+                    <td>40°C+ (Giorno Estate)</td>
+                    <td>+1 consumo acqua, +1 Fatica/6 ore</td>
+                    <td>Vesti leggere, riparo 12-16, cappuccio</td>
+                </tr>
+                <tr>
+                    <td>50°C+ (Estremo)</td>
+                    <td>+2 consumo acqua, Resistenza Diff 11/ora o 1d6 danno</td>
+                    <td>NON viaggiare. Rifugio obbligatorio</td>
+                </tr>
+                <tr>
+                    <td>0-5°C (Notte Inverno)</td>
+                    <td>Resistenza Diff 9/4 ore o 1d6 danno freddo</td>
+                    <td>Fuoco, coperte, tenda, abbraccio gruppo</td>
+                </tr>
+            </table>
+            
+            <h3>Tempeste</h3>
+            
+            <p><strong>Tempesta di Sabbia (comune):</strong></p>
+            <ul>
+                <li>Visibilità 5m</li>
+                <li>Navigazione impossibile (perdersi garantito)</li>
+                <li>Durata: 1d6 ore</li>
+                <li>Danno: 1d6/ora se esposti (sabbia abrasiva)</li>
+                <li><strong>Risposta:</strong> Fermarsi, riparo, aspettare</li>
+            </ul>
+            
+            <p><strong>Tempesta di Cristallo (rara, solo Deserto Profondo):</strong></p>
+            <ul>
+                <li>Sabbia carica elettricamente</li>
+                <li>Fulmini orizzontali casuali</li>
+                <li>Danno: 2d6/round esposti</li>
+                <li>Artefatti malfunzionano (tira 1d6: 1-3 = spento 1d6 ore)</li>
+                <li><strong>Risposta:</strong> Riparo isolato (grotta, rovina metallica) o Artefatto Regolatore</li>
+            </ul>
+            
+            <h2>🏕️ Campeggio e Riposo</h2>
+            
+            <h3>Setup Campo</h3>
+            
+            <p><strong>Tempo:</strong> 30 minuti</p>
+            <p><strong>Richiede:</strong> Tende o equivalente</p>
+            
+            <p><strong>Turni di Guardia:</strong></p>
+            <ul>
+                <li>Notte = 12 ore = 3 turni guardia (4 ore ciascuno)</li>
+                <li>Chi fa guardia: no riposo completo (recupera solo 1d6 PV, -1 Fatica invece -3)</li>
+                <li>Gruppo 4 PG: 1 turno guardia/PG = tutti riposano decentemente</li>
+                <li>Senza guardia? Tira 1d6: 1-2 = sorpresa notturna (incontro ostile, +Vantaggio nemici)</li>
+            </ul>
+            
+            <h3>Qualità Campo</h3>
+            
+            <table>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Setup</th>
+                    <th>Beneficio</th>
+                    <th>Costo</th>
+                </tr>
+                <tr>
+                    <td>Campo Base (all'aperto)</td>
+                    <td>10 min</td>
+                    <td>Riposo minimo</td>
+                    <td>Gratis</td>
+                </tr>
+                <tr>
+                    <td>Campo con Tenda</td>
+                    <td>30 min</td>
+                    <td>Riposo pieno, protetti ambiente</td>
+                    <td>Tenda (20d)</td>
+                </tr>
+                <tr>
+                    <td>Campo Fortificato</td>
+                    <td>2 ore</td>
+                    <td>+2 Diff sorpresa nemici, riposo sicuro</td>
+                    <td>Tempo + materiali</td>
+                </tr>
+                <tr>
+                    <td>Riparo Naturale (grotta/rovina)</td>
+                    <td>Varia</td>
+                    <td>Protetti, fuoco sicuro, morale +1</td>
+                    <td>Trova con Percezione</td>
+                </tr>
+            </table>
+            
+            <div class="journey-track">
+<strong>ESEMPIO: TRACKING VIAGGIO GIORNO 3</strong>
+
+<strong>MATTINA (Turno 1):</strong>
+Navigazione: Zahra tira Percezione d10 + 2d6 = 16 (successo! +1 Tocco: scorciatoia -3km)
+Distanza: 8 km (passo normale) - 3 km (scorciatoia) = 5 km verso meta
+Incontro: GM tira 1d6 = 5 (nessun incontro)
+Risorse: -2 litri acqua/PG (x4 PG = 8 litri totali), -1 razione/PG
+Fatica: +1 Fatica/PG (viaggio normale)
+Stato: Tutto bene. Morale alto.
+
+<strong>POMERIGGIO (Turno 2):</strong>
+Calore Estremo (45°C): +1 consumo acqua/PG
+Navigazione: Zahra Svantaggio (calore), tira 3d6[2,3,6] peggiori = 5, +d10[4] = 9 
+           vs Diff 11 = FALLIMENTO! Persi. +3km distanza.
+Distanza: 8 km tentati - 3 km persi = 5 km direzione SBAGLIATA (ora +3km da meta)
+Incontro: 1d6 = 1 (INCONTRO! Predatore Deserto vede gruppo debole...)
+[Combattimento...]
+Risorse: -3 litri acqua/PG (calore), -1 razione
+Fatica: +1 normale +1 combattimento = +2 Fatica totale
+Stato: Gruppo a 4 Fatica. Malik ferito (12 PV). Acqua preoccupante.
+
+<strong>NOTTE (Turno 3 - RIPOSO):</strong>
+Setup campo con tenda: 30 min
+Guardie: Malik (1° turno), Zahra (2°), Yasmin (3°), Karim (4° - arriva)
+Riposo: Tutti recuperano 3d6 PV (riposo lungo), -3 Fatica
+Consumo: -1 litro acqua/PG (riposo), -1 razione
+Stato Finale Giorno 3: 
+- Distanza da meta: +3 km da ieri (persi!)
+- Acqua rimanente: 12 litri (3 litri/PG x 4 = basta 2 giorni)
+- Fatica: 3 (affaticati ma ok)
+- PV: Tutti ~pieni tranne Malik (14/18)
+Decisione GM: Domani devono trovare oasi o comprare acqua
+            </div>
+            
+        </div>
+        
+        <!-- CAPITOLO 7: EQUIPAGGIAMENTO -->
+        <div class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-number">CAPITOLO 7</div>
+                <h1 class="chapter-title">Equipaggiamento e Economia</h1>
+                <p class="chapter-intro">Nel deserto, l'equipaggiamento giusto separa il sopravvissuto dal cadavere. Ogni oggetto ha valore. Ogni dinar conta.</p>
+            </div>
+            
+            <h2>💰 Sistema Economico — Il Dinar</h2>
+            
+            <p><strong>Valuta Standard:</strong> Dinar (abbreviato "d")</p>
+            <p><strong>Forma:</strong> Monete d'argento (1d), bronzo (0.1d = "rame"), oro (10d = "sovrano")</p>
+            
+            <h3>Scala dei Prezzi — Cosa Vale un Dinar?</h3>
+            
+            <table>
+                <tr>
+                    <th>Prezzo</th>
+                    <th>Equivalente</th>
+                </tr>
+                <tr>
+                    <td>1d</td>
+                    <td>Pane per giorno, birra, candela, chiodo</td>
+                </tr>
+                <tr>
+                    <td>5d</td>
+                    <td>Pasto taverna, notte ostello basico</td>
+                </tr>
+                <tr>
+                    <td>10d</td>
+                    <td>Razione viaggio, torce x5, roba economica</td>
+                </tr>
+                <tr>
+                    <td>50d</td>
+                    <td>Armatura cuoio, notte ostello buono, arma semplice</td>
+                </tr>
+                <tr>
+                    <td>100d</td>
+                    <td>Settimana comfort medio, spada qualità, contratto serio</td>
+                </tr>
+                <tr>
+                    <td>500d</td>
+                    <td>Armatura piastre, cavallo, mese stipendio soldato</td>
+                </tr>
+                <tr>
+                    <td>1,000d+</td>
+                    <td>Artefatto minore, casa semplice, anno stipendio lavoratore</td>
+                </tr>
+            </table>
+            
+            <h3>Ricchezza per Livello Sociale</h3>
+            
+            <ul>
+                <li><strong>Mendicante:</strong> 0-10d totali. Sopravvive a malapena</li>
+                <li><strong>Povero:</strong> 10-50d. Lavoratore, contadino</li>
+                <li><strong>Medio:</strong> 50-200d. Artigiano, soldato, mercante piccolo</li>
+                <li><strong>Benestante:</strong> 200-1,000d. Mercante successo, ufficiale</li>
+                <li><strong>Ricco:</strong> 1,000-10,000d. Mercante gilda, nobile minore</li>
+                <li><strong>Molto Ricco:</strong> 10,000d+. Nobile maggiore, Gilda alta, Imperatrice</li>
+            </ul>
+            
+            <p><strong>PG Tipici:</strong> Iniziano con 50d (Medio-basso). Dopo avventure? Benestante → Ricco.</p>
+            
+            <h2>🎒 Equipaggiamento Generale</h2>
+            
+            <h3>Equipaggiamento Sopravvivenza</h3>
+            
+            <table>
+                <tr>
+                    <th>Oggetto</th>
+                    <th>Costo</th>
+                    <th>Peso</th>
+                    <th>Note</th>
+                </tr>
+                <tr>
+                    <td>Borraccia (4 litri)</td>
+                    <td>5d</td>
+                    <td>0.5 kg</td>
+                    <td>Essenziale. Standard 4 litri = 2 giorni</td>
+                </tr>
+                <tr>
+                    <td>Razioni (5 giorni)</td>
+                    <td>10d</td>
+                    <td>2 kg</td>
+                    <td>Cibo conservato (pane secco, carne essiccata)</td>
+                </tr>
+                <tr>
+                    <td>Tenda (2 persone)</td>
+                    <td>20d</td>
+                    <td>3 kg</td>
+                    <td>Riparo da elementi</td>
+                </tr>
+                <tr>
+                    <td>Sacco a Pelo</td>
+                    <td>10d</td>
+                    <td>2 kg</td>
+                    <td>Protegge freddo notte (+2 Resistenza vs freddo)</td>
+                </tr>
+                <tr>
+                    <td>Coperta</td>
+                    <td>3d</td>
+                    <td>1 kg</td>
+                    <td>Versione economica sacco a pelo (+1 Resistenza)</td>
+                </tr>
+                <tr>
+                    <td>Acciarino e Pietra Focaia</td>
+                    <td>5d</td>
+                    <td>0.1 kg</td>
+                    <td>Accende fuoco (Sapienza Diff 9, 10 min)</td>
+                </tr>
+                <tr>
+                    <td>Legna (bundle)</td>
+                    <td>2d</td>
+                    <td>5 kg</td>
+                    <td>Fuoco 4 ore. Nel deserto: rara, costosa</td>
+                </tr>
+                <tr>
+                    <td>Corda (15m)</td>
+                    <td>10d</td>
+                    <td>3 kg</td>
+                    <td>Essenziale esplorazione. Capacità carico 200kg</td>
+                </tr>
+                <tr>
+                    <td>Rampini</td>
+                    <td>15d</td>
+                    <td>2 kg</td>
+                    <td>Con corda: scala superfici (+2 Atletica arrampicata)</td>
+                </tr>
+                <tr>
+                    <td>Piccone</td>
+                    <td>20d</td>
+                    <td>4 kg</td>
+                    <td>Scava, rompe rocce. Arma improvvisata (2d6-1)</td>
+                </tr>
+                <tr>
+                    <td>Pala</td>
+                    <td>10d</td>
+                    <td>3 kg</td>
+                    <td>Scava sabbia velocemente. Essenziale rovine sepolte</td>
+                </tr>
+            </table>
+            
+            <h3>Equipaggiamento Esplorazione</h3>
+            
+            <table>
+                <tr>
+                    <th>Oggetto</th>
+                    <th>Costo</th>
+                    <th>Note</th>
+                </tr>
+                <tr>
+                    <td>Torcia (5x)</td>
+                    <td>5d</td>
+                    <td>Luce 10m raggio, 1 ora/torcia</td>
+                </tr>
+                <tr>
+                    <td>Lampada a Olio + Olio (8 ore)</td>
+                    <td>15d</td>
+                    <td>Luce migliore, durata lunga, ricaricabile</td>
+                </tr>
+                <tr>
+                    <td>Olio Lampada (8 ore extra)</td>
+                    <td>5d</td>
+                    <td>Ricarica lampada</td>
+                </tr>
+                <tr>
+                    <td>Kit Scasso (Lockpicks)</td>
+                    <td>25d</td>
+                    <td>Apre serrature. +1d6 Furtività (scasso)</td>
+                </tr>
+                <tr>
+                    <td>Specchio Piccolo</td>
+                    <td>10d</td>
+                    <td>Guarda angoli, segnala distanza</td>
+                </tr>
+                <tr>
+                    <td>Asta 3m</td>
+                    <td>5d</td>
+                    <td>Testa trappole, raggiunge alto/basso</td>
+                </tr>
+                <tr>
+                    <td>Sacchi (10x)</td>
+                    <td>2d</td>
+                    <td>Trasporta tesori, sabbia, qualsiasi</td>
+                </tr>
+                <tr>
+                    <td>Zaino Grande</td>
+                    <td>15d</td>
+                    <td>Capacità 30kg organizzata</td>
+                </tr>
+                <tr>
+                    <td>Binocolo</td>
+                    <td>50d</td>
+                    <td>Vedi dettagli 500m. +1d6 Percezione distanza</td>
+                </tr>
+                <tr>
+                    <td>Bussola</td>
+                    <td>30d</td>
+                    <td>Punta nord. -1 Diff navigazione</td>
+                </tr>
+                <tr>
+                    <td>Mappa Regione</td>
+                    <td>50d</td>
+                    <td>Dettagliata. -2 Diff navigazione quella regione</td>
+                </tr>
+            </table>
+            
+            <h3>Equipaggiamento Medico</h3>
+            
+            <table>
+                <tr>
+                    <th>Oggetto</th>
+                    <th>Costo</th>
+                    <th>Effetto</th>
+                </tr>
+                <tr>
+                    <td>Kit Medico (3 usi)</td>
+                    <td>30d</td>
+                    <td>Guarisce 2d6 PV. Uso = Azione Principale</td>
+                </tr>
+                <tr>
+                    <td>Bende (10 usi)</td>
+                    <td>5d</td>
+                    <td>Ferma emorragia, stabilizza 0 PV</td>
+                </tr>
+                <tr>
+                    <td>Antidoto (1 dose)</td>
+                    <td>30d</td>
+                    <td>Cura 1 veleno. Azione Bonus</td>
+                </tr>
+                <tr>
+                    <td>Erbe Medicinali (3 dosi)</td>
+                    <td>15d</td>
+                    <td>+1d6 guarigione naturale riposo</td>
+                </tr>
+                <tr>
+                    <td>Pozione Guarigione (se esistono)</td>
+                    <td>50d</td>
+                    <td>Guarisce 2d6+2 PV. Azione Bonus</td>
+                </tr>
+            </table>
+            
+            <h3>Equipaggiamento Speciale</h3>
+            
+            <table>
+                <tr>
+                    <th>Oggetto</th>
+                    <th>Costo</th>
+                    <th>Uso</th>
+                </tr>
+                <tr>
+                    <td>Veleno (1 dose, Debole)</td>
+                    <td>40d</td>
+                    <td>Applica arma. +1d6 danno, target -1d6 prossimo turno</td>
+                </tr>
+                <tr>
+                    <td>Veleno (1 dose, Forte)</td>
+                    <td>100d</td>
+                    <td>+2d6 danno, Resistenza Diff 13 o paralisi 1d6 round</td>
+                </tr>
+                <tr>
+                    <td>Acido (fiala)</td>
+                    <td>50d</td>
+                    <td>Corrode metallo/pietra. 2d6 danno. Dissolve serrature</td>
+                </tr>
+                <tr>
+                    <td>Olio Infiammabile (fiala)</td>
+                    <td>20d</td>
+                    <td>Copre 3m². Acceso: 2d6 danno/round, 3 round</td>
+                </tr>
+                <tr>
+                    <td>Caltrops (borsa)</td>
+                    <td>10d</td>
+                    <td>Copre 5m². Chi passa: 1d6 danno, movimento dimezzato</td>
+                </tr>
+                <tr>
+                    <td>Catena e Lucchetto</td>
+                    <td>25d</td>
+                    <td>Blocca porta, lega prigioniero. Atletica Diff 15 rompere</td>
+                </tr>
+                <tr>
+                    <td>Manette</td>
+                    <td>20d</td>
+                    <td>Immobilizza mani. Furtività Diff 17 liberarsi</td>
+                </tr>
+                <tr>
+                    <td>Telo Mimetico</td>
+                    <td>30d</td>
+                    <td>Copre 2 persone. +1d6 Furtività in deserto</td>
+                </tr>
+            </table>
+            
+            <h3>Servizi e Beni Non-Fisici</h3>
+            
+            <table>
+                <tr>
+                    <th>Servizio</th>
+                    <th>Costo</th>
+                    <th>Note</th>
+                </tr>
+                <tr>
+                    <td>Notte Ostello (basico)</td>
+                    <td>5d</td>
+                    <td>Letto condiviso, rumoroso</td>
+                </tr>
+                <tr>
+                    <td>Notte Locanda (standard)</td>
+                    <td>15d</td>
+                    <td>Stanza privata, colazione</td>
+                </tr>
+                <tr>
+                    <td>Notte Locanda (lusso)</td>
+                    <td>50d</td>
+                    <td>Suite, bagno, servizio completo</td>
+                </tr>
+                <tr>
+                    <td>Pasto Taverna</td>
+                    <td>5d</td>
+                    <td>Stufato, pane, birra</td>
+                </tr>
+                <tr>
+                    <td>Pasto Qualità</td>
+                    <td>20d</td>
+                    <td>Piatti elaborati, vino buono</td>
+                </tr>
+                <tr>
+                    <td>Bagno Pubblico</td>
+                    <td>2d</td>
+                    <td>Acqua calda, pulizia. Morale +1</td>
+                </tr>
+                <tr>
+                    <td>Guida (1 giorno)</td>
+                    <td>10d</td>
+                    <td>PNG esperto. -2 Diff navigazione</td>
+                </tr>
+                <tr>
+                    <td>Guardia Assunta (1 giorno)</td>
+                    <td>15d</td>
+                    <td>Soldato competente. Combattimento d8</td>
+                </tr>
+                <tr>
+                    <td>Passaggio Carovana (100km)</td>
+                    <td>20d</td>
+                    <td>Sicuro, lento, noioso</td>
+                </tr>
+                <tr>
+                    <td>Identificare Artefatto</td>
+                    <td>50d</td>
+                    <td>Osservatori Velo, 1 giorno tempo</td>
+                </tr>
+                <tr>
+                    <td>Cura Medica Professionale</td>
+                    <td>50-100d</td>
+                    <td>Guarisce 3d6 PV, rimuove malattia</td>
+                </tr>
+                <tr>
+                    <td>Riparazione Arma/Armatura</td>
+                    <td>10% valore</td>
+                    <td>Fabbro, 1 giorno</td>
+                </tr>
+            </table>
+            
+            <h3>Cavalcature e Trasporti</h3>
+            
+            <table>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Costo Acquisto</th>
+                    <th>Manutenzione</th>
+                    <th>Capacità</th>
+                    <th>Velocità</th>
+                </tr>
+                <tr>
+                    <td>Cammello</td>
+                    <td>200d</td>
+                    <td>2d/giorno (cibo/acqua)</td>
+                    <td>150 kg</td>
+                    <td>x1.5 velocità umana</td>
+                </tr>
+                <tr>
+                    <td>Cavallo (raro deserto)</td>
+                    <td>400d</td>
+                    <td>5d/giorno</td>
+                    <td>100 kg</td>
+                    <td>x2 velocità umana (ma soffre calore)</td>
+                </tr>
+                <tr>
+                    <td>Mulo</td>
+                    <td>150d</td>
+                    <td>2d/giorno</td>
+                    <td>200 kg</td>
+                    <td>x1.2 velocità umana</td>
+                </tr>
+                <tr>
+                    <td>Carro (2 ruote)</td>
+                    <td>100d</td>
+                    <td>-</td>
+                    <td>300 kg</td>
+                    <td>Richiede 1 animale trainare</td>
+                </tr>
+            </table>
+            
+            <p><strong>Nota Cavalcature:</strong> Cammelli = ideali deserto (resistenti calore, meno acqua). Cavalli = veloci ma fragili clima desertico (+50% acqua, -1d6 Resistenza giorni caldi).</p>
+            
+        </div>
+        
+        <!-- CAPITOLO 8: ARTEFATTI CELESTI -->
+        <div class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-number">CAPITOLO 8</div>
+                <h1 class="chapter-title">Artefatti Celesti</h1>
+                <p class="chapter-intro">Reliquie di una civiltà perduta. Tecnologia indistinguibile da magia. Potere oltre comprensione. Gli Artefatti Celesti possono salvare... o distruggere.</p>
+            </div>
+            
+            <h2>✨ Natura degli Artefatti</h2>
+            
+            <p>Gli Artefatti Celesti sono oggetti creati dalla civiltà Celeste usando tecnologia avanzata. Per osservatore moderno, funzionamento è incomprensibile — "magia" è termine più semplice, anche se tecnicamente sbagliato.</p>
+            
+            <h3>Caratteristiche Comuni</h3>
+            
+            <ul>
+                <li><strong>Indistruttibili (quasi):</strong> Artefatti resistono danni normali. Fuoco, acido, cadute non danneggiano. Solo altri artefatti o forze estreme possono romperli.</li>
+                <li><strong>Auto-Alimentati:</strong> Non richiedono combustibile esterno. Energia interna (sconosciuta come funzioni) dura secoli/millenni.</li>
+                <li><strong>Riconoscibili:</strong> Materiali unici (metallo argenteo, cristalli blu, pietre levitanti). Estetica distintiva Celeste.</li>
+                <li><strong>Pericolosi:</strong> Malfunzionamenti possibili. Effetti collaterali. Alcuni artefatti corrompono/mutano utilizzatori.</li>
+            </ul>
+            
+            <h3>Sistema Rarità</h3>
+            
+            <table>
+                <tr>
+                    <th>Rarità</th>
+                    <th>Disponibilità</th>
+                    <th>Prezzo Mercato (se vendibili)</th>
+                    <th>Potere</th>
+                </tr>
+                <tr>
+                    <td><span class="artifact-rarity rarity-common">COMUNE</span></td>
+                    <td>Trovabili rovine minori. Mercanti hanno scorte.</td>
+                    <td>100-500d</td>
+                    <td>Utilità pratica. No combat</td>
+                </tr>
+                <tr>
+                    <td><span class="artifact-rarity rarity-uncommon">NON COMUNE</span></td>
+                    <td>Rovine medie. Mercanti rari li hanno.</td>
+                    <td>500-2,000d</td>
+                    <td>Utile combattimento/esplorazione</td>
+                </tr>
+                <tr>
+                    <td><span class="artifact-rarity rarity-rare">RARO</span></td>
+                    <td>Rovine profonde. Collezionisti privati.</td>
+                    <td>2,000-10,000d</td>
+                    <td>Game-changing. Poteri significativi</td>
+                </tr>
+                <tr>
+                    <td><span class="artifact-rarity rarity-legendary">LEGGENDARIO</span></td>
+                    <td>Rovine massicce. Tesori protetti. Pezzi unici.</td>
+                    <td>10,000-100,000d (se vendibili)</td>
+                    <td>Campagna-defining. Estremamente potenti</td>
+                </tr>
+                <tr>
+                    <td><span class="artifact-rarity rarity-mythic">MITICO</span></td>
+                    <td>Quasi inesistenti. Leggenda.</td>
+                    <td>Inestimabili. Guerre combattute per questi.</td>
+                    <td>World-changing. Distruggere città, rianimare morti, controllare tempo</td>
+                </tr>
+            </table>
+            
+            <h3>Sistema Cariche</h3>
+            
+            <p>Molti artefatti usano <strong>Cariche</strong> per limitare uso:</p>
+            <ul>
+                <li><strong>Carica = 1 attivazione</strong> artefatto</li>
+                <li>Artefatti iniziano con <strong>Cariche Massime</strong> (varia: 3, 5, 10, infinito)</li>
+                <li><strong>Ricarica:</strong> Alba successiva recupera 1d6 cariche (o tutte, dipende artefatto)</li>
+                <li><strong>Esaurimento:</strong> 0 cariche = inerte finché ricarica</li>
+            </ul>
+            
+            <h2>📦 Catalogo Artefatti Celesti</h2>
+            
+            <h3>ARTEFATTI COMUNI</h3>
+            
+            <div class="artifact-card">
+                <h4>💡 LAMPADA ETERNA <span class="artifact-rarity rarity-common">COMUNE</span></h4>
+                <p><strong>Aspetto:</strong> Sfera cristallo blu, 10cm diametro, levita quando attivata</p>
+                <p><strong>Funzione:</strong> Luce costante 15m raggio. Luminosità regolabile (tocco).</p>
+                <p><strong>Cariche:</strong> Infinite. Sempre funziona.</p>
+                <p><strong>Attivazione:</strong> Azione Bonus (toccare e dire "lux" o equivalente)</p>
+                <p><strong>Valore:</strong> 100-200d</p>
+                <p><strong>Note:</strong> Artefatto più comune. Praticamente ogni città ne ha. Funziona perpetuamente. Alcuni hanno migliaia anni e ancora brillano. Sostituisce completamente torce/lampade olio.</p>
+            </div>
+            
+            <div class="artifact-card">
+                <h4>🧭 BUSSOLA VERA <span class="artifact-rarity rarity-common">COMUNE</span></h4>
+                <p><strong>Aspetto:</strong> Disco ottone 8cm, ago cristallo sempre punta destinazione desiderata</p>
+                <p><strong>Funzione:</strong> Utente pensa destinazione. Ago punta quella direzione (linea retta, ignora ostacoli).</p>
+                <p><strong>Cariche:</strong> Infinite</p>
+                <p><strong>Bonus:</strong> -3 Difficoltà navigazione. Auto-successo se seguita precisamente.</p>
+                <p><strong>Valore:</strong> 300-500d</p>
+                <p><strong>Limiti:</strong> Non funziona se destinazione in altra dimensione/piano. Non mostra distanza (solo direzione).</p>
+            </div>
+            
+            <div class="artifact-card">
+                <h4>❄️ REGOLATORE TERMICO <span class="artifact-rarity rarity-common">COMUNE</span></h4>
+                <p><strong>Aspetto:</strong> Bracciale metallo argenteo con gemma centrale (rossa/blu cambia con temperatura)</p>
+                <p><strong>Funzione:</strong> Mantiene utilizzatore temperatura corporea ideale. Immune calore/freddo ambientale.</p>
+                <p><strong>Cariche:</strong> 10. Ricarica 1d6/alba. 1 carica = 8 ore protezione.</p>
+                <p><strong>Effetto:</strong> NO consumo acqua extra da calore. NO danno freddo/calore fino estremi (lava, -50°C).</p>
+                <p><strong>Valore:</strong> 400d</p>
+                <p><strong>Limiti:</strong> Protegge solo chi lo indossa. Non crea calore/freddo esterno.</p>
+            </div>
+            
+            <h3>ARTEFATTI NON COMUNI</h3>
+            
+            <div class="artifact-card">
+                <h4>💧 FIASCHETTA INFINITA <span class="artifact-rarity rarity-uncommon">NON COMUNE</span></h4>
+                <p><strong>Aspetto:</strong> Fiaschetta metallo con runer incise. Mai vuota completamente (sempre un po' acqua dentro).</p>
+                <p><strong>Funzione:</strong> Genera acqua pura potabile.</p>
+                <p><strong>Produzione:</strong> 5 litri/giorno (riempie automaticamente all'alba). Acqua eccellente qualità.</p>
+                <p><strong>Cariche:</strong> N/A (automatico)</p>
+                <p><strong>Valore:</strong> 800-1,200d</p>
+                <p><strong>Impatto:</strong> Risolve problema acqua per 2-3 PG. Game-changer per sopravvivenza deserto.</p>
+                <p><strong>Nota GM:</strong> Potente ma non rompe game. Gruppo ancora deve gestire cibo, fatica, pericoli. Ma riduce drasticamente stress acqua.</p>
+            </div>
+            
+            <div class="artifact-card">
+                <h4>🔍 LENTE ANALITICA <span class="artifact-rarity rarity-uncommon">NON COMUNE</span></h4>
+                <p><strong>Aspetto:</strong> Monocolo cristallo con montatura argentea</p>
+                <p><strong>Funzione:</strong> Rivela informazioni su oggetto osservato.</p>
+                <p><strong>Uso:</strong> Azione Principale. Guarda oggetto attraverso lente. Ricevi info:</p>
+                <ul style="margin-top: 5px;">
+                    <li>Materiali composizione</li>
+                    <li>Età approssimativa</li>
+                    <li>Presenza magie/energia Celeste</li>
+                    <li>Punti struttura deboli</li>
+                    <li>Se artefatto: funzione base (non dettagli completi)</li>
+                </ul>
+                <p><strong>Cariche:</strong> 10, ricarica 1d6/alba</p>
+                <p><strong>Valore:</strong> 600d</p>
+                <p><strong>Note:</strong> Essenziale studiosi. Identifica artefatti senza pagare Osservatori. Trova trappole nascoste (+2d6 Percezione trappole).</p>
+            </div>
+            
+            <div class="artifact-card">
+                <h4>🛡️ SCUDO ENERGETICO (Portatile) <span class="artifact-rarity rarity-uncommon">NON COMUNE</span></h4>
+                <p><strong>Aspetto:</strong> Bracciale con bottone. Attivato: genera campo forza translucido blu</p>
+                <p><strong>Funzione:</strong> Campo forza personale. Assorbe danni.</p>
+                <p><strong>Attivazione:</strong> Azione Bonus. Campo dura fino disattivato o esaurito.</p>
+                <p><strong>PV Campo:</strong> 20 PV temporanei. Danno colpisce prima campo, poi PG.</p>
+                <p><strong>Cariche:</strong> 5, ricarica 1d6/alba. 1 carica = 1 attivazione campo (20 PV).</p>
+                <p><strong>Valore:</strong> 1,500d</p>
+                <p><strong>Tattica:</strong> Attiva prima combattimento pericoloso. 20 PV extra = sopravvivi 2-3 colpi extra.</p>
+            </div>
+            
+            <h3>ARTEFATTI RARI</h3>
+            
+            <div class="artifact-card">
+                <h4>⚡ LAMA PLASMA <span class="artifact-rarity rarity-rare">RARO</span></h4>
+                <p><strong>Aspetto:</strong> Impugnatura metallo argenteo (20cm). Attivata: lama energia blu brillante (80cm) emerge.</p>
+                <p><strong>Danno:</strong> 3d6+2 (letale!)</p>
+                <p><strong>Proprietà:</strong></p>
+                <ul style="margin-top: 5px;">
+                    <li>Ignora TUTTA Armatura (taglia qualsiasi materiale)</li>
+                    <li>+1d6 Combattimento quando usi (precisione perfetta)</li>
+                    <li>Luce 10m raggio (blu inquietante)</li>
+                    <li>Taglia roccia/metallo come burro (utilità esplorazione)</li>
+                </ul>
+                <p><strong>Cariche:</strong> 20, ricarica 1d6/alba. 1 carica = 10 minuti attivazione (~ 1 combattimento).</p>
+                <p><strong>Valore:</strong> 5,000-8,000d</p>
+                <p><strong>Problema:</strong> Riconoscibilissima. Tutti sanno è artefatto potente. Attira attenzione (ladri, autorità, collezionisti).</p>
+                <p><strong>Nota GM:</strong> Potente ma non invincibile. PG ancora muore se circondato. Lama forte ma utilizzatore fragile. Bilancia dando nemici armature pesanti o numeri superiori.</p>
+            </div>
+            
+            <div class="artifact-card">
+                <h4>👻 MANTELLO OMBRA <span class="artifact-rarity rarity-rare">RARO</span></h4>
+                <p><strong>Aspetto:</strong> Mantello nero vellutato. Bordi sembrano sfumare in ombra (letteralmente).</p>
+                <p><strong>Funzione:</strong> Invisibilità totale.</p>
+                <p><strong>Attivazione:</strong> Azione Bonus. Copre mantello su corpo. Diventi invisibile.</p>
+                <p><strong>Durata:</strong> 10 minuti/carica</p>
+                <p><strong>Effetto:</strong></p>
+                <ul style="margin-top: 5px;">
+                    <li>Invisibile visione normale (nemici Percezione Diff 17+ notare distorsione aria)</li>
+                    <li>+3d6 Furtività (cumulativo con abilità)</li>
+                    <li>Attacchi da invisibilità: Vantaggio + ignora Armatura (sorpresa totale)</li>
+                </ul>
+                <p><strong>Limiti:</strong></p>
+                <ul style="margin-top: 5px;">
+                    <li>Se attacchi o usi abilità rumorosa: visibilità torna 1 round (poi reinvisibile se mantello ancora su)</li>
+                    <li>Impronte nella sabbia ancora visibili</li>
+                    <li>Odore/suoni non soppressi</li>
+                </ul>
+                <p><strong>Cariche:</strong> 7, ricarica 1d6/alba</p>
+                <p><strong>Valore:</strong> 7,000d</p>
+            </div>
+            
+            <div class="artifact-card">
+                <h4>💎 CUORE DI CRISTALLO <span class="artifact-rarity rarity-rare">RARO</span></h4>
+                <p><strong>Aspetto:</strong> Cristallo ottaedro perfetto (10cm), blu pulsante, levita lentamente quando libero</p>
+                <p><strong>Funzione:</strong> Fonte energia massiccia. Alimenta altre tecnologie Celesti o artefatti.</p>
+                <p><strong>Capacità:</strong> 100 cariche interne. NON ricarica naturalmente (finito = morto).</p>
+                <p><strong>Usi:</strong></p>
+                <ul style="margin-top: 5px;">
+                    <li>Ricarica altro artefatto: trasferisci cariche 1:1</li>
+                    <li>Alimenta struttura Celeste (porte, ascensori, scudi): varia consumo</li>
+                    <li>Attiva macchine dormienti: 10-50 cariche/attivazione</li>
+                    <li>Usato come "batteria universale" Celeste</li>
+                </ul>
+                <p><strong>Valore:</strong> 10,000d+ (molto richiesto da Osservatori, Impero, collezionisti)</p>
+                <p><strong>Pericolo:</strong> Se rotto (Atletica Diff 20+, impossibile accidentalmente): esplode. 10d6 danno 20m raggio.</p>
+                <p><strong>Nota Campagna:</strong> Spesso obiettivo missioni. "Trova 3 Cuori Cristallo per alimentare Portale antico" = trama classica.</p>
+            </div>
+            
+            <h3>ARTEFATTI LEGGENDARI</h3>
+            
+            <div class="artifact-card">
+                <h4>🌟 STELLA GUIDA <span class="artifact-rarity rarity-legendary">LEGGENDARIO</span></h4>
+                <p><strong>Aspetto:</strong> Stella otto punte (15cm) cristallo/metallo, fluttua sopra palmo quando attivata</p>
+                <p><strong>Funzione:</strong> Mostra QUALSIASI cosa cerchi, ovunque sia.</p>
+                <p><strong>Uso:</strong> Concentra su cosa/chi cerchi (persona, oggetto, luogo). Stella proietta ologramma 3D mostrando:</p>
+                <ul style="margin-top: 5px;">
+                    <li>Posizione ESATTA (coordinate, mappa)</li>
+                    <li>Direzione e distanza precisa</li>
+                    <li>Immagine real-time cosa stai cercando (vedi 'è vivo? morto? chi è con lui?')</li>
+                    <li>Percorso ottimale per raggiungerlo</li>
+                </ul>
+                <p><strong>Limiti:</strong></p>
+                <ul style="margin-top: 5px;">
+                    <li>Devi avere info base su cosa cerchi (nome, descrizione, oggetto visto almeno una volta)</li>
+                    <li>"Mostrami tesoro più vicino" = troppo vago, non funziona</li>
+                    <li>"Mostrami Malik Al-Rashid" = funziona perfetto</li>
+                    <li>Non penetra barriere mistiche potenti (pochissime esistono)</li>
+                </ul>
+                <p><strong>Cariche:</strong> 3, ricarica 1/settimana (lenta!)</p>
+                <p><strong>Valore:</strong> 50,000d+ (ma nessuno vende — troppo prezioso)</p>
+                <p><strong>Impatto Campagna:</strong> Game-changer assoluto. "Trova artefatto perduto", "Trova traditore nascosto", "Trova ingresso rovina segreta". Risolve molte quest. Usa parsimonia (3 cariche, ricarica lenta) = decisioni significative su quando usare.</p>
+            </div>
+            
+            <div class="artifact-card">
+                <h4>⏱️ DIADEM TEMPORALE <span class="artifact-rarity rarity-legendary">LEGGENDARIO</span></h4>
+                <p><strong>Aspetto:</strong> Diadema metallo con gemma centrale. Gemma pulsa con luce ritmica (1 battito/secondo... ma a volte accelera o rallenta incomprensibilmente).</p>
+                <p><strong>Funzione:</strong> Manipolazione tempo limitata.</p>
+                <p><strong>Potere 1 — Fermata Temporale (5 cariche):</strong></p>
+                <ul style="margin-top: 5px;">
+                    <li>Azione: Tutto si ferma 6 secondi (1 round) tranne te</li>
+                    <li>Effetto: Hai 1 turno extra immediato. Muovi, agisci, poi tempo riprende</li>
+                    <li>Nemici congelati: puoi posizionarti, fuggire, preparare attacco devastante</li>
+                    <li>Limite: No attacchi diretti su nemici congelati (campo protegge). Ma puoi riposizionarti tatticamente</li>
+                </ul>
+                <p><strong>Potere 2 — Riavvolgi (10 cariche):</strong></p>
+                <ul style="margin-top: 5px;">
+                    <li>Azione Reazione (quando alleato muore, trappola attiva, disastro accade)</li>
+                    <li>Effetto: Tempo torna indietro 6 secondi (1 round)</li>
+                    <li>Gruppo ricorda cosa successo (conoscenza meta)</li>
+                    <li>Rifate round, ma informati. Evitate errore fatale</li>
+                </ul>
+                <p><strong>Cariche:</strong> 15 totale, ricarica 1d6/settimana (LENTO)</p>
+                <p><strong>Valore:</strong> 100,000d (ma probabilmente impossibile acquistare — pezzi unici finiscono musei o caveau imperiali)</p>
+                <p><strong>Corruzione:</strong> Uso ripetuto causa effetti collaterali:</p>
+                <ul style="margin-top: 5px;">
+                    <li>Dopo 5 usi: Sogni confusi (presente/passato/futuro mescolano)</li>
+                    <li>Dopo 10 usi: Dissociazione temporale (a volte percepisci tempo scorrere diversamente — Svantaggio iniziativa)</li>
+                    <li>Dopo 20 usi: Rischio Paradosso Temporale (1 su 1d20: GM sceglie effetto catastrofico)</li>
+                </ul>
+                <p><strong>Nota GM:</strong> ESTREMA potenza. Usare per momenti climatici, non ordinario. Corruzione bilancia abuso. Se PG usano costantemente = accelera corruzione o introduci nemico con contromisure.</p>
+            </div>
+            
+            <h3>ARTEFATTI MITICI (Esempi)</h3>
+            
+            <div class="artifact-card">
+                <h4>🐍 OCCHIO DEL SERPENTE <span class="artifact-rarity rarity-mythic">MITICO</span></h4>
+                <p><strong>Aspetto:</strong> Gemma dimensioni pugno umano. Forma: occhio rettile. Colore: verde smeraldo con pupilla verticale dorata. Guardandola troppo a lungo: senti essere osservato IN RITORNO.</p>
+                <p><strong>Funzione:</strong> Comunicazione diretta col Serpente (entità/forza/AI/dio — dipende interpretazione campagna).</p>
+                <p><strong>Potere:</strong></p>
+                <ul style="margin-top: 5px;">
+                    <li><strong>Visione Profetica:</strong> Vedi futuro possibile (1 scena, 5 minuti reali = giorni/settimane futuro)</li>
+                    <li><strong>Conoscenza Assoluta:</strong> Chiedi 1 domanda. Ricevi risposta vera (ma criptica, stile oracolo)</li>
+                    <li><strong>Risveglio:</strong> Se usato in luogo potere (Tempio Serpente, rovina particolare): potrebbe risvegliare/evocare manifestazione Serpente</li>
+                </ul>
+                <p><strong>Costo:</strong></p>
+                <ul style="margin-top: 5px;">
+                    <li>Ogni uso: Tiro Resistenza Diff 15. Fallimento = Marchiato (vedi Cap 10).</li>
+                    <li>Marchiato acquisisce sogni serpente, visioni, possibile mutazione</li>
+                    <li>Ripetuto uso: Ossessione. Personalità cambia. "Il Serpente chiama"</li>
+                </ul>
+                <p><strong>Valore:</strong> Inestimabile. Guerre combattute per questo. Impero offrirebbe 1,000,000d. Osservatori Velo ucciderebbero per ottenerlo. Corsari lo adorerebbero come reliquia.</p>
+                <p><strong>Nota Campagna:</strong> Artefatto finale. Centro mistero Serpente. Usare introduce conseguenze massive campagna. Forse trigger finale, rivelazione, o catastrofe. NON dare ai PG leggera. Solo climax epico.</p>
+            </div>
+            
+            <h2>⚠️ Pericoli e Malfunzionamenti</h2>
+            
+            <p>Artefatti non sono sempre affidabili. Tecnologia antica può guastarsi, specialmente se danneggiata o sovraccaricata.</p>
+            
+            <h3>Quando Artefatti Malfunzionano</h3>
+            
+            <ul>
+                <li><strong>Tempesta Cristallo:</strong> Artefatti in area: tira 1d6. 1-2 = spento 1d6 ore</li>
+                <li><strong>Sovraccarico:</strong> Usare artefatto oltre limite (forzare cariche): tira 1d6. 1 = malfunzione</li>
+                <li><strong>Danno Strutturale:</strong> Artefatto colpito attacco mirato potente: possibile danno</li>
+                <li><strong>Interferenza:</strong> Due artefatti potenti vicini (5m) a volte interferiscono</li>
+            </ul>
+            
+            <h3>Tabella Malfunzioni (d6)</h3>
+            
+            <table>
+                <tr>
+                    <th>1d6</th>
+                    <th>Effetto</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Spegnimento:</strong> Artefatto inerte 1d6 ore. Non ricarica.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Scarica:</strong> Perde tutte cariche immediatamente.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Feedback:</strong> Utilizzatore prende 2d6 danno energia.</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Effetto Casuale:</strong> Artefatto fa qualcosa imprevisto (GM creatività)</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Funziona... Strano:</strong> Effetto distorto (luce troppo forte, campo forza troppo debole, etc). -50% efficacia 1d6 ore.</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Ok... per ora:</strong> Artefatto funziona ma instabile. Prossimo uso: ritira su questa tabella.</td>
+                </tr>
+            </table>
+            
+            <div class="warning-box">
+                <h4>⚠️ Consiglio GM: Bilancia con Scarsità</h4>
+                <p>Artefatti potenti possono squilibrare gioco. Bilancia con:</p>
+                <ul style="margin-top: 10px;">
+                    <li><strong>Scarsità:</strong> Non dare troppi. 1-2 artefatti significativi/PG max.</li>
+                    <li><strong>Cariche Limitate:</strong> Forza decisioni. "Uso ora o risparmio?"</li>
+                    <li><strong>Conseguenze Sociali:</strong> Artefatto visibile attira attenzione (ladri, autorità, collezionisti)</li>
+                    <li><strong>Nemici Adattano:</strong> Se PG hanno scudo energetico, nemici usano armi anti-scudo o tattiche aggiramento</li>
+                    <li><strong>Corruzione:</strong> Artefatti potenti hanno costo nascosto (usa sistema Marchiato)</li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <!-- NAVIGAZIONE FINE -->
+        <div class="navigation">
+            <a href="serpent_road_manual_part3.html">← Parte 3</a>
+            <span style="color: var(--text-dark); font-weight: bold;">Fine Parte 4</span>
+            <a href="serpent_road_manual_part5.html">Continua: Parte 5 →</a>
+        </div>
+        
+    </div>
+</body>
+</html>

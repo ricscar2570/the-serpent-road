@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - Manuale Parte 3: Sistema e Combattimento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--dark-sand) 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        
+        .cover {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover::before {
+            content: "⚔️";
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+        }
+        
+        .cover h1 {
+            font-size: 48pt;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover .subtitle {
+            font-size: 18pt;
+            color: var(--sand);
+            font-style: italic;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover .part {
+            font-size: 14pt;
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cover .version {
+            font-size: 12pt;
+            color: var(--dark-sand);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .navigation {
+            background: var(--sand);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--accent-gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navigation a {
+            background: var(--night-blue);
+            color: var(--accent-gold);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .navigation a:hover {
+            background: var(--desert-red);
+            color: white;
+        }
+        
+        .chapter {
+            margin-bottom: 50px;
+        }
+        
+        .chapter-header {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .chapter-number {
+            font-size: 14pt;
+            color: var(--sand);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .chapter-title {
+            font-size: 32pt;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+        
+        .chapter-intro {
+            font-size: 13pt;
+            color: var(--sand);
+            font-style: italic;
+        }
+        
+        h2 {
+            font-size: 20pt;
+            color: var(--night-blue);
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 10px;
+            margin: 30px 0 15px 0;
+        }
+        
+        h3 {
+            font-size: 16pt;
+            color: var(--desert-red);
+            margin: 25px 0 12px 0;
+        }
+        
+        h4 {
+            font-size: 13pt;
+            color: var(--text-dark);
+            margin: 15px 0 8px 0;
+            font-weight: bold;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        .formula {
+            background: var(--night-blue);
+            color: var(--accent-gold);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0;
+            font-size: 16pt;
+            border: 3px solid var(--accent-gold);
+        }
+        
+        .intro-box {
+            background: linear-gradient(135deg, rgba(232, 212, 176, 0.3) 0%, rgba(196, 165, 116, 0.2) 100%);
+            border-left: 5px solid var(--accent-gold);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            border-radius: 5px;
+        }
+        
+        .example-box {
+            background: rgba(212, 175, 55, 0.15);
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .example-box h4 {
+            color: var(--accent-gold);
+            margin-top: 0;
+        }
+        
+        .combat-example {
+            background: rgba(184, 92, 60, 0.1);
+            border: 2px solid var(--desert-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 10pt;
+        }
+        
+        .warning-box {
+            background: rgba(196, 30, 58, 0.1);
+            border-left: 4px solid var(--desert-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box h4 {
+            color: var(--desert-red);
+            margin-top: 0;
+        }
+        
+        .tip-box {
+            background: rgba(45, 80, 22, 0.1);
+            border-left: 4px solid var(--serpent-green);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .tip-box h4 {
+            color: var(--serpent-green);
+            margin-top: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 10pt;
+        }
+        
+        th {
+            background: var(--night-blue);
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--dark-sand);
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(232, 212, 176, 0.3);
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .mechanic-box {
+            border: 2px solid var(--night-blue);
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.05) 0%, rgba(184, 92, 60, 0.05) 100%);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .mechanic-box h4 {
+            color: var(--night-blue);
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                padding: 15mm;
+            }
+            .navigation {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- COPERTINA -->
+        <div class="cover">
+            <h1>THE SERPENT ROAD</h1>
+            <p class="subtitle">Manuale Completo del Giocatore e del Game Master</p>
+            <p class="part">PARTE 3: SISTEMA DI GIOCO E COMBATTIMENTO</p>
+            <p class="version">Capitoli 4-5 • Versione 1.0 • Ottobre 2025</p>
+        </div>
+        
+        <!-- NAVIGAZIONE -->
+        <div class="navigation">
+            <a href="serpent_road_manual_part2.html">← Parte 2</a>
+            <span style="color: var(--text-dark); font-weight: bold;">Parte 3 di 5</span>
+            <a href="serpent_road_manual_part4.html">Parte 4 →</a>
+        </div>
+        
+        <!-- CAPITOLO 4: SISTEMA DI GIOCO -->
+        <div class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-number">CAPITOLO 4</div>
+                <h1 class="chapter-title">Sistema di Gioco</h1>
+                <p class="chapter-intro">Come si risolvono le azioni? Quando si tirano i dadi? Cosa succede quando fallisci? Impara il cuore meccanico del gioco.</p>
+            </div>
+            
+            <h2>🎲 Il Tiro Base — Cuore del Sistema</h2>
+            
+            <p>The Serpent Road usa un sistema elegante e intuitivo per risolvere azioni incerte. Ogni volta che l'esito non è scontato, tiri i dadi seguendo questa formula:</p>
+            
+            <div class="formula">
+                2d6 + dado abilità ≥ Difficoltà
+            </div>
+            
+            <p><strong>Componenti:</strong></p>
+            <ul>
+                <li><strong>2d6 (due dadi a sei facce):</strong> Rappresentano fortuna, casualità, caos del momento. Tiri SEMPRE questi due dadi, indipendentemente dalla tua competenza.</li>
+                <li><strong>Dado abilità:</strong> Il dado associato all'abilità che usi (d4, d6, d8, o d10). Rappresenta la tua esperienza e talento. Più alto il dado, più competente sei.</li>
+                <li><strong>Difficoltà:</strong> Numero obiettivo stabilito dal GM. Se il tuo totale eguaglia o supera la Difficoltà, hai successo.</li>
+            </ul>
+            
+            <h3>Quando Tirare i Dadi?</h3>
+            
+            <p>Non ogni azione richiede un tiro. Usa questa guida:</p>
+            
+            <table>
+                <tr>
+                    <th>Situazione</th>
+                    <th>Tiro Necessario?</th>
+                    <th>Perché</th>
+                </tr>
+                <tr>
+                    <td>Azione banale e senza tempo limitato</td>
+                    <td>❌ NO</td>
+                    <td>"Cammini per strada" — succede automaticamente</td>
+                </tr>
+                <tr>
+                    <td>Azione impossibile per PG</td>
+                    <td>❌ NO</td>
+                    <td>"Salti 100 metri" — fallimento automatico</td>
+                </tr>
+                <tr>
+                    <td>Esito incerto con conseguenze</td>
+                    <td>✅ SÌ</td>
+                    <td>"Scali muro mentre guardie pattugliano" — può andare bene o male</td>
+                </tr>
+                <tr>
+                    <td>Competizione diretta</td>
+                    <td>✅ SÌ</td>
+                    <td>"Braccio di ferro con rivale" — chi vince?</td>
+                </tr>
+                <tr>
+                    <td>Azione rischiosa</td>
+                    <td>✅ SÌ</td>
+                    <td>"Disarmi trappola Celeste" — errore = danno</td>
+                </tr>
+            </table>
+            
+            <div class="tip-box">
+                <h4>💡 Regola d'Oro del Tiro</h4>
+                <p><strong>Tira solo se:</strong></p>
+                <ol style="margin-top: 10px;">
+                    <li>L'esito è incerto</li>
+                    <li>Il fallimento ha conseguenze interessanti</li>
+                    <li>Il successo cambia la situazione</li>
+                </ol>
+                <p style="margin-top: 10px;">Se manca uno di questi tre elementi, <strong>non tirare</strong>. Descrivi semplicemente cosa succede.</p>
+            </div>
+            
+            <h3>La Scala delle Difficoltà</h3>
+            
+            <p>Il GM sceglie Difficoltà basandosi su quanto è dura l'azione. Usa questa tabella come guida:</p>
+            
+            <table>
+                <tr>
+                    <th>Difficoltà</th>
+                    <th>Numero</th>
+                    <th>Probabilità Successo*</th>
+                    <th>Quando Usare</th>
+                    <th>Esempi</th>
+                </tr>
+                <tr>
+                    <td><strong>Facile</strong></td>
+                    <td>7+</td>
+                    <td>~85%</td>
+                    <td>Competente può riuscire quasi sempre</td>
+                    <td>Arrampicarsi con appigli buoni, convincere amico, leggere lingua conosciuta</td>
+                </tr>
+                <tr>
+                    <td><strong>Routine</strong></td>
+                    <td>9+</td>
+                    <td>~70%</td>
+                    <td>Richiede focus ma fattibile</td>
+                    <td>Notare tracce evidenti, forzare porta legno, negoziare prezzo giusto</td>
+                </tr>
+                <tr>
+                    <td><strong>Difficile</strong></td>
+                    <td>11+</td>
+                    <td>~50%</td>
+                    <td>Successo incerto anche per esperti</td>
+                    <td>Schivare trappola veloce, ingannare mercante astuto, arrampicare superficie liscia</td>
+                </tr>
+                <tr>
+                    <td><strong>Molto Difficile</strong></td>
+                    <td>13+</td>
+                    <td>~30%</td>
+                    <td>Serve fortuna oltre competenza</td>
+                    <td>Disarmare meccanismo Celeste complesso, convincere nemico, decifrare testo danneggiato</td>
+                </tr>
+                <tr>
+                    <td><strong>Eroica</strong></td>
+                    <td>15+</td>
+                    <td>~15%</td>
+                    <td>Gesta leggendarie</td>
+                    <td>Saltare canyon 5m, intimidire Boss, hackerare artefatto attivo</td>
+                </tr>
+                <tr>
+                    <td><strong>Leggendaria</strong></td>
+                    <td>17+</td>
+                    <td>~5%</td>
+                    <td>Quasi impossibile</td>
+                    <td>Parare freccia al volo, sedurre Imperatrice, sopravvivere caduta 20m</td>
+                </tr>
+            </table>
+            
+            <p style="font-size: 9pt; font-style: italic;">*Probabilità per personaggio con d8 nell'abilità rilevante</p>
+            
+            <div class="example-box">
+                <h4>Esempio: Scegliere Difficoltà</h4>
+                <p><strong>Scenario:</strong> Zahra vuole arrampicarsi su muro per evitare guardie.</p>
+                
+                <p><strong>GM considera:</strong></p>
+                <ul>
+                    <li>Muro ha appigli? (Sì, molti) → Più facile</li>
+                    <li>È bagnato/scivoloso? (No) → Non più difficile</li>
+                    <li>C'è pressione temporale? (Sì, guardie vicine) → Leggermente più difficile</li>
+                    <li>Zahra ha equipaggiamento (corda)? (Sì) → Più facile</li>
+                </ul>
+                
+                <p><strong>Conclusione GM:</strong> "Difficoltà 9 (Routine). Con appigli e corda è fattibile, ma devi essere veloce."</p>
+                
+                <p><strong>Zahra tira:</strong> Atletica d6<br>
+                Risultato 2d6: 3+5=8, d6: 4 → Totale 12<br>
+                12 ≥ 9 → <strong>SUCCESSO!</strong></p>
+            </div>
+            
+            <h2>✨ Tocchi di Qualità — Eccellere Oltre il Successo</h2>
+            
+            <p>Succedere è buono. <strong>Eccellere</strong> è migliore. I Tocchi di Qualità trasformano successi normali in momenti eroici.</p>
+            
+            <div class="formula">
+                Per ogni 3 punti sopra la Difficoltà<br>ottieni 1 Tocco di Qualità
+            </div>
+            
+            <p><strong>Calcolo:</strong></p>
+            <ol>
+                <li>Sottrai Difficoltà dal tuo totale</li>
+                <li>Dividi per 3 (arrotonda giù)</li>
+                <li>Questo è il numero di Tocchi</li>
+            </ol>
+            
+            <table>
+                <tr>
+                    <th>Difficoltà</th>
+                    <th>Tuo Totale</th>
+                    <th>Differenza</th>
+                    <th>Tocchi</th>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>1</td>
+                    <td>0 Tocchi (1÷3=0.33)</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>12</td>
+                    <td>3</td>
+                    <td>1 Tocco (3÷3=1)</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>17</td>
+                    <td>6</td>
+                    <td>2 Tocchi (6÷3=2)</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>22</td>
+                    <td>9</td>
+                    <td>3 Tocchi (9÷3=3)</td>
+                </tr>
+            </table>
+            
+            <h3>Cosa Fanno i Tocchi di Qualità?</h3>
+            
+            <h4>In Combattimento</h4>
+            <p><strong>Ogni Tocco = +1d6 danno extra</strong></p>
+            <p>Semplice, letale, efficace. (Dettagli in Capitolo 5)</p>
+            
+            <h4>Fuori Combattimento</h4>
+            <p>Il GM e il giocatore collaborano per decidere benefici aggiuntivi. Opzioni:</p>
+            
+            <table>
+                <tr>
+                    <th>Tocchi</th>
+                    <th>Beneficio Tipico</th>
+                    <th>Esempio</th>
+                </tr>
+                <tr>
+                    <td><strong>1 Tocco</strong></td>
+                    <td>Beneficio minore extra</td>
+                    <td>Scali muro E arrivi silenziosamente in cima</td>
+                </tr>
+                <tr>
+                    <td><strong>2 Tocchi</strong></td>
+                    <td>Beneficio significativo</td>
+                    <td>Convinci mercante E ottieni info bonus su competitor</td>
+                </tr>
+                <tr>
+                    <td><strong>3+ Tocchi</strong></td>
+                    <td>Risultato spettacolare</td>
+                    <td>Disarmi trappola E la riprogrammi per colpire nemici</td>
+                </tr>
+            </table>
+            
+            <p><strong>Principi per usare Tocchi narrativamente:</strong></p>
+            <ul>
+                <li><strong>Più Veloce:</strong> Completi azione in metà tempo</li>
+                <li><strong>Più Informazioni:</strong> Scopri dettagli extra utili</li>
+                <li><strong>Più Impressionante:</strong> Azione è cinematicamente spettacolare (bonus reputazione)</li>
+                <li><strong>Effetto Bonus:</strong> Ottieni beneficio secondario non richiesto</li>
+                <li><strong>Vantaggio Tattico:</strong> Crei opportunità per alleati</li>
+            </ul>
+            
+            <div class="example-box">
+                <h4>Tocchi Narrativi in Azione</h4>
+                
+                <p><strong>Scenario 1: Convincere Guardia (Persuasione)</strong></p>
+                <p>Diff 11, Tiro 17 → 2 Tocchi</p>
+                <ul>
+                    <li><strong>Successo base:</strong> Guardia ti lascia passare</li>
+                    <li><strong>+1 Tocco:</strong> Guardia ti lascia passare E ti avvisa di pattuglia avanti</li>
+                    <li><strong>+2 Tocchi:</strong> ...E ti dà password per evitare problemi</li>
+                </ul>
+                
+                <p><strong>Scenario 2: Cercare Indizi (Percezione)</strong></p>
+                <p>Diff 9, Tiro 18 → 3 Tocchi</p>
+                <ul>
+                    <li><strong>Successo base:</strong> Trovi impronta utile</li>
+                    <li><strong>+1 Tocco:</strong> Trovi impronta E determini direzione partenza</li>
+                    <li><strong>+2 Tocchi:</strong> ...E noti dettaglio (zoppia leggermente)</li>
+                    <li><strong>+3 Tocchi:</strong> ...E trovi oggetto lasciato cadere (chiave!)</li>
+                </ul>
+            </div>
+            
+            <h2>🤝 Cooperazione e Lavoro di Squadra</h2>
+            
+            <p>The Serpent Road premia collaborazione. Due meccaniche principali:</p>
+            
+            <h3>Aiuto Semplice</h3>
+            
+            <p><strong>Quando:</strong> Un alleato assiste direttamente</p>
+            <p><strong>Meccanica:</strong> Chi tira aggiunge <strong>+1d6</strong> al pool (tira 3d6, mantieni 2 migliori + dado abilità)</p>
+            <p><strong>Limite:</strong> Massimo 1 aiutante per azione</p>
+            
+            <div class="example-box">
+                <h4>Esempio: Aiuto Semplice</h4>
+                <p>Zahra cerca trappola (Percezione). Malik dice: "Ti aiuto, guardo angoli che non vedi."</p>
+                <p><strong>Normale:</strong> 2d6 + d10 Percezione</p>
+                <p><strong>Con Aiuto:</strong> 3d6 (tieni 2 migliori) + d10 Percezione</p>
+                <p><strong>Risultato:</strong> Tira 3d6: [2, 5, 6] → Usa 5+6=11, +d10(8)=19 totale</p>
+            </div>
+            
+            <h3>Lavoro di Gruppo</h3>
+            
+            <p><strong>Quando:</strong> Tutti contribuiscono attivamente (es: spingere masso, piano complesso)</p>
+            <p><strong>Meccanica:</strong></p>
+            <ol>
+                <li>Gruppo designa Leader (chi ha abilità più alta tipicamente)</li>
+                <li>Leader tira con <strong>Vantaggio</strong> (3d6, mantieni 2 migliori + abilità)</li>
+                <li>Per ogni altro membro gruppo con abilità d6+: <strong>-1 Difficoltà</strong></li>
+            </ol>
+            
+            <div class="example-box">
+                <h4>Esempio: Lavoro di Gruppo</h4>
+                <p><strong>Scenario:</strong> Gruppo spinge porta pietra bloccata (Atletica Diff 13)</p>
+                <p><strong>Gruppo:</strong></p>
+                <ul>
+                    <li>Malik: Atletica d8 (Leader)</li>
+                    <li>Zahra: Atletica d6</li>
+                    <li>Yasmin: Atletica d8</li>
+                </ul>
+                
+                <p><strong>Calcolo:</strong></p>
+                <ul>
+                    <li>Malik tira con Vantaggio (3d6, mantieni 2 migliori + d8)</li>
+                    <li>Zahra ha d6+ → -1 Diff</li>
+                    <li>Yasmin ha d6+ → -1 Diff</li>
+                    <li>Difficoltà finale: 13 - 2 = <strong>11</strong></li>
+                </ul>
+                
+                <p><strong>Risultato:</strong> Molto più facile con collaborazione!</p>
+            </div>
+            
+            <h2>🎭 Vantaggio e Svantaggio</h2>
+            
+            <p>Situazioni favorevoli o sfavorevoli modificano i tiri:</p>
+            
+            <div class="mechanic-box">
+                <h4>VANTAGGIO (Situazione Favorevole)</h4>
+                <p><strong>Meccanica:</strong> Tira <strong>3d6</strong>, mantieni i <strong>2 MIGLIORI</strong> + dado abilità</p>
+                <p><strong>Quando:</strong></p>
+                <ul>
+                    <li>Agisci secondo un tuo Valore (GM decide)</li>
+                    <li>Hai preparazione eccezionale</li>
+                    <li>Nemico è distratto/impacciato</li>
+                    <li>Condizioni ambientali favorevoli</li>
+                    <li>Artefatto/pozione dà bonus</li>
+                </ul>
+            </div>
+            
+            <div class="mechanic-box">
+                <h4>SVANTAGGIO (Situazione Sfavorevole)</h4>
+                <p><strong>Meccanica:</strong> Tira <strong>3d6</strong>, mantieni i <strong>2 PEGGIORI</strong> + dado abilità</p>
+                <p><strong>Quando:</strong></p>
+                <ul>
+                    <li>Sei ferito gravemente (sotto 50% PV)</li>
+                    <li>Condizioni ambientali avverse (tempesta, buio)</li>
+                    <li>Equipaggiamento inadeguato</li>
+                    <li>Nemico ha vantaggio posizionale</li>
+                    <li>Sei affetto da condizione negativa (veleno, paura)</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Vantaggio e Svantaggio NON si Sommano</h4>
+                <p>Se hai sia Vantaggio che Svantaggio, si <strong>annullano</strong>. Tiri normalmente (2d6 + abilità).</p>
+                <p>Multipli Vantaggi? Conta come 1 Vantaggio. Multipli Svantaggi? Conta come 1 Svantaggio.</p>
+            </div>
+            
+            <h2>❌ Fallimenti e Complicazioni</h2>
+            
+            <p>Fallire un tiro non significa "nulla succede". Significa "qualcosa di interessante ma negativo succede".</p>
+            
+            <h3>Tre Tipi di Fallimento</h3>
+            
+            <h4>1. Successo con Costo</h4>
+            <p>Ottieni ciò che volevi, MA paghi un prezzo.</p>
+            
+            <div class="example-box">
+                <h4>Esempi: Successo con Costo</h4>
+                <ul>
+                    <li><strong>Arrampicare muro:</strong> Arrivi su, MA fai rumore (guardie allertate)</li>
+                    <li><strong>Disarmare trappola:</strong> Disattivi, MA prendi 1d6 danno nel processo</li>
+                    <li><strong>Convincere mercante:</strong> Accetta, MA vuole favore futuro</li>
+                    <li><strong>Saltare crepaccio:</strong> Arrivi oltre, MA perdi equipaggiamento (1 oggetto cade)</li>
+                </ul>
+            </div>
+            
+            <h4>2. Fallimento Complicato</h4>
+            <p>Non ottieni ciò che volevi, E la situazione peggiora.</p>
+            
+            <div class="example-box">
+                <h4>Esempi: Fallimento Complicato</h4>
+                <ul>
+                    <li><strong>Scassinare porta:</strong> Non si apre, E lockpick si rompe dentro (ora più difficile)</li>
+                    <li><strong>Mentire a guardia:</strong> Non ci crede, E chiama rinforzi</li>
+                    <li><strong>Saltare baratro:</strong> Cadi, aggrappati al bordo (ora devi tirare Atletica per non cadere)</li>
+                    <li><strong>Decifrare testo:</strong> Leggi male, E attivi maledizione</li>
+                </ul>
+            </div>
+            
+            <h4>3. Fallimento Pulito</h4>
+            <p>Non riesci, ma nessuna conseguenza immediata grave. Più raro.</p>
+            
+            <div class="example-box">
+                <h4>Quando Usare Fallimento Pulito</h4>
+                <p><strong>Solo quando:</strong></p>
+                <ul>
+                    <li>Complicazione non avrebbe senso narrativo</li>
+                    <li>Già sotto grande pressione</li>
+                    <li>Per bilanciare ritmo (troppa tensione stanca)</li>
+                </ul>
+                <p><strong>Esempio:</strong> "Cerchi indizi nella stanza ma non trovi nulla di utile." (Non attivi trappola, non fai rumore — semplicemente non c'era nulla)</p>
+            </div>
+            
+            <div class="tip-box">
+                <h4>💡 Per il GM: Come Scegliere Tipo Fallimento</h4>
+                <ol style="margin-top: 10px;">
+                    <li><strong>Default:</strong> Fallimento Complicato (più interessante)</li>
+                    <li><strong>Se PG già in pericolo:</strong> Successo con Costo (offri scelta)</li>
+                    <li><strong>Se serve pausa tensione:</strong> Fallimento Pulito (raramente)</li>
+                </ol>
+                <p style="margin-top: 10px;"><strong>Chiedi sempre:</strong> "Cosa renderebbe questo momento memorabile?"</p>
+            </div>
+            
+            <h2>⏱️ Tempo e Ritmo</h2>
+            
+            <h3>Scale Temporali</h3>
+            
+            <table>
+                <tr>
+                    <th>Scala</th>
+                    <th>Durata</th>
+                    <th>Quando Usare</th>
+                </tr>
+                <tr>
+                    <td><strong>Turno</strong></td>
+                    <td>~6 secondi</td>
+                    <td>Combattimento, azioni immediate</td>
+                </tr>
+                <tr>
+                    <td><strong>Scena</strong></td>
+                    <td>5-30 minuti</td>
+                    <td>Esplorazione stanza, negoziazione</td>
+                </tr>
+                <tr>
+                    <td><strong>Viaggio</strong></td>
+                    <td>Ore o giorni</td>
+                    <td>Attraversare deserto, riposare</td>
+                </tr>
+                <tr>
+                    <td><strong>Downtime</strong></td>
+                    <td>Settimane/mesi</td>
+                    <td>Tra avventure, città</td>
+                </tr>
+            </table>
+            
+            <h3>Ritrovare</h3>
+            
+            <p>Alcune azioni richiedono più tentativi:</p>
+            
+            <ul>
+                <li><strong>Scassinare serratura:</strong> 1 tentativo = 1 minuto (10 turni)</li>
+                <li><strong>Cercare stanza:</strong> Ricerca veloce (1 tiro) = 5 min; Ricerca approfondita (Vantaggio) = 30 min</li>
+                <li><strong>Riparare equipaggiamento:</strong> Diff varia, 1 ora per tentativo</li>
+                <li><strong>Decifrare testo lungo:</strong> 1 tiro per pagina, 10 minuti per pagina</li>
+            </ul>
+            
+            <h2>🎯 Tiri Contrapposti</h2>
+            
+            <p>Quando competi direttamente contro qualcuno:</p>
+            
+            <p><strong>Meccanica:</strong></p>
+            <ol>
+                <li>Entrambi tirano abilità appropriata (no Difficoltà)</li>
+                <li>Totale più alto vince</li>
+                <li>Pareggio? Situazione stalla o chi ha abilità più alta vince</li>
+            </ol>
+            
+            <div class="example-box">
+                <h4>Esempi Tiri Contrapposti</h4>
+                
+                <p><strong>Inseguimento:</strong></p>
+                <p>Zahra (Atletica d6) fugge da Guardia (Atletica d8)</p>
+                <ul>
+                    <li>Zahra: 2d6(4+3) + d6(5) = 12</li>
+                    <li>Guardia: 2d6(3+6) + d8(2) = 11</li>
+                    <li>Zahra vince! Perde guardia svoltando angolo</li>
+                </ul>
+                
+                <p><strong>Braccio di Ferro:</strong></p>
+                <p>Malik (Atletica d8) vs Mercenario (Atletica d8)</p>
+                <ul>
+                    <li>Malik: 2d6(5+6) + d8(7) = 18</li>
+                    <li>Mercenario: 2d6(4+4) + d8(8) = 16</li>
+                    <li>Malik vince, schiaccia braccio avversario sul tavolo!</li>
+                </ul>
+                
+                <p><strong>Nascondersi vs Cercare:</strong></p>
+                <p>Corsaro (Furtività d10) vs Guardia (Percezione d6)</p>
+                <ul>
+                    <li>Corsaro: 2d6(3+5) + d10(9) = 17</li>
+                    <li>Guardia: 2d6(4+6) + d6(4) = 14</li>
+                    <li>Corsaro vince, rimane nascosto nell'ombra</li>
+                </ul>
+            </div>
+            
+            <h2>📊 Quando NON Usare Meccaniche</h2>
+            
+            <p>A volte narrazione > meccaniche:</p>
+            
+            <ul>
+                <li><strong>Conversazioni sociali fluide:</strong> Non ogni battuta richiede Persuasione</li>
+                <li><strong>Esplorazione tranquilla:</strong> "Cerchi nella stanza? Ok, trovi..." (descrivi)</li>
+                <li><strong>Momenti emotivi:</strong> Roleplay puro senza dadi può essere potente</li>
+                <li><strong>Vittoria già meritata:</strong> Se PG hanno pianificato perfettamente, lascia succedere</li>
+            </ul>
+            
+            <div class="tip-box">
+                <h4>💡 La Regola del "Sì, e..."</h4>
+                <p>Se un giocatore propone qualcosa di narrativamente fantastico e sensato, considera dire "Sì, e..." invece di chiedere tiro.</p>
+                <p><strong>Esempio:</strong></p>
+                <p>Giocatore: "Voglio usare mio mantello per creare distrazione mentre alleato si intrufola."</p>
+                <p>GM opzione A: "Tira Furtività" (meccanico, noioso)</p>
+                <p>GM opzione B: "Sì! Lo fai. Guardia gira, alleato passa. Ora sei esposto però..." (narrativo, memorabile)</p>
+            </div>
+            
+        </div>
+        
+        <!-- CAPITOLO 5: COMBATTIMENTO -->
+        <div class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-number">CAPITOLO 5</div>
+                <h1 class="chapter-title">Combattimento</h1>
+                <p class="chapter-intro">Quando le parole falliscono e le lame parlano. Il combattimento in The Serpent Road è letale, tattico, e cinematico.</p>
+            </div>
+            
+            <h2>⚔️ Filosofia del Combattimento</h2>
+            
+            <p>Prima delle meccaniche, comprendere filosofia design:</p>
+            
+            <ul>
+                <li><strong>Letale:</strong> Pochi colpi uccidono. PG e nemici muoiono velocemente. Evitare danno > assorbire danno</li>
+                <li><strong>Tattico:</strong> Posizione, cooperazione, ambiente contano tanto quanto numeri</li>
+                <li><strong>Veloce:</strong> Combattimento risolto in 3-5 round tipicamente. Non grind lunghi</li>
+                <li><strong>Significativo:</strong> Non ogni scontro è combattimento. Quando combatti, conta</li>
+            </ul>
+            
+            <div class="warning-box">
+                <h4>⚠️ Il Deserto è Mortale</h4>
+                <p>Con 16 PV medi e spada che fa ~7 danno, <strong>2-3 colpi uccidono</strong>. Combattere 3 nemici frontalmente = suicidio. Usa tattica:</p>
+                <ul style="margin-top: 10px;">
+                    <li>Imboscate</li>
+                    <li>Terreno favorevole</li>
+                    <li>Cooperazione</li>
+                    <li>Ritirata strategica</li>
+                </ul>
+            </div>
+            
+            <h2>🎬 Struttura Combattimento</h2>
+            
+            <h3>Iniziativa — Chi Agisce Quando</h3>
+            
+            <p><strong>Sistema Alternato Semplice:</strong></p>
+            
+            <ol>
+                <li><strong>Fase PG:</strong> Tutti i giocatori agiscono (decidono ordine tra loro)</li>
+                <li><strong>Fase Nemici:</strong> Tutti i nemici agiscono (GM decide ordine)</li>
+                <li><strong>Ripeti</strong> finché combattimento finisce</li>
+            </ol>
+            
+            <p><strong>Chi inizia primo round?</strong></p>
+            <ul>
+                <li><strong>Imboscata PG:</strong> PG iniziano</li>
+                <li><strong>Imboscata Nemici:</strong> Nemici iniziano</li>
+                <li><strong>Incontro simultaneo:</strong> Tiro contrapposto Percezione (PG più alto vs Nemico più alto). Vincitore sceglie chi inizia</li>
+            </ul>
+            
+            <div class="tip-box">
+                <h4>💡 Perché Sistema Alternato?</h4>
+                <p>Veloce (no tiro iniziativa individuale), tattico (PG coordinano), cinematico (azione fluida). Se preferisci iniziativa classica: tutti tirano 2d6+Percezione, agiscono in ordine decrescente.</p>
+            </div>
+            
+            <h3>Il Round di Combattimento</h3>
+            
+            <p><strong>1 Round = ~6 secondi</strong> tempo nel gioco</p>
+            
+            <p><strong>Durante il tuo turno puoi fare:</strong></p>
+            <ul>
+                <li><strong>1 Azione Principale</strong> (attaccare, usare oggetto significativo, correre lontano)</li>
+                <li><strong>1 Movimento</strong> (fino a 10m normalmente, 5m se difficile)</li>
+                <li><strong>1 Azione Bonus</strong> (interazione ambientale minore, gridare ordine, estrarre arma)</li>
+            </ul>
+            
+            <table>
+                <tr>
+                    <th>Tipo Azione</th>
+                    <th>Esempi</th>
+                </tr>
+                <tr>
+                    <td><strong>Azione Principale</strong></td>
+                    <td>Attaccare, lanciare oggetto, usare artefatto, schivare attivamente, aiutare alleato</td>
+                </tr>
+                <tr>
+                    <td><strong>Movimento</strong></td>
+                    <td>Camminare/correre 10m, arrampicare 5m, nuotare 5m, alzarsi da prone (conta come movimento)</td>
+                </tr>
+                <tr>
+                    <td><strong>Azione Bonus</strong></td>
+                    <td>Estrarre/rinfoderare arma, aprire porta, gridare warning, bere pozione, accendere torcia</td>
+                </tr>
+            </table>
+            
+            <h2>🗡️ Attaccare</h2>
+            
+            <p>Quando attacchi un nemico:</p>
+            
+            <div class="formula">
+                Tira: 2d6 + Combattimento ≥ 9<br>
+                (Difficoltà base sempre 9, modificata da situazione)
+            </div>
+            
+            <p><strong>Se colpisci:</strong></p>
+            <ol>
+                <li>Tira dado danno arma (es: spada = 2d6)</li>
+                <li>Aggiungi Tocchi di Qualità come d6 extra</li>
+                <li>Somma tutti i dadi</li>
+                <li>Sottrai Armatura bersaglio</li>
+                <li>Il resto è danno ai PV</li>
+            </ol>
+            
+            <div class="combat-example">
+<strong>ESEMPIO COMBATTIMENTO COMPLETO</strong>
+
+<strong>Setup:</strong>
+Malik (Combattimento d10, Spada 2d6) attacca Predatore del Deserto
+Predatore: 18 PV, Armatura 1
+
+<strong>Round 1 - Turno Malik:</strong>
+Azione: Attacco con spada
+Tiro: 2d6 [4,5] + d10[7] = 16 totale
+Diff 9 → COLPISCE!
+Diff superata: 16-9 = 7 → 2 Tocchi di Qualità (7÷3=2.33, arrotonda giù)
+
+<strong>Danno:</strong>
+- Spada: 2d6 [3,5] = 8
+- +2 Tocchi: 2d6 [4,2] = 6
+- Totale grezzo: 14 danno
+- Armatura Predatore: -1
+- Danno finale: 13 PV
+
+<strong>Predatore ora a: 18-13 = 5 PV (gravemente ferito!)</strong>
+
+<strong>Round 1 - Turno Predatore:</strong>
+Predatore attacca Malik in risposta...
+[continua...]
+            </div>
+            
+            <h3>Modificatori Situazionali all'Attacco</h3>
+            
+            <table>
+                <tr>
+                    <th>Situazione</th>
+                    <th>Modificatore</th>
+                </tr>
+                <tr>
+                    <td>Bersaglio coperto parzialmente</td>
+                    <td>+2 Difficoltà</td>
+                </tr>
+                <tr>
+                    <td>Bersaglio coperto totalmente</td>
+                    <td>+4 Difficoltà o impossibile</td>
+                </tr>
+                <tr>
+                    <td>Bersaglio prone (a terra)</td>
+                    <td>Mischia: -2 Diff; Distanza: +2 Diff</td>
+                </tr>
+                <tr>
+                    <td>Attacco da dietro/sorpresa</td>
+                    <td>Vantaggio + ignora Armatura</td>
+                </tr>
+                <tr>
+                    <td>Buio totale</td>
+                    <td>Svantaggio o impossibile</td>
+                </tr>
+                <tr>
+                    <td>Bersaglio schiva attivamente</td>
+                    <td>Svantaggio (3d6 peggiori)</td>
+                </tr>
+                <tr>
+                    <td>Posizione superiore (altura)</td>
+                    <td>Vantaggio</td>
+                </tr>
+            </table>
+            
+            <h3>Armi e Danni</h3>
+            
+            <table>
+                <tr>
+                    <th>Arma</th>
+                    <th>Danno</th>
+                    <th>Portata</th>
+                    <th>Proprietà</th>
+                    <th>Costo</th>
+                </tr>
+                <tr>
+                    <td colspan="5" style="background: var(--desert-red); color: white; font-weight: bold;">MISCHIA LEGGERE</td>
+                </tr>
+                <tr>
+                    <td>Pugnale</td>
+                    <td>1d6</td>
+                    <td>Mischia</td>
+                    <td>Leggero, nascondibile, lanciabile (10m)</td>
+                    <td>10d</td>
+                </tr>
+                <tr>
+                    <td>Mazza</td>
+                    <td>1d6+1</td>
+                    <td>Mischia</td>
+                    <td>Ignora 1 Armatura</td>
+                    <td>15d</td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="background: var(--desert-red); color: white; font-weight: bold;">MISCHIA MEDIE</td>
+                </tr>
+                <tr>
+                    <td>Spada Corta</td>
+                    <td>2d6</td>
+                    <td>Mischia</td>
+                    <td>Standard, versatile</td>
+                    <td>50d</td>
+                </tr>
+                <tr>
+                    <td>Scimitarra</td>
+                    <td>2d6</td>
+                    <td>Mischia</td>
+                    <td>Standard, +1d6 vs non-armored</td>
+                    <td>55d</td>
+                </tr>
+                <tr>
+                    <td>Ascia</td>
+                    <td>2d6+1</td>
+                    <td>Mischia</td>
+                    <td>Ignora 1 Armatura</td>
+                    <td>60d</td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="background: var(--desert-red); color: white; font-weight: bold;">MISCHIA PESANTI (2 MANI)</td>
+                </tr>
+                <tr>
+                    <td>Spada Lunga</td>
+                    <td>3d6</td>
+                    <td>Mischia</td>
+                    <td>2 mani, potente</td>
+                    <td>80d</td>
+                </tr>
+                <tr>
+                    <td>Ascia Grande</td>
+                    <td>3d6+2</td>
+                    <td>Mischia</td>
+                    <td>2 mani, ignora 2 Armatura, lenta (-1d6 tiro attacco)</td>
+                    <td>90d</td>
+                </tr>
+                <tr>
+                    <td>Martello Guerra</td>
+                    <td>3d6</td>
+                    <td>Mischia</td>
+                    <td>2 mani, ignora 2 Armatura</td>
+                    <td>85d</td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="background: var(--desert-red); color: white; font-weight: bold;">ASTE (2 MANI)</td>
+                </tr>
+                <tr>
+                    <td>Lancia</td>
+                    <td>2d6</td>
+                    <td>3m</td>
+                    <td>Portata, lanciabile (20m), 2 mani</td>
+                    <td>30d</td>
+                </tr>
+                <tr>
+                    <td>Alabarda</td>
+                    <td>3d6</td>
+                    <td>3m</td>
+                    <td>Portata, 2 mani, ignora 1 Armatura</td>
+                    <td>75d</td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="background: var(--desert-red); color: white; font-weight: bold;">DISTANZA</td>
+                </tr>
+                <tr>
+                    <td>Fionda</td>
+                    <td>1d6</td>
+                    <td>30m</td>
+                    <td>Silenzioso, munizioni infinite (pietre)</td>
+                    <td>5d</td>
+                </tr>
+                <tr>
+                    <td>Arco Corto</td>
+                    <td>2d6</td>
+                    <td>50m</td>
+                    <td>2 mani, veloce</td>
+                    <td>40d</td>
+                </tr>
+                <tr>
+                    <td>Arco Lungo</td>
+                    <td>2d6+2</td>
+                    <td>100m</td>
+                    <td>2 mani, potente</td>
+                    <td>80d</td>
+                </tr>
+                <tr>
+                    <td>Balestra</td>
+                    <td>3d6</td>
+                    <td>80m</td>
+                    <td>2 mani, lenta (1 azione ricaricare), ignora 1 Armatura</td>
+                    <td>120d</td>
+                </tr>
+            </table>
+            
+            <h3>Attacco a Distanza — Regole Speciali</h3>
+            
+            <p><strong>Portata:</strong> Oltre portata massima, impossibile colpire</p>
+            <p><strong>Munizioni:</strong> Astratte (non contare frecce singole). Tira d6 dopo combattimento: 1-2 = esaurisci munizioni (devi comprare, 10d per 20 frecce)</p>
+            <p><strong>Copertura:</strong> Molto più rilevante distanza che mischia (vedi modificatori)</p>
+            
+            <h2>🛡️ Difendersi</h2>
+            
+            <h3>Armatura Passiva</h3>
+            
+            <p>Armatura riduce automaticamente danno. Non richiede azione.</p>
+            
+            <table>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Armatura</th>
+                    <th>Costo</th>
+                    <th>Note</th>
+                </tr>
+                <tr>
+                    <td>Vesti normali</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>Nessuna protezione</td>
+                </tr>
+                <tr>
+                    <td>Cuoio</td>
+                    <td>1</td>
+                    <td>50d</td>
+                    <td>Leggera, comune, non impaccia</td>
+                </tr>
+                <tr>
+                    <td>Cuoio Borchiato</td>
+                    <td>1</td>
+                    <td>80d</td>
+                    <td>+1d6 danno contatto (spine/borchie)</td>
+                </tr>
+                <tr>
+                    <td>Cotta Maglia</td>
+                    <td>2</td>
+                    <td>200d</td>
+                    <td>Media, militare, -5m movimento</td>
+                </tr>
+                <tr>
+                    <td>Piastre</td>
+                    <td>3</td>
+                    <td>500d</td>
+                    <td>Pesante, élite, -5m movimento, Svantaggio Furtività/Atletica</td>
+                </tr>
+            </table>
+            
+            <p><strong>Scudo:</strong> +1 Armatura quando usato attivamente (richiede azione bonus mantenere posizione difensiva). Costo: 30d</p>
+            
+            <h3>Schivata Attiva</h3>
+            
+            <p><strong>Azione Principale:</strong> Dichiari "Schivata"</p>
+            <p><strong>Effetto:</strong> Prossimo attacco contro te: attaccante ha <strong>Svantaggio</strong> (3d6 peggiori)</p>
+            <p><strong>Durata:</strong> Fino tuo prossimo turno</p>
+            
+            <div class="tip-box">
+                <h4>💡 Quando Schivare?</h4>
+                <p>Schivata utile quando:</p>
+                <ul style="margin-top: 10px;">
+                    <li>Sei già ferito gravemente (ogni PV conta)</li>
+                    <li>Aspetti alleato per aiuto/guarigione</li>
+                    <li>Compri tempo per artefatto/ritirata</li>
+                    <li>Affronti nemico molto più forte (sopravvivenza > danno)</li>
+                </ul>
+            </div>
+            
+            <h2>💀 Ferite, Morte, e Guarigione</h2>
+            
+            <h3>Tracking Punti Vita</h3>
+            
+            <table>
+                <tr>
+                    <th>PV Rimanenti</th>
+                    <th>Condizione</th>
+                    <th>Effetto Meccanico</th>
+                </tr>
+                <tr>
+                    <td>100-51%</td>
+                    <td>Sano</td>
+                    <td>Nessuno</td>
+                </tr>
+                <tr>
+                    <td>50-26%</td>
+                    <td>Ferito</td>
+                    <td>Nessuno meccanico, ma descrivere ferite</td>
+                </tr>
+                <tr>
+                    <td>25-1%</td>
+                    <td>Gravemente Ferito</td>
+                    <td>Svantaggio su tutti i tiri (dolore/shock)</td>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>Incosciente/Morente</td>
+                    <td>Vedi sotto</td>
+                </tr>
+            </table>
+            
+            <h3>A 0 Punti Vita — Morte e Stabilizzazione</h3>
+            
+            <p><strong>Quando arrivi a 0 PV:</strong></p>
+            <ol>
+                <li>Crolli incosciente immediatamente</li>
+                <li>All'inizio di ogni tuo turno: <strong>Tiro Morte</strong> (2d6 + Resistenza, Diff 9)</li>
+                <li><strong>3 successi</strong> = Stabilizzato (vivo ma incosciente, 1 PV)</li>
+                <li><strong>3 fallimenti</strong> = Morte</li>
+                <li>Subire danno mentre a 0 PV = conta come 2 fallimenti automatici</li>
+            </ol>
+            
+            <div class="warning-box">
+                <h4>⚠️ 0 PV è MOLTO Pericoloso</h4>
+                <p>Con sistema 3 fallimenti/successi, hai ~50% probabilità morire. NON lasciare alleati a 0 PV! Priorità assoluta stabilizzare/guarire.</p>
+            </div>
+            
+            <h3>Guarigione</h3>
+            
+            <h4>Durante Combattimento</h4>
+            <ul>
+                <li><strong>Stabilizzare Alleato (0 PV):</strong> Azione Principale, tiro Sapienza Diff 9, successo = alleato a 1 PV e stabile</li>
+                <li><strong>Kit Medico:</strong> Azione Principale, uso automatico (no tiro), guarisce 2d6 PV. Kit ha 3 usi.</li>
+                <li><strong>Pozione Guarigione:</strong> Azione Bonus, guarisce 2d6 PV (se esiste nel tuo mondo)</li>
+            </ul>
+            
+            <h4>Fuori Combattimento</h4>
+            <ul>
+                <li><strong>Riposo Breve (1 ora sicura):</strong> Recuperi 1d6 PV + dado Resistenza</li>
+                <li><strong>Riposo Lungo (8 ore sonno):</strong> Recuperi metà PV massimi + dado Resistenza</li>
+                <li><strong>Giorno Completo Riposo:</strong> Recuperi tutti PV (se in luogo sicuro con cibo/acqua)</li>
+                <li><strong>Trattamento Medico Professionale:</strong> In città, medico guarisce 3d6 PV, costa 50-100d</li>
+            </ul>
+            
+            <h2>🎯 Azioni Speciali in Combattimento</h2>
+            
+            <h3>Disarmare</h3>
+            <p><strong>Azione Principale:</strong> Tiro Combattimento vs Combattimento avversario (contrapposto)</p>
+            <p><strong>Successo:</strong> Arma cade 1d6 metri direzione casuale</p>
+            
+            <h3>Spingere/Sbatterrare</h3>
+            <p><strong>Azione Principale:</strong> Tiro Atletica vs Atletica avversario (contrapposto)</p>
+            <p><strong>Successo:</strong> Spingi bersaglio 3m direzione scelta, o lo butti prone</p>
+            
+            <h3>Afferrare/Lottare</h3>
+            <p><strong>Azione Principale:</strong> Tiro Atletica vs Atletica avversario</p>
+            <p><strong>Successo:</strong> Bersaglio è afferrato (movimento 0, Svantaggio attacchi)</p>
+            <p><strong>Liberarsi:</strong> Azione Principale, tiro contrapposto Atletica</p>
+            
+            <h3>Puntare (Armi Distanza)</h3>
+            <p><strong>Azione Principale:</strong> Puntare bersaglio</p>
+            <p><strong>Prossimo turno:</strong> Vantaggio su attacco vs quel bersaglio (se non ti muovi)</p>
+            
+            <h3>Usare Artefatto</h3>
+            <p><strong>Varia:</strong> Alcuni artefatti = Azione Bonus, altri = Azione Principale</p>
+            <p><strong>Vedi:</strong> Capitolo 8 Artefatti Celesti per dettagli</p>
+            
+            <h2>🌍 Ambiente e Tattiche</h2>
+            
+            <h3>Terreno Difficile</h3>
+            <p>Sabbia profonda, macerie, ghiaia: movimento dimezzato (5m invece 10m)</p>
+            
+            <h3>Altezza e Posizione</h3>
+            <p><strong>Vantaggio Altura:</strong> Attaccare da 3m+ sopra = Vantaggio</p>
+            <p><strong>Svantaggio Sotto:</strong> Attaccare bersaglio 3m+ sopra = Svantaggio</p>
+            
+            <h3>Copertura</h3>
+            <table>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Effetto</th>
+                    <th>Esempio</th>
+                </tr>
+                <tr>
+                    <td>Leggera (25%)</td>
+                    <td>+1 Diff attacchi distanza</td>
+                    <td>Cespugli, colonna stretta</td>
+                </tr>
+                <tr>
+                    <td>Parziale (50%)</td>
+                    <td>+2 Diff attacchi</td>
+                    <td>Muro basso, grosso masso</td>
+                </tr>
+                <tr>
+                    <td>Totale (75%+)</td>
+                    <td>+4 Diff o immune</td>
+                    <td>Muro, porta chiusa, angolo</td>
+                </tr>
+            </table>
+            
+            <h3>Condizioni Ambientali</h3>
+            <ul>
+                <li><strong>Buio:</strong> Svantaggio Percezione e attacchi distanza</li>
+                <li><strong>Tempesta Sabbia:</strong> Visibilità 5m, Svantaggio tutti tiri Percezione</li>
+                <li><strong>Calore Estremo:</strong> -1d6 Resistenza, +1 consumo acqua</li>
+            </ul>
+            
+            <h2>🏆 Fine del Combattimento</h2>
+            
+            <p>Combattimento finisce quando:</p>
+            <ul>
+                <li>Tutti nemici morti/incoscienti/fuggiti</li>
+                <li>Tutti PG morti/incoscienti/fuggiti</li>
+                <li>Entrambe parti accettano tregua/resa</li>
+            </ul>
+            
+            <h3>Dopo il Combattimento</h3>
+            <ol>
+                <li><strong>Stabilizza feriti:</strong> Alleati a 0 PV muoiono senza aiuto</li>
+                <li><strong>Conta danni:</strong> PG sotto 50%? Considera riposo breve</li>
+                <li><strong>Recupera munizioni:</strong> Tira d6, 1-2 = devi comprare nuove</li>
+                <li><strong>Saccheggia nemici:</strong> Armi, armature, denaro, indizi</li>
+                <li><strong>Riposo:</strong> Se sicuri, 1 ora riposo breve recupera 1d6+Resistenza PV</li>
+            </ol>
+            
+            <div class="tip-box">
+                <h4>💡 Per il GM: Combattimento Memorabile</h4>
+                <ul style="margin-top: 10px;">
+                    <li><strong>Descrivi dinamicamente:</strong> "Colpisci" → "Lama affonda tra costole, sangue schizza"</li>
+                    <li><strong>Usa ambiente:</strong> Lampadari, baratri, sabbia mobile, rovine instabili</li>
+                    <li><strong>Dai nemici personalità:</strong> Coraggiosi? Codardi? Fanatici?</li>
+                    <li><strong>Conseguenze:</strong> Rumore attira altri. Sangue attira predatori. Fuoco si espande.</li>
+                    <li><strong>Offri ritirata:</strong> Nemici intelligenti fuggono se persi ~50%</li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <!-- NAVIGAZIONE FINE -->
+        <div class="navigation">
+            <a href="serpent_road_manual_part2.html">← Parte 2</a>
+            <span style="color: var(--text-dark); font-weight: bold;">Fine Parte 3</span>
+            <a href="serpent_road_manual_part4.html">Continua: Parte 4 →</a>
+        </div>
+        
+    </div>
+</body>
+</html>

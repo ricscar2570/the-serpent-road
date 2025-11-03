@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - Quick Reference</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 10pt;
+            line-height: 1.3;
+            color: var(--text-dark);
+            background: white;
+        }
+        
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 10mm;
+            margin: 0 auto;
+            background: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8mm;
+        }
+        
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 4mm;
+        }
+        
+        .section {
+            background: var(--sand);
+            border-left: 4px solid var(--desert-red);
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+        
+        .section-title {
+            font-size: 13pt;
+            font-weight: bold;
+            color: var(--night-blue);
+            margin-bottom: 6px;
+            border-bottom: 2px solid var(--desert-red);
+            padding-bottom: 3px;
+        }
+        
+        .subsection-title {
+            font-size: 11pt;
+            font-weight: bold;
+            color: var(--desert-red);
+            margin-top: 6px;
+            margin-bottom: 3px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 4mm;
+            grid-column: 1 / -1;
+        }
+        
+        .header h1 {
+            font-size: 18pt;
+            color: var(--accent-gold);
+            margin-bottom: 4px;
+        }
+        
+        .header p {
+            font-size: 9pt;
+            font-style: italic;
+            color: var(--sand);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 4px 0;
+            font-size: 9pt;
+        }
+        
+        th {
+            background: var(--desert-red);
+            color: white;
+            padding: 3px 5px;
+            text-align: left;
+            font-size: 9pt;
+        }
+        
+        td {
+            padding: 3px 5px;
+            border-bottom: 1px solid var(--dark-sand);
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(196, 165, 116, 0.2);
+        }
+        
+        ul {
+            margin-left: 15px;
+            font-size: 9pt;
+        }
+        
+        li {
+            margin-bottom: 2px;
+        }
+        
+        .formula {
+            background: var(--night-blue);
+            color: var(--accent-gold);
+            padding: 6px 10px;
+            border-radius: 3px;
+            text-align: center;
+            font-weight: bold;
+            margin: 4px 0;
+            font-size: 11pt;
+        }
+        
+        .example {
+            background: rgba(212, 175, 55, 0.2);
+            border-left: 3px solid var(--accent-gold);
+            padding: 4px 6px;
+            font-size: 8pt;
+            font-style: italic;
+            margin: 4px 0;
+        }
+        
+        .icon {
+            font-size: 12pt;
+            margin-right: 3px;
+        }
+        
+        strong {
+            color: var(--desert-red);
+        }
+        
+        .compact {
+            font-size: 8pt;
+            line-height: 1.2;
+        }
+        
+        @media print {
+            .page {
+                margin: 0;
+                page-break-after: always;
+            }
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <div class="header">
+            <h1>🐍 THE SERPENT ROAD 🐍</h1>
+            <p>Quick Reference Sheet - Consulta Rapida per il Gioco</p>
+        </div>
+        
+        <!-- COLONNA SINISTRA -->
+        <div class="column">
+            
+            <!-- RISOLUZIONE AZIONI -->
+            <div class="section">
+                <div class="section-title"><span class="icon">🎲</span> RISOLUZIONE AZIONI</div>
+                
+                <div class="formula">
+                    2d6 + DADO ABILITÀ vs DIFFICOLTÀ
+                </div>
+                
+                <table>
+                    <tr>
+                        <th>Difficoltà</th>
+                        <th>Quando Usarla</th>
+                    </tr>
+                    <tr>
+                        <td><strong>7+</strong> Routine</td>
+                        <td>Azioni facili, condizioni ideali</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9+</strong> Standard</td>
+                        <td>Maggior parte delle azioni</td>
+                    </tr>
+                    <tr>
+                        <td><strong>11+</strong> Difficile</td>
+                        <td>Sfide serie, condizioni avverse</td>
+                    </tr>
+                    <tr>
+                        <td><strong>13+</strong> Eroica</td>
+                        <td>Quasi impossibile, disperata</td>
+                    </tr>
+                </table>
+                
+                <div class="subsection-title">Modificatori Comuni</div>
+                <ul class="compact">
+                    <li><strong>+1d6:</strong> Aiuto significativo / Preparazione</li>
+                    <li><strong>-1d6:</strong> Condizioni avverse / Fretta</li>
+                    <li><strong>Vantaggio:</strong> Tira 3d6, tieni i 2 più alti</li>
+                    <li><strong>Svantaggio:</strong> Tira 3d6, tieni i 2 più bassi</li>
+                </ul>
+                
+                <div class="subsection-title">Risultati</div>
+                <ul class="compact">
+                    <li><strong>≥ Difficoltà:</strong> Successo!</li>
+                    <li><strong>Ogni 3 punti sopra:</strong> +1 Tocco di Qualità</li>
+                    <li><strong>&lt; Difficoltà:</strong> Fallimento (con complicazione)</li>
+                </ul>
+                
+                <div class="example">
+                    <strong>Esempio:</strong> Navigare tempesta (Diff 11). Tiri 2d6 (4+5=9) + d8 abilità (6) = 15. Successo con 1 Tocco di Qualità! Puoi: ridurre tempo viaggio, evitare danno velivolo, o scoprire rifugio.
+                </div>
+            </div>
+            
+            <!-- TOCCHI DI QUALITÀ -->
+            <div class="section">
+                <div class="section-title"><span class="icon">✨</span> TOCCHI DI QUALITÀ</div>
+                
+                <p style="margin-bottom: 6px;"><strong>1 Tocco di Qualità</strong> per ogni 3 punti sopra la Difficoltà.</p>
+                
+                <table>
+                    <tr>
+                        <th>Spendi per...</th>
+                        <th>Effetto</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Velocità</strong></td>
+                        <td>Completa azione in metà tempo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Qualità</strong></td>
+                        <td>+1d6 al prossimo tiro correlato</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Info Extra</strong></td>
+                        <td>Scopri dettaglio utile aggiuntivo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Efficienza</strong></td>
+                        <td>Consuma metà risorse normali</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Spettacolare</strong></td>
+                        <td>Impressioni testimoni (+Rep)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Doppio Beneficio</strong></td>
+                        <td>Ottieni 2 effetti minori (2 Tocchi)</td>
+                    </tr>
+                </table>
+                
+                <div class="example">
+                    <strong>Uso Creativo:</strong> Con 2 Tocchi su tiro Negoziazione, puoi: ottenere prezzo migliore E informazione su concorrente.
+                </div>
+            </div>
+            
+            <!-- COMBATTIMENTO -->
+            <div class="section">
+                <div class="section-title"><span class="icon">⚔️</span> COMBATTIMENTO</div>
+                
+                <div class="subsection-title">Sequenza di Turno</div>
+                <ol class="compact">
+                    <li><strong>Iniziativa:</strong> PG agiscono per primi (se non sorpresi)</li>
+                    <li><strong>Movimento:</strong> Vicino → Medio o Medio → Lontano</li>
+                    <li><strong>Azione:</strong> Attaccare, Manovrare, Usare Oggetto, Aiutare</li>
+                    <li><strong>Nemici:</strong> Rispondono dopo tutti i PG</li>
+                </ol>
+                
+                <div class="subsection-title">Attaccare</div>
+                <div class="formula">2d6 + COMBATTIMENTO vs 9+</div>
+                <ul class="compact">
+                    <li><strong>Successo:</strong> Danno = Arma + Tocchi spesi</li>
+                    <li><strong>Armatura:</strong> Riduce danno (Leggera 1, Media 2, Pesante 3)</li>
+                    <li><strong>Danno rimanente:</strong> Segna su Salute (6 box = KO)</li>
+                </ul>
+                
+                <div class="subsection-title">Manovre Speciali</div>
+                <table style="font-size: 8pt;">
+                    <tr>
+                        <th>Azione</th>
+                        <th>Effetto</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Attacco Mirato</strong></td>
+                        <td>Diff +2, ma ignori 1 armatura</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Difesa Totale</strong></td>
+                        <td>Non attacchi, nemici hanno Svantaggio vs te</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Carica</strong></td>
+                        <td>Muovi + attacca, +1 danno ma nemico ottiene attacco libero</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coprire Alleato</strong></td>
+                        <td>Subisci tu attacco destinato ad alleato Vicino</td>
+                    </tr>
+                </table>
+                
+                <div class="subsection-title">Distanze</div>
+                <ul class="compact">
+                    <li><strong>Vicino:</strong> 0-5m (corpo a corpo)</li>
+                    <li><strong>Medio:</strong> 5-20m (armi da tiro)</li>
+                    <li><strong>Lontano:</strong> 20-50m (solo fucili/archi)</li>
+                </ul>
+            </div>
+            
+            <!-- CONDIZIONI -->
+            <div class="section">
+                <div class="section-title"><span class="icon">💀</span> CONDIZIONI</div>
+                
+                <table style="font-size: 8pt;">
+                    <tr>
+                        <th>Condizione</th>
+                        <th>Effetto</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Ferito</strong></td>
+                        <td>Svantaggio a tutti i tiri fisici</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Esausto</strong></td>
+                        <td>-1d6 a tutti i tiri, movimento dimezzato</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disidratato</strong></td>
+                        <td>Ogni giorno senza acqua: 1d6 danno + Esausto</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Affamato</strong></td>
+                        <td>Dopo 3 giorni: Esausto, ogni giorno successivo 1d6 danno</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stordito</strong></td>
+                        <td>Prossimo turno: solo difesa, poi rimuovi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Avvelenato</strong></td>
+                        <td>1d6 danno all'inizio di ogni turno (Diff 9 Resistenza per terminare)</td>
+                    </tr>
+                </table>
+                
+                <div class="subsection-title">Recupero</div>
+                <ul class="compact">
+                    <li><strong>Riposo Breve</strong> (10 min): Rimuovi Stordito</li>
+                    <li><strong>Riposo Lungo</strong> (8 ore): Recupera metà Salute (min 1), rimuovi Esausto</li>
+                    <li><strong>Cure Mediche:</strong> Tiro Medicina (Diff 9): Recupera 1d6+Tocchi Salute</li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <!-- COLONNA DESTRA -->
+        <div class="column">
+            
+            <!-- SOPRAVVIVENZA E VIAGGI -->
+            <div class="section">
+                <div class="section-title"><span class="icon">🏜️</span> SOPRAVVIVENZA E VIAGGI</div>
+                
+                <div class="subsection-title">Consumo Giornaliero (per persona)</div>
+                <ul class="compact">
+                    <li><strong>Acqua:</strong> 4 litri (2 litri minimo, 1 litro = Esausto + rischio Disidratato)</li>
+                    <li><strong>Cibo:</strong> 1 razione (senza cibo per 3+ giorni = Affamato)</li>
+                </ul>
+                
+                <div class="subsection-title">Velocità di Viaggio</div>
+                <table style="font-size: 8pt;">
+                    <tr>
+                        <th>Metodo</th>
+                        <th>Km/Giorno</th>
+                        <th>Note</th>
+                    </tr>
+                    <tr>
+                        <td>A piedi</td>
+                        <td>25 km</td>
+                        <td>Standard, affidabile</td>
+                    </tr>
+                    <tr>
+                        <td>Cavalcatura</td>
+                        <td>40 km</td>
+                        <td>Richiede cibo/acqua animale</td>
+                    </tr>
+                    <tr>
+                        <td>Velivolo</td>
+                        <td>80 km</td>
+                        <td>Richiede carburante (1 unità/80km)</td>
+                    </tr>
+                    <tr>
+                        <td>Marcia Forzata</td>
+                        <td>×1.5</td>
+                        <td>Tutti diventano Esausti</td>
+                    </tr>
+                </table>
+                
+                <div class="subsection-title">Navigazione</div>
+                <p class="compact"><strong>Tiro Sopravvivenza/Navigazione (Diff 9+):</strong></p>
+                <ul class="compact">
+                    <li><strong>Successo:</strong> Rotta ottimale, nessun problema</li>
+                    <li><strong>Fallimento:</strong> Persi (1d6 ore), oppure Incontro Pericoloso</li>
+                    <li><strong>Con Tocchi:</strong> Scopri rifugio, scorciatoia, o risorsa</li>
+                </ul>
+                
+                <div class="subsection-title">Pericoli del Deserto</div>
+                <table style="font-size: 8pt;">
+                    <tr>
+                        <th>Pericolo</th>
+                        <th>Effetto</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Tempesta Sabbia</strong></td>
+                        <td>Visibilità zero, perdita orientamento, 1d6 danno equipaggiamento</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Calore Estremo</strong></td>
+                        <td>Doppio consumo acqua, -1d6 a tiri fisici</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Freddo Notturno</strong></td>
+                        <td>Senza riparo: 1d6 danno, rischio Ferito</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Predatori</strong></td>
+                        <td>Incontro ostile (Tiro Stealth/Sopravvivenza per evitare)</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <!-- ABILITÀ -->
+            <div class="section">
+                <div class="section-title"><span class="icon">📊</span> ABILITÀ COMUNI</div>
+                
+                <table style="font-size: 8pt;">
+                    <tr>
+                        <th>Abilità</th>
+                        <th>Esempi d'Uso</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Combattimento</strong></td>
+                        <td>Attaccare, parare, manovre marziali</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sopravvivenza</strong></td>
+                        <td>Trovare acqua, tracciare, cacciare, primo soccorso basico</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Navigazione</strong></td>
+                        <td>Orientarsi, leggere stelle, mappe, evitare pericoli naturali</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Furtività</strong></td>
+                        <td>Nascondersi, muoversi silenziosamente, borseggiare</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Percezione</strong></td>
+                        <td>Notare dettagli, individuare imboscate, cercare indizi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Persuasione</strong></td>
+                        <td>Negoziare, mentire, intimidire, sedurre</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sapienza</strong></td>
+                        <td>Conoscenze storiche, culturali, Celesti, magia</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Meccanica</strong></td>
+                        <td>Riparare velivoli, disattivare trappole, sabotaggio</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Medicina</strong></td>
+                        <td>Curare ferite, diagnosticare veleni, chirurgia</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comando</strong></td>
+                        <td>Guidare gruppo, ispirare alleati, coordinare tattiche</td>
+                    </tr>
+                </table>
+                
+                <div class="subsection-title">Progressione Dadi Abilità</div>
+                <p class="compact" style="text-align: center;">
+                    <strong>d4 → d6 → d8 → d10 → d12</strong><br>
+                    <em>(Inesperto → Competente → Esperto → Maestro → Leggenda)</em>
+                </p>
+            </div>
+            
+            <!-- COOPERAZIONE -->
+            <div class="section">
+                <div class="section-title"><span class="icon">🤝</span> COOPERAZIONE</div>
+                
+                <div class="subsection-title">Aiutare un Alleato</div>
+                <p class="compact"><strong>Se hai abilità rilevante d6+:</strong></p>
+                <ul class="compact">
+                    <li>Descrivi come aiuti</li>
+                    <li>L'alleato ottiene <strong>+1d6</strong> al tiro</li>
+                    <li>Se alleato fallisce, anche tu subisci conseguenza</li>
+                </ul>
+                
+                <div class="subsection-title">Tiro di Gruppo</div>
+                <p class="compact">Quando tutto il gruppo lavora insieme:</p>
+                <ol class="compact">
+                    <li>Scegli <strong>leader</strong> (chi tira)</li>
+                    <li>Altri <strong>supportano</strong> (devono avere abilità d4+)</li>
+                    <li>Leader ottiene <strong>Vantaggio</strong> (3d6, tieni 2 migliori)</li>
+                    <li><strong>Successo:</strong> Tutti beneficiano</li>
+                    <li><strong>Fallimento:</strong> Tutti subiscono conseguenze</li>
+                </ol>
+                
+                <div class="example">
+                    <strong>Esempio:</strong> Gruppo attraversa canyon pericoloso. Navigatore fa tiro Sopravvivenza con Vantaggio (altri lo aiutano). Successo = tutti passano sani. Fallimento = tutti cadono/si feriscono.
+                </div>
+            </div>
+            
+            <!-- COMMERCIO -->
+            <div class="section">
+                <div class="section-title"><span class="icon">💰</span> COMMERCIO RAPIDO</div>
+                
+                <div class="subsection-title">Prezzi Standard</div>
+                <table style="font-size: 8pt;">
+                    <tr>
+                        <th>Oggetto</th>
+                        <th>Costo (Dinar)</th>
+                    </tr>
+                    <tr>
+                        <td>Razione cibo (1 giorno)</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Acqua (10 litri)</td>
+                        <td>2-5 (dipende da scarsità)</td>
+                    </tr>
+                    <tr>
+                        <td>Arma semplice</td>
+                        <td>10-20</td>
+                    </tr>
+                    <tr>
+                        <td>Armatura leggera</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Cavalcatura (cammello)</td>
+                        <td>100-200</td>
+                    </tr>
+                    <tr>
+                        <td>Velivolo base (usato)</td>
+                        <td>500-1000</td>
+                    </tr>
+                    <tr>
+                        <td>Carburante (1 unità)</td>
+                        <td>20</td>
+                    </tr>
+                </table>
+                
+                <div class="subsection-title">Negoziare</div>
+                <p class="compact"><strong>Tiro Persuasione vs Persuasione del mercante:</strong></p>
+                <ul class="compact">
+                    <li><strong>Vinci:</strong> -20% prezzo o +20% vendita</li>
+                    <li><strong>Con Tocchi:</strong> Ogni Tocco = -/+10% extra</li>
+                    <li><strong>Perdi:</strong> Prezzo originale (o peggiore se fallisci male)</li>
+                </ul>
+            </div>
+            
+            <!-- ARTEFATTI -->
+            <div class="section">
+                <div class="section-title"><span class="icon">🔮</span> ARTEFATTI CELESTI</div>
+                
+                <p class="compact"><strong>Cariche:</strong> Artefatti hanno 1d6+2 cariche. Spendi carica per attivare.</p>
+                
+                <div class="subsection-title">Ricarica</div>
+                <ul class="compact">
+                    <li><strong>Luce solare diretta:</strong> 1 carica/8 ore</li>
+                    <li><strong>Luce lunare:</strong> 1 carica/notte (con luna piena)</li>
+                    <li><strong>Cristalli energetici:</strong> 1d6 cariche (consumano cristallo)</li>
+                </ul>
+                
+                <div class="subsection-title">Contraccolpo</div>
+                <p class="compact">Se usi artefatto a <strong>0 cariche</strong>:</p>
+                <ul class="compact">
+                    <li>Tiro Resistenza (Diff 11)</li>
+                    <li><strong>Successo:</strong> Funziona ma subisci 1d6 danno</li>
+                    <li><strong>Fallimento:</strong> Non funziona + 2d6 danno + Artefatto danneggiato</li>
+                </ul>
+            </div>
+            
+            <!-- NOTE GM -->
+            <div class="section" style="background: rgba(26, 35, 50, 0.1);">
+                <div class="section-title"><span class="icon">📝</span> NOTE PER IL GM</div>
+                
+                <ul class="compact">
+                    <li><strong>Regola d'Oro:</strong> Se incerto, chiedi tiro Diff 9+</li>
+                    <li><strong>Fallimenti Interessanti:</strong> Mai bloccare storia, sempre complicare</li>
+                    <li><strong>Usa Tocchi:</strong> Incoraggia creatività nelle spese</li>
+                    <li><strong>Fronti:</strong> Fazioni agiscono anche off-screen</li>
+                    <li><strong>Sandbox:</strong> Prepara situazioni, non trame</li>
+                    <li><strong>Dire Sempre Conseguenze:</strong> "Se fallisci, X succede"</li>
+                </ul>
+                
+                <div class="example">
+                    <strong>Telegrafare Pericolo:</strong> "Vedi tracce fresche di predatore grande. Se proseguite senza precauzioni, probabilmente vi attaccherà di notte. Cosa fate?"
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script>
+        // Rendering per stampa
+        window.onload = function() {
+            document.title = "The Serpent Road - Quick Reference";
+        }
+    </script>
+</body>
+</html>

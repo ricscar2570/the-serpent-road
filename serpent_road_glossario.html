@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - Glossario Essenziale</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--dark-sand) 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 30px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--accent-gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            color: var(--sand);
+            font-style: italic;
+        }
+        
+        .category {
+            margin-bottom: 30px;
+        }
+        
+        .category-header {
+            background: var(--night-blue);
+            color: var(--accent-gold);
+            padding: 12px 20px;
+            margin: 30px 0 15px 0;
+            border-radius: 8px;
+            font-size: 1.3em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .term {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            border-left: 4px solid var(--desert-red);
+            border-radius: 5px;
+        }
+        
+        .term-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--desert-red);
+            margin-bottom: 5px;
+        }
+        
+        .term-pronunciation {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        
+        .term-definition {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .term-see-also {
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: var(--desert-red);
+            font-style: italic;
+        }
+        
+        .cross-reference {
+            color: var(--desert-red);
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 1px dotted var(--desert-red);
+        }
+        
+        .cross-reference:hover {
+            color: var(--accent-gold);
+            border-bottom-color: var(--accent-gold);
+        }
+        
+        .example {
+            background: #fff9e6;
+            border-left: 3px solid var(--accent-gold);
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 0.95em;
+            border-radius: 3px;
+        }
+        
+        .alphabet-nav {
+            background: var(--dark-sand);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            text-align: center;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .alphabet-nav a {
+            display: inline-block;
+            color: var(--night-blue);
+            text-decoration: none;
+            padding: 5px 10px;
+            margin: 0 2px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .alphabet-nav a:hover {
+            background: var(--accent-gold);
+            color: white;
+        }
+        
+        .letter-divider {
+            font-size: 3em;
+            color: var(--desert-red);
+            font-weight: bold;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+        
+        @media print {
+            body { background: white; padding: 0; }
+            .alphabet-nav { position: static; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>THE SERPENT ROAD</h1>
+            <p>Glossario Essenziale - Termini, Meccaniche e Ambientazione</p>
+        </div>
+        
+        <div class="alphabet-nav">
+            <a href="#A">A</a>
+            <a href="#C">C</a>
+            <a href="#D">D</a>
+            <a href="#E">E</a>
+            <a href="#F">F</a>
+            <a href="#G">G</a>
+            <a href="#I">I</a>
+            <a href="#M">M</a>
+            <a href="#N">N</a>
+            <a href="#O">O</a>
+            <a href="#P">P</a>
+            <a href="#R">R</a>
+            <a href="#S">S</a>
+            <a href="#T">T</a>
+            <a href="#V">V</a>
+        </div>
+        
+        <!-- CATEGORIA MECCANICHE DI GIOCO -->
+        <div class="category">
+            <div class="category-header">⚙️ MECCANICHE DI GIOCO</div>
+            
+            <div id="A" class="letter-divider">A</div>
+            
+            <div class="term">
+                <div class="term-name">Abilità</div>
+                <div class="term-definition">
+                    Competenze specifiche del personaggio, rappresentate da dadi di dimensioni variabili (d4, d6, d8, d10, d12). Maggiore è il dado, più il personaggio è esperto in quell'area. Le abilità principali includono: <strong>Combattimento, Sopravvivenza, Percezione, Furtività, Persuasione, Inganno, Conoscenze, Medicina, Meccanica, Atletica</strong>.
+                </div>
+                <div class="example">
+                    <strong>Esempio:</strong> Un Navigatore con Sopravvivenza d8 è più esperto di un Corsaro con Sopravvivenza d4.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Azione</div>
+                <div class="term-definition">
+                    In combattimento, ogni personaggio ha diritto a <strong>1 azione</strong> e <strong>1 movimento</strong> per turno. Le azioni possono essere: attaccare, difendere, mirare, ricaricare, usare un oggetto, aiutare un alleato, o altre attività che richiedono concentrazione significativa.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Aiuto / Cooperazione</div>
+                <div class="term-definition">
+                    Quando un personaggio assiste un altro in un'azione, il personaggio che esegue l'azione riceve <strong>-1 alla difficoltà</strong> del tiro. Chi aiuta deve avere almeno <strong>d6</strong> nell'abilità rilevante. Più alleati possono cooperare, fino a un massimo di <strong>-3 alla difficoltà</strong>.
+                </div>
+            </div>
+            
+            <div id="C" class="letter-divider">C</div>
+            
+            <div class="term">
+                <div class="term-name">Condizione</div>
+                <div class="term-definition">
+                    Stato temporaneo negativo che affligge il personaggio, imponendo penalità alle azioni. Le condizioni principali sono: <strong>Ferito</strong> (+1 diff. azioni fisiche), <strong>Esausto</strong> (+2 diff. tutte le azioni), <strong>Disidratato</strong> (+2 diff. azioni fisiche, -2 danni), <strong>Affamato</strong> (+1 diff., no recupero PF), <strong>Avvelenato</strong> (1d4 danno/ora), <strong>Accecato</strong> (+4 diff. azioni visive), <strong>Morente</strong> (incosciente, rischio morte).
+                </div>
+                <div class="term-see-also">Vedi anche: <a href="#R" class="cross-reference">Recupero</a></div>
+            </div>
+            
+            <div id="D" class="letter-divider">D</div>
+            
+            <div class="term">
+                <div class="term-name">Dado Abilità</div>
+                <div class="term-definition">
+                    Il dado variabile (d4, d6, d8, d10 o d12) che rappresenta il livello di competenza in un'abilità. Viene sommato ai 2d6 quando si effettua un tiro. Un d4 rappresenta un principiante, un d12 un maestro.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Difficoltà</div>
+                <div class="term-definition">
+                    Il numero che il risultato del tiro deve eguagliare o superare per avere successo. Le difficoltà standard sono: <strong>7+</strong> (Routine), <strong>9+</strong> (Normale), <strong>11+</strong> (Difficile), <strong>13+</strong> (Ardua), <strong>15+</strong> (Eroica). Il GM può modificare la difficoltà in base alle circostanze.
+                </div>
+            </div>
+            
+            <div id="F" class="letter-divider">F</div>
+            
+            <div class="term">
+                <div class="term-name">Fronte</div>
+                <div class="term-definition">
+                    Un'entità o minaccia che avanza autonomamente nel mondo di gioco anche quando i personaggi non la affrontano direttamente. Ogni Fronte ha <strong>obiettivi</strong>, <strong>tappe</strong> progressive, e <strong>conseguenze</strong> se non viene fermato. I Fronti creano dinamicità nel mondo e senso di urgenza.
+                </div>
+                <div class="example">
+                    <strong>Esempio:</strong> "L'Espansione Imperiale" è un Fronte. Se ignorato, l'Impero conquisterà gradualmente più territorio, imponendo leggi sempre più restrittive.
+                </div>
+                <div class="term-see-also">Vedi anche: <a href="#F" class="cross-reference">Fazioni</a></div>
+            </div>
+            
+            <div id="I" class="letter-divider">I</div>
+            
+            <div class="term">
+                <div class="term-name">Iniziativa</div>
+                <div class="term-definition">
+                    All'inizio del combattimento, ogni personaggio effettua un tiro di <strong>Combattimento</strong> (o <strong>Agilità</strong> se appropriato). Chi ottiene il risultato più alto agisce per primo. In caso di parità, agisce per primo chi ha il dado abilità più grande.
+                </div>
+            </div>
+            
+            <div id="P" class="letter-divider">P</div>
+            
+            <div class="term">
+                <div class="term-name">Punti Ferita (PF)</div>
+                <div class="term-definition">
+                    Rappresentano la resistenza fisica e la fortuna del personaggio. Quando i PF scendono a 0, il personaggio diventa <strong>Morente</strong>. I PF si recuperano con riposo e cure mediche. Il massimo di PF dipende dalla Costituzione e dal livello del personaggio.
+                </div>
+            </div>
+            
+            <div id="R" class="letter-divider">R</div>
+            
+            <div class="term">
+                <div class="term-name">Recupero</div>
+                <div class="term-definition">
+                    Processo di guarigione e rimozione delle condizioni. <strong>Riposo Breve</strong> (1 ora): recupera 1d6 PF se si beve acqua. <strong>Riposo Lungo</strong> (8 ore): recupera metà PF massimi e rimuove 1 condizione lieve. <strong>Cure Mediche</strong>: Tiro Medicina (diff. 9+) per stabilizzare Morenti o curare condizioni specifiche.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Risoluzione dell'Azione</div>
+                <div class="term-definition">
+                    Il sistema meccanico centrale: tira <strong>2d6 + dado abilità</strong>, confronta con la <strong>difficoltà</strong>. Se il totale è uguale o superiore, l'azione riesce. Ogni 3 punti oltre la difficoltà generano 1 <strong>Tocco di Qualità</strong>.
+                </div>
+                <div class="term-see-also">Vedi anche: <a href="#T" class="cross-reference">Tocchi di Qualità</a></div>
+            </div>
+            
+            <div id="S" class="letter-divider">S</div>
+            
+            <div class="term">
+                <div class="term-name">Successo Parziale</div>
+                <div class="term-definition">
+                    Quando un tiro è vicino alla difficoltà richiesta (tipicamente 1-2 punti sotto), il GM può concedere un <strong>successo parziale</strong>: ottieni ciò che volevi, ma con un costo o una complicazione. Esempio: riesci a scassinare la serratura, ma ci vuole più tempo del previsto e senti delle guardie avvicinarsi.
+                </div>
+            </div>
+            
+            <div id="T" class="letter-divider">T</div>
+            
+            <div class="term">
+                <div class="term-name">Tocchi di Qualità</div>
+                <div class="term-definition">
+                    Misura di quanto è stato eccezionale un successo. Si calcolano come: <strong>(Risultato - Difficoltà) ÷ 3</strong> (arrotondato per difetto). I Tocchi possono essere spesi per ottenere benefici extra: <strong>1 Tocco</strong> per velocità, efficienza, informazioni o qualità migliorata; <strong>2 Tocchi</strong> per doppio effetto o evitare complicazioni; <strong>3 Tocchi</strong> per risultati spettacolari.
+                </div>
+                <div class="example">
+                    <strong>Esempio:</strong> Ottieni risultato 15 contro difficoltà 9. Hai 2 Tocchi [(15-9)÷3=2]. Puoi spenderli per completare l'azione più velocemente E consumare meno risorse.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Tiro Contrapposto</div>
+                <div class="term-definition">
+                    Quando due personaggi (giocanti o non giocanti) competono direttamente, entrambi effettuano un tiro usando l'abilità appropriata. Chi ottiene il risultato più alto vince. In combattimento, attacchi e difese si risolvono tipicamente con tiri contrapposti.
+                </div>
+            </div>
+        </div>
+        
+        <!-- CATEGORIA AMBIENTAZIONE -->
+        <div class="category">
+            <div class="category-header">🏜️ AMBIENTAZIONE E MONDO</div>
+            
+            <div class="term">
+                <div class="term-name">Artefatti Celesti</div>
+                <div class="term-definition">
+                    Tecnologia antica lasciata dai <strong>Celesti</strong>, spesso trovata nelle rovine. Gli artefatti hanno <strong>cariche limitate</strong> (3-10 tipicamente) e producono effetti straordinari: purificare acqua, curare ferite, creare barriere protettive. Ricaricarli richiede sorgenti di energia Celeste, estremamente rare. Quando le cariche scendono a 2 o meno, c'è rischio di malfunzionamento permanente.
+                </div>
+                <div class="term-see-also">Vedi anche: <a href="#C" class="cross-reference">Celesti</a>, <a href="#R" class="cross-reference">Rovine</a></div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Celesti</div>
+                <div class="term-pronunciation">(che-LÉS-ti)</div>
+                <div class="term-definition">
+                    Misteriosa civiltà avanzata che dominava il mondo prima del <strong>Collasso</strong>. Non si sa se fossero umani evoluti, alieni, o qualcos'altro. Hanno lasciato <strong>rovine</strong> piene di tecnologia incomprensibile, <strong>artefatti</strong> potenti, e architettura impossibile. La loro scomparsa rimane uno dei grandi misteri del mondo.
+                </div>
+                <div class="term-see-also">Vedi anche: <a href="#C" class="cross-reference">Collasso</a></div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Collasso, Il</div>
+                <div class="term-definition">
+                    Evento catastrofico avvenuto circa 500 anni fa che distrusse la civiltà dei <strong>Celesti</strong> e trasformò gran parte del mondo in deserto. Le cause sono sconosciute: guerra, disastro naturale, esperimento fallito? Nessuno lo sa con certezza. Il Collasso è il momento zero della storia recente.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Corsari del Deserto</div>
+                <div class="term-definition">
+                    <strong>Fazione</strong> di predoni, ribelli e spiriti liberi che rifiutano il dominio dell'<strong>Impero Samarkandara</strong>. Operano da basi nascoste nel deserto, assaltando carovane imperiali e commerciali. Alcuni li vedono come romantici combattenti per la libertà, altri come banditi senza scrupoli. La verità probabilmente include entrambe le cose.
+                </div>
+                <div class="term-see-also">Vedi anche: <a href="#F" class="cross-reference">Fazioni</a>, <a href="#I" class="cross-reference">Impero Samarkandara</a></div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Dracma (dr)</div>
+                <div class="term-definition">
+                    La valuta più diffusa nel mondo post-Collasso. Monete di metallo (rame, argento, oro) con valore standardizzato dalla <strong>Gilda dei Mercanti</strong>. 1 dracma d'argento (la più comune) può comprare una cena abbondante o 2 litri d'acqua in città. Nel deserto, l'acqua può costare molto di più.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Dune Cantanti</div>
+                <div class="term-definition">
+                    Regione del deserto dove le dune producono suoni inquietanti quando il vento soffia. Alcuni dicono sia dovuto alla composizione particolare della sabbia, altri credono siano gli spiriti dei Celesti che ancora camminano. Le Dune Cantanti sono difficili da navigare e ricche di rovine pericolose.
+                </div>
+            </div>
+            
+            <div id="F" class="letter-divider">F</div>
+            
+            <div class="term">
+                <div class="term-name">Fazioni</div>
+                <div class="term-definition">
+                    Organizzazioni maggiori che si contendono potere e influenza nel mondo. Le cinque principali sono: <strong>Impero Samarkandara</strong> (ordine e controllo), <strong>Corsari del Deserto</strong> (libertà e caos), <strong>Gilda dei Mercanti</strong> (commercio e neutralità), <strong>Osservatori del Velo</strong> (conoscenza e mistero), <strong>Nomadi Liberi</strong> (tradizione e sopravvivenza). Ogni fazione ha obiettivi propri e può essere alleata, nemica o neutrale verso i personaggi.
+                </div>
+                <div class="term-see-also">Vedi anche: <a href="#R" class="cross-reference">Reputazione</a></div>
+            </div>
+            
+            <div id="G" class="letter-divider">G</div>
+            
+            <div class="term">
+                <div class="term-name">Gilda dei Mercanti</div>
+                <div class="term-definition">
+                    <strong>Fazione</strong> che controlla gran parte del commercio tra le città. Ufficialmente neutrale, la Gilda commercia con tutti: Impero, Corsari, chiunque paghi. Mantengono <strong>caravanserragli</strong> (stazioni di rifornimento) lungo le rotte principali. Rispettano il profitto sopra ogni cosa e sono maestri della diplomazia economica.
+                </div>
+            </div>
+            
+            <div id="I" class="letter-divider">I</div>
+            
+            <div class="term">
+                <div class="term-name">Impero Samarkandara</div>
+                <div class="term-pronunciation">(sa-mar-kan-DA-ra)</div>
+                <div class="term-definition">
+                    La più grande potenza politica del mondo conosciuto. L'Impero controlla diverse città-oasi e le rotte commerciali principali. Cerca di imporre ordine e legge nel caos post-Collasso, ma i suoi metodi sono spesso brutali. Diffida degli stranieri e dei portatori di artefatti non autorizzati. Il suo simbolo è il sole dorato.
+                </div>
+                <div class="term-see-also">Vedi anche: <a href="#C" class="cross-reference">Corsari del Deserto</a></div>
+            </div>
+            
+            <div id="M" class="letter-divider">M</div>
+            
+            <div class="term">
+                <div class="term-name">Mare Secco, Il</div>
+                <div class="term-definition">
+                    Vasta distesa di deserto piatto e salato, un tempo forse davvero un mare. Attraversarlo è pericoloso: nessuna copertura, temperature estreme, frequenti <strong>tempeste di sabbia</strong>. Ma è anche la via più diretta tra le città del nord e del sud, quindi carovane coraggiose (o disperate) lo attraversano regolarmente.
+                </div>
+            </div>
+            
+            <div id="N" class="letter-divider">N</div>
+            
+            <div class="term">
+                <div class="term-name">Nomadi Liberi</div>
+                <div class="term-definition">
+                    <strong>Fazione</strong> di tribù che vivono nel deserto da generazioni, muovendosi stagionalmente tra oasi e pascoli. Conoscono il deserto meglio di chiunque altro. Accoglienti con chi rispetta le loro tradizioni, spietati con chi non lo fa. Mantengono vivo il sapere pre-Collasso attraverso tradizione orale.
+                </div>
+            </div>
+            
+            <div id="O" class="letter-divider">O</div>
+            
+            <div class="term">
+                <div class="term-name">Osservatori del Velo</div>
+                <div class="term-definition">
+                    <strong>Fazione</strong> misteriosa e semi-religiosa che studia i <strong>Celesti</strong> e protegge i siti antichi. Credono che il <strong>Collasso</strong> non fu accidentale e che esista un "Velo" metafisico che separa il mondo materiale da... qualcos'altro. Sono gli unici a comprendere parzialmente la tecnologia Celeste. Vestono di blu notte e parlano per enigmi.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Oasi</div>
+                <div class="term-definition">
+                    Sorgente d'acqua nel deserto, spesso circondata da vegetazione. Le oasi sono preziose oltre ogni misura: chi le controlla controlla la vita stessa. Le oasi maggiori sono diventate città fortificate. Quelle minori sono contese tra nomadi, Impero e Corsari. Trovare un'oasi non mappata è come trovare un tesoro.
+                </div>
+            </div>
+            
+            <div id="R" class="letter-divider">R</div>
+            
+            <div class="term">
+                <div class="term-name">Reputazione</div>
+                <div class="term-definition">
+                    Misura di come una <strong>fazione</strong> vede il personaggio, su scala da -5 (nemico) a +5 (alleato fidato). La reputazione influenza prezzi, accesso a missioni speciali, e reazioni dei PNG. Si guadagna o perde attraverso azioni: aiutare una fazione aumenta la reputazione con loro (e probabilmente la diminuisce con i loro nemici).
+                </div>
+                <div class="example">
+                    <strong>Esempio:</strong> Se aiuti i Corsari a rubare un carico imperiale, la tua reputazione con i Corsari sale (+1 o +2) ma quella con l'Impero crolla (-2 o -3).
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Rovine</div>
+                <div class="term-definition">
+                    Resti delle città e strutture dei <strong>Celesti</strong>, sparse per il deserto. Le rovine contengono <strong>artefatti</strong> preziosi, ma anche pericoli: trappole ancora attive, radiazioni, automi guardiani malfunzionanti, e creature mutate. Esplorare rovine è redditizio ma mortale. Servono preparazione, equipaggiamento adeguato e un po' di fortuna.
+                </div>
+            </div>
+            
+            <div id="S" class="letter-divider">S</div>
+            
+            <div class="term">
+                <div class="term-name">Serpente, Il</div>
+                <div class="term-definition">
+                    Leggenda o realtà? Si dice che sotto il deserto dorma un'entità colossale, forse l'ultima creazione dei <strong>Celesti</strong>, forse qualcosa di più antico ancora. Alcune rovine mostrano rappresentazioni di un serpente cosmico che avvolge il mondo. Gli <strong>Osservatori del Velo</strong> credono che il Serpente si stia risvegliando. Nessuno sa cosa accadrà se questo è vero.
+                </div>
+            </div>
+            
+            <div id="T" class="letter-divider">T</div>
+            
+            <div class="term">
+                <div class="term-name">Tempesta di Sabbia</div>
+                <div class="term-definition">
+                    Fenomeno atmosferico letale: venti fortissimi sollevano sabbia che riduce visibilità a zero e può seppellire velivoli e persone. Durante una tempesta: <strong>-4 difficoltà</strong> a Percezione e Navigazione, velocità di viaggio ridotta a 1/4, consumo acqua raddoppiato, nessun riposo possibile. Trovare riparo è prioritario. Le tempeste durano da ore a giorni.
+                </div>
+            </div>
+            
+            <div id="V" class="letter-divider">V</div>
+            
+            <div class="term">
+                <div class="term-name">Velivoli</div>
+                <div class="term-definition">
+                    Mezzi di trasporto che usano tecnologia ibrida (meccanica convenzionale + frammenti di tecnologia Celeste) per "volare" sopra la sabbia. Vanno da piccoli <strong>skiff</strong> monoposto a grandi <strong>navi del deserto</strong> che trasportano cargo. Costosi da acquistare e mantenere, ma permettono di attraversare il deserto molto più velocemente. Sono status symbol e investimenti pratici.
+                </div>
+            </div>
+        </div>
+        
+        <!-- CATEGORIA ARCHETIPI -->
+        <div class="category">
+            <div class="category-header">👥 ARCHETIPI DI PERSONAGGIO</div>
+            
+            <div class="term">
+                <div class="term-name">Corsaro</div>
+                <div class="term-definition">
+                    Predone del deserto, combattente abile e opportunista. Vive di razzie e commerci al margine della legalità. Esperto in combattimento e furtività. <strong>Valori tipici:</strong> Libertà personale, profitto, audacia. <strong>Abilità chiave:</strong> Combattimento, Furtività, Inganno. <strong>Equipaggiamento caratteristico:</strong> Armi leggere ma letali, armatura leggera per mobilità, strumenti da scasso.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Custode</div>
+                <div class="term-definition">
+                    Guerriero disciplinato, spesso al servizio dell'<strong>Impero</strong> o di una città-stato. Protegge gli innocenti e mantiene l'ordine. <strong>Valori tipici:</strong> Dovere, onore, protezione dei deboli. <strong>Abilità chiave:</strong> Combattimento, Atletica, Persuasione. <strong>Equipaggiamento caratteristico:</strong> Armatura media-pesante, armi da mischia solide, simboli di autorità.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Mercante</div>
+                <div class="term-definition">
+                    Commerciante astuto che fa fortuna comprando e vendendo attraverso il deserto. Esperto negoziatore e valutatore di merci. <strong>Valori tipici:</strong> Profitto, neutralità pragmatica, contatti utili. <strong>Abilità chiave:</strong> Persuasione, Conoscenze, Percezione. <strong>Equipaggiamento caratteristico:</strong> Merci varie, bilance e strumenti di valutazione, documenti e mappe commerciali.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Navigatore</div>
+                <div class="term-definition">
+                    Esperto del deserto, capace di leggere stelle, venti e sabbia per trovare la strada. Maestro di sopravvivenza. <strong>Valori tipici:</strong> Conoscenza, sicurezza del gruppo, rispetto per il deserto. <strong>Abilità chiave:</strong> Sopravvivenza, Percezione, Conoscenze. <strong>Equipaggiamento caratteristico:</strong> Strumenti di navigazione, scorte d'emergenza, mappe e diari.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Ricercatore</div>
+                <div class="term-definition">
+                    Studioso ossessionato dai segreti dei <strong>Celesti</strong>. Esplora rovine per recuperare artefatti e conoscenza. <strong>Valori tipici:</strong> Scoperta, comprensione, preservazione del sapere. <strong>Abilità chiave:</strong> Conoscenze, Medicina, Meccanica. <strong>Equipaggiamento caratteristico:</strong> Strumenti da archeologo, diari di ricerca, dispositivi per analizzare artefatti.
+                </div>
+            </div>
+            
+            <div class="term">
+                <div class="term-name">Veggente</div>
+                <div class="term-definition">
+                    Mistico che afferma di percepire ciò che altri non vedono: spiriti, presagi, il "Velo" oltre la realtà. Spesso affiliato agli <strong>Osservatori del Velo</strong>. <strong>Valori tipici:</strong> Equilibrio spirituale, protezione dai pericoli occulti, comprensione del mistero. <strong>Abilità chiave:</strong> Percezione, Conoscenze, Persuasione. <strong>Equipaggiamento caratteristico:</strong> Talismani, incensi, testi antichi.
+                </div>
+            </div>
+        </div>
+        
+        <!-- FOOTER -->
+        <div style="margin-top: 50px; padding-top: 20px; border-top: 2px solid var(--accent-gold); text-align: center; color: #666; font-style: italic;">
+            <p>«Nel deserto, le parole sono preziose quanto l'acqua. Usale con saggezza.»</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">— Proverbio dei Nomadi Liberi</p>
+        </div>
+    </div>
+</body>
+</html>

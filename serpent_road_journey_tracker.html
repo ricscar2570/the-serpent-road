@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - Journey Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--dark-sand) 100%);
+            padding: 20px;
+        }
+        
+        .journey-tracker {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            padding: 15mm;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            border-radius: 8px;
+        }
+        
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32pt;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .header p {
+            font-size: 14pt;
+            font-style: italic;
+            color: var(--sand);
+        }
+        
+        /* SEZIONI */
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            color: var(--desert-red);
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* INFO VIAGGIO */
+        .journey-info {
+            background: var(--sand);
+            border-left: 5px solid var(--accent-gold);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .info-field {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .info-field label {
+            font-weight: bold;
+            font-size: 9pt;
+            color: var(--night-blue);
+        }
+        
+        .info-field input {
+            padding: 8px 10px;
+            background: white;
+            border: 2px solid var(--dark-sand);
+            border-radius: 4px;
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+        }
+        
+        .info-field input[type="number"] {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14pt;
+            color: var(--desert-red);
+        }
+        
+        /* TURNI DI VIAGGIO */
+        .turn-section {
+            background: linear-gradient(135deg, rgba(232, 212, 176, 0.2) 0%, rgba(196, 165, 116, 0.1) 100%);
+            border: 2px solid var(--dark-sand);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .turn-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        
+        .turn-number {
+            background: var(--accent-gold);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 12pt;
+        }
+        
+        .turn-time {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .time-badge {
+            background: var(--night-blue);
+            color: var(--accent-gold);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 10pt;
+            font-weight: bold;
+        }
+        
+        .turn-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .turn-box {
+            background: white;
+            border: 2px solid var(--dark-sand);
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .turn-box h4 {
+            font-size: 10pt;
+            color: var(--desert-red);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .turn-box input[type="text"],
+        .turn-box textarea {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-family: 'Georgia', serif;
+            font-size: 10pt;
+        }
+        
+        .turn-box textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+        
+        .turn-box input[type="number"] {
+            width: 80px;
+            padding: 6px 8px;
+            border: 2px solid var(--dark-sand);
+            border-radius: 3px;
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .inline-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .inline-stat label {
+            font-size: 9pt;
+            font-weight: bold;
+        }
+        
+        /* RISORSE GRUPPO */
+        .resources-panel {
+            background: rgba(212, 175, 55, 0.15);
+            border: 3px solid var(--accent-gold);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .resource-card {
+            background: white;
+            border: 2px solid var(--dark-sand);
+            border-radius: 5px;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .resource-icon {
+            font-size: 24pt;
+            margin-bottom: 5px;
+        }
+        
+        .resource-label {
+            font-size: 9pt;
+            font-weight: bold;
+            color: var(--night-blue);
+            margin-bottom: 8px;
+        }
+        
+        .resource-value {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .resource-value input {
+            width: 100%;
+            padding: 8px;
+            text-align: center;
+            font-size: 16pt;
+            font-weight: bold;
+            border: 2px solid var(--desert-red);
+            border-radius: 4px;
+            color: var(--desert-red);
+        }
+        
+        .resource-value small {
+            font-size: 8pt;
+            color: #666;
+        }
+        
+        /* CONDIZIONI AMBIENTALI */
+        .conditions-box {
+            background: rgba(184, 92, 60, 0.1);
+            border-left: 5px solid var(--desert-red);
+            padding: 12px;
+            border-radius: 5px;
+        }
+        
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .condition-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .condition-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--night-blue);
+            border-radius: 3px;
+            background: white;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .condition-checkbox.active {
+            background: var(--desert-red);
+            position: relative;
+        }
+        
+        .condition-checkbox.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 14pt;
+        }
+        
+        .condition-label {
+            font-size: 10pt;
+            cursor: pointer;
+        }
+        
+        /* FATICA TRACKER */
+        .fatigue-tracker {
+            background: white;
+            border: 2px solid var(--night-blue);
+            border-radius: 5px;
+            padding: 12px;
+        }
+        
+        .fatigue-scale {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .fatigue-box {
+            flex: 1;
+            height: 50px;
+            border: 2px solid var(--night-blue);
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 16pt;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        
+        .fatigue-box:hover {
+            background: rgba(184, 92, 60, 0.1);
+        }
+        
+        .fatigue-box.active {
+            background: var(--desert-red);
+            color: white;
+        }
+        
+        .fatigue-box small {
+            font-size: 7pt;
+            font-weight: normal;
+        }
+        
+        /* INCONTRI */
+        .encounter-log {
+            background: rgba(26, 35, 50, 0.05);
+            border: 2px solid var(--night-blue);
+            border-radius: 5px;
+            padding: 12px;
+        }
+        
+        .encounter-entry {
+            background: white;
+            border-left: 4px solid var(--accent-gold);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+        }
+        
+        .encounter-entry:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* NOTE */
+        .notes-area {
+            background: rgba(232, 212, 176, 0.2);
+            border: 2px solid var(--dark-sand);
+            border-radius: 5px;
+            padding: 12px;
+        }
+        
+        .notes-area textarea {
+            width: 100%;
+            min-height: 100px;
+            border: 1px solid var(--dark-sand);
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Georgia', serif;
+            font-size: 10pt;
+            resize: vertical;
+        }
+        
+        /* BOTTONI */
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid var(--dark-sand);
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--night-blue);
+        }
+        
+        .btn-primary:hover {
+            background: #E8D4B0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--night-blue);
+            color: var(--accent-gold);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--desert-red);
+            color: white;
+        }
+        
+        .btn-add {
+            background: var(--serpent-green);
+            color: white;
+        }
+        
+        .btn-add:hover {
+            background: #3d6b1e;
+        }
+        
+        /* SUMMARY BOX */
+        .summary-box {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .summary-box h3 {
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+            font-size: 16pt;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .summary-stat {
+            text-align: center;
+        }
+        
+        .summary-stat .value {
+            font-size: 24pt;
+            font-weight: bold;
+            color: var(--accent-gold);
+            display: block;
+        }
+        
+        .summary-stat .label {
+            font-size: 10pt;
+            color: var(--sand);
+        }
+        
+        /* FOOTER */
+        .footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 3px solid var(--accent-gold);
+            text-align: center;
+            font-style: italic;
+            color: var(--dark-sand);
+        }
+        
+        /* STAMPA */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .journey-tracker {
+                box-shadow: none;
+                width: 100%;
+                padding: 10mm;
+            }
+            
+            .action-buttons {
+                display: none;
+            }
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .journey-tracker {
+                width: 100%;
+                padding: 10px;
+            }
+            
+            .info-grid,
+            .turn-grid,
+            .resources-grid,
+            .conditions-grid,
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .fatigue-scale {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="journey-tracker">
+        
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🗺️ JOURNEY TRACKER</h1>
+            <p>Traccia il tuo viaggio attraverso le Serpent Road</p>
+        </div>
+        
+        <!-- INFO VIAGGIO -->
+        <div class="section">
+            <div class="section-title">📍 INFORMAZIONI VIAGGIO</div>
+            <div class="journey-info">
+                <div class="info-grid">
+                    <div class="info-field">
+                        <label>PARTENZA</label>
+                        <input type="text" placeholder="Es: Samarkandara" />
+                    </div>
+                    <div class="info-field">
+                        <label>DESTINAZIONE</label>
+                        <input type="text" placeholder="Es: Oasi di Zafir" />
+                    </div>
+                    <div class="info-field">
+                        <label>GIORNO #</label>
+                        <input type="number" value="1" min="1" />
+                    </div>
+                </div>
+                <div class="info-grid" style="margin-top: 10px;">
+                    <div class="info-field">
+                        <label>DISTANZA TOTALE (km)</label>
+                        <input type="number" value="120" min="0" />
+                    </div>
+                    <div class="info-field">
+                        <label>DISTANZA PERCORSA (km)</label>
+                        <input type="number" id="distanceTraveled" value="0" min="0" />
+                    </div>
+                    <div class="info-field">
+                        <label>DISTANZA RIMANENTE (km)</label>
+                        <input type="number" id="distanceRemaining" value="120" min="0" readonly style="background: #f5f5f5;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- RISORSE GRUPPO -->
+        <div class="section">
+            <div class="section-title">💰 RISORSE GRUPPO</div>
+            <div class="resources-panel">
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">💧</div>
+                        <div class="resource-label">ACQUA</div>
+                        <div class="resource-value">
+                            <input type="number" id="water" value="40" min="0" />
+                            <small>Litri totali</small>
+                        </div>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">🍞</div>
+                        <div class="resource-label">CIBO</div>
+                        <div class="resource-value">
+                            <input type="number" id="food" value="20" min="0" />
+                            <small>Razioni totali</small>
+                        </div>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">💰</div>
+                        <div class="resource-label">DENARO</div>
+                        <div class="resource-value">
+                            <input type="number" id="money" value="200" min="0" />
+                            <small>Dinar</small>
+                        </div>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">👥</div>
+                        <div class="resource-label">GRUPPO</div>
+                        <div class="resource-value">
+                            <input type="number" id="partySize" value="4" min="1" max="10" />
+                            <small>N° Persone</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FATICA GRUPPO -->
+        <div class="section">
+            <div class="section-title">😰 FATICA MEDIA GRUPPO</div>
+            <div class="fatigue-tracker">
+                <p style="font-size: 9pt; color: #666; margin-bottom: 8px;">Clicca sul livello di fatica attuale del gruppo</p>
+                <div class="fatigue-scale">
+                    <div class="fatigue-box" onclick="setFatigue(0)">
+                        0<br><small>OK</small>
+                    </div>
+                    <div class="fatigue-box" onclick="setFatigue(1)">
+                        1<br><small>OK</small>
+                    </div>
+                    <div class="fatigue-box" onclick="setFatigue(2)">
+                        2<br><small>OK</small>
+                    </div>
+                    <div class="fatigue-box" onclick="setFatigue(3)">
+                        3<br><small>-1d6</small>
+                    </div>
+                    <div class="fatigue-box" onclick="setFatigue(4)">
+                        4<br><small>-1d6</small>
+                    </div>
+                    <div class="fatigue-box" onclick="setFatigue(5)">
+                        5<br><small>Svant.</small>
+                    </div>
+                    <div class="fatigue-box" onclick="setFatigue(6)">
+                        6<br><small>Svant.</small>
+                    </div>
+                    <div class="fatigue-box" onclick="setFatigue(7)">
+                        7+<br><small>Collasso</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TURNO 1: MATTINA -->
+        <div class="section">
+            <div class="section-title">🌅 TURNO 1 - MATTINA (6 ore)</div>
+            <div class="turn-section">
+                <div class="turn-header">
+                    <div class="turn-number">GIORNO <input type="number" value="1" min="1" style="width: 50px; border: none; background: transparent; text-align: center; font-size: 12pt; font-weight: bold;" /></div>
+                    <div class="turn-time">
+                        <span class="time-badge">06:00 - 12:00</span>
+                        <span class="time-badge">☀️ Giorno</span>
+                    </div>
+                </div>
+                
+                <div class="turn-grid">
+                    <div class="turn-box">
+                        <h4>🧭 NAVIGAZIONE</h4>
+                        <div class="inline-stat">
+                            <label>Tiro:</label>
+                            <input type="number" placeholder="16" />
+                            <label>vs Diff:</label>
+                            <input type="number" value="9" />
+                        </div>
+                        <div class="inline-stat">
+                            <label>Risultato:</label>
+                            <input type="text" placeholder="Successo +1 Tocco" />
+                        </div>
+                        <div class="inline-stat">
+                            <label>Distanza:</label>
+                            <input type="number" value="8" style="width: 60px;" />
+                            <span style="font-size: 9pt;">km percorsi</span>
+                        </div>
+                    </div>
+                    
+                    <div class="turn-box">
+                        <h4>🎲 INCONTRO CASUALE</h4>
+                        <div class="inline-stat">
+                            <label>Tiro 1d6:</label>
+                            <input type="number" min="1" max="6" placeholder="5" style="width: 50px;" />
+                        </div>
+                        <textarea placeholder="Descrivi incontro se avvenuto..."></textarea>
+                    </div>
+                    
+                    <div class="turn-box">
+                        <h4>💧 CONSUMO RISORSE</h4>
+                        <div class="inline-stat">
+                            <label>Acqua:</label>
+                            <input type="number" value="-8" style="width: 60px;" />
+                            <span style="font-size: 9pt;">litri</span>
+                        </div>
+                        <div class="inline-stat">
+                            <label>Cibo:</label>
+                            <input type="number" value="-4" style="width: 60px;" />
+                            <span style="font-size: 9pt;">razioni</span>
+                        </div>
+                        <div class="inline-stat">
+                            <label>Fatica:</label>
+                            <input type="text" value="+1/PG" style="width: 80px;" />
+                        </div>
+                    </div>
+                    
+                    <div class="turn-box">
+                        <h4>📝 NOTE TURNO</h4>
+                        <textarea placeholder="Eventi, decisioni, scoperte..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TURNO 2: POMERIGGIO -->
+        <div class="section">
+            <div class="section-title">🌞 TURNO 2 - POMERIGGIO (6 ore)</div>
+            <div class="turn-section">
+                <div class="turn-header">
+                    <div class="turn-number">GIORNO <input type="number" value="1" min="1" style="width: 50px; border: none; background: transparent; text-align: center; font-size: 12pt; font-weight: bold;" /></div>
+                    <div class="turn-time">
+                        <span class="time-badge">12:00 - 18:00</span>
+                        <span class="time-badge">🔥 Caldo</span>
+                    </div>
+                </div>
+                
+                <div class="turn-grid">
+                    <div class="turn-box">
+                        <h4>🧭 NAVIGAZIONE</h4>
+                        <div class="inline-stat">
+                            <label>Tiro:</label>
+                            <input type="number" placeholder="" />
+                            <label>vs Diff:</label>
+                            <input type="number" value="11" />
+                        </div>
+                        <div class="inline-stat">
+                            <label>Risultato:</label>
+                            <input type="text" placeholder="" />
+                        </div>
+                        <div class="inline-stat">
+                            <label>Distanza:</label>
+                            <input type="number" value="8" style="width: 60px;" />
+                            <span style="font-size: 9pt;">km percorsi</span>
+                        </div>
+                    </div>
+                    
+                    <div class="turn-box">
+                        <h4>🎲 INCONTRO CASUALE</h4>
+                        <div class="inline-stat">
+                            <label>Tiro 1d6:</label>
+                            <input type="number" min="1" max="6" placeholder="" style="width: 50px;" />
+                        </div>
+                        <textarea placeholder="Descrivi incontro se avvenuto..."></textarea>
+                    </div>
+                    
+                    <div class="turn-box">
+                        <h4>💧 CONSUMO RISORSE</h4>
+                        <div class="inline-stat">
+                            <label>Acqua:</label>
+                            <input type="number" placeholder="-12" style="width: 60px;" />
+                            <span style="font-size: 9pt;">litri (+caldo)</span>
+                        </div>
+                        <div class="inline-stat">
+                            <label>Cibo:</label>
+                            <input type="number" placeholder="-4" style="width: 60px;" />
+                            <span style="font-size: 9pt;">razioni</span>
+                        </div>
+                        <div class="inline-stat">
+                            <label>Fatica:</label>
+                            <input type="text" placeholder="+1/PG" style="width: 80px;" />
+                        </div>
+                    </div>
+                    
+                    <div class="turn-box">
+                        <h4>📝 NOTE TURNO</h4>
+                        <textarea placeholder="Eventi, decisioni, scoperte..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TURNO 3: NOTTE / RIPOSO -->
+        <div class="section">
+            <div class="section-title">🌙 TURNO 3 - NOTTE (12 ore)</div>
+            <div class="turn-section">
+                <div class="turn-header">
+                    <div class="turn-number">GIORNO <input type="number" value="1" min="1" style="width: 50px; border: none; background: transparent; text-align: center; font-size: 12pt; font-weight: bold;" /></div>
+                    <div class="turn-time">
+                        <span class="time-badge">18:00 - 06:00</span>
+                        <span class="time-badge">🏕️ Riposo</span>
+                    </div>
+                </div>
+                
+                <div class="turn-grid">
+                    <div class="turn-box">
+                        <h4>🏕️ SETUP CAMPO</h4>
+                        <div class="inline-stat">
+                            <label>Tipo:</label>
+                            <input type="text" placeholder="Con tenda" />
+                        </div>
+                        <div class="inline-stat">
+                            <label>Tempo:</label>
+                            <input type="text" value="30 min" />
+                        </div>
+                        <textarea placeholder="Descrizione campo, posizione..."></textarea>
+                    </div>
+                    
+                    <div class="turn-box">
+                        <h4>👁️ GUARDIE (3 turni x 4h)</h4>
+                        <div class="inline-stat">
+                            <label>1° Turno:</label>
+                            <input type="text" placeholder="Nome PG" />
+                        </div>
+                        <div class="inline-stat">
+                            <label>2° Turno:</label>
+                            <input type="text" placeholder="Nome PG" />
+                        </div>
+                        <div class="inline-stat">
+                            <label>3° Turno:</label>
+                            <input type="text" placeholder="Nome PG" />
+                        </div>
+                    </div>
+                    
+                    <div class="turn-box">
+                        <h4>💤 RECUPERO</h4>
+                        <div class="inline-stat">
+                            <label>PV:</label>
+                            <input type="text" value="3d6/PG" />
+                        </div>
+                        <div class="inline-stat">
+                            <label>Fatica:</label>
+                            <input type="text" value="-3/PG" />
+                        </div>
+                        <div class="inline-stat">
+                            <label>Acqua:</label>
+                            <input type="number" value="-4" style="width: 60px;" />
+                            <span style="font-size: 9pt;">litri</span>
+                        </div>
+                        <div class="inline-stat">
+                            <label>Cibo:</label>
+                            <input type="number" value="-4" style="width: 60px;" />
+                            <span style="font-size: 9pt;">razioni</span>
+                        </div>
+                    </div>
+                    
+                    <div class="turn-box">
+                        <h4>📝 NOTE NOTTE</h4>
+                        <textarea placeholder="Eventi notturni, conversazioni, sogni..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CONDIZIONI AMBIENTALI -->
+        <div class="section">
+            <div class="section-title">🌡️ CONDIZIONI AMBIENTALI</div>
+            <div class="conditions-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">Seleziona condizioni attive:</p>
+                <div class="conditions-grid">
+                    <div class="condition-item">
+                        <div class="condition-checkbox" onclick="this.classList.toggle('active')"></div>
+                        <label class="condition-label" onclick="this.previousElementSibling.classList.toggle('active')">🔥 Calore Estremo (40°C+)</label>
+                    </div>
+                    <div class="condition-item">
+                        <div class="condition-checkbox" onclick="this.classList.toggle('active')"></div>
+                        <label class="condition-label" onclick="this.previousElementSibling.classList.toggle('active')">❄️ Freddo Notturno (0-5°C)</label>
+                    </div>
+                    <div class="condition-item">
+                        <div class="condition-checkbox" onclick="this.classList.toggle('active')"></div>
+                        <label class="condition-label" onclick="this.previousElementSibling.classList.toggle('active')">💨 Tempesta di Sabbia</label>
+                    </div>
+                    <div class="condition-item">
+                        <div class="condition-checkbox" onclick="this.classList.toggle('active')"></div>
+                        <label class="condition-label" onclick="this.previousElementSibling.classList.toggle('active')">⚡ Tempesta di Cristallo</label>
+                    </div>
+                    <div class="condition-item">
+                        <div class="condition-checkbox" onclick="this.classList.toggle('active')"></div>
+                        <label class="condition-label" onclick="this.previousElementSibling.classList.toggle('active')">🌙 Notte Senza Luna</label>
+                    </div>
+                    <div class="condition-item">
+                        <div class="condition-checkbox" onclick="this.classList.toggle('active')"></div>
+                        <label class="condition-label" onclick="this.previousElementSibling.classList.toggle('active')">☀️ Giornata Serena</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- LOG INCONTRI -->
+        <div class="section">
+            <div class="section-title">📜 LOG INCONTRI E EVENTI</div>
+            <div class="encounter-log">
+                <div class="encounter-entry">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <strong style="color: var(--desert-red);">Giorno 1, Mattina</strong>
+                        <span style="font-size: 9pt; color: #666;">Incontro: Carovana</span>
+                    </div>
+                    <textarea placeholder="Descrizione incontro/evento..." style="width: 100%; min-height: 50px; border: 1px solid #ddd; border-radius: 3px; padding: 8px; font-size: 10pt;"></textarea>
+                </div>
+                <button class="btn btn-add" onclick="addEncounter()" style="width: 100%; margin-top: 10px;">➕ Aggiungi Incontro</button>
+            </div>
+        </div>
+        
+        <!-- SUMMARY -->
+        <div class="summary-box">
+            <h3>📊 RIEPILOGO GIORNATA</h3>
+            <div class="summary-grid">
+                <div class="summary-stat">
+                    <span class="value" id="summaryDistance">16</span>
+                    <span class="label">km percorsi oggi</span>
+                </div>
+                <div class="summary-stat">
+                    <span class="value" id="summaryWater">-20</span>
+                    <span class="label">litri acqua consumati</span>
+                </div>
+                <div class="summary-stat">
+                    <span class="value" id="summaryFood">-12</span>
+                    <span class="label">razioni consumate</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NOTE GENERALI -->
+        <div class="section">
+            <div class="section-title">📓 NOTE GENERALI VIAGGIO</div>
+            <div class="notes-area">
+                <textarea placeholder="Osservazioni generali, obiettivi secondari, rumor raccolti, scoperte importanti..."></textarea>
+            </div>
+        </div>
+        
+        <!-- BOTTONI AZIONE -->
+        <div class="action-buttons">
+            <button class="btn btn-secondary" onclick="resetTracker()">🔄 Nuovo Viaggio</button>
+            <button class="btn btn-add" onclick="addDay()">➕ Aggiungi Giorno</button>
+            <button class="btn btn-primary" onclick="saveJourney()">💾 Salva Viaggio</button>
+            <button class="btn btn-secondary" onclick="loadJourney()">📂 Carica Viaggio</button>
+            <button class="btn btn-primary" onclick="window.print()">🖨️ Stampa</button>
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>🐍 THE SERPENT ROAD - Journey Tracker v1.0 🏜️</p>
+            <p style="font-size: 9pt; margin-top: 5px;">
+                "Ogni passo nel deserto è una storia. Ogni notte sotto le stelle, un ricordo."
+            </p>
+        </div>
+        
+    </div>
+    
+    <script>
+        // Imposta livello fatica
+        function setFatigue(level) {
+            const boxes = document.querySelectorAll('.fatigue-box');
+            boxes.forEach((box, index) => {
+                if (index <= level) {
+                    box.classList.add('active');
+                } else {
+                    box.classList.remove('active');
+                }
+            });
+        }
+        
+        // Calcola distanza rimanente
+        function updateDistance() {
+            const total = parseFloat(document.querySelector('input[placeholder="Es: Oasi di Zafir"]').closest('.info-grid').querySelector('input[type="number"]').value) || 120;
+            const traveled = parseFloat(document.getElementById('distanceTraveled').value) || 0;
+            document.getElementById('distanceRemaining').value = Math.max(0, total - traveled);
+        }
+        
+        // Aggiungi listener per aggiornamento distanza
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('distanceTraveled').addEventListener('input', updateDistance);
+        });
+        
+        // Aggiungi nuovo incontro
+        function addEncounter() {
+            const log = document.querySelector('.encounter-log');
+            const newEntry = document.createElement('div');
+            newEntry.className = 'encounter-entry';
+            newEntry.innerHTML = `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <strong style="color: var(--desert-red);">Giorno <input type="number" value="1" min="1" style="width: 40px; border: none; border-bottom: 1px solid #999; text-align: center;" />, <input type="text" placeholder="Turno" style="width: 80px; border: none; border-bottom: 1px solid #999;" /></strong>
+                    <span style="font-size: 9pt; color: #666;">Tipo: <input type="text" placeholder="Incontro" style="width: 100px; border: none; border-bottom: 1px solid #999; font-size: 9pt;" /></span>
+                </div>
+                <textarea placeholder="Descrizione incontro/evento..." style="width: 100%; min-height: 50px; border: 1px solid #ddd; border-radius: 3px; padding: 8px; font-size: 10pt;"></textarea>
+            `;
+            log.insertBefore(newEntry, log.lastElementChild);
+        }
+        
+        // Aggiungi nuovo giorno
+        function addDay() {
+            alert('Funzione "Aggiungi Giorno" - Duplica la struttura dei turni per un nuovo giorno.\n\nPer ora, scorri in alto e copia manualmente le sezioni turno cambiando i numeri del giorno.');
+        }
+        
+        // Salva viaggio
+        function saveJourney() {
+            const journeyData = {
+                departure: document.querySelector('input[placeholder="Es: Samarkandara"]').value,
+                destination: document.querySelector('input[placeholder="Es: Oasi di Zafir"]').value,
+                day: document.querySelector('.info-field input[type="number"]').value,
+                water: document.getElementById('water').value,
+                food: document.getElementById('food').value,
+                money: document.getElementById('money').value,
+                partySize: document.getElementById('partySize').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Salva in localStorage
+            localStorage.setItem('serpentRoadJourney', JSON.stringify(journeyData));
+            
+            // Download come file JSON
+            const dataStr = JSON.stringify(journeyData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'journey_' + (journeyData.destination || 'viaggio') + '.json';
+            link.click();
+            
+            alert('✅ Viaggio salvato con successo!\nFile JSON scaricato e salvato in localStorage.');
+        }
+        
+        // Carica viaggio
+        function loadJourney() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    try {
+                        const journeyData = JSON.parse(event.target.result);
+                        
+                        document.querySelector('input[placeholder="Es: Samarkandara"]').value = journeyData.departure || '';
+                        document.querySelector('input[placeholder="Es: Oasi di Zafir"]').value = journeyData.destination || '';
+                        document.getElementById('water').value = journeyData.water || 40;
+                        document.getElementById('food').value = journeyData.food || 20;
+                        document.getElementById('money').value = journeyData.money || 200;
+                        document.getElementById('partySize').value = journeyData.partySize || 4;
+                        
+                        alert('✅ Viaggio caricato con successo!');
+                    } catch (err) {
+                        alert('❌ Errore nel caricamento del file: ' + err.message);
+                    }
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        }
+        
+        // Reset tracker
+        function resetTracker() {
+            if (confirm('⚠️ Sei sicuro di voler resettare il tracker? Tutti i dati non salvati andranno persi.')) {
+                location.reload();
+            }
+        }
+        
+        // Auto-save ogni 30 secondi
+        setInterval(function() {
+            const journeyData = {
+                departure: document.querySelector('input[placeholder="Es: Samarkandara"]').value,
+                destination: document.querySelector('input[placeholder="Es: Oasi di Zafir"]').value,
+                water: document.getElementById('water').value,
+                food: document.getElementById('food').value,
+                money: document.getElementById('money').value,
+                partySize: document.getElementById('partySize').value,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('serpentRoadJourney_autosave', JSON.stringify(journeyData));
+        }, 30000);
+        
+        // Carica auto-save se presente
+        window.addEventListener('load', function() {
+            const autosave = localStorage.getItem('serpentRoadJourney_autosave');
+            if (autosave && confirm('📂 Trovato salvataggio automatico. Vuoi caricarlo?')) {
+                const journeyData = JSON.parse(autosave);
+                document.querySelector('input[placeholder="Es: Samarkandara"]').value = journeyData.departure || '';
+                document.querySelector('input[placeholder="Es: Oasi di Zafir"]').value = journeyData.destination || '';
+                document.getElementById('water').value = journeyData.water || 40;
+                document.getElementById('food').value = journeyData.food || 20;
+                document.getElementById('money').value = journeyData.money || 200;
+                document.getElementById('partySize').value = journeyData.partySize || 4;
+            }
+        });
+    </script>
+</body>
+</html>

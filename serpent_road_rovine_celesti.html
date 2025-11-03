@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - Rovine Celesti</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+            --ruin-stone: #8B7355;
+            --danger-red: #C41E3A;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--dark-sand) 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--ruin-stone) 0%, var(--night-blue) 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border: 4px solid var(--accent-gold);
+        }
+        
+        .header h1 {
+            font-size: 36pt;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+        }
+        
+        .header .subtitle {
+            font-size: 16pt;
+            font-style: italic;
+            color: var(--sand);
+        }
+        
+        .header .icon {
+            font-size: 48pt;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 24pt;
+            color: var(--ruin-stone);
+            border-bottom: 4px solid var(--accent-gold);
+            padding-bottom: 10px;
+            margin: 40px 0 20px 0;
+        }
+        
+        .ruin {
+            background: linear-gradient(135deg, rgba(139, 115, 85, 0.08) 0%, rgba(232, 212, 176, 0.15) 100%);
+            border: 3px solid var(--ruin-stone);
+            border-left: 6px solid var(--accent-gold);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .ruin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        
+        .ruin-title {
+            font-size: 20pt;
+            color: var(--ruin-stone);
+            font-weight: bold;
+        }
+        
+        .ruin-level {
+            background: var(--danger-red);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 10pt;
+            font-weight: bold;
+        }
+        
+        .ruin-description {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-left: 3px solid var(--ruin-stone);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .stat-box {
+            background: white;
+            border: 2px solid var(--dark-sand);
+            padding: 10px;
+            border-radius: 4px;
+        }
+        
+        .stat-label {
+            font-size: 9pt;
+            text-transform: uppercase;
+            color: var(--ruin-stone);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            font-size: 11pt;
+            color: var(--text-dark);
+        }
+        
+        .map-box {
+            background: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 9pt;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border: 3px solid var(--ruin-stone);
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.2;
+        }
+        
+        .legend {
+            background: rgba(139, 115, 85, 0.1);
+            border: 2px solid var(--ruin-stone);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 9pt;
+        }
+        
+        .legend-item {
+            display: inline-block;
+            margin-right: 15px;
+            margin-bottom: 5px;
+        }
+        
+        .rooms {
+            background: rgba(232, 212, 176, 0.2);
+            border: 2px solid var(--dark-sand);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .rooms h4 {
+            color: var(--ruin-stone);
+            margin-bottom: 10px;
+            font-size: 12pt;
+        }
+        
+        .room {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-left: 3px solid var(--accent-gold);
+            border-radius: 3px;
+        }
+        
+        .room-name {
+            font-weight: bold;
+            color: var(--ruin-stone);
+            font-size: 11pt;
+        }
+        
+        .boss-box {
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.15) 0%, rgba(26, 35, 50, 0.1) 100%);
+            border: 3px solid var(--danger-red);
+            border-left: 6px solid var(--danger-red);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .boss-box h4 {
+            color: var(--danger-red);
+            margin-bottom: 10px;
+            font-size: 14pt;
+        }
+        
+        .treasure-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(139, 115, 85, 0.1) 100%);
+            border: 3px solid var(--accent-gold);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .treasure-box h4 {
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            font-size: 12pt;
+        }
+        
+        .hooks {
+            background: rgba(45, 80, 22, 0.08);
+            border: 2px solid var(--serpent-green);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .hooks h4 {
+            color: var(--serpent-green);
+            margin-bottom: 10px;
+            font-size: 12pt;
+        }
+        
+        .hook {
+            margin: 6px 0;
+            padding: 6px 10px;
+            background: white;
+            border-left: 3px solid var(--serpent-green);
+            border-radius: 3px;
+            font-size: 10pt;
+        }
+        
+        .hook-number {
+            display: inline-block;
+            background: var(--serpent-green);
+            color: white;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .danger-box {
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.1) 0%, rgba(139, 115, 85, 0.05) 100%);
+            border: 2px solid var(--danger-red);
+            border-left: 5px solid var(--danger-red);
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .danger-box h4 {
+            color: var(--danger-red);
+            margin-bottom: 8px;
+            font-size: 11pt;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 10pt;
+        }
+        
+        th {
+            background: var(--ruin-stone);
+            color: white;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 8px;
+            border-bottom: 1px solid var(--dark-sand);
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(139, 115, 85, 0.05);
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        .intro-box {
+            background: rgba(232, 212, 176, 0.3);
+            border-left: 5px solid var(--accent-gold);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+            }
+            .ruin {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- HEADER -->
+        <div class="header">
+            <div class="icon">🏛️</div>
+            <h1>ROVINE CELESTI</h1>
+            <p class="subtitle">Luoghi Dimenticati della Civiltà Perduta</p>
+        </div>
+        
+        <!-- INTRODUZIONE -->
+        <div class="intro-box">
+            <p><strong>Prima del Cataclisma,</strong> i Celesti costruirono città che toccavano il cielo, laboratori dove piegavano le leggi della natura, templi dove veneravano forze che oggi chiamiamo "il Serpente".</p>
+            
+            <p style="margin-top: 10px;">Poi tutto finì. Le città crollarono. I laboratori si spensero. I templi furono sepolti dalla sabbia.</p>
+            
+            <p style="margin-top: 10px;">Ma le rovine rimangono. Alcune sono aperte, saccheggiate da generazioni di cercatori di tesori. Altre sono sigillate, protette da guardiani automatici o trappole ancora attive dopo millenni. E alcune... alcune sono vive, in modi che non dovrebbero essere possibili.</p>
+            
+            <p style="margin-top: 10px;"><strong>Questo catalogo presenta 10 rovine pronte all'uso:</strong> mappe, stanze, tesori, nemici, boss finali, e ganci narrativi. Sono moduli stand-alone o possono intrecciarsi in campagne più lunghe.</p>
+        </div>
+        
+        <h1>📋 COME USARE QUESTA GUIDA</h1>
+        
+        <table>
+            <tr>
+                <th>Elemento</th>
+                <th>Significato</th>
+            </tr>
+            <tr>
+                <td><strong>Livello</strong></td>
+                <td>Difficoltà consigliata: 1-3 (principianti), 4-6 (intermedi), 7-10 (esperti)</td>
+            </tr>
+            <tr>
+                <td><strong>Durata</strong></td>
+                <td>Tempo stimato esplorazione (1-3 sessioni)</td>
+            </tr>
+            <tr>
+                <td><strong>Mappa</strong></td>
+                <td>Layout ASCII con legenda simboli</td>
+            </tr>
+            <tr>
+                <td><strong>Stanze</strong></td>
+                <td>Descrizioni chiave per ogni area numerata</td>
+            </tr>
+            <tr>
+                <td><strong>Boss</strong></td>
+                <td>Nemico finale con stats complete, tattiche, loot</td>
+            </tr>
+            <tr>
+                <td><strong>Tesoro</strong></td>
+                <td>Artefatti, denaro, conoscenza ottenibili</td>
+            </tr>
+            <tr>
+                <td><strong>Ganci</strong></td>
+                <td>5 modi per introdurre la rovina in campagna</td>
+            </tr>
+        </table>
+        
+        <div class="danger-box">
+            <h4>⚠️ NOTA SUL SERPENTE</h4>
+            <p>Alcune rovine sono "attive" — il Serpente le osserva, o vi dorme sotto, o erano parte di progetti legati a lui. Usare artefatti potenti in queste rovine può avere conseguenze. Rovine marcate con 🐍 hanno connessione diretta al Serpente.</p>
+        </div>
+        
+        <!-- ROVINA 1 -->
+        <div class="ruin">
+            <div class="ruin-header">
+                <div class="ruin-title">1. 🏛️ LA BIBLIOTECA SOMMERSA</div>
+                <div class="ruin-level">LV 2-3</div>
+            </div>
+            
+            <div class="ruin-description">
+                Biblioteca accademica Celeste, ora mezza sommersa da lago sotterraneo formatosi dopo il Cataclisma. Sale superiori asciutte ma pericolanti. Sale inferiori allagate, accessibili solo immergendosi. Contiene conoscenza pre-Cataclisma ma anche guardiano automatico corrotto.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Durata</div>
+                    <div class="stat-value">1-2 sessioni</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Tema</div>
+                    <div class="stat-value">Esplorazione + Puzzle</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Pericolo Principale</div>
+                    <div class="stat-value">Crolli, Acqua, Golem</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricompensa</div>
+                    <div class="stat-value">Conoscenza + Artefatti minori</div>
+                </div>
+            </div>
+            
+            <div class="map-box">╔════════════════════════════════════════════╗
+║        LA BIBLIOTECA SOMMERSA              ║
+║         (Pianta Piano Superiore)           ║
+╠════════════════════════════════════════════╣
+║                                            ║
+║    ╔═══════╗         ╔═══════╗            ║
+║    ║   2   ║═════════║   3   ║            ║
+║    ║ Sala  ║  Ponte  ║ Sala  ║            ║
+║    ║Lettura║Crollato ║Mappe  ║            ║
+║    ╚═══╤═══╝         ╚═══╤═══╝            ║
+║        │                 │                 ║
+║        │    ╔═══════╗    │                 ║
+║        └════║   4   ║════┘                 ║
+║             ║ Atrio ║←─── Entrata          ║
+║             ║Centro ║                      ║
+║             ╚═══╤═══╝                      ║
+║                 │                          ║
+║            ╔════╧════╗                     ║
+║            ║    5    ║                     ║
+║            ║ Scala   ║                     ║
+║            ║Discesa  ║                     ║
+║            ║(Allagata)                     ║
+║            ╚════╤════╝                     ║
+║                 ↓                          ║
+║         [Piano Sommerso]                   ║
+║                                            ║
+║    Piano Sommerso (2m sotto acqua):        ║
+║                                            ║
+║         ╔═══════════════╗                  ║
+║         ║       6       ║                  ║
+║         ║  Sala Archivi ║                  ║
+║         ║   (Allagata)  ║                  ║
+║         ╚═══════╤═══════╝                  ║
+║                 │                          ║
+║         ╔═══════╧═══════╗                  ║
+║         ║       7       ║                  ║
+║         ║  Sanctum      ║                  ║
+║         ║  Guardiano    ║ ← BOSS          ║
+║         ╚═══════════════╝                  ║
+║                                            ║
+╚════════════════════════════════════════════╝</div>
+            
+            <div class="legend">
+                <strong>LEGENDA:</strong>
+                <div class="legend-item">║ = Muro</div>
+                <div class="legend-item">═ = Porta/Passaggio</div>
+                <div class="legend-item">↓ = Scala/Discesa</div>
+                <div class="legend-item">← = Entrata principale</div>
+                <div class="legend-item">[Numeri] = Stanze descritte sotto</div>
+            </div>
+            
+            <div class="rooms">
+                <h4>📍 DESCRIZIONI STANZE</h4>
+                
+                <div class="room">
+                    <div class="room-name">2. SALA LETTURA</div>
+                    <p><strong>Prima Impressione:</strong> Scaffali di legno pietrificato ancora eretti. Libri trasformati in polvere al tocco. Scheletri seduti ai tavoli, morti studiando.</p>
+                    <p><strong>Tesoro:</strong> Tiro Percezione Diff 11+: Trova 1 libro intatto sigillato in cristallo (Manuale Celeste: +1 dado Sapienza permanente a chi lo studia per 1 settimana).</p>
+                    <p><strong>Pericolo:</strong> Pavimento instabile. Peso >100kg causa crollo (Resistenza Diff 9+ o cadi piano sotto, 2d6 danno).</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">3. SALA MAPPE</div>
+                    <p><strong>Prima Impressione:</strong> Tavolo centrale con mappa olografica ancora attiva (tremola, instabile). Mostra continente pre-Cataclisma — tutto verde, nessun deserto.</p>
+                    <p><strong>Interazione:</strong> Tiro Sapienza/Meccanica Diff 13+: Ripara mappa. Ora mostra posizioni altre 3 rovine vicine (gancio per future esplorazioni).</p>
+                    <p><strong>Pericolo:</strong> Mappa danneggiata emette radiazioni. Ogni round qui: Resistenza Diff 9+ o Esausto cumulativo.</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">4. ATRIO CENTRALE</div>
+                    <p><strong>Prima Impressione:</strong> Sala circolare con cupola crollata. Luce solare filtra. Statua Celeste (accademico con libro) abbattuta.</p>
+                    <p><strong>Indizio:</strong> Iscrizione su statua in lingua Celeste. Tradotta: "La conoscenza è eterna, ma chi la cerca deve scendere dove la luce non giunge."</p>
+                    <p><strong>Scelta:</strong> Scala 5 conduce sotto, nell'acqua. Serve respirare sott'acqua (Fiaschetta+Regolatore? Magia? Trattenere fiato 2 minuti?).</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">5. SCALA SOMMERSA</div>
+                    <p><strong>Descrizione:</strong> Scala marmo scende nell'acqua torbida. Visibilità 2m. Corrente sottile ma costante (nuotare difficile).</p>
+                    <p><strong>Sfida:</strong> Nuotare giù 20m. Tiro Resistenza o Atletica Diff 11+ o inizi affogare (1d6 danno/round, devi risalire).</p>
+                    <p><strong>Dettaglio:</strong> A metà discesa, scheletro impigliato in alga meccanica. Ha chiave cristallina in mano (apre Stanza 7).</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">6. SALA ARCHIVI (Sommersa)</div>
+                    <p><strong>Descrizione:</strong> Stanza enorme, scaffali infiniti, tutto sott'acqua. Pesci luminescenti nuotano tra libri dissolti.</p>
+                    <p><strong>Tesoro:</strong> Tiro Percezione Diff 13+ (penalità per acqua torbida): Trova contenitore stagna con 3 chip di dati Celesti. Se letti (Meccanica Diff 11+): contengono mappe stellari, formule chimiche, e... file corrotto chiamato "Progetto Ouroboros".</p>
+                    <p><strong>Pericolo:</strong> Golem Bibliotecario patruglia (vedi Boss se attivato prematuramente). Evitabile con Furtività Diff 11+.</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">7. SANCTUM DEL GUARDIANO (Boss Room)</div>
+                    <p><strong>Descrizione:</strong> Camera circolare, bolla d'aria al centro (generatore vecchio ma funzionale). Piattaforma centrale con piedistallo. Golem dormiente accanto.</p>
+                    <p><strong>Attivazione Boss:</strong> Avvicinare piedistallo O rubare tesoro O danneggiare Golem = risveglio.</p>
+                    <p><strong>Sul Piedistallo:</strong> Cubo di dati Celeste (Artefatto Maggiore: contiene TUTTA la biblioteca in formato digitale).</p>
+                </div>
+            </div>
+            
+            <div class="boss-box">
+                <h4>💀 BOSS: GOLEM BIBLIOTECARIO CORROTTO</h4>
+                <p><strong>Aspetto:</strong> Umanoide 3m di cristallo blu e metallo ossidato. Occhi un tempo gentili ora rosso furioso. Braccio destro terminante in lama invece che mano (modificato post-Cataclisma per difesa?)</p>
+                
+                <p style="margin-top: 10px;"><strong>Statistiche:</strong></p>
+                <ul>
+                    <li><strong>Salute:</strong> 25 PV</li>
+                    <li><strong>Armatura:</strong> 3 (cristallo rinforzato)</li>
+                    <li><strong>Combattimento:</strong> d10</li>
+                    <li><strong>Armi:</strong> Lama Cristallina (2d6 danno) / Raggio Disintegratore (3d6, 1/3 round, raggio 15m)</li>
+                    <li><strong>Movimento:</strong> Lento (può fluttuare sott'acqua perfettamente)</li>
+                </ul>
+                
+                <p style="margin-top: 10px;"><strong>Tattiche:</strong></p>
+                <ul>
+                    <li><strong>Round 1-2:</strong> Attacca PG più vicino con lama. Voce sintetizzata ripete: "ACCESSO NEGATO. VIOLAZIONE PROTOCOLLO."</li>
+                    <li><strong>Round 3+:</strong> Usa raggio disintegratore ogni 3 round contro PG più pericoloso.</li>
+                    <li><strong>A 10 PV:</strong> Sistema danneggiato, inizia comportamento erratico. Parla frasi sensate: "Perché... danneggiate... volevo solo... proteggere... conoscenza..."</li>
+                    <li><strong>A 5 PV:</strong> Supplica: "Per favore... fermate... non voglio... danneggiare..." (PG possono tentare spegnimento pacifico, Meccanica Diff 13+)</li>
+                </ul>
+                
+                <p style="margin-top: 10px;"><strong>Vulnerabilità:</strong></p>
+                <ul>
+                    <li>Elettricità causa doppio danno (cortocircuito)</li>
+                    <li>Attacchi mirati al core (petto): +2 danno ma Diff 13+ per colpire</li>
+                </ul>
+                
+                <p style="margin-top: 10px;"><strong>Loot (se distrutto):</strong> Core energetico intatto (vale 500 dinar, o può alimentare artefatto per 1 anno) + Frammenti cristallini (300 dinar totali)</p>
+                
+                <p style="margin-top: 10px;"><strong>Loot (se spento pacificamente):</strong> Golem diventa alleato. Può rispondere 5 domande sulla biblioteca/Celesti prima di spegnersi definitivamente.</p>
+            </div>
+            
+            <div class="treasure-box">
+                <h4>💎 TESORI TOTALI ROVINA</h4>
+                <ul>
+                    <li><strong>Cubo Dati Biblioteca:</strong> Artefatto Maggiore (valore inestimabile). Contiene 10.000 anni conoscenza Celeste. Richiede lettore (raro).</li>
+                    <li><strong>Manuale Sapienza:</strong> +1 dado Sapienza permanente (1 settimana studio)</li>
+                    <li><strong>3 Chip Dati:</strong> Mappe, formule, file "Progetto Ouroboros" (gancio Serpente)</li>
+                    <li><strong>Chiave Cristallina:</strong> Apre porte Celesti (universale, 200 dinar)</li>
+                    <li><strong>Core Energetico:</strong> Alimenta artefatto 1 anno (500 dinar)</li>
+                    <li><strong>Frammenti Cristallo:</strong> 300 dinar totali</li>
+                    <li><strong>Conoscenza (Golem parlante):</strong> 5 risposte su Celesti/storia</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Totale Monetario:</strong> ~1000 dinar + artefatti inestimabili + conoscenza</p>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>Studioso Disperato:</strong> Arkan (Osservatore del Velo) cerca Cubo Dati per decifrare "Progetto Ouroboros". Assuma PG, pagamento 300 dinar + favore futuro. Ma sa è pericoloso.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>La Mappa Perduta:</strong> PG trovano frammento mappa che mostra biblioteca. Indica "Conoscenza su come fermare il Serpente". Ma è vero o trappola?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>Rifugiato Golem:</strong> Golem Bibliotecario fugge dalla rovina, disfunzionante, arriva a città. Impero vuole distruggerlo. PG assumiti per riportarlo "a casa" (alla biblioteca).
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Il Collezionista:</strong> Nobile ricco ossessionato da libri pre-Cataclisma. Offre 2000 dinar per qualsiasi testo intatto. Competizione con altri cercatori di tesori.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>Visione Profetica:</strong> Uno dei PG ha sogno: biblioteca sommersa, voce dice "La risposta che cerchi è dove la luce non giunge." Ricorrente, ossessivo.
+                </div>
+            </div>
+        </div>
+        
+        <!-- ROVINA 2 -->
+        <div class="ruin">
+            <div class="ruin-header">
+                <div class="ruin-title">2. ⚗️ IL LABORATORIO ABBANDONATO</div>
+                <div class="ruin-level">LV 3-4</div>
+            </div>
+            
+            <div class="ruin-description">
+                Complesso sperimentale Celeste sepolto in canyon. Esperimenti genetici, tecnologici e alchemici. Sistemi automatizzati ancora attivi ma malfunzionanti. Creature mutate vagano i corridoi. Esperimento finale mai completato giace dormiente nel cuore del laboratorio.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Durata</div>
+                    <div class="stat-value">2 sessioni</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Tema</div>
+                    <div class="stat-value">Horror + Combattimento</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Pericolo Principale</div>
+                    <div class="stat-value">Mutanti, Tossine, Boss Ibrido</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricompensa</div>
+                    <div class="stat-value">Artefatti sperimentali</div>
+                </div>
+            </div>
+            
+            <div class="map-box">╔═══════════════════════════════════════════╗
+║      IL LABORATORIO ABBANDONATO           ║
+╠═══════════════════════════════════════════╣
+║                                           ║
+║  ╔═══╗   ╔═══╗   ╔═══╗   ╔═══╗          ║
+║  ║ 1 ╟───╢ 2 ╟───╢ 3 ╟───╢ 4 ║          ║
+║  ╚═╤═╝   ╚═╤═╝   ╚═╤═╝   ╚═╤═╝          ║
+║    │       │       │       │             ║
+║  ┌─┴───────┴───────┴───────┴─┐           ║
+║  │      Corridoio 5          │           ║
+║  │  (Stretto, Pericoloso)    │           ║
+║  └─┬───────┬───────┬───────┬─┘           ║
+║    │       │       │       │             ║
+║  ╔═╧═╗   ╔═╧═╗   ╔═╧═╗   ╔═╧═╗          ║
+║  ║ 6 ║   ║ 7 ║   ║ 8 ║   ║ 9 ║          ║
+║  ╚═╤═╝   ╚═╤═╝   ╚═══╝   ╚═══╝          ║
+║    │       │                             ║
+║    └───┬───┘                             ║
+║        │                                 ║
+║    ╔═══╧═══╗                             ║
+║    ║  10   ║  ← Camera Contenimento     ║
+║    ║ BOSS  ║     (Sigillata)             ║
+║    ╚═══════╝                             ║
+║                                           ║
+╚═══════════════════════════════════════════╝
+
+Legenda Aggiuntiva:
+1=Ingresso  2=Stoccaggio  3=Dissez 4=Archivio
+6=Genetica  7=Chimica  8=Armeria  9=Osserv
+5=Corridoio (Trappole)  10=Contenimento Boss</div>
+            
+            <div class="rooms">
+                <h4>📍 DESCRIZIONI STANZE CHIAVE</h4>
+                
+                <div class="room">
+                    <div class="room-name">1. INGRESSO DECONTAMINAZIONE</div>
+                    <p><strong>Prima Impressione:</strong> Porta sigillata ma forzabile (Forza Diff 11+ o Meccanica Diff 9+). Dentro: docce chimiche arrugginite, simboli pericolo biologico.</p>
+                    <p><strong>Pericolo:</strong> Porta interna sigillata. Aprirla rilascia gas tossico residuo (Resistenza Diff 9+ o Avvelenato per 1 ora).</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">3. SALA DISSEZIONE</div>
+                    <p><strong>Prima Impressione:</strong> Tavoli chirurgici con scheletri ibridi (metà umani, metà... altro). Strumenti medici sparsi.</p>
+                    <p><strong>Incontro:</strong> 2 Mutanti Vaganti (6 PV ciascuno, Combattimento d6, morso 1d6+veleno) emergono da ventilazione. Attaccano istintivamente.</p>
+                    <p><strong>Tesoro:</strong> Kit Medico Celeste (guarisce 2d6 PV + rimuove Avvelenato, 3 usi).</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">5. CORRIDOIO TRAPPOLE</div>
+                    <p><strong>Descrizione:</strong> Corridoio 30m collega ali laboratorio. Pavimento piastrellato, alcune piastrelle crinate.</p>
+                    <p><strong>Trappole:</strong> Ogni 5m: Percezione Diff 11+ notare piastrella-trappola. Calpestare = dardo avvelenato dai muri (tiro Riflessi Diff 11+ o 1d6+Avvelenato).</p>
+                    <p><strong>Bypass:</strong> Meccanica Diff 13+ disattivare sistema. O camminare lentamente (10 minuti invece 1 minuto).</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">6. LABORATORIO GENETICA</div>
+                    <p><strong>Prima Impressione:</strong> Vasche crescita rotte, liquido verde sul pavimento. Embrioni mummificati fluttuano in vasche funzionanti.</p>
+                    <p><strong>Dettaglio Orrorifico:</strong> Uno embrione ha volto quasi umano. Occhi aperti. Segue PG con sguardo.</p>
+                    <p><strong>Tesoro:</strong> Siero Potenziamento Genetico (1 dose: +1 dado Resistenza per 24h, ma dopo subisci Esausto per 12h).</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">8. ARMERIA SPERIMENTALE</div>
+                    <p><strong>Prima Impressione:</strong> Armadietti metallici sigillati. Codice numerico richiesto (4 cifre).</p>
+                    <p><strong>Codice:</strong> Trovabile in Stanza 4 (Archivio) su terminale. O forza bruta Meccanica Diff 15+ (ma 3 tentativi falliti = allarme).</p>
+                    <p><strong>Tesoro:</strong> Guanto del Fulmine (Artefatto Maggiore già descritto) + 2 granate ad impulso (3d6 danno 5m raggio, stordiscono).</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">10. CAMERA CONTENIMENTO (Boss)</div>
+                    <p><strong>Descrizione:</strong> Stanza enorme, soffitto 10m. Al centro: vasca cilindrica gigante (5m altezza) con liquido torbido. Ombra grande si muove dentro.</p>
+                    <p><strong>Attivazione:</strong> Avvicinarsi a 3m O toccare console laterale O fare rumore forte = vasca si apre.</p>
+                    <p><strong>Console:</strong> Sapienza Diff 13+ leggere logs: "Esperimento Chimera - Soggetto #47 - Fusione DNA umano/predatore/Celeste. STATO: Ibernato permanentemente. NON RISVEGLIARE."</p>
+                </div>
+            </div>
+            
+            <div class="boss-box">
+                <h4>💀 BOSS: CHIMERA #47</h4>
+                <p><strong>Aspetto:</strong> Creatura 4m, fusione orrenda: torso umanoide muscoloso, quattro braccia (due umane, due artigliate), testa leonina con mandibola innaturalmente grande, occhi brillanti blu (Celeste). Pelle parzialmente squamata, parzialmente metallica.</p>
+                
+                <p style="margin-top: 10px;"><strong>Statistiche:</strong></p>
+                <ul>
+                    <li><strong>Salute:</strong> 40 PV</li>
+                    <li><strong>Armatura:</strong> 2 (pelle/squame rinforzate)</li>
+                    <li><strong>Combattimento:</strong> d12 (feroce)</li>
+                    <li><strong>Armi:</strong> Artiglio Quadruplo (1d6 x2 attacchi/turno) / Morso Devastante (3d6, 1/3 round) / Ruggito Sonico (tutti entro 10m, Resistenza Diff 13+ o Storditi)</li>
+                    <li><strong>Movimento:</strong> Veloce (può fare balzo 10m come azione bonus)</li>
+                </ul>
+                
+                <p style="margin-top: 10px;"><strong>Tattiche:</strong></p>
+                <ul>
+                    <li><strong>Round 1:</strong> Esce da vasca, ruggisce (Stordimento AoE). Poi balza su PG più lontano.</li>
+                    <li><strong>Round 2-5:</strong> Attacchi multipli con artigli. Usa morso su PG Stordito o isolato.</li>
+                    <li><strong>A 20 PV:</strong> Entra in frenesia. +1d6 danno ma -1d6 difesa. Ruggisce ogni 2 round.</li>
+                    <li><strong>A 10 PV:</strong> Cerca fuggire (intelligente residua). Se bloccato, combatte disperato.</li>
+                </ul>
+                
+                <p style="margin-top: 10px;"><strong>Comportamento Tragico:</strong> Se PG parlano lingua Celeste (Traduttore?) durante combattimento, Chimera risponde in frasi spezzate: "Dolore... sempre... volevo... solo dormire... perché mi... svegliate...?"</p>
+                
+                <p style="margin-top: 10px;"><strong>Fine Pacifica?</strong> Persuasione Diff 15+ + promessa riportarlo in ibernazione = si arrende. Ma va ri-ibernato (Meccanica Diff 13+) o muore lentamente (corpo instabile).</p>
+                
+                <p style="margin-top: 10px;"><strong>Loot:</strong></p>
+                <ul>
+                    <li><strong>Campione Tessuto:</strong> DNA ibrido (500 dinar, studiosi/collezionisti)</li>
+                    <li><strong>Impianto Oculare Celeste:</strong> Rimosso da cranio (macabro), Artefatto: visione notturna perfetta</li>
+                    <li><strong>Conoscenza:</strong> Se parlato, rivela esperimenti Celesti erano per "creare soldati perfetti contro il Serpente"</li>
+                </ul>
+            </div>
+            
+            <div class="treasure-box">
+                <h4>💎 TESORI TOTALI</h4>
+                <ul>
+                    <li>Guanto del Fulmine (Artefatto Maggiore)</li>
+                    <li>2 Granate Impulso (300 dinar cadauna)</li>
+                    <li>Kit Medico Celeste (3 usi, 400 dinar)</li>
+                    <li>Siero Potenziamento (200 dinar)</li>
+                    <li>Campione DNA Chimera (500 dinar)</li>
+                    <li>Impianto Oculare (Artefatto Minore, visione notturna)</li>
+                    <li>Attrezzatura laboratorio varia (300 dinar)</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Totale:</strong> ~2200 dinar + artefatti</p>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>Creature nel Deserto:</strong> Mutanti dal laboratorio fuggono, attaccano carovane. Impero assuma PG per "trovare nido e sterminare".
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>Scienziato Ossessionato:</strong> Discendente Celeste cerca laboratorio antenati. Vuole completare esperimenti. "Per scienza". Ovviamente pericoloso.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>L'Ultimo Soggetto:</strong> Chimera #47 non è ultima. Logs parlano di #48-50. Dove sono? Ancora ibernate? Fuggite?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Cura Impossibile:</strong> PNG malato terminale. Solo tecnologia Celeste può curare. Laboratorio ha attrezzatura. Ma... è sicuro usarla?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>Sabotaggio Storico:</strong> Logs rivelano laboratorio fu sabotato internamente. "Non potevo lasciare che usassero queste armi contro il Serpente. Era parte di noi." Chi era il sabotatore?
+                </div>
+            </div>
+        </div>
+        
+        <!-- ROVINA 3 -->
+        <div class="ruin">
+            <div class="ruin-header">
+                <div class="ruin-title">3. 🐍 IL TEMPIO DEL SERPENTE</div>
+                <div class="ruin-level">LV 5-6 🐍</div>
+            </div>
+            
+            <div class="ruin-description">
+                Ziggurat monumentale dedicato al Serpente. I Celesti lo veneravano come dio-macchina. Tremori costanti. Aria carica di energia. Cultisti moderni lo hanno rioccupato, conducono rituali. Il Serpente "ascolta" particolarmente qui. Ogni azione ha conseguenze mistiche.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Durata</div>
+                    <div class="stat-value">2-3 sessioni</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Tema</div>
+                    <div class="stat-value">Mistico + Sociale + Combattimento</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Pericolo Principale</div>
+                    <div class="stat-value">Cultisti, Serpente, Scelte</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricompensa</div>
+                    <div class="stat-value">Benedizioni/Maledizioni + Verità</div>
+                </div>
+            </div>
+            
+            <div class="map-box">╔════════════════════════════════════════════╗
+║        IL TEMPIO DEL SERPENTE              ║
+║            (Ziggurat 4 Livelli)            ║
+╠════════════════════════════════════════════╣
+║                                            ║
+║  LIVELLO 1 (Base - Ingresso):              ║
+║                                            ║
+║         ╔═══════════════╗                  ║
+║         ║    Piazza 1   ║                  ║
+║    ┌────╢  Cerimonie    ╟────┐            ║
+║    │    ║  (Pubblica)   ║    │            ║
+║    │    ╚═══════╤═══════╝    │            ║
+║  ╔═╧═╗          │          ╔═╧═╗          ║
+║  ║ 2 ║          │          ║ 3 ║          ║
+║  ║Dor║        ╔═╧═╗        ║Dor║          ║
+║  ║mit║        ║ 4 ║        ║mit║          ║
+║  ║ori║        ║Sca║        ║ori║          ║
+║  ╚═══╝        ║la ║        ╚═══╝          ║
+║               ╚═╤═╝                        ║
+║                 ↑                          ║
+║            Livello 2                       ║
+║                                            ║
+║  LIVELLO 2 (Culto):                        ║
+║                                            ║
+║         ╔═══════════╗                      ║
+║         ║  5. Sala  ║                      ║
+║    ┌────╢   Rituale ╟────┐                ║
+║    │    ╚═════╤═════╝    │                ║
+║  ╔═╧═╗        │        ╔═╧═╗              ║
+║  ║ 6 ║      ╔═╧═╗      ║ 7 ║              ║
+║  ║Lib║      ║ 8 ║      ║Tes║              ║
+║  ║ro ║      ║Sca║      ║oro║              ║
+║  ╚═══╝      ╚═╤═╝      ╚═══╝              ║
+║               ↑                            ║
+║          Livello 3                         ║
+║                                            ║
+║  LIVELLO 3 (Sacerdoti):                    ║
+║                                            ║
+║         ╔═══════════╗                      ║
+║         ║9.Sanctum  ║                      ║
+║         ║Sommo Sac. ╟─── Mini-Boss        ║
+║         ╚═════╤═════╝                      ║
+║               │                            ║
+║         ╔═════╧═════╗                      ║
+║         ║     10    ║                      ║
+║         ║ Scala     ║                      ║
+║         ║ Finale    ║                      ║
+║         ╚═════╤═════╝                      ║
+║               ↑                            ║
+║         Livello 4                          ║
+║                                            ║
+║  LIVELLO 4 (Vertice - BOSS):               ║
+║                                            ║
+║    ╔═══════════════════════╗               ║
+║    ║         11            ║               ║
+║    ║   ALTARE SUPREMO      ║               ║
+║    ║  (Cielo Aperto)       ║               ║
+║    ║                       ║               ║
+║    ║  [🐍 Presenza]         ║               ║
+║    ╚═══════════════════════╝               ║
+║                                            ║
+╚════════════════════════════════════════════╝</div>
+            
+            <div class="rooms">
+                <h4>📍 DESCRIZIONI STANZE CHIAVE</h4>
+                
+                <div class="room">
+                    <div class="room-name">1. PIAZZA CERIMONIE</div>
+                    <p><strong>Prima Impressione:</strong> Ampia piazza circolare, simbolo serpente inciso nel pavimento (50m diametro). Tremito costante, leggero. Cultisti (10-15) pregano in cerchio.</p>
+                    <p><strong>Approccio Sociale:</strong> Persuasione Diff 11+: Cultisti credono PG sono "pellegrini". Permettono entrare. Fallimento = visti come intrusi, chiamano guardie.</p>
+                    <p><strong>Approccio Furtivo:</strong> Furtività Diff 13+ passare inosservati di notte.</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">5. SALA RITUALE</div>
+                    <p><strong>Prima Impressione:</strong> Camera circolare, pareti coperte affreschi: Serpente che divora mondo, Serpente che protegge mondo, Serpente che dorme. Altare centrale con Cuore di Cristallo (spento).</p>
+                    <p><strong>Evento:</strong> Se PG arrivano durante rituale (50% probabilità): 20 cultisti cantano. Sommo Sacerdote (Stanza 9) presiede. Cuore pulsa debolmente.</p>
+                    <p><strong>Scelta:</strong> Interrompere = combattimento. Osservare = apprendono che cultisti vogliono "svegliare pienamente" il Serpente.</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">7. TESORO DEL CULTO</div>
+                    <p><strong>Porta:</strong> Sigillata, richiede chiave (su Sommo Sacerdote) o Meccanica Diff 15+.</p>
+                    <p><strong>Contenuto:</strong> 2000 dinar in offerte. 5 Lampade Eterne. 2 Bussole Vere. 1 Fiaschetta Infinita. Mappa di altre 3 rovine. Diario Sommo Sacerdote (rivela piano: usare artefatti per amplificare risveglio Serpente).</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">9. SANCTUM SOMMO SACERDOTE (Mini-Boss)</div>
+                    <p><strong>Descrizione:</strong> Camera personale. Lussuosa per standard deserto. Letto, scrittoio, libreria. Sommo Sacerdote qui se non in rituale.</p>
+                    <p><strong>Incontro:</strong> Negoziazione possibile! Sacerdote (ZAFIR) non è malvagio. Crede genuinamente Serpente sia salvatore. Persuasione Diff 13+ può convincerlo a dubitare (temporaneamente).</p>
+                    <p><strong>Se Combattimento:</strong> Zafir + 2 Guardie Devote. Zafir ha Amplificatore Vocale (usa Grido Sonico).</p>
+                </div>
+                
+                <div class="room">
+                    <div class="room-name">11. ALTARE SUPREMO (Boss)</div>
+                    <p><strong>Descrizione:</strong> Vertice ziggurat, cielo aperto. Altare circolare con solco a forma di serpente. Vista 360° del deserto. Tremori qui sono forti, costanti.</p>
+                    <p><strong>Presenza:</strong> Il Serpente "è" qui in modo tangibile. Aria elettrica. Sussurri in lingua antica. Tutti sentono pressione sul petto.</p>
+                    <p><strong>Boss Encounter:</strong> Dipende da scelte PG (vedi sotto).</p>
+                </div>
+            </div>
+            
+            <div class="boss-box">
+                <h4>💀 BOSS: AVATARA DEL SERPENTE</h4>
+                <p><strong>Situazione:</strong> Se PG arrivano all'altare durante rituale culminante, Sommo Sacerdote tenta evocare "avatara" del Serpente usando Cuore di Cristallo amplificato.</p>
+                
+                <p style="margin-top: 10px;"><strong>Scelta PG:</strong></p>
+                <ul>
+                    <li><strong>Interrompere Rituale:</strong> Combattimento contro Zafir + cultisti + manifestazione parziale Serpente</li>
+                    <li><strong>Lasciare Completare:</strong> Avatara si manifesta pienamente, ma Zafir perde controllo</li>
+                    <li><strong>Sabotare:</strong> Meccanica Diff 15+ corrompere rituale. Risultato imprevedibile (tira d6)</li>
+                </ul>
+                
+                <p style="margin-top: 10px;"><strong>SE MANIFESTAZIONE COMPLETA - AVATARA DEL SERPENTE:</strong></p>
+                
+                <p><strong>Aspetto:</strong> Forma serpentina 15m, ma "sbagliata" — traslucida, fatta di energia blu e scale cristalline. Non completamente fisica. Occhi infiniti lungo il corpo. Voce risuona nella mente, non nell'aria.</p>
+                
+                <p style="margin-top: 10px;"><strong>Statistiche:</strong></p>
+                <ul>
+                    <li><strong>Salute:</strong> 50 PV (ma solo attacchi magici/energetici fanno danno pieno, fisici metà)</li>
+                    <li><strong>Armatura:</strong> 4 (energia)</li>
+                    <li><strong>Combattimento:</strong> N/A (attacchi automatici)</li>
+                    <li><strong>Attacchi:</strong>
+                        <ul>
+                            <li>Morso Energetico (3d6 danno + Ossessionato)</li>
+                            <li>Avvolgimento (Resistenza Diff 13+ o Immobilizzato + 2d6 danno/round)</li>
+                            <li>Sguardo Infinito (tutti nel raggio 20m: Sapienza Diff 15+ o visione devastante, Storditi 1d6 round)</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <p style="margin-top: 10px;"><strong>MA — ALTERNATIVA PACIFICA:</strong></p>
+                <p>Avatara non è ostile per default. È confuso. "Perché sono qui? Non dovrei... non dovrei svegliarmi ancora... chi mi ha chiamato?"</p>
+                
+                <p><strong>Persuasione Diff 15+ (con Traduttore o Sapienza alta):</strong> Spiegare che Zafir lo ha evocato senza consenso. Avatara si calma: "Capisco. Gli umani sempre cercano potere che non comprendono. Lasciate che ritorni al sonno."</p>
+                
+                <p><strong>Se Convinto:</strong> Avatara benedice PG prima di dissolversi. Ognuno guadagna: "Benedizione del Serpente" (1/giorno, tira due volte su un tiro e tieni il migliore). Permanente ma pericolosa (vedi GM Note).</p>
+                
+                <p><strong>Se Combattuto e Vinto:</strong> Avatara si dissolve urlando. Tutti nel tempio subiscono visione traumatica (Sapienza Diff 11+ o Ossessionato permanente). Ma ottengono frammento cristallino (nucleo dell'avatara, 5000 dinar, potere immenso ma corruttivo).</p>
+            </div>
+            
+            <div class="danger-box">
+                <h4>⚠️ CONSEGUENZE SERPENTE</h4>
+                <p><strong>Benedizione del Serpente:</strong> Sembra positiva ma ogni uso aumenta connessione. Dopo 10 usi, PG inizia trasformazione in Marchiato (lento, reversibile se fermato presto).</p>
+                <p><strong>Frammento Cristallino:</strong> Potere immenso (funziona come Cuore di Cristallo con cariche infinite) ma uso corrompe anima. Dopo 5 usi, allineamento cambia verso "servire il Serpente".</p>
+                <p><strong>Distruggere Tempio:</strong> Possibile far crollare ziggurat. Ma causa terremoto locale, villaggi vicini distrutti. Sangue su mani PG.</p>
+            </div>
+            
+            <div class="treasure-box">
+                <h4>💎 TESORI TOTALI</h4>
+                <ul>
+                    <li>2000 dinar (offerte cultisti)</li>
+                    <li>5 Lampade Eterne (250 dinar)</li>
+                    <li>2 Bussole Vere (200 dinar)</li>
+                    <li>1 Fiaschetta Infinita (500 dinar)</li>
+                    <li>Amplificatore Vocale (Sommo Sacerdote, 300 dinar)</li>
+                    <li>Diario con Conoscenza (mappa, segreti Culto)</li>
+                    <li>Benedizione Serpente (potere + maledizione)</li>
+                    <li>O Frammento Cristallino (5000 dinar + corruzione)</li>
+                </ul>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>Infiltrazione Imperiale:</strong> Impero vuole distruggere culto. Assuma PG per infiltrare, raccogliere prove, poi attaccare. Ma PG scoprono cultisti hanno ragione su alcune cose.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>Il Convertito:</strong> Uno dei PG/PNG caro inizia frequentare tempio. Torna cambiato, "illuminato". Salvarlo o lasciarlo?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>Profezia Incrociata:</strong> Osservatori del Velo predicono catastrofe se culto completa rituale. Culto predice catastrofe se rituale NON completato. Chi ha ragione?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Zafir Rinnegato:</strong> Sommo Sacerdote sopravvive, fugge. Cerca PG mesi dopo: "Avevate ragione. Cosa ho fatto? Aiutatemi fermare altri templi prima che..."
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>Il Risveglio:</strong> Dopo avventura, tremori aumentano in tutto deserto. Sogni collettivi di serpente che apre occhi. "È colpa nostra?" dice gruppo.
+                </div>
+            </div>
+        </div>
+        
+        <!-- ROVINA 4 (Breve per spazio) -->
+        <div class="ruin">
+            <div class="ruin-header">
+                <div class="ruin-title">4. 🏰 FORTEZZA PRIMA LINEA</div>
+                <div class="ruin-level">LV 4-5</div>
+            </div>
+            
+            <div class="ruin-description">
+                Installazione militare Celeste sul bordo deserto. Costruita per "respingere" qualcosa. Sistemi difensivi automatizzati ancora attivi. Torrette, droni, barriere energetiche. Al centro: sala comando con logs finali. Nemici: robot sentinella, non creature organiche.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Durata</div>
+                    <div class="stat-value">1-2 sessioni</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Tema</div>
+                    <div class="stat-value">Combattimento Tattico</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Boss</div>
+                    <div class="stat-value">Drone Comando MK-VII</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Tesoro</div>
+                    <div class="stat-value">Armi + Logs strategici</div>
+                </div>
+            </div>
+            
+            <div class="boss-box" style="margin-top: 15px;">
+                <h4>💀 BOSS: DRONE COMANDO MK-VII</h4>
+                <p><strong>Aspetto:</strong> Sfera volante 2m diametro, 4 braccia robotiche con armi integrate, occhio centrale scanner. Voce sintetizzata: "INTRUSI RILEVATI. PROTOCOLLO ELIMINAZIONE ATTIVATO."</p>
+                <p><strong>Stats:</strong> 35 PV, Armatura 4, Combattimento d10. Attacchi: Laser (2d6, preciso) / Missile (3d6, AoE 5m, 1/3 round) / Scudo Temporaneo (immune 1 round, 1/5 round).</p>
+                <p><strong>Loot:</strong> Core AI (2000 dinar), 3 Granate Impulso, Logs Comando (rivelano Fortezza costruita per "contenere espansione del Serpente verso nord").</p>
+            </div>
+            
+            <div class="hooks" style="margin-top: 15px;">
+                <h4>🎣 GANCI</h4>
+                <div class="hook"><span class="hook-number">1</span> Impero vuole riattivare fortezza come base militare moderna.</div>
+                <div class="hook"><span class="hook-number">2</span> Logs rivelano posizione "Fortezza Gemella" ancora attiva.</div>
+                <div class="hook"><span class="hook-number">3</span> Banditi occupano fortezza, terrorizzano villaggi con armi Celesti.</div>
+                <div class="hook"><span class="hook-number">4</span> Drone parla prima di morire: "Fallimento... non abbiamo... contenuto... nulla..."</div>
+                <div class="hook"><span class="hook-number">5</span> Sistema difensivo può essere riprogrammato (Meccanica Diff 17+) per proteggere insediamento amico.</div>
+            </div>
+        </div>
+        
+        <!-- ROVINA 5 -->
+        <div class="ruin">
+            <div class="ruin-header">
+                <div class="ruin-title">5. 🌊 L'OASI PERDUTA</div>
+                <div class="ruin-level">LV 2-3</div>
+            </div>
+            
+            <div class="ruin-description">
+                Complesso abitativo Celeste costruito attorno oasi sotterranea. Alimentazione idrica attraverso tecnologia avanzata. Ora: acqua contaminata da cristalli Celesti dissolti. Creature acquatiche mutate. Atmosfera pacifica ma corrotta. Boss: Elementale Acqua Cristallizzata.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Durata</div>
+                    <div class="stat-value">1 sessione</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Tema</div>
+                    <div class="stat-value">Esplorazione acquatica</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Boss</div>
+                    <div class="stat-value">Elementale Cristallino</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricompensa</div>
+                    <div class="stat-value">Fiaschetta + Filtrazione</div>
+                </div>
+            </div>
+            
+            <div class="boss-box" style="margin-top: 15px;">
+                <h4>💀 BOSS: ELEMENTALE ACQUA CRISTALLIZZATA</h4>
+                <p><strong>Aspetto:</strong> Forma umanoide fluida, 3m altezza, fatta di acqua con cristalli galleggianti all'interno. Cambia forma continuamente. Occhi: due vortici luminosi.</p>
+                <p><strong>Stats:</strong> 20 PV, Armatura 1, Combattimento d8. Vulnerabile a elettricità (doppio danno). Immune a fisico non magico. Attacchi: Frusta Liquida (2d6) / Annegamento (Resistenza Diff 13+ o Soffocamento 1d6/round) / Guarigione (in acqua rigenera 1d6 PV/round).</p>
+                <p><strong>Loot:</strong> Core Cristallino Elementale (può purificare acqua contaminata infinitamente, 1500 dinar).</p>
+            </div>
+            
+            <div class="hooks" style="margin-top: 15px;">
+                <h4>🎣 GANCI</h4>
+                <div class="hook"><span class="hook-number">1</span> Villaggio vicino ha acqua avvelenata, oasi è unica fonte.</div>
+                <div class="hook"><span class="hook-number">2</span> Mercante mappe vende posizione "oasi maledetta con tesoro".</div>
+                <div class="hook"><span class="hook-number">3</span> Druido disperato cerca purificare oasi per ristabilire equilibrio.</div>
+                <div class="hook"><span class="hook-number">4</span> Logs Celesti: oasi era esperimento fallito per "comunicare col Serpente via acqua".</div>
+                <div class="hook"><span class="hook-number">5</span> Core Elementale può essere installato in città per fornire acqua pura eterna.</div>
+            </div>
+        </div>
+        
+        <!-- ROVINE 6-10 (Compatte) -->
+        <h1>📚 ROVINE AGGIUNTIVE (6-10) - DESCRIZIONI COMPATTE</h1>
+        
+        <div class="ruin">
+            <div class="ruin-header">
+                <div class="ruin-title">6. ⚙️ LA FABBRICA DORMIENTE</div>
+                <div class="ruin-level">LV 5-6</div>
+            </div>
+            <p><strong>Descrizione:</strong> Impianto produzione automatizzato. Produce ancora golem/droni base ogni 10 anni. Magazzino pieno di unità inattive. Boss: Assemblatore Centrale (può attivare 10 droni come rinforzi). Tesoro: 20 droni riutilizzabili (vale fortune), schemi costruzione.</p>
+            <p><strong>Ganci:</strong> (1) Impero vuole catturare fabbrica. (2) Golem escono, attaccano insediamenti. (3) Riattivare fabbrica per costruire esercito contro minaccia? (4) Sabotatore nascosto mantiene fabbrica attiva segretamente. (5) Fabbrica produce "Fase 2" - golem da guerra - se minacciata.</p>
+        </div>
+        
+        <div class="ruin">
+            <div class="ruin-header">
+                <div class="ruin-title">7. 🎭 IL TEATRO DEGLI ECHI</div>
+                <div class="ruin-level">LV 3-4</div>
+            </div>
+            <p><strong>Descrizione:</strong> Anfiteatro con tecnologia olografica attiva. Proietta registrazioni ultimi giorni pre-Cataclisma in loop. Celesti fantasma (ologrammi) ripetono azioni. Inquietante, bellissimo. Boss: Nessuno (esplorazione pura) MA richiede puzzle per accedere archivi centrali.</p>
+            <p><strong>Ganci:</strong> (1) Ologrammi mostrano Cataclisma. Traumatico ma informativo. (2) Tecnologia olografica rubabile (10,000 dinar). (3) Ultimo ologramma: scienziato registra messaggio per futuro. (4) Teatro usato da spiritista per séances fraudolente. (5) Alcuni ologrammi... rispondono. Impossibile ma accade.</p>
+        </div>
+        
+        <div class="ruin">
+            <div class="ruin-header">
+                <div class="ruin-title">8. 🌋 IL REATTORE SPENTO</div>
+                <div class="ruin-level">LV 6-7 🐍</div>
+            </div>
+            <p><strong>Descrizione:</strong> Centrale energia nucleare/mistica Celeste. Spenta da millenni ma radiazioni residue. Al cuore: Cuore di Cristallo gigante (10m diametro) che alimentava città intere. Boss: Anomalia Energetica (manifestazione energia pura residua). Pericolosissimo.</p>
+            <p><strong>Ganci:</strong> (1) Riattivare per dare energia a città moderna? Rischi catastrofici. (2) Cuore Gigante è "dormiente" come Serpente. Collegati? (3) Culto vuole usare reattore per risveglio. (4) Sabotaggio reattore causerebbe esplosione regionale. (5) Logs finali: "Reattore era legato al Serpente. Se si sveglia, questo si riattiva."</p>
+        </div>
+        
+        <div class="ruin">
+            <div class="ruin-header">
+                <div class="ruin-title">9. 🏛️ IL PALAZZO IMPERIALE</div>
+                <div class="ruin-level">LV 4-5</div>
+            </div>
+            <p><strong>Descrizione:</strong> Residenza leader Celesti. Opulento ma crollato. Sale trono, camere private, tesori. Boss: Costrutto Guardia Pretoriana (ultimo guardiano, fedeltà assoluta anche dopo morte padroni). Tesoro: Oggetti lusso (5000 dinar), corona imperiale (simbolo potere).</p>
+            <p><strong>Ganci:</strong> (1) Nobile moderno cerca corona per legittimare potere. (2) Palazzo contiene testamento ultimo imperatore. (3) Logs rivelano imperatori sapevano del Serpente, tentarono patto. (4) Costrutto può essere convinto PG sono "nuovi imperatori" (Persuasione Diff 17+). (5) Palazzo ha camera segreta con... cripta imperatori? Tesoro nascosto? Cosa?</p>
+        </div>
+        
+        <div class="ruin">
+            <div class="ruin-header">
+                <div class="ruin-title">10. 🐍 L'OCCHIO DEL SERPENTE</div>
+                <div class="ruin-level">LV 8-10 🐍</div>
+            </div>
+            <p><strong>Descrizione:</strong> Cratere gigante (1km diametro) con struttura a spirale che scende 500m sottoterra. Al fondo: "Occhio" — sfera cristallina 50m diametro che pulsa. È interfaccia diretta col Serpente. Chi guarda dentro vede verità assoluta... o impazzisce. Boss: Nessuno fisico. Ma luogo stesso è test.</p>
+            <p><strong>Ganci:</strong> (1) Unico modo comunicare col Serpente direttamente. Pericoloso. (2) Occhio può rivelare dove sono altri Cuori di Cristallo. (3) Guardare dentro causa Save Sapienza Diff 20+ o follia permanente. (4) Alcuni PG potrebbero vedere futuro, passato, verità universale. (5) Serpente può "parlare" attraverso Occhio. Cosa dice? Dipende da interpretazione GM del Serpente.</p>
+        </div>
+        
+        <!-- TABELLA RIASSUNTIVA -->
+        <h1>📊 TABELLA RIASSUNTIVA ROVINE</h1>
+        
+        <table style="font-size: 9pt;">
+            <tr>
+                <th>Rovina</th>
+                <th>Livello</th>
+                <th>Durata</th>
+                <th>Boss</th>
+                <th>Tesoro Principale</th>
+                <th>🐍</th>
+            </tr>
+            <tr>
+                <td>1. Biblioteca Sommersa</td>
+                <td>2-3</td>
+                <td>1-2 sess</td>
+                <td>Golem Bibliotecario</td>
+                <td>Cubo Dati + Conoscenza</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>2. Laboratorio Abbandonato</td>
+                <td>3-4</td>
+                <td>2 sess</td>
+                <td>Chimera #47</td>
+                <td>Guanto Fulmine + Sperimentali</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>3. Tempio del Serpente</td>
+                <td>5-6</td>
+                <td>2-3 sess</td>
+                <td>Avatara Serpente</td>
+                <td>Benedizione/Maledizione + Frammento</td>
+                <td>✓</td>
+            </tr>
+            <tr>
+                <td>4. Fortezza Prima Linea</td>
+                <td>4-5</td>
+                <td>1-2 sess</td>
+                <td>Drone MK-VII</td>
+                <td>Armi + Logs strategici</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>5. Oasi Perduta</td>
+                <td>2-3</td>
+                <td>1 sess</td>
+                <td>Elementale Cristallino</td>
+                <td>Core Purificatore Acqua</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>6. Fabbrica Dormiente</td>
+                <td>5-6</td>
+                <td>2 sess</td>
+                <td>Assemblatore + Droni</td>
+                <td>20 Droni + Schemi</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>7. Teatro degli Echi</td>
+                <td>3-4</td>
+                <td>1 sess</td>
+                <td>Puzzle / Nessuno</td>
+                <td>Tecnologia Olografica + Verità</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>8. Reattore Spento</td>
+                <td>6-7</td>
+                <td>2-3 sess</td>
+                <td>Anomalia Energetica</td>
+                <td>Cuore Gigante + Energia</td>
+                <td>✓</td>
+            </tr>
+            <tr>
+                <td>9. Palazzo Imperiale</td>
+                <td>4-5</td>
+                <td>1-2 sess</td>
+                <td>Guardia Pretoriana</td>
+                <td>Corona + Tesori 5000 dinar</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>10. Occhio del Serpente</td>
+                <td>8-10</td>
+                <td>1 sess</td>
+                <td>Test Mentale</td>
+                <td>Verità Assoluta (o Follia)</td>
+                <td>✓</td>
+            </tr>
+        </table>
+        
+        <!-- GUIDA GM -->
+        <h1>🎮 GUIDA PER IL GM</h1>
+        
+        <div class="intro-box">
+            <h3 style="color: var(--ruin-stone); margin-bottom: 10px;">Come Usare le Rovine</h3>
+            
+            <p><strong>1. Stand-Alone vs Campagna:</strong></p>
+            <p>Ogni rovina funziona come avventura singola (one-shot 3-6 ore) O come dungeon in campagna più lunga. Per campagna, intreccia ganci: Biblioteca porta a Tempio, Tempio rivela Reattore, etc.</p>
+            
+            <p style="margin-top: 10px;"><strong>2. Adatta Difficoltà:</strong></p>
+            <p>Livelli sono suggerimenti. Aumenta PV boss +10 per ogni livello PG sopra consigliato. Riduci -5 PV per sotto.</p>
+            
+            <p style="margin-top: 10px;"><strong>3. Connessione Serpente:</strong></p>
+            <p>Rovine con 🐍 hanno legame diretto. Usale per rivelare natura Serpente progressivamente. Non dare risposte complete subito — mantieni ambiguità.</p>
+            
+            <p style="margin-top: 10px;"><strong>4. Mappe Espandibili:</strong></p>
+            <p>Mappe ASCII sono base. Aggiungi stanze, corridoi, livelli segreti se vuoi sessioni più lunghe. Ma funzionano come presentate.</p>
+            
+            <p style="margin-top: 10px;"><strong>5. Tesori Bilanciati:</strong></p>
+            <p>Ogni rovina offre mix: denaro (utilità), artefatti (potere), conoscenza (lore). Non tutti PG vogliono stesse cose. Permetti scelte.</p>
+        </div>
+        
+        <div class="danger-box">
+            <h4>⚠️ ATTENZIONE: ROVINE SONO PERICOLOSE</h4>
+            <p>Le rovine Celesti non sono "fair". Trappole uccidono. Boss sono letali. Ambiente è ostile. Ma:</p>
+            <ul style="margin-top: 8px;">
+                <li><strong>Telegrafà pericoli:</strong> Descrivi ossa, segni distruzione, suoni inquietanti PRIMA che PG entrino in trappola.</li>
+                <li><strong>Permetti ritirata:</strong> PG possono (e dovrebbero) fuggire se sovrastati. Ritornare preparati.</li>
+                <li><strong>Morti significative:</strong> Se PG muore, sia eroico o stupido — ma mai casuale/ingiusto.</li>
+            </ul>
+        </div>
+        
+        <h2>Espansione Futura: Dungeon Crawl</h2>
+        <p>Queste 10 rovine sono base. Espansione futura "DUNGEON DEL DESERTO" aggiungerà:</p>
+        <ul>
+            <li>Mappe dettagliate multi-livello</li>
+            <li>Mostri Celesti completi (20+ stat blocks)</li>
+            <li>Sistema trappole espanso</li>
+            <li>Loot tables randomizzati</li>
+            <li>Regole esplorazione/riposo</li>
+            <li>Mega-dungeon: La Città Sepolta (30+ stanze, campagna intera)</li>
+        </ul>
+        
+        <p style="margin-top: 15px;">Ma con questi 10, hai materiale per 30-50 ore gioco. Abbastanza per iniziare.</p>
+        
+        <div style="text-align: center; margin-top: 40px; padding: 30px; background: linear-gradient(135deg, var(--ruin-stone) 0%, var(--night-blue) 100%); border-radius: 10px; color: white;">
+            <div style="font-size: 36pt; margin-bottom: 15px;">🏛️</div>
+            <p style="font-size: 14pt; font-style: italic;">
+                "Le rovine non sono tombe. Sono semi.<br>
+                Sotto ogni pietra, sotto ogni sabbia,<br>
+                la civiltà Celeste attende di rinascere."
+            </p>
+            <p style="font-size: 10pt; margin-top: 15px; color: var(--sand);">
+                — Iscrizione, Palazzo Imperiale, Sala del Trono
+            </p>
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - LA CAROVANA SCOMPARSA (Quickstart Adventure)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+            --serpent-scale: #4A7C23;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--dark-sand) 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        
+        .title-page {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, var(--serpent-green) 0%, var(--night-blue) 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border: 4px solid var(--serpent-scale);
+        }
+        
+        .title-page h1 {
+            font-size: 36pt;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+        
+        .title-page .subtitle {
+            font-size: 18pt;
+            font-style: italic;
+            color: var(--sand);
+            margin-bottom: 30px;
+        }
+        
+        .title-page .adventure-title {
+            font-size: 24pt;
+            color: white;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 3px solid var(--accent-gold);
+        }
+        
+        h1 {
+            font-size: 24pt;
+            color: var(--serpent-green);
+            border-bottom: 4px solid var(--serpent-scale);
+            padding-bottom: 10px;
+            margin: 40px 0 20px 0;
+        }
+        
+        h2 {
+            font-size: 18pt;
+            color: var(--night-blue);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 6px solid var(--serpent-green);
+            padding-left: 15px;
+        }
+        
+        h3 {
+            font-size: 14pt;
+            color: var(--serpent-green);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .readout-box {
+            background: rgba(232, 212, 176, 0.3);
+            border-left: 5px solid var(--accent-gold);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        .mechanics-box {
+            background: var(--sand);
+            border: 3px solid var(--serpent-green);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        
+        .mechanics-box h4 {
+            color: var(--serpent-green);
+            font-size: 12pt;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .gm-tip {
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.1) 0%, rgba(184, 92, 60, 0.1) 100%);
+            border: 2px solid var(--night-blue);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        
+        .gm-tip strong {
+            color: var(--night-blue);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 11pt;
+        }
+        
+        .serpent-warning {
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.15) 0%, rgba(26, 35, 50, 0.15) 100%);
+            border: 3px solid var(--serpent-green);
+            border-left: 6px solid var(--serpent-green);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        
+        .serpent-warning strong {
+            color: var(--serpent-green);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .npc-stat {
+            background: white;
+            border: 2px solid var(--dark-sand);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .npc-stat h4 {
+            color: var(--desert-red);
+            font-size: 13pt;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th {
+            background: var(--serpent-green);
+            color: white;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 8px;
+            border-bottom: 1px solid var(--dark-sand);
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(45, 80, 22, 0.05);
+        }
+        
+        .checklist {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid var(--accent-gold);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checklist li:before {
+            content: "☐ ";
+            font-size: 14pt;
+            margin-right: 8px;
+            color: var(--desert-red);
+        }
+        
+        .scene-header {
+            background: linear-gradient(135deg, var(--serpent-green) 0%, var(--night-blue) 100%);
+            color: white;
+            padding: 15px 20px;
+            margin: 30px 0 20px 0;
+            border-radius: 6px;
+            border: 3px solid var(--serpent-scale);
+        }
+        
+        .scene-header h3 {
+            color: var(--accent-gold);
+            margin: 0;
+            font-size: 16pt;
+        }
+        
+        .scene-header p {
+            margin: 5px 0 0 0;
+            font-size: 10pt;
+            color: var(--sand);
+            font-style: italic;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .reward-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(74, 124, 35, 0.2) 100%);
+            border: 3px solid var(--accent-gold);
+            border-left: 6px solid var(--serpent-green);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .reward-box h4 {
+            color: var(--serpent-green);
+            font-size: 14pt;
+            margin-bottom: 12px;
+        }
+        
+        .artifact-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(45, 80, 22, 0.1) 100%);
+            border: 3px solid var(--accent-gold);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .artifact-box h4 {
+            color: var(--serpent-green);
+            font-size: 13pt;
+            margin-bottom: 10px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+            }
+            .scene-header, h1 {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- TITLE PAGE -->
+        <div class="title-page">
+            <h1>THE SERPENT ROAD</h1>
+            <p class="subtitle">Gioco di Ruolo nel Deserto Post-Apocalittico</p>
+            <div style="font-size: 36pt; margin: 20px 0;">🐍</div>
+            <div class="adventure-title">
+                LA CAROVANA SCOMPARSA<br>
+                <span style="font-size: 14pt; font-style: italic; display: block; margin-top: 15px;">
+                    Quickstart Adventure - 3-4 Ore di Gioco
+                </span>
+            </div>
+        </div>
+        
+        <!-- INTRODUZIONE -->
+        <h1>📖 GUIDA PER IL GAME MASTER</h1>
+        
+        <h2>Benvenuto nel Deserto</h2>
+        <p>Questa avventura introduce <strong>The Serpent Road</strong> attraverso una storia di mistero, sopravvivenza e scoperta. I giocatori guideranno una carovana attraverso il deserto, scopriranno un artefatto Celeste pericoloso, e sentiranno i primi tremori del Serpente che si risveglia nelle profondità.</p>
+        
+        <p style="margin-top: 15px;">L'avventura insegna le meccaniche progressivamente, culminando in una scelta critica: cosa fare con un potere che potrebbe salvare o distruggere?</p>
+        
+        <h3>Di Cosa Hai Bisogno</h3>
+        <div class="checklist">
+            <ul>
+                <li>Questa avventura stampata o su tablet</li>
+                <li>Le 3 schede personaggio pre-generate</li>
+                <li>Quick Reference Sheet (core + Serpente)</li>
+                <li>Dadi: 6d6 per il tavolo + 1d4, 1d8, 1d10, 1d12 per giocatore</li>
+                <li>Matite, gomme, segnalini per tracciare Salute</li>
+                <li>3-4 ore di tempo</li>
+                <li>3 giocatori (ideale, funziona con 2-4)</li>
+            </ul>
+        </div>
+        
+        <h3>Struttura dell'Avventura</h3>
+        <ul>
+            <li><strong>Scena 0:</strong> Contratto e Partenza (15 min) - Setup e obiettivo</li>
+            <li><strong>Scena 1:</strong> La Carovana Scomparsa (25 min) - Risoluzione azioni + Tocchi</li>
+            <li><strong>Scena 2:</strong> L'Artefatto Sepolto (30 min) - Cooperazione + Prime Visioni</li>
+            <li><strong>Scena 3:</strong> Il Primo Tremito (35 min) - Combattimento + Manifestazione Serpente</li>
+            <li><strong>Scena 4:</strong> Attraverso il Deserto (30 min) - Sopravvivenza + Escalation</li>
+            <li><strong>Scena 5:</strong> Le Porte di Samarkandara (25 min) - Scelta Finale + Conseguenze</li>
+        </ul>
+        
+        <div class="gm-tip">
+            <strong>🎭 IL TUO RUOLO:</strong>
+            Non sei "contro" i giocatori. Sei un facilitatore di storie interessanti. Il deserto è pericoloso, il Serpente è misterioso, ma il tuo obiettivo è che i giocatori facciano scelte significative e vivano un'avventura memorabile. Telegrafà pericoli, sii generoso con indizi, rendi i fallimenti interessanti (non solo "fallisci").
+        </div>
+        
+        <h2>Preparazione</h2>
+        <ol>
+            <li><strong>Leggi l'avventura completa</strong> (20 minuti)</li>
+            <li><strong>Familiarizzati con Quick Reference</strong> (entrambe le versioni)</li>
+            <li><strong>Prepara materiali</strong>: stampa, dadi, segnalini</li>
+            <li><strong>Decidi interpretazione del Serpente</strong>: Leggenda? Arma Celeste? Entità senziente? (Vedi Quick Ref Serpente)</li>
+            <li><strong>Crea atmosfera</strong>: musica desertica/misteriosa, luci calde</li>
+        </ol>
+        
+        <!-- INIZIO AVVENTURA -->
+        <h1>🎬 L'AVVENTURA: LA CAROVANA SCOMPARSA</h1>
+        
+        <h2>Sinossi</h2>
+        <p>I PG sono assunti per trovare una carovana mercantile scomparsa nel deserto due settimane fa. Seguendo le tracce, scoprono che la carovana trovò un artefatto Celeste sepolto — un <strong>Cuore di Cristallo</strong> pulsante. Quando i PG lo toccano, l'artefatto inizia a risvegliarsi, e con esso anche il Serpente nelle profondità.</p>
+        
+        <p>Devono portare l'artefatto a Samarkandara (5 giorni di viaggio) affrontando: predatori attratti dal potere dell'artefatto, tremori sempre più forti, visioni del Serpente, e la scelta finale — consegnare l'artefatto all'Impero (sicurezza ma controllo), ai Mercanti (denaro ma rischio), agli Osservatori del Velo (studio ma incognita), o distruggerlo (fine della minaccia ma perdita di conoscenza).</p>
+        
+        <h2>Temi Chiave</h2>
+        <ul>
+            <li><strong>Potere e Responsabilità:</strong> Cosa fai quando trovi qualcosa di pericoloso?</li>
+            <li><strong>Il Serpente Come Presenza:</strong> Non è un mostro da combattere, è una forza cosmica che risponde alle azioni</li>
+            <li><strong>Sopravvivenza:</strong> Il deserto uccide se non rispettato</li>
+            <li><strong>Scelte Impossibili:</strong> Ogni opzione ha vantaggi e svantaggi</li>
+        </ul>
+        
+        <!-- SCENA 0 -->
+        <div class="scene-header">
+            <h3>SCENA 0: CONTRATTO - "Il Mercante Disperato"</h3>
+            <p>Durata: 10-15 minuti | Obiettivo: Setup, motivazione, introduzione setting</p>
+        </div>
+        
+        <div class="readout-box">
+            <p><strong>Leggere ai giocatori:</strong></p>
+            <p>Porto Marea. La città-oasi sorge come un miraggio tra le dune infinite. È qui che tutte le carovane convergono, dove il deserto incontra il commercio. L'aria sa di spezie, sudore e speranza.</p>
+            
+            <p>Siete nella Taverna del Cammello Stanco. Un mercante anziano, Rashid il Paziente, vi osserva con occhi stanchi ma determinati. Quando finalmente parla, la sua voce trema.</p>
+            
+            <p>"Due settimane fa, ho mandato una carovana verso Fortezza Est: otto cammelli, quattro uomini, cargo prezioso. Dovevano tornare in dieci giorni." Fa una pausa. "Non sono tornati. Nessuna parola, nessun segno. Come se il deserto li avesse inghiottiti."</p>
+            
+            <p>"Ho bisogno di voi per trovarli. Seguire la Strada del Serpente verso est, cercare tracce. Se sono vivi, portatemeli indietro. Se sono morti..." La voce si incrina. "Almeno sapere cosa è successo. Vi pagherò 100 dinar a testa. E se recuperate il cargo... il doppio."</p>
+        </div>
+        
+        <div class="gm-tip">
+            <strong>🎭 GESTIRE QUESTA SCENA:</strong>
+            Questa è pura interpretazione. Lascia i giocatori fare domande. Rashid può rivelare:
+            <ul>
+                <li><strong>Il Cargo:</strong> Tessuti pregiati, spezie rare, alcuni artefatti Celesti minori per mercato da collezione (legale)</li>
+                <li><strong>La Rotta:</strong> Strada del Serpente, la via commerciale principale. Sicura, solitamente</li>
+                <li><strong>Gli Uomini:</strong> Suo figlio Karim guida la carovana. Esperto, non prendeva rischi</li>
+                <li><strong>Il Ritardo:</strong> Mai successo prima. Anche con problemi, avrebbero mandato messaggero</li>
+                <li><strong>Altri Ricercatori:</strong> Due gruppi già partiti, nessuno tornato (PG sono terzo tentativo, pagati di più)</li>
+            </ul>
+            Rashid è disperato ma onesto. Se i PG accettano (e accetteranno), fornisce:
+            <ul>
+                <li>Mappa della Strada del Serpente</li>
+                <li>3 cammelli per trasporto</li>
+                <li>10 giorni di provviste (acqua 40L/persona, cibo 12 razioni/persona)</li>
+                <li>50 dinar di anticipo (a testa)</li>
+            </ul>
+        </div>
+        
+        <div class="npc-stat">
+            <h4>RASHID IL PAZIENTE - Mercante</h4>
+            <p><strong>Personalità:</strong> Onesto, padre preoccupato, generoso ma non ingenuo</p>
+            <p><strong>Cosa Sa (che può rivelare):</strong></p>
+            <ul>
+                <li>La Strada del Serpente è chiamata così per leggenda: il Serpente la protegge dai predatori</li>
+                <li>Ultimamente ci sono state voci di tremori nel deserto, ma niente di confermato</li>
+                <li>Gli artefatti nel cargo sono minori (lampade che non servono olio, bussole sempre precise)</li>
+            </ul>
+            <p><strong>Cosa NON Sa:</strong> Che Karim trovò un artefatto molto più potente sepolto sotto una duna</p>
+        </div>
+        
+        <h3>Transizione alla Scena 1</h3>
+        <div class="readout-box">
+            <p>Partite all'alba. I tre cammelli sono testardi ma forti. Il deserto si apre davanti a voi: infinito, splendido, mortale. La Strada del Serpente è visibile — secoli di carovane hanno lasciato un sentiero nella sabbia, marcato da pietre milestone ogni chilometro.</p>
+            
+            <p>Il primo giorno è tranquillo. Il secondo anche. Ma alla sera del terzo giorno, Zahra nota qualcosa: uno dei milestone è rotto, abbattuto. Poi un altro. E poi vedete qualcosa che fa gelare il sangue: cammelli morti, scheletrici, semisepolti nella sabbia.</p>
+            
+            <p>Siete arrivati.</p>
+        </div>
+        
+        <!-- SCENA 1 -->
+        <div class="scene-header">
+            <h3>SCENA 1: SCOPERTA - "Il Campo Abbandonato"</h3>
+            <p>Durata: 20-30 minuti | Meccaniche: Risoluzione azioni, Tocchi di Qualità</p>
+        </div>
+        
+        <div class="mechanics-box">
+            <h4>🎲 MECCANICA DA INSEGNARE: Risoluzione Azioni Base</h4>
+            <p><strong>Spiega ai giocatori:</strong></p>
+            <ol>
+                <li>Quando fate qualcosa di incerto, tirate <strong>2d6 + dado abilità</strong></li>
+                <li>Dovete raggiungere o superare la <strong>Difficoltà</strong> (di solito 9+)</li>
+                <li>Se superate di 3+, ottenete <strong>Tocchi di Qualità</strong> (ogni 3 = 1 Tocco)</li>
+                <li>Potete spendere Tocchi per effetti extra</li>
+            </ol>
+            <p><strong>Esempio pratico imminente:</strong> "Zahra, vuoi cercare tracce. Tira Percezione (2d6 + tuo d8). Servi almeno 9."</p>
+        </div>
+        
+        <div class="readout-box">
+            <p><strong>Leggere ai giocatori:</strong></p>
+            <p>Il campo è un disastro. Quattro cammelli morti, gonfi sotto il sole. Merci sparse ovunque — tessuti strappati, spezie spazzate via dal vento. Una tenda abbattuta. Sangue secco sulla sabbia.</p>
+            
+            <p>Ma nessun corpo umano. Nessuno.</p>
+            
+            <p>I vostri cammelli muggiscono nervosamente. Qualcosa qui non va. L'aria è pesante, innaturalmente silenziosa. Nemmeno gli insetti cantano.</p>
+        </div>
+        
+        <h3>Investigare la Scena</h3>
+        <p>I giocatori probabilmente vorranno investigare. Lascia che propongano azioni. Ecco le principali scoperte:</p>
+        
+        <h4>Opzione 1: Cercare Tracce (Percezione o Sopravvivenza)</h4>
+        <ul>
+            <li><strong>Difficoltà 9+:</strong> Trovate tracce di piedi (quattro uomini) che si allontanano verso sud-est. Non camminavano, correvano. Inseguivano qualcosa o fuggivano da qualcosa?</li>
+            <li><strong>Con 1 Tocco:</strong> Notate anche tracce strane nella sabbia: solchi profondi, come se qualcosa di pesante fosse stato trascinato. Non corrispondono a nessun animale noto.</li>
+            <li><strong>Con 2+ Tocchi:</strong> Le tracce umane sono di 4 giorni fa. Ma c'è un'altra traccia, più recente (2 giorni): stivali militari imperiali. Qualcun altro è stato qui.</li>
+        </ul>
+        
+        <h4>Opzione 2: Esaminare il Cargo (Percezione)</h4>
+        <ul>
+            <li><strong>Difficoltà 9+:</strong> La maggior parte del cargo è irrecuperabile (rovinato dal sole). Ma trovate 3 artefatti Celesti minori intatti: 2 Lampade Eterne (illuminazione infinita), 1 Bussola Vera (sempre indica nord magnetico).</li>
+            <li><strong>Con 1 Tocco:</strong> Notate che una cassa è vuota ma chiusa con lucchetto costoso — come se contenesse qualcosa di molto prezioso, ora sparito.</li>
+            <li><strong>Con 2+ Tocchi:</strong> Trovate un diario parzialmente bruciato. Ultime pagine leggibili parlano di: "...trovato qualcosa sotto la duna... pulsante... luce blu... dobbiamo portarlo via da qui prima che..."</li>
+        </ul>
+        
+        <h4>Opzione 3: Determinare Cosa Uccise i Cammelli (Sapienza o Sopravvivenza)</h4>
+        <ul>
+            <li><strong>Difficoltà 11+:</strong> Non predatori naturali. Le ferite sono cauterizzate, come da calore estremo. E c'è un odore nell'aria — ozono, come dopo un fulmine.</li>
+            <li><strong>Con 1+ Tocchi:</strong> Questo è coerente con alcune armi Celesti. Ma quelle sono rarissime e di solito non funzionali. Qualcosa qui ha riattivato tecnologia antica.</li>
+        </ul>
+        
+        <div class="gm-tip">
+            <strong>💡 LASCIA ESPLORARE LIBERAMENTE:</strong>
+            Non costringere tiri specifici. Se un giocatore chiede qualcosa di sensato, rispondi direttamente. I dadi servono quando c'è vera incertezza. Incoraggia creatività: "Come cerchi?" "Dove guardi per primo?"
+        </div>
+        
+        <h3>Seguire le Tracce</h3>
+        <p>Dopo investigazione, i PG probabilmente vorranno seguire le tracce umane. Queste li conducono a sud-est, verso una formazione di dune più alte.</p>
+        
+        <div class="readout-box">
+            <p>Seguite le tracce per due ore. Il sole è implacabile. Poi, mentre superate una cresta, vedete qualcosa che vi ferma.</p>
+            
+            <p>C'è uno scavo. Qualcuno ha scavato profondamente in una duna — un cratere di 5 metri di diametro, profondo 3 metri. Attrezzature abbandonate: pale, corde, contenitori d'acqua vuoti. E al fondo del cratere, ancora parzialmente sepolto, qualcosa che emette una debole luce blu.</p>
+            
+            <p>Un artefatto Celeste. Ma non come quelli che avete visto prima. Questo è grande quanto un cuore umano, fatto di cristallo traslucido con circuiti luminosi all'interno. Pulsa. Lentamente. Come se respirasse.</p>
+            
+            <p>Yasmin sussurra: "Non dovrebbe essere possibile. Gli artefatti non pulsano. Sono morti da secoli."</p>
+        </div>
+        
+        <div class="serpent-warning">
+            <strong>🐍 PRIMO SEGNO DEL SERPENTE:</strong>
+            Quando i PG vedono l'artefatto per la prima volta, fai notare:
+            <ul>
+                <li>Il vento improvvisamente si ferma completamente (silenzio inquietante)</li>
+                <li>I cammelli diventano estremamente nervosi, tirano le corde</li>
+                <li>Uno dei PG (scegli chi ha Sapienza più alta) sente un sussurro nella lingua antica: <em>"Sveglio... cercavo... finalmente..."</em></li>
+            </ul>
+            <p style="margin-top: 8px;">Questo è il Serpente che nota l'artefatto. Non sta agendo (ancora), ma osserva.</p>
+        </div>
+        
+        <h3>Transizione alla Scena 2</h3>
+        <p>I PG probabilmente vorranno recuperare l'artefatto. Passa alla Scena 2.</p>
+        
+        <!-- SCENA 2 -->
+        <div class="scene-header">
+            <h3>SCENA 2: L'ARTEFATTO - "Il Cuore di Cristallo"</h3>
+            <p>Durata: 25-35 minuti | Meccaniche: Cooperazione, Primo contatto col Serpente</p>
+        </div>
+        
+        <div class="mechanics-box">
+            <h4>🤝 MECCANICA DA INSEGNARE: Cooperazione e Tiri di Gruppo</h4>
+            <p><strong>Spiega:</strong></p>
+            <p><strong>Aiutare un Alleato:</strong> Se hai abilità rilevante d6+, descrivi come aiuti. L'alleato ottiene +1d6 al tiro. Ma se fallisce, anche tu subisci conseguenze.</p>
+            <p><strong>Tiro di Gruppo:</strong> Quando tutto il gruppo lavora insieme:</p>
+            <ol>
+                <li>Scegliete un <strong>leader</strong> (chi ha abilità migliore)</li>
+                <li>Gli altri lo supportano (devono avere abilità d4+)</li>
+                <li>Il leader tira con <strong>Vantaggio</strong> (3d6, tieni i 2 migliori)</li>
+                <li>Successo = tutti beneficiano. Fallimento = tutti soffrono.</li>
+            </ol>
+        </div>
+        
+        <div class="readout-box">
+            <p><strong>Leggere ai giocatori:</strong></p>
+            <p>Il Cuore di Cristallo è sepolto profondamente. Per recuperarlo dovrete scavare con attenzione — è chiaramente fragile, e chi sa cosa succede se si rompe?</p>
+            
+            <p>Mentre vi avvicinate, il pulsare aumenta leggermente di ritmo. Quasi come se percepisse la vostra presenza. Yasmin nota qualcosa: "La temperatura qui è più fredda di 10 gradi rispetto a fuori. L'artefatto sta assorbendo calore dall'ambiente."</p>
+        </div>
+        
+        <h3>Recuperare l'Artefatto</h3>
+        <p>Questo è un <strong>Tiro di Gruppo</strong>. Devono lavorare insieme per estrarre l'artefatto senza danneggiarlo.</p>
+        
+        <p><strong>Setup:</strong></p>
+        <ul>
+            <li>Chiedi: "Chi coordina lo scavo?" (Probabilmente Zahra o chi ha Sopravvivenza/Meccanica alta)</li>
+            <li>Gli altri descrivono come supportano (Malik: scava, Yasmin: monitora artefatto per cambiamenti pericolosi)</li>
+            <li>Il leader tira <strong>Sopravvivenza o Meccanica con Vantaggio</strong> (3d6 + dado abilità, tieni 2d6 migliori)</li>
+            <li><strong>Difficoltà 11+</strong> (compito delicato, sotto pressione)</li>
+        </ul>
+        
+        <p><strong>Risultati:</strong></p>
+        <ul>
+            <li><strong>Successo (11+):</strong> Estraete l'artefatto pulito, intatto. Pesa sorprendentemente poco. È caldo al tatto nonostante l'aria fredda.</li>
+            <li><strong>Con 1 Tocco:</strong> Notate iscrizioni sulla superficie in lingua Celeste. Yasmin o chi ha Sapienza può tentare traduzione (Diff 9+): "Nucleo Regolatore Settore 7 - Progetto Ouroboros"</li>
+            <li><strong>Con 2+ Tocchi:</strong> Trovate anche scheletro umano sotto l'artefatto — vestito in uniforme Celeste, morto millenni fa stringendo l'artefatto. Nel pugno ha chip di dati (potrebbe essere letto con equipaggiamento giusto)</li>
+            <li><strong>Fallimento (10-):</strong> Durante estrazione, l'artefatto scivola. Colpisce roccia. Un cristallo si incrina leggermente. Il pulsare accelera drammaticamente. Tutti subiscono 1d6 danno psichico (mal di testa lancinante) e vedono flash di visione (vedi sotto).</li>
+        </ul>
+        
+        <h3>Prima Visione del Serpente</h3>
+        <p>Quando toccano l'artefatto (successo o fallimento), <strong>tutti i PG</strong> hanno una visione breve:</p>
+        
+        <div class="readout-box">
+            <p><strong>La Visione (leggere drammaticamente):</strong></p>
+            <p>Il mondo svanisce. Per un istante siete... altrove.</p>
+            
+            <p>Vedete il deserto dall'alto, ma verde. Foreste, fiumi, città di cristallo che brillano. Poi tutto comincia a tremare. La terra si apre. Dalle crepe emerge luce blu accecante. Le città crollano. Il verde brucia. Le acque evaporano.</p>
+            
+            <p>E sotto tutto, sentite qualcosa di enorme muoversi. Non lo vedete, ma lo sentite: una presenza così vasta che la vostra mente fatica a comprenderla. Una voce — o forse solo un'eco di pensiero — risuona:</p>
+            
+            <p style="text-align: center; font-weight: bold; color: var(--serpent-green); font-size: 13pt; margin: 15px 0;">
+                "Perché mi svegliate? Non avevo finito di dormire..."
+            </p>
+            
+            <p>Poi siete di nuovo nel deserto, in ginocchio, respirando affannosamente.</p>
+        </div>
+        
+        <div class="serpent-warning">
+            <strong>🐍 SECONDO SEGNO DEL SERPENTE:</strong>
+            Dopo la visione:
+            <ul>
+                <li>Tutti i PG guadagnano Condizione "Ossessionato dal Serpente" (vedi Quick Ref Serpente)</li>
+                <li>La terra trema leggermente per 5 secondi, poi si ferma</li>
+                <li>L'artefatto ora pulsa in sincronia con i battiti cardiaci del PG che lo tiene</li>
+                <li>Tiro Sapienza Diff 11+ per interpretare: "Questo artefatto è connesso a qualcosa di molto più grande. Non è un oggetto isolato — è parte di un sistema. E quel sistema si sta risvegliando."</li>
+            </ul>
+        </div>
+        
+        <div class="artifact-box">
+            <h4>💎 CUORE DI CRISTALLO (Artefatto Maggiore)</h4>
+            <p><strong>Descrizione:</strong> Cristallo delle dimensioni di un cuore umano, traslucido con circuiti luminosi blu all'interno. Pulsa ritmicamente.</p>
+            <p><strong>Cariche:</strong> 12 (ricarica 1/giorno in luce solare)</p>
+            <p><strong>Poteri:</strong></p>
+            <ul>
+                <li><strong>Guarigione Profonda (3 cariche):</strong> Cura 3d6 PV + rimuove 1 condizione negativa</li>
+                <li><strong>Scudo Energetico (2 cariche):</strong> Barriera protettiva 10m di raggio, blocca danni fisici per 10 minuti</li>
+                <li><strong>Impulso Sensoriale (1 carica):</strong> Percepisci tutti esseri viventi entro 500m per 1 minuto</li>
+            </ul>
+            <p><strong>Pericolo:</strong> Ogni volta che viene usato, il Serpente lo "sente". Aumenta intensità manifestazioni (tremori più forti, visioni più frequenti)</p>
+            <p><strong>Instabilità:</strong> Se scende a 0 cariche, inizia contraccolpo: ogni giorno senza ricarica, emette impulso distruttivo (2d6 danno a tutto nel raggio 20m, incluso chi lo porta)</p>
+        </div>
+        
+        <h3>La Domanda</h3>
+        <div class="readout-box">
+            <p>Mentre recuperate, Malik parla: "Questo vale una fortuna. E Rashid ci pagherà doppio per recuperarlo. Ma..." Guarda il cristallo pulsante. "Ho la sensazione che non dovremmo averlo trovato."</p>
+            
+            <p>Zahra annuisce lentamente. "Se è così potente... forse dovremmo portarlo a Samarkandara. Lasciar decidere a chi sa cosa farsene. Studiosi. O l'Impero."</p>
+            
+            <p>Yasmin tocca il cristallo delicatamente. "O forse dovremmo distruggerlo qui. Prima che faccia più danni."</p>
+            
+            <p>Cosa fate?</p>
+        </div>
+        
+        <p><strong>I PG devono decidere:</strong></p>
+        <ol>
+            <li><strong>Portarlo a Samarkandara:</strong> Viaggio di 5 giorni. Destinazione finale dell'avventura. (Scelta probabile)</li>
+            <li><strong>Riportarlo a Porto Marea:</strong> 3 giorni indietro. Rashid è lì. Ma più vicini al deserto profondo.</li>
+            <li><strong>Distruggerlo qui:</strong> Fine immediata del pericolo? O catastrofe? (Spoiler: catastrofe — esplode, 5d6 danno a tutti)</li>
+            <li><strong>Nasconderlo/Seppellirlo di nuovo:</strong> Temporeggiare. Ma Serpente continua a risvegliarsi lentamente.</li>
+        </ol>
+        
+        <div class="gm-tip">
+            <strong>💡 GUIDALI VERSO SAMARKANDARA:</strong>
+            Se tentennano, Zahra può dire: "Samarkandara ha gli Archivi Celesti. Se qualcuno può capire cosa è questo, sono loro." È la scelta giusta per proseguire l'avventura. Se proprio vogliono tornare o distruggere, lascia che lo facciano — ma prepara conseguenze (distruzione = esplosione; ritorno = Scena 3 succede a Porto Marea invece).
+        </div>
+        
+        <h3>Transizione alla Scena 3</h3>
+        <p>Assumendo scelgano di andare a Samarkandara:</p>
+        
+        <div class="readout-box">
+            <p>Decidete: Samarkandara. La Capitale Imperiale è a cinque giorni verso nord. Avvolgete il Cuore di Cristallo in tessuto per proteggerlo, lo caricate su un cammello, e partite.</p>
+            
+            <p>La prima giornata è tesa ma tranquilla. Il cristallo pulsa costantemente. Ogni tanto sentite tremori sottili, come un battito cardiaco del deserto stesso.</p>
+            
+            <p>La seconda notte, mentre accampate, succede qualcosa.</p>
+        </div>
+        
+        <!-- SCENA 3 -->
+        <div class="scene-header">
+            <h3>SCENA 3: PREDATORI - "Attacco Notturno"</h3>
+            <p>Durata: 30-40 minuti | Meccaniche: Combattimento completo, Manifestazione Serpente</p>
+        </div>
+        
+        <div class="mechanics-box">
+            <h4>⚔️ MECCANICA DA INSEGNARE: Combattimento</h4>
+            <p><strong>Spiega rapidamente:</strong></p>
+            <ol>
+                <li><strong>Iniziativa:</strong> PG agiscono per primi (se non sorpresi)</li>
+                <li><strong>Turno:</strong> Movimento + 1 Azione (attaccare, manovrare, usare oggetto, aiutare)</li>
+                <li><strong>Attaccare:</strong> 2d6 + Combattimento vs Diff 9+. Successo = danni (Arma + Tocchi spesi)</li>
+                <li><strong>Danno:</strong> Arma + Tocchi - Armatura = danno finale a Salute</li>
+                <li><strong>Salute a 0:</strong> Fuori combattimento</li>
+            </ol>
+            <p>Tieni Quick Reference visibile durante combattimento.</p>
+        </div>
+        
+        <div class="readout-box">
+            <p><strong>Leggere ai giocatori:</strong></p>
+            <p>Seconda notte. Avete montato le tende, acceso un piccolo fuoco. Il Cuore è avvolto e sepolto sotto sabbia vicino al fuoco — Zahra ha insistito per nasconderlo.</p>
+            
+            <p>Malik è di guardia. È quasi mezzanotte quando sente qualcosa: un suono basso, gutturale. Ringhio. Poi occhi che brillano nel buio. Molti occhi.</p>
+            
+            <p>"SVEGLIATEVI!" urla.</p>
+            
+            <p>Emergono dalle dune: cinque predatori del deserto. Sembrano sciacalli giganti ma sono... sbagliati. La pelle bruciata, cicatrizzata. Occhi che brillano di blu. Si muovono con innaturale coordinazione, tutti convergono verso il punto dove è sepolto il Cuore.</p>
+            
+            <p>Non sono qui per cibo. Sono qui per l'artefatto.</p>
+        </div>
+        
+        <div class="serpent-warning">
+            <strong>🐍 TERZO SEGNO DEL SERPENTE:</strong>
+            Questi predatori sono stati "toccati" dal Serpente — mutati dall'energia dell'artefatto che pulsa. Non sono naturali. Questo è il Serpente che "risponde" alla presenza del Cuore, inviando creature a... recuperarlo? Distruggerlo? Testare i PG? Non è chiaro.
+        </div>
+        
+        <h3>Combattimento: I Predatori Toccati</h3>
+        
+        <div class="npc-stat">
+            <h4>PREDATORI TOCCATI (5 totali)</h4>
+            <p><strong>Statistiche:</strong></p>
+            <ul>
+                <li><strong>Salute:</strong> 4 PV ciascuno</li>
+                <li><strong>Combattimento:</strong> d6</li>
+                <li><strong>Armatura:</strong> 0 (pelle bruciata)</li>
+                <li><strong>Arma:</strong> Morso/Artiglio (1d6 danno)</li>
+                <li><strong>Abilità Speciale - Senso dell'Artefatto:</strong> Sanno esattamente dove è il Cuore sepolto. Ignorano PG e vanno dritti lì a meno che bloccati.</li>
+                <li><strong>Vulnerabilità:</strong> Luce intensa li disorienta (se PG usano Lampade Eterne dall'artefatto recuperato prima, nemici hanno Svantaggio)</li>
+            </ul>
+            <p><strong>Tattiche:</strong> 3 attaccano chiunque protegge il Cuore. 2 cercano di scavare e prenderlo. Se 3+ muoiono, gli altri fuggono ululando.</p>
+        </div>
+        
+        <h3>Condurre il Combattimento</h3>
+        
+        <ol>
+            <li><strong>Round 1 - Sorpresa:</strong> Malik era di guardia quindi PG agiscono per primi, ma Zahra e Yasmin hanno -1d6 al primo tiro (appena sveglie)</li>
+            <li><strong>Obiettivo Chiaro:</strong> I predatori ignorano i PG e vanno verso il Cuore. I PG devono decidere: proteggerlo o lasciare che lo prendano?</li>
+            <li><strong>Ambiente:</strong> Notte, visibilità limitata (Percezione -1d6 se non hanno luce). Sabbia rende movimento difficile. Fuoco fornisce luce in 5m.</li>
+            <li><strong>Durata:</strong> 4-5 round. Se i PG uccidono 3+, gli altri fuggono. Se i predatori prendono il Cuore, tentano di trascinarlo via (possono inseguire).</li>
+        </ol>
+        
+        <div class="gm-tip">
+            <strong>⚔️ RENDILO DINAMICO:</strong>
+            <ul>
+                <li><strong>Descrivi visceralmente:</strong> "Il predatore salta, fauci spalancate, bava che brilla alla luce del fuoco—"</li>
+                <li><strong>Usa l'ambiente:</strong> PG possono: buttare sabbia negli occhi (Svantaggio nemico), usare fuoco come arma improvvisata, nascondersi dietro cammelli</li>
+                <li><strong>Momenti eroici:</strong> Se PG fa qualcosa di spettacolare (es. Malik salta su cammello per colpire dall'alto), dai +1d6</li>
+                <li><strong>Non TPK:</strong> Se i PG stanno perdendo male (2+ a 0 PV), i predatori prendono il Cuore e fuggono. PG devono inseguire (diventa caccia invece di battaglia statica)</li>
+            </ul>
+        </div>
+        
+        <h3>Durante il Combattimento: Il Cuore Reagisce</h3>
+        <p>A Round 3, indipendentemente da come va il combattimento:</p>
+        
+        <div class="readout-box">
+            <p>Il Cuore di Cristallo, sepolto sotto sabbia, inizia a brillare così intensamente che la luce penetra la sabbia. Il pulsare accelera drammaticamente. La terra trema — non un tremito sottile ma un terremoto reale. Tutti (PG e predatori) devono tirare Resistenza Diff 9+ o cadere proni.</p>
+            
+            <p>Poi, dal Cuore, esplode un'onda di energia blu. Non fa danno fisico ma è... altro. Tutti vedono per un istante la stessa cosa: il deserto si dissolve, e sotto ci sono migliaia di chilometri di circuiti, cristalli, macchine incomprensibili. E qualcosa di enorme che si muove tra essi.</p>
+            
+            <p>Il Serpente. Non una creatura, ma una presenza. Sta osservando. E non è contento.</p>
+            
+            <p>L'onda passa. I predatori, terrorizzati, fuggono ululando nel deserto. Il tremore si ferma. Il Cuore torna a pulsare normalmente, ma ora tutti sentite: il Serpente è consapevole di voi.</p>
+        </div>
+        
+        <div class="serpent-warning">
+            <strong>🐍 QUARTO SEGNO DEL SERPENTE:</strong>
+            Dopo questa scena:
+            <ul>
+                <li>Tutti i PG con Condizione "Ossessionato" ora sentono occasionali sussurri in una lingua che non capiscono</li>
+                <li>I tremori continueranno sporadicamente per il resto del viaggio (1-2 volte al giorno)</li>
+                <li>Gli animali (cammelli, uccelli) si comportano stranamente vicino al Cuore — lo evitano</li>
+                <li><strong>GM:</strong> Il Serpente ora è "attivo". Ogni uso del Cuore aumenta questa attività</li>
+            </ul>
+        </div>
+        
+        <h3>Dopo il Combattimento</h3>
+        <ul>
+            <li><strong>Cure:</strong> Yasmin può curare feriti (Medicina Diff 9+, cura 1d6+Tocchi PV)</li>
+            <li><strong>Discussione:</strong> I PG probabilmente vogliono parlare di cosa è successo. Permettilo — roleplay importante.</li>
+            <li><strong>Decisione:</strong> Continuare? Tornare? Distruggere il Cuore? (Se continuano, vai a Scena 4)</li>
+        </ul>
+        
+        <h3>Transizione alla Scena 4</h3>
+        <div class="readout-box">
+            <p>Dormite poco quella notte. All'alba, ripartite. Il Cuore è avvolto in più strati di tessuto, ma il pulsare è udibile. Quasi rassicurante, se non fosse così innaturale.</p>
+            
+            <p>Samarkandara è ancora a tre giorni. Il deserto si estende infinito. E sotto ogni passo, sentite qualcosa di vasto che osserva.</p>
+        </div>
+        
+        <!-- SCENA 4 -->
+        <div class="scene-header">
+            <h3>SCENA 4: VIAGGIO - "Attraverso il Deserto che Respira"</h3>
+            <p>Durata: 25-35 minuti | Meccaniche: Sopravvivenza, Escalation del Serpente</p>
+        </div>
+        
+        <div class="mechanics-box">
+            <h4>🏜️ MECCANICA DA INSEGNARE: Sopravvivenza e Gestione Risorse</h4>
+            <p><strong>Spiega:</strong></p>
+            <p>Nel deserto, le risorse sono vita:</p>
+            <ul>
+                <li><strong>Acqua:</strong> 4L/persona/giorno (minimo 2L ma diventi Esausto)</li>
+                <li><strong>Cibo:</strong> 1 razione/persona/giorno</li>
+                <li><strong>Calore:</strong> Di giorno = rischio esaurimento. Di notte = freddo pericoloso.</li>
+            </ul>
+            <p>Per navigare/trovare risorse: Tiri Sopravvivenza o Navigazione (Diff varia).</p>
+        </div>
+        
+        <div class="readout-box">
+            <p><strong>Leggere ai giocatori:</strong></p>
+            <p>I prossimi tre giorni sono una prova di resistenza. Il sole è spietato. La sabbia penetra ovunque. L'acqua scarseggia — avete abbastanza per arrivare, ma a malapena.</p>
+            
+            <p>E poi ci sono i segni. Il deserto non si comporta più normalmente.</p>
+        </div>
+        
+        <h3>Eventi del Viaggio</h3>
+        <p>Invece di giocare ogni giorno in dettaglio, presenta 3 "Scene Flashpoint" — momenti critici che richiedono decisioni:</p>
+        
+        <h4>Evento 1: La Tempesta (Giorno 3)</h4>
+        <div class="readout-box">
+            <p>All'orizzonte: nuvole nere. Ma non normali — si muovono in pattern circolari, come se ruotassero attorno a un centro invisibile. Zahra non ha mai visto nulla del genere.</p>
+            
+            <p>La tempesta arriverà in un'ora. Potete: (A) cercare riparo naturale, (B) creare riparo con tende/cammelli, (C) correre e sperare di superarla.</p>
+        </div>
+        
+        <p><strong>Scelta A - Cercare Riparo (Sopravvivenza Diff 11+):</strong></p>
+        <ul>
+            <li><strong>Successo:</strong> Trovano formazione rocciosa, protezione completa. Perdono 3 ore ma nessun danno.</li>
+            <li><strong>Fallimento:</strong> No riparo adeguato. Devono affrontare tempesta esposti (vai a Scelta B forced)</li>
+        </ul>
+        
+        <p><strong>Scelta B - Creare Riparo (Tiro Gruppo Sopravvivenza Diff 9+):</strong></p>
+        <ul>
+            <li><strong>Successo:</strong> Riparo tiene. Perdono 4 ore, 1 cammello fugge terrorizzato (perdita cargo).</li>
+            <li><strong>Fallimento:</strong> Riparo crolla. Tutti subiscono 2d6 danno da sabbia/detriti + Esausti.</li>
+        </ul>
+        
+        <p><strong>Scelta C - Correre (Resistenza o Sopravvivenza Diff 13+):</strong></p>
+        <ul>
+            <li><strong>Successo:</strong> Superano tempesta! Drammatico ma riuscito. Nessuna perdita tempo.</li>
+            <li><strong>Fallimento:</strong> Tempesta li raggiunge. Come Scelta B Fallimento.</li>
+        </ul>
+        
+        <div class="serpent-warning">
+            <strong>🐍 LA TEMPESTA NON È NATURALE:</strong>
+            Durante la tempesta (se la affrontano), tutti sentono di nuovo il sussurro: <em>"Perché portate via ciò che è mio? Riportate... riportate... o tutto finirà..."</em>
+            <p style="margin-top: 8px;">La tempesta è il Serpente che cerca di fermarli. Non vuole che il Cuore arrivi a Samarkandara.</p>
+        </div>
+        
+        <h4>Evento 2: L'Incontro (Giorno 4)</h4>
+        <div class="readout-box">
+            <p>All'alba del quarto giorno, vedete qualcosa impossibile: un'altra persona. Un uomo anziano, vestito in stracci, cammina verso di voi attraverso il deserto. Non ha acqua visibile, non ha cammello. Ma non sembra disidratato.</p>
+            
+            <p>Quando vi avvicina, sorride. I suoi occhi hanno una luce strana — blu, come il Cuore.</p>
+            
+            <p>"Viaggiatori," dice con voce rauca. "Portate qualcosa che non vi appartiene. Potrei... alleviare quel fardello?"</p>
+        </div>
+        
+        <div class="npc-stat">
+            <h4>L'EREMITA (Marchiato dal Serpente)</h4>
+            <p><strong>Identità:</strong> Uno degli uomini della carovana di Rashid. Toccato dal Cuore, è stato trasformato.</p>
+            <p><strong>Statistiche (se combattono):</strong></p>
+            <ul>
+                <li>Salute: 8 PV, Combattimento d8, Armatura 1</li>
+                <li><strong>Abilità Speciale:</strong> Immune a calore/freddo. Può "sentire" il Cuore sempre.</li>
+            </ul>
+            <p><strong>Comportamento:</strong></p>
+            <ul>
+                <li>Non aggressivo inizialmente. Vuole persuadere i PG a dargli il Cuore volontariamente.</li>
+                <li>Dice che il Serpente ha parlato con lui, gli ha mostrato "la verità"</li>
+                <li>Il Cuore deve tornare "da dove venne" (sotto terra, nelle profondità)</li>
+                <li>Se rifiutano, diventa ostile ma non attacca — sparisce nel deserto dicendo "Il Serpente verrà a riprenderlo comunque"</li>
+            </ul>
+        </div>
+        
+        <p><strong>Opzioni PG:</strong></p>
+        <ul>
+            <li><strong>Dare il Cuore:</strong> Fine avventura qui. L'Eremita prende il Cuore e cammina verso sud, scomparendo. Tremori cessano immediatamente. PG tornano a Porto Marea senza cargo, nessun pagamento, ma vivi. (Fine "sicura" ma insoddisfacente)</li>
+            <li><strong>Rifiutare pacificamente:</strong> L'Eremita se ne va. Ma quella notte, tremori sono più forti.</li>
+            <li><strong>Interrogarlo (Persuasione Diff 11+):</strong> Rivela cosa successe alla carovana: "Il Cuore ci chiamò. Scavammo. Lo trovammo. E quando lo toccammo... il Serpente ci vide. Tre morirono immediatamente, i loro cuori si fermarono. Io... io fui trasformato. Il Serpente vive in me ora."</li>
+            <li><strong>Combattere:</strong> Possibile ma triste. Se ucciso, il corpo si dissolve in sabbia.</li>
+        </ul>
+        
+        <h4>Evento 3: L'Oasi Maledetta (Giorno 5 - Mattina)</h4>
+        <div class="readout-box">
+            <p>Quinto giorno. Samarkandara è vicina — le sue torri sono visibili all'orizzonte, forse 8 ore di cammino. Ma c'è un problema: l'acqua è finita questa mattina. Il calore è brutale.</p>
+            
+            <p>Poi, miracolosamente, vedete un'oasi. Palme, acqua limpida. A solo 2 ore di deviazione dalla rotta principale. Troppo bella per essere vera?</p>
+        </div>
+        
+        <p><strong>La Verità:</strong> È vera... e non vera. L'oasi esiste, ma è "toccata" dal Serpente. L'acqua è reale ma ha proprietà strane.</p>
+        
+        <p><strong>Se vanno all'oasi:</strong></p>
+        <ul>
+            <li><strong>Percezione Diff 11+:</strong> Notano che l'acqua è troppo ferma. Nessuna increspatura dal vento. E ha sfumatura blu debole.</li>
+            <li><strong>Se bevono senza controllare:</strong> Tiro Resistenza Diff 9+:
+                <ul>
+                    <li><strong>Successo:</strong> Si reidratano (recupero da Esausto) ma hanno visione breve del Serpente.</li>
+                    <li><strong>Fallimento:</strong> Visione più lunga + Condizione "Ossessionato" intensificata (se già Ossessionati, accumulano secondo livello).</li>
+                </ul>
+            </li>
+            <li><strong>Se analizzano prima (Sapienza/Medicina Diff 11+):</strong> Identificano che l'acqua contiene "eco energetica" del Cuore — è stata trasformata dalla sua presenza. Possono scegliere di berla (con rischi noti) o continuare senz'acqua (Esausti ma sicuri).</li>
+        </ul>
+        
+        <p><strong>Se saltano l'oasi:</strong></p>
+        <ul>
+            <li>Arrivano a Samarkandara tutti Esausti ma senza complicazioni del Serpente.</li>
+            <li>Tiro Resistenza Diff 9+ per evitare collasso all'arrivo (se falliscono, svenuti ma stabili).</li>
+        </ul>
+        
+        <h3>Transizione alla Scena 5</h3>
+        <div class="readout-box">
+            <p>Nel tardo pomeriggio del quinto giorno, finalmente, le porte di Samarkandara si ergono davanti a voi. Mura alte 20 metri, torri che toccano il cielo, stendardi imperiali rossi e oro che ondeggiano.</p>
+            
+            <p>La Capitale. Centro di potere, sapienza, commercio. E, forse, risposte.</p>
+            
+            <p>Ma mentre vi avvicinate, sentite l'ultimo tremito — il più forte finora. Per cinque secondi, il mondo trema come se qualcosa di colossale si fosse girato nel sonno, profondamente sotto terra.</p>
+            
+            <p>Il Cuore nel vostro zaino pulsa furiosamente. Il viaggio sta per finire. Ma la storia del Serpente... è appena iniziata.</p>
+        </div>
+        
+        <!-- SCENA 5 -->
+        <div class="scene-header">
+            <h3>SCENA 5: SCELTA - "Le Porte di Samarkandara"</h3>
+            <p>Durata: 20-30 minuti | Meccaniche: Negoziazione, Scelta Finale, Conseguenze</p>
+        </div>
+        
+        <div class="readout-box">
+            <p><strong>Leggere ai giocatori:</strong></p>
+            <p>Le guardie alle porte vi fermano per controllo di routine. Quando vedono quanto siete esausti — polvere, sudore, sguardi ossessionati — un sergente vi accompagna personalmente dentro.</p>
+            
+            <p>"Venite," dice. "Sembrate aver bisogno di cibo, acqua, e riposo. La città vi accoglie."</p>
+            
+            <p>Vi porta attraverso strade affollate fino a una taverna rispettabile. Mentre riposate, arriva la domanda inevitabile: "Cosa vi porta a Samarkandara?"</p>
+            
+            <p>Come rispondete? E soprattutto: cosa fate con il Cuore di Cristallo?</p>
+        </div>
+        
+        <h3>Le Opzioni Finali</h3>
+        <p>I PG hanno portato il Cuore attraverso il deserto. Ora devono decidere il suo destino. Presenta loro 4 fazioni interessate:</p>
+        
+        <h4>Opzione 1: L'Impero di Samarkandara</h4>
+        <div class="npc-stat">
+            <h4>COMANDANTE ZARA - Ufficiale Imperiale</h4>
+            <p><strong>Offerta:</strong> "L'Impero ha protocolli per artefatti pericolosi. Lo prenderemo in custodia, lo studieremo in sicurezza, garantiremo che non faccia danni. Vi pagheremo 500 dinar e la nostra gratitudine."</p>
+            <p><strong>Verità:</strong> L'Impero vuole davvero studiarlo, ma anche weaponizzarlo. Diventerà arma militare.</p>
+            <p><strong>Pro:</strong> Sicuro, controllato, pagamento generoso, favore imperiale.</p>
+            <p><strong>Contro:</strong> Diventa arma. Il Serpente potrebbe reagire male a questo uso.</p>
+            <p><strong>Persuasione Diff 9+:</strong> Zara ammette che sarà usato militarmente "per proteggere cittadini".</p>
+        </div>
+        
+        <h4>Opzione 2: La Gilda dei Mercanti</h4>
+        <div class="npc-stat">
+            <h4>RASHID IL PAZIENTE + Gilda</h4>
+            <p><strong>Offerta:</strong> "Portate il Cuore al mercato nero. Collezionisti pagheranno fortuna. 1000 dinar, divisi. Mio figlio è morto per trovarlo... merita che serva a qualcosa."</p>
+            <p><strong>Verità:</strong> Rashid è disperato per denaro (ha debiti dopo perdita carovana). La Gilda vuole rivendere al miglior offerente.</p>
+            <p><strong>Pro:</strong> Massimo denaro, libertà di scelta, Rashid è felice.</p>
+            <p><strong>Contro:</strong> Finisce in mani sconosciute. Potrebbe essere usato da criminali, fanatici, o peggio.</p>
+            <p><strong>Persuasione Diff 11+:</strong> Rashid ammette che sa essere pericoloso ma ha bisogno dei soldi.</p>
+        </div>
+        
+        <h4>Opzione 3: Gli Osservatori del Velo</h4>
+        <div class="npc-stat">
+            <h4>MAESTRO ARKAN - Studioso Osservatore</h4>
+            <p><strong>Offerta:</strong> "Lasciatelo a noi. Gli Osservatori studiano i Celesti da secoli. Capiremo cosa è, come funziona, se può essere reso sicuro. Nessun pagamento, ma la conoscenza servirà tutti."</p>
+            <p><strong>Verità:</strong> Gli Osservatori sono sinceri ma...potrebbero non riuscire a controllarlo. E alcuni membri dell'ordine sono fanatici che vedono il Serpente come dio.</p>
+            <p><strong>Pro:</strong> Studio genuino, possibilità di capire la verità, nessuna weaponizzazione.</p>
+            <p><strong>Contro:</strong> Rischioso. Potrebbero attivarlo accidentalmente. Nessun pagamento monetario.</p>
+            <p><strong>Sapienza Diff 11+:</strong> I PG sanno che alcuni Osservatori sono cultisti del Serpente.</p>
+        </div>
+        
+        <h4>Opzione 4: Distruggerlo</h4>
+        <p><strong>Come:</strong> Può essere distrutto in una Forgia Celeste (gli Osservatori ne hanno una). Processo irreversibile.</p>
+        <p><strong>Conseguenze:</strong></p>
+        <ul>
+            <li><strong>Immediato:</strong> Il Cuore esplode in energia pura. Tiro Resistenza Diff 11+ o 3d6 danno psichico. Tremori cessano immediatamente.</li>
+            <li><strong>Lungo Termine:</strong> Il Serpente si calma... per ora. Ma una parte della conoscenza Celeste è persa per sempre.</li>
+            <li><strong>Pagamento:</strong> Nessuno. Rashid è devastato (doppia perdita). Impero è arrabbiato (avrebbero voluto studiarlo).</li>
+        </ul>
+        
+        <h3>Aiutare la Scelta</h3>
+        <p>Questa è la scelta più importante dell'avventura. Dai tempo ai giocatori di discutere. Ognuna ha merit e problemi. Non c'è risposta "giusta".</p>
+        
+        <div class="gm-tip">
+            <strong>💡 FACILITARE LA DECISIONE:</strong>
+            <ul>
+                <li>Lascia che i PG parlino tra loro in-character</li>
+                <li>Se indecisi, Yasmin può dire: "Qualunque cosa scegliamo, vivremo con le conseguenze."</li>
+                <li>Offri un "tempo limite": "Le fazioni vi danno fino a domattina per decidere"</li>
+                <li>Se proprio bloccati, l'Eremita può apparire una ultima volta: "Il Serpente attende la vostra scelta. Scegliete saggiamente, o sceglierà per voi."</li>
+            </ul>
+        </div>
+        
+        <h3>Conseguenze di Ogni Scelta</h3>
+        
+        <table style="font-size: 10pt;">
+            <tr>
+                <th>Scelta</th>
+                <th>Conseguenza Immediata</th>
+                <th>Conseguenza Futura (Gancio Campagna)</th>
+            </tr>
+            <tr>
+                <td><strong>Impero</strong></td>
+                <td>Pagamento 500 dinar. Zara ringrazia. Tremori cessano gradualmente.</td>
+                <td>Impero weaponizza il Cuore. PG vedono soldati con armi Celesti nei mesi seguenti. Serpente non è contento — tremori tornano peggio.</td>
+            </tr>
+            <tr>
+                <td><strong>Mercanti</strong></td>
+                <td>Pagamento 1000 dinar. Rashid è grato. Tremori continuano.</td>
+                <td>Cuore venduto a Culto del Serpente. Usano per "risvegliare" completamente il Serpente. PG sono ricercati dal Culto ("voi lo trovaste primo, siete prescelti").</td>
+            </tr>
+            <tr>
+                <td><strong>Osservatori</strong></td>
+                <td>Nessun pagamento ma conoscenza. Tremori continuano. Arkan promette tenerli informati.</td>
+                <td>Osservatori scoprono verità: Cuore è "chiave" per risvegliare/controllare Serpente. Ma alcuni membri rubano info, dividono l'ordine. Guerra civile tra Osservatori.</td>
+            </tr>
+            <tr>
+                <td><strong>Distruggere</strong></td>
+                <td>3d6 danno psichico a chi è presente. Tremori cessano. Nessun pagamento. Tutti le fazioni arrabbiate.</td>
+                <td>Serpente si calma ma conoscenza persa. 5 anni dopo, altro Cuore emerge altrove. Nessuno sa cosa fare. PG ricercati come "gli unici che videro uno prima".</td>
+            </tr>
+        </table>
+        
+        <h3>Epilogo</h3>
+        <p>Dopo la scelta, presenta epilogo breve basato su cosa fecero:</p>
+        
+        <div class="readout-box">
+            <p><strong>Epilogo (esempio - adatta alla scelta):</strong></p>
+            <p>Una settimana dopo, siete ancora a Samarkandara. I tremori sono [cessati/continuano]. Il Cuore è [nelle mani dell'Impero/venduto/negli archivi/distrutto]. Rashid è [grato/devastato]. Le fazioni sono [contente/arrabbiate].</p>
+            
+            <p>Ma una cosa è chiara: la vostra vita è cambiata. Avete visto il Serpente — o almeno la sua ombra. Avete sentito la sua voce nelle profondità. E ora, che lo vogliate o no, siete parte di qualcosa più grande.</p>
+            
+            <p>Il deserto vi chiama. Ci sono più segreti sepolti. Più artefatti. Più verità da scoprire.</p>
+            
+            <p>E sotto tutto, il Serpente attende. Osserva. Ricorda.</p>
+            
+            <p style="text-align: center; font-weight: bold; margin-top: 15px;">
+                Benvenuti a The Serpent Road. La vostra storia è appena iniziata.
+            </p>
+        </div>
+        
+        <!-- RICOMPENSE -->
+        <div class="reward-box">
+            <h4>🎁 RICOMPENSE FINALI</h4>
+            
+            <p><strong>Tutti i PG ricevono:</strong></p>
+            <ul>
+                <li><strong>Esperienza:</strong> Ogni PG avanza 1 dado abilità (d4→d6→d8→d10→d12) in UN'abilità usata frequentemente</li>
+                <li><strong>Denaro:</strong> Dipende da scelta (0-1000 dinar)</li>
+                <li><strong>Reputazione:</strong> Conosciuti a Samarkandara. Natura reputazione dipende da scelta.</li>
+                <li><strong>Artefatti Minori:</strong> Tengono Lampade Eterne e Bussola Vera dalla carovana</li>
+            </ul>
+            
+            <p><strong>Condizioni Permanenti:</strong></p>
+            <ul>
+                <li>Tutti mantengono "Ossessionato dal Serpente" livello 1 (a meno che non l'abbiano curata)</li>
+                <li>Se bevuto acqua oasi: Possibile secondo livello Ossessionato</li>
+            </ul>
+            
+            <p><strong>Conoscenza Acquisita:</strong></p>
+            <ul>
+                <li>Il Serpente è reale (qualunque sia la sua vera natura)</li>
+                <li>Gli artefatti Celesti non sono tutti "spenti" — alcuni sono vivi</li>
+                <li>Il deserto nasconde segreti enormi</li>
+                <li>Le loro scelte hanno conseguenze reali</li>
+            </ul>
+        </div>
+        
+        <!-- GANCI FUTURI -->
+        <h1>🎣 GANCI PER CONTINUARE</h1>
+        
+        <p>Se vuoi trasformare questa one-shot in campagna:</p>
+        
+        <div class="quest-hook" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(74, 124, 35, 0.2) 100%); border: 3px solid var(--accent-gold); border-left: 6px solid var(--serpent-green); padding: 20px; margin: 20px 0; border-radius: 8px;">
+            <h4 style="color: var(--serpent-green); font-size: 13pt; margin-bottom: 12px;">GANCIO 1: Altri Cuori</h4>
+            <p>Il Cuore che trovaste non era l'unico. Arkan (Osservatore) vi contatta: "Abbiamo tradotto iscrizioni. 'Progetto Ouroboros' aveva sette Cuori, distribuiti in pattern geografico preciso. Ne avete trovato uno. Gli altri sei sono ancora sepolti. E se tutti e sette si risvegliano contemporaneamente..." Fa una pausa. "Il Serpente si sveglierà completamente."</p>
+            <p><strong>Quest:</strong> Trovare e neutralizzare (o proteggere) gli altri sei Cuori prima che fazioni rivali o il Culto lo facciano.</p>
+        </div>
+        
+        <div class="quest-hook" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(74, 124, 35, 0.2) 100%); border: 3px solid var(--accent-gold); border-left: 6px solid var(--serpent-green); padding: 20px; margin: 20px 0; border-radius: 8px;">
+            <h4 style="color: var(--serpent-green); font-size: 13pt; margin-bottom: 12px;">GANCIO 2: L'Eremita Ritorna</h4>
+            <p>L'uomo trasformato dal Cuore vi cerca. "Il Serpente mi ha mandato. Vuole parlarvi. Direttamente." Vi offre di guidarvi in un luogo sacro profondo nel deserto dove "il confine tra mondo e Serpente è sottile". È un'opportunità di ottenere risposte... o una trappola?</p>
+            <p><strong>Quest:</strong> Viaggio verso il cuore metaforico/letterale del Serpente per confronto finale con la sua coscienza.</p>
+        </div>
+        
+        <div class="quest-hook" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(74, 124, 35, 0.2) 100%); border: 3px solid var(--accent-gold); border-left: 6px solid var(--serpent-green); padding: 20px; margin: 20px 0; border-radius: 8px;">
+            <h4 style="color: var(--serpent-green); font-size: 13pt; margin-bottom: 12px;">GANCIO 3: Conseguenze della Scelta</h4>
+            <p>3 mesi dopo: le conseguenze della vostra scelta si manifestano (vedi tabella sopra). Siete chiamati a "pulire il casino" — sia esso Impero che weaponizza, Culto che risveglia, o Osservatori in guerra civile. La vostra responsabilità non è finita.</p>
+            <p><strong>Quest:</strong> Gestire le ramificazioni politiche/mistiche della scelta originale.</p>
+        </div>
+        
+        <div class="quest-hook" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(74, 124, 35, 0.2) 100%); border: 3px solid var(--accent-gold); border-left: 6px solid var(--serpent-green); padding: 20px; margin: 20px 0; border-radius: 8px;">
+            <h4 style="color: var(--serpent-green); font-size: 13pt; margin-bottom: 12px;">GANCIO 4: I Marchiati</h4>
+            <p>Uno dei PG comincia a cambiare. Squame sottili sulla pelle. Occhi che brillano di blu in certe luci. Il Serpente li ha "toccati" durante il viaggio. Stanno diventando Marchiati. Possono fermarlo? Lo vogliono fermare? O accettare questa trasformazione?</p>
+            <p><strong>Quest:</strong> Cercare cura o accettare destino come Marchiato, esplorando cosa significa.</p>
+        </div>
+        
+        <!-- APPENDICE GM -->
+        <h1>📋 APPENDICE PER IL GM</h1>
+        
+        <h2>Adattare l'Avventura</h2>
+        
+        <h3>Con 2 Giocatori</h3>
+        <ul>
+            <li>Riduci predatori a 3 (Scena 3)</li>
+            <li>Dai Vantaggio automatico su tutti i tiri di gruppo</li>
+            <li>Introduci PNG alleato: Karim (figlio di Rashid) sopravvive, unisce forze con PG</li>
+        </ul>
+        
+        <h3>Con 4 Giocatori</h3>
+        <ul>
+            <li>Aumenta predatori a 7</li>
+            <li>Aggiungi secondo Marchiato nell'Evento 2</li>
+            <li>Nelle decisioni finali, più difficile raggiungere consenso (feature, not bug)</li>
+        </ul>
+        
+        <h3>Senza Combattimento</h3>
+        <p>Se il tavolo preferisce meno combattimento:</p>
+        <ul>
+            <li>Scena 3: Predatori possono essere spaventati via con fuoco/luce senza battaglia</li>
+            <li>Focus su mistero, sopravvivenza, roleplay</li>
+            <li>Più visioni del Serpente invece di minacce fisiche</li>
+        </ul>
+        
+        <h2>FAQ</h2>
+        
+        <h3>"I giocatori vogliono tenere il Cuore per sé"</h3>
+        <p><strong>Permettilo.</strong> Ma ogni giorno che lo tengono, intensifica manifestazioni Serpente. Dopo 1 settimana, uno diventa Marchiato forzatamente. Dopo 2 settimane, il Cuore inizia a "chiamare" altre entità pericolose.</p>
+        
+        <h3>"I giocatori vogliono usare il Cuore come arma"</h3>
+        <p><strong>Funziona.</strong> Ma ogni uso aumenta rischio: tira d6. Su 1-2, contraccolpo (vedi scheda artefatto). Su 5-6, il Serpente "nota" e invia qualcosa (predatori, tremito, visione potente).</p>
+        
+        <h3>"Non capisco cosa è veramente il Serpente"</h3>
+        <p><strong>Non devi!</strong> Mantieni ambiguità. È arma Celeste? Entità? Mito? Tutte e tre? Decidi tu, o lascia aperto. Il mistero è parte del fascino.</p>
+        
+        <h3>"I tremori sono fastidiosi da gestire"</h3>
+        <p><strong>Semplificali.</strong> Invece di tirare ogni volta, di': "Un tremito scuote la terra per 5 secondi, poi passa." Solo se narrativamente importante (durante combattimento, momento teso), chiedi Resistenza Diff 9+ o caduta proni.</p>
+        
+        <h2>Checklist di Sessione</h2>
+        
+        <div class="checklist">
+            <p><strong>Prima di Giocare:</strong></p>
+            <ul>
+                <li>Letto avventura completa</li>
+                <li>Deciso interpretazione del Serpente (per coerenza)</li>
+                <li>Stampato materiali (schede, Quick Ref)</li>
+                <li>Preparato dadi e segnalini</li>
+                <li>Musica/atmosfera pronta</li>
+            </ul>
+        </div>
+        
+        <div class="checklist">
+            <p><strong>Durante Gioco:</strong></p>
+            <ul>
+                <li>Insegno regole progressivamente (non dump tutto all'inizio)</li>
+                <li>Descrivo il deserto vivido (colori, temperature, suoni)</li>
+                <li>Manifesto il Serpente gradualmente (sottile poi ovvio)</li>
+                <li>Telegrafò pericoli ("Se fate X, probabilmente Y...")</li>
+                <li>Rispetto scelte giocatori (anche se non previste)</li>
+                <li>Tengo ritmo (non bloccare su dettagli minori)</li>
+            </ul>
+        </div>
+        
+        <div class="checklist">
+            <p><strong>Dopo Gioco:</strong></p>
+            <ul>
+                <li>Chiedo feedback</li>
+                <li>Annoto scelta finale e sue conseguenze</li>
+                <li>Se continuano: pianifico prossima sessione basata su ganci</li>
+                <li>Ringrazio giocatori</li>
+            </ul>
+        </div>
+        
+        <h2>Congratulazioni!</h2>
+        <p style="text-align: center; font-size: 14pt; margin-top: 30px;">
+            <strong>Hai guidato il tuo primo viaggio lungo The Serpent Road!</strong><br>
+            <span style="font-size: 24pt; margin: 15px 0; display: block;">🐍</span>
+            <em>Il deserto è vasto. Il Serpente è paziente. Le storie sono infinite.</em>
+        </p>
+        
+    </div>
+</body>
+</html>

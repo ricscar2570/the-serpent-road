@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - Catalogo Artefatti Celesti</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+            --artifact-blue: #4A90E2;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--dark-sand) 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--artifact-blue) 0%, var(--night-blue) 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border: 4px solid var(--accent-gold);
+        }
+        
+        .header h1 {
+            font-size: 36pt;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+        }
+        
+        .header .subtitle {
+            font-size: 16pt;
+            font-style: italic;
+            color: var(--sand);
+        }
+        
+        .header .icon {
+            font-size: 48pt;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 24pt;
+            color: var(--artifact-blue);
+            border-bottom: 4px solid var(--accent-gold);
+            padding-bottom: 10px;
+            margin: 40px 0 20px 0;
+        }
+        
+        .artifact {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.08) 0%, rgba(232, 212, 176, 0.15) 100%);
+            border: 3px solid var(--artifact-blue);
+            border-left: 6px solid var(--accent-gold);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .artifact-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        
+        .artifact-title {
+            font-size: 18pt;
+            color: var(--artifact-blue);
+            font-weight: bold;
+        }
+        
+        .artifact-tier {
+            background: var(--accent-gold);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 10pt;
+            font-weight: bold;
+        }
+        
+        .artifact-description {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-left: 3px solid var(--artifact-blue);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .stat-box {
+            background: white;
+            border: 2px solid var(--dark-sand);
+            padding: 10px;
+            border-radius: 4px;
+        }
+        
+        .stat-label {
+            font-size: 9pt;
+            text-transform: uppercase;
+            color: var(--artifact-blue);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            font-size: 12pt;
+            color: var(--text-dark);
+        }
+        
+        .powers {
+            background: rgba(74, 144, 226, 0.1);
+            border: 2px solid var(--artifact-blue);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .powers h4 {
+            color: var(--artifact-blue);
+            margin-bottom: 10px;
+            font-size: 12pt;
+        }
+        
+        .power {
+            margin: 8px 0;
+            padding: 8px;
+            background: white;
+            border-left: 3px solid var(--accent-gold);
+            border-radius: 3px;
+        }
+        
+        .power-name {
+            font-weight: bold;
+            color: var(--artifact-blue);
+        }
+        
+        .power-cost {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 9pt;
+            margin-right: 8px;
+        }
+        
+        .danger-box {
+            background: linear-gradient(135deg, rgba(184, 92, 60, 0.15) 0%, rgba(26, 35, 50, 0.1) 100%);
+            border: 2px solid var(--desert-red);
+            border-left: 5px solid var(--desert-red);
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .danger-box h4 {
+            color: var(--desert-red);
+            margin-bottom: 8px;
+            font-size: 11pt;
+        }
+        
+        .hooks {
+            background: rgba(45, 80, 22, 0.08);
+            border: 2px solid var(--serpent-green);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+        
+        .hooks h4 {
+            color: var(--serpent-green);
+            margin-bottom: 10px;
+            font-size: 12pt;
+        }
+        
+        .hook {
+            margin: 6px 0;
+            padding: 6px 10px;
+            background: white;
+            border-left: 3px solid var(--serpent-green);
+            border-radius: 3px;
+            font-size: 10pt;
+        }
+        
+        .hook-number {
+            display: inline-block;
+            background: var(--serpent-green);
+            color: white;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th {
+            background: var(--artifact-blue);
+            color: white;
+            padding: 8px;
+            text-align: left;
+            font-size: 10pt;
+        }
+        
+        td {
+            padding: 8px;
+            border-bottom: 1px solid var(--dark-sand);
+            font-size: 10pt;
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(74, 144, 226, 0.05);
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        .intro-box {
+            background: rgba(232, 212, 176, 0.3);
+            border-left: 5px solid var(--accent-gold);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+            }
+            .artifact {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- HEADER -->
+        <div class="header">
+            <div class="icon">✨</div>
+            <h1>ARTEFATTI CELESTI</h1>
+            <p class="subtitle">Reliquie della Civiltà Perduta</p>
+        </div>
+        
+        <!-- INTRODUZIONE -->
+        <div class="intro-box">
+            <p><strong>I Celesti</strong> dominarono questo continente per millenni. La loro civiltà era così avanzata che sembrava magia. Poi venne il Cataclisma — che fosse il Serpente, una guerra, o entrambi — e tutto finì.</p>
+            
+            <p style="margin-top: 10px;">Ora, sepolti sotto le sabbie, giacciono i loro artefatti. Alcuni sono semplici — lampade che brillano senza olio, bussole che indicano sempre il nord. Altri sono incomprensibili, pericolosi, forse senzienti.</p>
+            
+            <p style="margin-top: 10px;">Ogni artefatto racconta una storia. Ogni artefatto è una scelta: usare il potere degli antichi, o lasciarlo sepolto dove appartiene?</p>
+        </div>
+        
+        <h1>📋 COME LEGGERE QUESTA GUIDA</h1>
+        
+        <table>
+            <tr>
+                <th>Elemento</th>
+                <th>Significato</th>
+            </tr>
+            <tr>
+                <td><strong>Tier</strong></td>
+                <td>MINORE (comune) / MAGGIORE (raro) / RELIQUIA (unico)</td>
+            </tr>
+            <tr>
+                <td><strong>Cariche</strong></td>
+                <td>Usi disponibili prima di ricaricare</td>
+            </tr>
+            <tr>
+                <td><strong>Ricarica</strong></td>
+                <td>Come recuperare cariche (sole, luna, cristalli)</td>
+            </tr>
+            <tr>
+                <td><strong>Poteri</strong></td>
+                <td>Cosa fa + costo in cariche</td>
+            </tr>
+            <tr>
+                <td><strong>Pericoli</strong></td>
+                <td>Contraccolpi, instabilità, rischi d'uso</td>
+            </tr>
+            <tr>
+                <td><strong>Ganci</strong></td>
+                <td>5 idee per quest/storie legate all'artefatto</td>
+            </tr>
+        </table>
+        
+        <div class="danger-box">
+            <h4>⚠️ NOTA SUL SERPENTE</h4>
+            <p>Alcuni artefatti (specialmente i più potenti) sono "notati" dal Serpente quando usati. Questo può significare: visioni, tremori, creature che convergono, benedizioni o maledizioni. Usa discrezione come GM.</p>
+        </div>
+        
+        <!-- ARTEFATTO 1 -->
+        <div class="artifact">
+            <div class="artifact-header">
+                <div class="artifact-title">🔦 LAMPADA ETERNA</div>
+                <div class="artifact-tier">MINORE</div>
+            </div>
+            
+            <div class="artifact-description">
+                Una piccola lampada di cristallo blu che emette luce costante, calda e piacevole. Non richiede olio, non produce calore, non si rompe facilmente. I Celesti le usavano per illuminare le loro città.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Cariche</div>
+                    <div class="stat-value">Infinite (passiva)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricarica</div>
+                    <div class="stat-value">N/A (sempre attiva)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Peso</div>
+                    <div class="stat-value">0.2 kg</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Valore Mercato</div>
+                    <div class="stat-value">50 dinar</div>
+                </div>
+            </div>
+            
+            <div class="powers">
+                <h4>✨ POTERI</h4>
+                <div class="power">
+                    <span class="power-name">Luce Costante:</span> Illumina raggio 10m come torcia. Non si spegne mai. Può essere oscurata avvolgendola.
+                </div>
+                <div class="power">
+                    <span class="power-name">Intensità Regolabile:</span> Chi la tiene può mentalmente aumentare/diminuire luminosità (da candela a lanterna).
+                </div>
+            </div>
+            
+            <div class="danger-box">
+                <h4>⚠️ PERICOLI</h4>
+                <p><strong>Minimo:</strong> Se rotta (caduta da >5m su roccia), esplode in flash accecante. Resistenza Diff 9+ o Stordito per 1 round.</p>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>Contrabbando Innocuo:</strong> Mercante chiede portare 20 lampade attraverso confine. Sono "legali" ma Impero tassa pesantemente artefatti. Rischi?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>Faro nel Deserto:</strong> Villaggio usa lampada gigante (10x normale) come faro per carovane. Si spegne improvvisamente dopo secoli. Cosa è cambiato?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>La Lampada Che Sussurra:</strong> Una lampada specifica "parla" debolmente. Fornisce indizi su tesoro sepolto. Ma chi ascolta diventa Ossessionato.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Estrazione Illegale:</strong> Rovine hanno centinaia di lampade. Saccheggiatori le estraggono, causando crolli. Fermarli o unirsi?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>Rituale di Luce:</strong> Culto del Serpente vuole 100 lampade per cerimonia che "comunicherà col Serpente". PG devono procurarle.
+                </div>
+            </div>
+        </div>
+        
+        <!-- ARTEFATTO 2 -->
+        <div class="artifact">
+            <div class="artifact-header">
+                <div class="artifact-title">🧭 BUSSOLA VERA</div>
+                <div class="artifact-tier">MINORE</div>
+            </div>
+            
+            <div class="artifact-description">
+                Disco metallico delle dimensioni di una mano, con ago fluttuante che indica sempre il nord magnetico perfetto. Non importa dove sei — deserto, caverna, tempesta — l'ago è infallibile.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Cariche</div>
+                    <div class="stat-value">Infinite (passiva)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricarica</div>
+                    <div class="stat-value">N/A</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Peso</div>
+                    <div class="stat-value">0.3 kg</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Valore Mercato</div>
+                    <div class="stat-value">100 dinar</div>
+                </div>
+            </div>
+            
+            <div class="powers">
+                <h4>✨ POTERI</h4>
+                <div class="power">
+                    <span class="power-name">Nord Perfetto:</span> +1d6 a tutti i tiri Navigazione. Non puoi perderti se hai la bussola.
+                </div>
+                <div class="power">
+                    <span class="power-name">Mappatura Mentale:</span> Chi tiene la bussola per 1 ora sviluppa senso innato di direzione che dura 24h anche senza bussola.
+                </div>
+            </div>
+            
+            <div class="danger-box">
+                <h4>⚠️ PERICOLI</h4>
+                <p><strong>Dipendenza Sottile:</strong> Dopo 1 mese di uso continuo, Navigazione senza bussola ha -1d6 (dipendenza psicologica).</p>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>La Bussola Impazzita:</strong> In una zona specifica del deserto, tutte le bussole impazziscono. Cosa c'è sepolto lì che interferisce col magnetismo?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>Eredità del Navigatore:</strong> Navigatore leggendario muore, lascia bussola a PG. Ma suo rivale sostiene era rubata originariamente. Chi ha ragione?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>Bussola del Destino:</strong> Questa bussola specifica non indica nord — indica "dove devi andare". Profezia o glitch? Seguirla è pericoloso.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Contrabbando Cartografico:</strong> Impero monopolizza bussole. Mercato nero fiorisce. PG assunti per portare 50 bussole attraverso blocco militare.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>Triangolazione Antica:</strong> Tre bussole specifiche, usate insieme, triangolano posizione di qualcosa sepolto. PG hanno una, devono trovare altre due.
+                </div>
+            </div>
+        </div>
+        
+        <!-- ARTEFATTO 3 -->
+        <div class="artifact">
+            <div class="artifact-header">
+                <div class="artifact-title">💧 FIASCHETTA INFINITA</div>
+                <div class="artifact-tier">MINORE</div>
+            </div>
+            
+            <div class="artifact-description">
+                Contenitore cilindrico di materiale traslucido. Riempi con acqua, svuoti completamente... e dopo 1 ora si riempie di nuovo magicamente. Stessa quantità, stessa qualità. I Celesti non conoscevano la sete.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Capacità</div>
+                    <div class="stat-value">2 litri</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricarica</div>
+                    <div class="stat-value">1 ora (automatica)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Peso</div>
+                    <div class="stat-value">0.5 kg (vuota o piena)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Valore Mercato</div>
+                    <div class="stat-value">500 dinar</div>
+                </div>
+            </div>
+            
+            <div class="powers">
+                <h4>✨ POTERI</h4>
+                <div class="power">
+                    <span class="power-name">Acqua Infinita:</span> Produce 2L acqua pura/ora. Nel deserto, questo vale più dell'oro.
+                </div>
+                <div class="power">
+                    <span class="power-name">Purificazione:</span> Se riempi con acqua contaminata/sporca, dopo ricarica diventa pura (rimuove batteri, veleni, sale).
+                </div>
+                <div class="power">
+                    <span class="power-name">Temperatura Perfetta:</span> L'acqua esce sempre a temperatura ambiente ideale (fresca ma non fredda).
+                </div>
+            </div>
+            
+            <div class="danger-box">
+                <h4>⚠️ PERICOLI</h4>
+                <p><strong>Avidità:</strong> Chi possiede fiaschetta è target per ladri. Se rotta (difficile, ma possibile con forza intenzionale), non ripara mai.</p>
+                <p style="margin-top: 8px;"><strong>Dipendenza Sociale:</strong> Villaggi che dipendono da fiaschetta per acqua collassano se presa via o rubata.</p>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>Il Villaggio Assetato:</strong> Oasis si prosciuga. Villaggio ha fiaschetta ma produce solo per 10 persone. 100 persone vivono lì. Chi decide chi beve?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>L'Esperimento:</strong> Studioso vuole riempire fiaschetta con vino, veleno, acido. Cosa produce dopo ricarica? Assuma PG per test pericolosi.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>Guerra dell'Acqua:</strong> Due tribù combattono per controllo fiaschetta da generazioni. PG la trovano durante viaggio. Restituirla a chi?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Sabotaggio Mercantile:</strong> Mercante d'acqua (vende acqua a caro prezzo) vuole distruggere tutte le fiaschette per mantenere monopolio. Assuma assassini.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>La Fiaschetta Maledetta:</strong> Questa fiaschetta produce acqua... che lentamente trasforma chi la beve. Mutazioni sottili, innocue all'inizio.
+                </div>
+            </div>
+        </div>
+        
+        <!-- ARTEFATTO 4 -->
+        <div class="artifact">
+            <div class="artifact-header">
+                <div class="artifact-title">🛡️ SCUDO PRISMATICO</div>
+                <div class="artifact-tier">MAGGIORE</div>
+            </div>
+            
+            <div class="artifact-description">
+                Bracciale metallico che proietta campo di forza traslucido e iridescente quando attivato. Ferma frecce, lame, persino calore. I Celesti lo indossavano come gioiello, noi lo chiamiamo salvezza.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Cariche</div>
+                    <div class="stat-value">6</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricarica</div>
+                    <div class="stat-value">1/notte (luce lunare)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Peso</div>
+                    <div class="stat-value">0.4 kg</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Valore Mercato</div>
+                    <div class="stat-value">2000 dinar</div>
+                </div>
+            </div>
+            
+            <div class="powers">
+                <h4>✨ POTERI</h4>
+                <div class="power">
+                    <span class="power-cost">1 carica</span>
+                    <span class="power-name">Scudo Personale (Reazione):</span> Quando subisci danno, attiva istantaneamente. Riduci danno di 2d6 (min 0). Dura 1 round.
+                </div>
+                <div class="power">
+                    <span class="power-cost">2 cariche</span>
+                    <span class="power-name">Barriera Estesa:</span> Crea cupola 3m raggio attorno a te. Blocca tutti gli attacchi fisici dall'esterno. Dura 10 minuti o finché non assorbe 20 danni totali.
+                </div>
+                <div class="power">
+                    <span class="power-cost">3 cariche</span>
+                    <span class="power-name">Riflesso:</span> Per 1 minuto, il campo non assorbe danni ma li riflette al 50% verso attaccante.
+                </div>
+            </div>
+            
+            <div class="danger-box">
+                <h4>⚠️ PERICOLI</h4>
+                <p><strong>Sovraccarico:</strong> Se usi 4+ cariche in 1 ora, bracciale si surriscalda. Resistenza Diff 11+ o 1d6 danno da ustione + Stordito.</p>
+                <p style="margin-top: 8px;"><strong>Falsa Sicurezza:</strong> Campo blocca fisico, NON psichico/veleni/malattie. Utenti inesperti si sentono invincibili e prendono rischi stupidi.</p>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>L'Assassinio Impossibile:</strong> Nobile con scudo prismatico ucciso nella stanza sigillata. Come? Veleno? Magia? Tradimento dall'interno? Investigare.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>Duello d'Onore:</strong> Campione nemico ha scudo. PG sfidato a duello. Combattere, sabotare artefatto prima, o trovare terza via?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>Il Rifugio:</strong> Tempesta mortale in arrivo. Scudo può proteggere gruppo (Barriera Estesa) ma consuma tutte le cariche. Rischiare viaggio senza protezione dopo?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Prototipo Instabile:</strong> Questo scudo è versione sperimentale. Ogni uso, tira d6: 1-2 = funziona ma esplode dopo (2d6 danno portatore), 3-6 = normale.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>Il Collezionista:</strong> Ricco ossessionato possiede 20 scudi prismatici. Vuole IL set completo (100 totali). Assuma PG per procurarne altri, costo cosa costi.
+                </div>
+            </div>
+        </div>
+        
+        <!-- ARTEFATTO 5 -->
+        <div class="artifact">
+            <div class="artifact-header">
+                <div class="artifact-title">👁️ OCCHIO DELLA VISIONE</div>
+                <div class="artifact-tier">MAGGIORE</div>
+            </div>
+            
+            <div class="artifact-description">
+                Sfera di cristallo delle dimensioni di un occhio umano. Quando attivata, levita e mostra visioni: passato remoto, luoghi distanti, verità nascoste. Vedere è potere. Vedere troppo è follia.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Cariche</div>
+                    <div class="stat-value">5</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricarica</div>
+                    <div class="stat-value">1/giorno (sole)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Peso</div>
+                    <div class="stat-value">0.1 kg</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Valore Mercato</div>
+                    <div class="stat-value">3000 dinar</div>
+                </div>
+            </div>
+            
+            <div class="powers">
+                <h4>✨ POTERI</h4>
+                <div class="power">
+                    <span class="power-cost">1 carica</span>
+                    <span class="power-name">Vedere il Passato:</span> Vedi eventi che sono successi in questo luogo fino a 100 anni fa. Durata visione: 1 minuto (tempo reale). Sapienza Diff 9+ per interpretare correttamente.
+                </div>
+                <div class="power">
+                    <span class="power-cost">2 cariche</span>
+                    <span class="power-name">Vedere Lontano:</strong> Vedi luogo che conosci entro 100km come se fossi lì. Dura 10 minuti. Puoi guardare ma non interagire.
+                </div>
+                <div class="power">
+                    <span class="power-cost">3 cariche</span>
+                    <span class="power-name">Vedere Verità:</span> Chiedi 1 domanda all'Occhio su situazione presente. Risposta visiva, criptica ma vera. GM deve rispondere onestamente (può essere enigmatica).
+                </div>
+            </div>
+            
+            <div class="danger-box">
+                <h4>⚠️ PERICOLI</h4>
+                <p><strong>Ossessione Visiva:</strong> Ogni uso, tiro Resistenza Diff 9+ o guadagni 1 livello "Ossessionato". A 3 livelli, visioni spontanee incontrollate.</p>
+                <p style="margin-top: 8px;"><strong>Verità Dolorose:</strong> "Vedere Verità" mostra realtà anche se devastante (tradimenti, morte futura, segreti che distruggono amicizie).</p>
+                <p style="margin-top: 8px;"><strong>Notato dal Serpente:</strong> Usare "Vedere Passato" in rovine antiche può rivelare cose che il Serpente non vuole viste. Rischio benedizione/maledizione.</p>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>Testimone del Cataclisma:</strong> Usare Occhio in rovina Celeste mostra esattamente cosa causò fine civiltà. Ma verità è così orribile che causa follia permanente?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>Lo Spiatore:</strong> Nobile usa Occhio per spiare nemici politici. Assuma PG per rubarlo. Ma poi PG scoprono segreti del nobile. Usarli o distruggerli?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>Il Crimine Perfetto:</strong> Omicidio commesso. Testimoni dicono persona X. Ma Occhio mostra era persona Y (con maschera). Chi credi? Artefatto o testimoni?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Visioni Condivise:</strong> Due persone usano Occhio contemporaneamente (non dovrebbe essere possibile). Entrambi vedono stessa visione ma interpretazioni opposte. Realtà vs percezione.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>L'Occhio Cieco:</strong> Questo Occhio improvvisamente smette di funzionare in una zona specifica. Cosa c'è lì che "blocca" la visione? Cosa nasconde?
+                </div>
+            </div>
+        </div>
+        
+        <!-- ARTEFATTO 6 -->
+        <div class="artifact">
+            <div class="artifact-header">
+                <div class="artifact-title">⚡ GUANTO DEL FULMINE</div>
+                <div class="artifact-tier">MAGGIORE</div>
+            </div>
+            
+            <div class="artifact-description">
+                Guanto metallico che sale fino al gomito. Quando attivato, accumula elettricità statica che può essere scaricata in arco letale. I Celesti lo usavano per costruzione. Noi lo usiamo per distruzione.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Cariche</div>
+                    <div class="stat-value">8</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricarica</div>
+                    <div class="stat-value">1/giorno (tempesta) o 1/3 giorni (sole)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Peso</div>
+                    <div class="stat-value">1.2 kg</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Valore Mercato</div>
+                    <div class="stat-value">2500 dinar</div>
+                </div>
+            </div>
+            
+            <div class="powers">
+                <h4>✨ POTERI</h4>
+                <div class="power">
+                    <span class="power-cost">1 carica</span>
+                    <span class="power-name">Tocco Elettrico:</span> Contatto fisico con target. Tiro Combattimento Diff 9+. Successo = 2d6 danno elettrico + target Stordito 1 round.
+                </div>
+                <div class="power">
+                    <span class="power-cost">2 cariche</span>
+                    <span class="power-name">Arco Fulminante:</span> Proietti fulmine fino a 20m. Tiro Combattimento Diff 9+. Successo = 3d6 danno elettrico. Può saltare a 1 nemico entro 3m dal primo (metà danno).
+                </div>
+                <div class="power">
+                    <span class="power-cost">4 cariche</span>
+                    <span class="power-name">Tempesta Personale:</span> Per 1 minuto, ogni attaccante in mischia subisce 1d6 danno elettrico automatico quando ti colpisce.
+                </div>
+                <div class="power">
+                    <span class="power-cost">Passivo</span>
+                    <span class="power-name">Immunità Elettrica:</span> Immune a danni elettrici mentre indossi guanto (anche da altre fonti).
+                </div>
+            </div>
+            
+            <div class="danger-box">
+                <h4>⚠️ PERICOLI</h4>
+                <p><strong>Sovraccarico Critico:</strong> Se usi 6+ cariche in 10 minuti, guanto esplode. 4d6 danno a portatore + tutti entro 5m. Guanto distrutto.</p>
+                <p style="margin-top: 8px;"><strong>Acqua Conduttrice:</strong> Usare poteri mentre bagnato o in acqua = contraccolpo. Subisci metà danno che infliggi.</p>
+                <p style="margin-top: 8px;"><strong>Attrazione Metallica:</strong> Armature metalliche hanno -1d6 per schivare attacchi del guanto (elettricità attirata dal metallo).</p>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>Il Gladiatore:</strong> Arena clandestina. Campione usa guanto fulmine. PG sfidati (volontariamente o forzatamente). Combattere o sabotare?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>Energia per la Città:</strong> Città ha bisogno elettricità per pompare acqua. Guanto può fornirla (sacrificando cariche). Aiutarli ma rimanere deboli?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>Risveglio del Golem:</strong> Golem Celeste dormiente in rovina. Guanto può fornire elettricità per riattivarlo. Ma cosa fa quando sveglio?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Il Set Perduto:</strong> Il guanto è parte di armatura completa (guanto, corazza, elmo, stivali). Insieme, potere devastante. Cercare altri pezzi?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>Tempesta Vivente:</strong> Durante tempesta, guanto si ricarica ma anche "chiama" fulmini veri verso portatore. Ogni round, tiro Resistenza Diff 11+ o colpito.
+                </div>
+            </div>
+        </div>
+        
+        <!-- ARTEFATTO 7 -->
+        <div class="artifact">
+            <div class="artifact-header">
+                <div class="artifact-title">🔊 AMPLIFICATORE VOCALE</div>
+                <div class="artifact-tier">MINORE</div>
+            </div>
+            
+            <div class="artifact-description">
+                Collare metallico sottile che si adatta perfettamente al collo. Quando attivato, amplifica la voce di chi lo indossa fino a 100 volte. I Celesti lo usavano per comizi pubblici.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Cariche</div>
+                    <div class="stat-value">10</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricarica</div>
+                    <div class="stat-value">1/giorno (sole)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Peso</div>
+                    <div class="stat-value">0.2 kg</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Valore Mercato</div>
+                    <div class="stat-value">300 dinar</div>
+                </div>
+            </div>
+            
+            <div class="powers">
+                <h4>✨ POTERI</h4>
+                <div class="power">
+                    <span class="power-cost">1 carica</span>
+                    <span class="power-name">Voce del Comandante:</span> Per 10 minuti, voce udibile chiaramente fino a 500m. Perfetto per ordini, discorsi, avvertimenti.
+                </div>
+                <div class="power">
+                    <span class="power-cost">2 cariche</span>
+                    <span class="power-name">Grido Sonico:</span> Urlo concentrato in cono 10m. Tutti nel cono: Resistenza Diff 11+ o Storditi + 1d6 danno. Rompe vetro fragile.
+                </div>
+                <div class="power">
+                    <span class="power-cost">Passivo</span>
+                    <span class="power-name">Chiarezza Perfetta:</span> Anche sussurrando, voce è cristallina. Impossibile fraintendere parole. +1d6 Persuasione per eloquenza.
+                </div>
+            </div>
+            
+            <div class="danger-box">
+                <h4>⚠️ PERICOLI</h4>
+                <p><strong>Feedback Doloroso:</strong> Se urli mentre indossi amplificatore attivo, subisci 1d6 danno psichico (danno alle orecchie interne).</p>
+                <p style="margin-top: 8px;"><strong>Manipolazione Sonora:</strong> Chi controlla amplificatore controlla percezione pubblica. Potere politico immenso, target per assassini.</p>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>La Rivoluzione:</strong> Ribelli vogliono amplificatore per parlare a folla e incitare rivolta contro Impero. Aiutarli significa tradimento. Cosa fare?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>Falso Profeta:</strong> Carismatico usa amplificatore per fingersi voce divina. Migliaia lo seguono. È truffatore? Credente sincero? Fermarlo?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>Eco Fantasma:</strong> Questo amplificatore ripete ultime parole pronunciate da chi lo indossava prima (morto violentemente). Sussurri inquietanti costanti.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Sabotaggio Politico:</strong> Durante dibattito importante, amplificatore nemico deve essere sabotato. Infiltrazione, hacking (Meccanica), o piano elaborato?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>Canto del Serpente:</strong> Qualcuno usa amplificatore per cantare melodia antica. Chi ascolta entra in trance. Cosa cerca di fare? Comunicare col Serpente?
+                </div>
+            </div>
+        </div>
+        
+        <!-- ARTEFATTO 8 -->
+        <div class="artifact">
+            <div class="artifact-header">
+                <div class="artifact-title">🌡️ REGOLATORE TERMICO</div>
+                <div class="artifact-tier">MAGGIORE</div>
+            </div>
+            
+            <div class="artifact-description">
+                Fascia toracica che aderisce al corpo. Mantiene temperatura corporea perfetta indipendentemente da ambiente esterno. Nel deserto bollente o freddo notturno, sei sempre confortevole. Sopravvivenza resa facile.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Cariche</div>
+                    <div class="stat-value">Infinite (passiva)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricarica</div>
+                    <div class="stat-value">N/A (assorbe calore ambientale)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Peso</div>
+                    <div class="stat-value">0.3 kg</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Valore Mercato</div>
+                    <div class="stat-value">1500 dinar</div>
+                </div>
+            </div>
+            
+            <div class="powers">
+                <h4>✨ POTERI</h4>
+                <div class="power">
+                    <span class="power-cost">Passivo</span>
+                    <span class="power-name">Comfort Costante:</span> Immune a effetti di calore/freddo ambientale. No esaurimento da temperature. No danni da esposizione normale (non magica).
+                </div>
+                <div class="power">
+                    <span class="power-cost">Passivo</span>
+                    <span class="power-name">Efficienza Idrica:</strong> Consumi 2L acqua/giorno invece di 4L (regolatore previene sudorazione eccessiva).
+                </div>
+                <div class="power">
+                    <span class="power-cost">Attivabile</span>
+                    <span class="power-name">Esplosione Termica:</span> 1/giorno, puoi rilasciare tutto calore accumulato in onda 5m. Tutti nel raggio: Resistenza Diff 11+ o 2d6 danno fuoco + Esausti.
+                </div>
+            </div>
+            
+            <div class="danger-box">
+                <h4>⚠️ PERICOLI</h4>
+                <p><strong>Dipendenza Fisiologica:</strong> Dopo 1 mese di uso continuo, corpo "dimentica" come termoregolarsi naturalmente. Senza regolatore, -2d6 a tiri Resistenza vs temperature per 1 settimana.</p>
+                <p style="margin-top: 8px;"><strong>Fuoco Diretto:</strong> Protegge da ambiente, NON da attacchi diretti (frecce infuocate, incantesimi fuoco). Confusione comune.</p>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>Attraverso l'Inferno:</strong> Caverna con temperature letali (80°C). Solo con regolatore è sopravvivibile. Ma ce n'è uno solo e gruppo è di 4. Chi va?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>Il Mercato Nero:</strong> Impero vieta regolatori termici (vogliono controllare viaggi nel deserto). Fiorente contrabbando. PG assunti per portare 10 regolatori attraverso dogana.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>L'Eremita Immortale:</strong> Uomo vive da solo nel deserto più mortale da 50 anni. Segreto? Regolatore termico. Ma sta impazzendo per solitudine. Aiutarlo o prendere regolatore?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Sabotaggio Militare:</strong> Legione imperiale equipaggiata con regolatori può marciare attraverso deserto senza sosta. Ribelli vogliono sabotare fornitura. Missione impossibile?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>Il Regolatore Rotto:</strong> Questo regolatore funziona al contrario — raffredda quando dovrebbe scaldare, scalda quando dovrebbe raffreddare. Mortale se non te ne accorgi.
+                </div>
+            </div>
+        </div>
+        
+        <!-- ARTEFATTO 9 -->
+        <div class="artifact">
+            <div class="artifact-header">
+                <div class="artifact-title">📡 TRADUTTORE UNIVERSALE</div>
+                <div class="artifact-tier">MAGGIORE</div>
+            </div>
+            
+            <div class="artifact-description">
+                Dispositivo a forma di orecchino che aderisce all'orecchio. Traduce istantaneamente qualsiasi lingua parlata in quella che comprendi. I Celesti governavano decine di popoli — questa era la chiave.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Cariche</div>
+                    <div class="stat-value">Infinite (passiva)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricarica</div>
+                    <div class="stat-value">N/A (biologicamente alimentato)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Peso</div>
+                    <div class="stat-value">0.05 kg (impercettibile)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Valore Mercato</div>
+                    <div class="stat-value">5000 dinar</div>
+                </div>
+            </div>
+            
+            <div class="powers">
+                <h4>✨ POTERI</h4>
+                <div class="power">
+                    <span class="power-cost">Passivo</span>
+                    <span class="power-name">Comprensione Universale:</span> Comprendi qualsiasi lingua parlata, anche estinta o aliena. Conversazioni normali sono fluide.
+                </div>
+                <div class="power">
+                    <span class="power-cost">Passivo</span>
+                    <span class="power-name">Traduzione Parlata:</span> Le tue parole sono udite nella lingua madre dell'ascoltatore (magia percettiva, non cambi realmente lingua).
+                </div>
+                <div class="power">
+                    <span class="power-cost">Concentrazione</span>
+                    <span class="power-name">Lettura Linguistica:</strong> Concentrandoti su testo scritto per 1 minuto, comprendi significato (non leggi automaticamente, ma il senso ti è trasmesso).
+                </div>
+            </div>
+            
+            <div class="danger-box">
+                <h4>⚠️ PERICOLI</h4>
+                <p><strong>Sovraccarico Mentale:</strong> Ascoltare 5+ persone parlare lingue diverse contemporaneamente = Sapienza Diff 11+ o emicrania paralizzante (Stordito 10 minuti).</p>
+                <p style="margin-top: 8px;"><strong>Segreti Involontari:</strong> Capisci TUTTO, incluse conversazioni che non dovresti. Informazioni pericolose, pettegolezzi letali, cospirazioni.</p>
+                <p style="margin-top: 8px;"><strong>Perdita Identitaria:</strong> Dopo mesi di uso, alcuni dimenticano loro lingua madre. "Parlano" tutto, padroneggiano niente.</p>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>Il Trattato di Pace:</strong> Due tribù nemiche non condividono lingua. PG con traduttore unico mediatore possibile. Ma entrambe le parti vogliono corrompere traduzione. Integrità?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>I Testi Proibiti:</strong> Archivio Celeste con documenti in lingua morta. Solo traduttore può decifrarli. Cosa rivelano? Impero vuole censurarli, studiosi preservarli.
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>La Spia Perfetta:</strong> Con traduttore, infiltrare qualsiasi gruppo è facile. Nobile assuma PG per spiare. Ma PG scoprono cospirazione peggiore. Riferire o tradire datore di lavoro?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Lingua del Serpente:</strong> Traduttore inizia sussurrare parole incomprensibili (nemmeno a sé stesso le comprende). È il Serpente che parla attraverso? Cosa vuole dire?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>Il Mercante Truffatore:</strong> Mercante usa traduttore per truffare clienti (dice una cosa, loro sentono altra). PG scoprono. Esporre (rovina sua vita) o ricattare?
+                </div>
+            </div>
+        </div>
+        
+        <!-- ARTEFATTO 10 -->
+        <div class="artifact">
+            <div class="artifact-header">
+                <div class="artifact-title">⚰️ SARCOFAGO DI STASI</div>
+                <div class="artifact-tier">RELIQUIA</div>
+            </div>
+            
+            <div class="artifact-description">
+                Bara di cristallo e metallo, 2m di lunghezza. Chi vi entra ed attiva il sistema viene posto in animazione sospesa — tempo non scorre per lui. I Celesti lo usavano per viaggi lunghi. Alcuni sono ancora dentro, dormienti da millenni.
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Cariche</div>
+                    <div class="stat-value">1 (uso singolo poi ricarica)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Ricarica</div>
+                    <div class="stat-value">1 anno (luce solare costante)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Peso</div>
+                    <div class="stat-value">200 kg (impossibile trasportare)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Valore Mercato</div>
+                    <div class="stat-value">INESTIMABILE (non vendibile)</div>
+                </div>
+            </div>
+            
+            <div class="powers">
+                <h4>✨ POTERI</h4>
+                <div class="power">
+                    <span class="power-cost">1 carica (irreversibile fino ricarica)</span>
+                    <span class="power-name">Animazione Sospesa:</span> Chi entra viene ibernato. Tempo non passa per lui (no invecchiamento, fame, malattia). Durata: indefinita finché non aperto dall'esterno o energia esaurita.
+                </div>
+                <div class="power">
+                    <span class="power-cost">Passivo</span>
+                    <span class="power-name">Preservazione Perfetta:</span> Corpo dentro è immune a decomposizione, malattie esterne, danni fisici (è in bolla temporale).
+                </div>
+                <div class="power">
+                    <span class="power-cost">N/A</span>
+                    <span class="power-name">Risveglio:</strong> Chi è dentro può essere svegliato premendo sigillo esterno. Risveglio è istantaneo e sicuro (se sarcofago funziona correttamente).
+                </div>
+            </div>
+            
+            <div class="danger-box">
+                <h4>⚠️ PERICOLI</h4>
+                <p><strong>Trappola Temporale:</strong> Se ricarica esaurisce mentre qualcuno è dentro (dopo ~100 anni senza luce solare), sistema si spegne. Persona invecchia istantaneamente di tutto il tempo che "doveva" passare = morte immediata, corpo mummificato.</p>
+                <p style="margin-top: 8px;"><strong>Schiavitù Eterna:</strong> Qualcuno potrebbe sigillare nemico dentro per sempre. Morte viva: cosciente ma incapace di muoversi o comunicare.</p>
+                <p style="margin-top: 8px;"><strong>Malfunzionamento:</strong> Sarcofagi vecchi possono glitchare. Risveglio parziale (corpo invecchia ma mente resta giovane), amnesia totale, o follia da isolamento percepito.</p>
+            </div>
+            
+            <div class="hooks">
+                <h4>🎣 GANCI NARRATIVI</h4>
+                <div class="hook">
+                    <span class="hook-number">1</span>
+                    <strong>Il Celeste Dormiente:</strong> PG trovano sarcofago attivo in rovina. Dentro: Celeste ibernato 5000 anni fa. Svegliarlo? Ha conoscenza incredibile ma anche valori alieni. Pericoloso?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">2</span>
+                    <strong>Fuga dal Tempo:</strong> PG mortalmente malato. Sarcofago può tenerlo in stasi finché cura è trovata (potrebbe volerci anni). Gruppo separato. Emotivo. Come gestire?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">3</span>
+                    <strong>La Vendetta Fredda:</strong> Assassino sigillò testimone in sarcofago 50 anni fa. Ora testimone è trovato, svegliato. Vuole giustizia ma tutti sono morti. Quale scopo ora?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">4</span>
+                    <strong>Esperimento Folle:</strong> Studioso vuole "saltare" 100 anni nel futuro per vedere come civiltà evolve. Assuma PG per proteggere sarcofago per 1 secolo. Accettare contratto multigenerazionale?
+                </div>
+                <div class="hook">
+                    <span class="hook-number">5</span>
+                    <strong>I Dormienti:</strong> Città sotterranea piena di sarcofagi attivi. Centinaia di Celesti dormienti. Qualcuno inizia svegliarli. Intenzionale o incidente? Primo risveglio va male (Celeste impazzito). Fermare o continuare?
+                </div>
+            </div>
+        </div>
+        
+        <!-- TABELLA RIASSUNTIVA -->
+        <h1>📊 TABELLA RIASSUNTIVA ARTEFATTI</h1>
+        
+        <table style="font-size: 9pt;">
+            <tr>
+                <th>Artefatto</th>
+                <th>Tier</th>
+                <th>Utilità Principale</th>
+                <th>Valore</th>
+                <th>Rischio</th>
+            </tr>
+            <tr>
+                <td>🔦 Lampada Eterna</td>
+                <td>Minore</td>
+                <td>Illuminazione infinita</td>
+                <td>50 dinar</td>
+                <td>Basso</td>
+            </tr>
+            <tr>
+                <td>🧭 Bussola Vera</td>
+                <td>Minore</td>
+                <td>Navigazione perfetta</td>
+                <td>100 dinar</td>
+                <td>Basso</td>
+            </tr>
+            <tr>
+                <td>💧 Fiaschetta Infinita</td>
+                <td>Minore</td>
+                <td>Acqua illimitata</td>
+                <td>500 dinar</td>
+                <td>Medio (sociale)</td>
+            </tr>
+            <tr>
+                <td>🛡️ Scudo Prismatico</td>
+                <td>Maggiore</td>
+                <td>Difesa combattimento</td>
+                <td>2000 dinar</td>
+                <td>Medio</td>
+            </tr>
+            <tr>
+                <td>👁️ Occhio Visione</td>
+                <td>Maggiore</td>
+                <td>Informazione/spionaggio</td>
+                <td>3000 dinar</td>
+                <td>Alto (psichico)</td>
+            </tr>
+            <tr>
+                <td>⚡ Guanto Fulmine</td>
+                <td>Maggiore</td>
+                <td>Attacco combattimento</td>
+                <td>2500 dinar</td>
+                <td>Alto (esplosione)</td>
+            </tr>
+            <tr>
+                <td>🔊 Amplificatore Vocale</td>
+                <td>Minore</td>
+                <td>Comunicazione/comando</td>
+                <td>300 dinar</td>
+                <td>Medio (politico)</td>
+            </tr>
+            <tr>
+                <td>🌡️ Regolatore Termico</td>
+                <td>Maggiore</td>
+                <td>Sopravvivenza deserto</td>
+                <td>1500 dinar</td>
+                <td>Medio (dipendenza)</td>
+            </tr>
+            <tr>
+                <td>📡 Traduttore Universale</td>
+                <td>Maggiore</td>
+                <td>Comunicazione universale</td>
+                <td>5000 dinar</td>
+                <td>Medio (mentale)</td>
+            </tr>
+            <tr>
+                <td>⚰️ Sarcofago Stasi</td>
+                <td>Reliquia</td>
+                <td>Ibernazione temporale</td>
+                <td>Inestimabile</td>
+                <td>Altissimo</td>
+            </tr>
+        </table>
+        
+        <!-- GUIDA USO -->
+        <h1>🎮 GUIDA PER IL GM: COME USARE GLI ARTEFATTI</h1>
+        
+        <div class="mechanics-box" style="background: var(--sand); border: 3px solid var(--artifact-blue); padding: 15px; margin: 20px 0; border-radius: 6px;">
+            <h4 style="color: var(--artifact-blue); font-size: 12pt; margin-bottom: 10px;">PRINCIPI DI DESIGN</h4>
+            
+            <p style="margin-bottom: 10px;"><strong>1. Gli artefatti non sono solo "loot"</strong> — sono storie. Ogni artefatto porta con sé domande: da dove viene? Chi lo usò prima? Perché fu abbandonato?</p>
+            
+            <p style="margin-bottom: 10px;"><strong>2. Potere ha prezzo</strong> — Anche artefatti "sicuri" hanno conseguenze sociali, politiche o personali. La Fiaschetta Infinita risolve sete ma crea dipendenza comunitaria.</p>
+            
+            <p style="margin-bottom: 10px;"><strong>3. Il Serpente osserva</strong> — Artefatti potenti (Maggiore/Reliquia) sono "notati" quando usati. Questo non è bug, è feature. Crea tensione narrativa.</p>
+            
+            <p style="margin-bottom: 10px;"><strong>4. Limita disponibilità</strong> — Non dare tutto subito. Artefatti Minori (1-3) sono relativamente comuni. Maggiori (4-9) sono rari. Reliquie (10) sono campagna-defining.</p>
+            
+            <p style="margin-bottom: 10px;"><strong>5. Usa i ganci</strong> — Ogni artefatto ha 5 ganci. Usali! Sono mini-avventure pronte. Possono espandersi in archi interi.</p>
+        </div>
+        
+        <div class="intro-box">
+            <p><strong>Come Introdurre un Artefatto:</strong></p>
+            <ol style="margin-left: 20px; margin-top: 10px;">
+                <li>Inizia col mistero — PG sentono voci, vedono indizi, trovano mappa</li>
+                <li>Cerca (e sfida) — Artefatto è sepolto, guardato, in luogo pericoloso</li>
+                <li>Scoperta — Momento drammatico, descrizione vivida</li>
+                <li>Prima prova — Permettili testare immediatamente un potere</li>
+                <li>Conseguenza — Qualcosa nota l'uso (Serpente, fazione rivale, etc.)</li>
+            </ol>
+        </div>
+        
+        <h2>Bilanciamento in Combattimento</h2>
+        <ul>
+            <li><strong>Artefatti Minori:</strong> +1-2d6 situazionale. Non rompono combattimento.</li>
+            <li><strong>Artefatti Maggiori:</strong> Possono eliminare 1 nemico/round facilmente. Bilancia con: nemici multipli, cariche limitate, nemici con contromosse.</li>
+            <li><strong>Reliquie:</strong> Game-changing. Non per combattimento diretto (Sarcofago è utilità, non arma).</li>
+        </ul>
+        
+        <h2>Quando Rompere un Artefatto</h2>
+        <p>Gli artefatti POSSONO rompersi, ma dovrebbe essere raro e significativo:</p>
+        <ul>
+            <li><strong>Sovraccarico deliberato:</strong> PG sceglie distruggere artefatto per effetto drammatico (es. Guanto esplode per salvare gruppo)</li>
+            <li><strong>Conseguenza narrativa:</strong> Villain distrugge artefatto per togliere vantaggio a PG (momento emotivo!)</li>
+            <li><strong>Scelta morale:</strong> Distruggere o no? (es. Occhio mostra verità troppo dolorose)</li>
+        </ul>
+        <p>NON rompere casualmente per "realism". Frustra giocatori senza aggiungere valore.</p>
+        
+        <div style="text-align: center; margin-top: 40px; padding: 30px; background: linear-gradient(135deg, var(--artifact-blue) 0%, var(--night-blue) 100%); border-radius: 10px; color: white;">
+            <div style="font-size: 36pt; margin-bottom: 15px;">✨</div>
+            <p style="font-size: 14pt; font-style: italic;">
+                "I Celesti sono morti. I loro artefatti rimangono.<br>
+                Ogni oggetto è un frammento di ciò che fummo... e potremmo tornare ad essere."
+            </p>
+            <p style="font-size: 10pt; margin-top: 15px; color: var(--sand);">
+                — Maestro Arkan, Osservatori del Velo
+            </p>
+        </div>
+        
+    </div>
+</body>
+</html>
