@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - TABELLE MASTER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--dark-sand) 100%);
+            padding: 15px;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 15mm;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        
+        .cover {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 4px solid var(--accent-gold);
+        }
+        
+        .cover h1 {
+            font-size: 38pt;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+        }
+        
+        .cover .subtitle {
+            font-size: 16pt;
+            font-style: italic;
+            color: var(--sand);
+            margin-bottom: 10px;
+        }
+        
+        .cover .count {
+            font-size: 20pt;
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        .toc {
+            background: var(--sand);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--accent-gold);
+            columns: 2;
+            column-gap: 20px;
+        }
+        
+        .toc h2 {
+            color: var(--night-blue);
+            margin-bottom: 15px;
+            font-size: 14pt;
+            column-span: all;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+            break-inside: avoid;
+        }
+        
+        .toc li {
+            padding: 3px 0;
+            font-size: 9pt;
+        }
+        
+        .toc a {
+            color: var(--desert-red);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .toc a:hover {
+            color: var(--accent-gold);
+        }
+        
+        .section {
+            margin: 30px 0;
+            page-break-before: always;
+        }
+        
+        .section-header {
+            background: linear-gradient(90deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .section-header h2 {
+            font-size: 20pt;
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+        }
+        
+        .section-header p {
+            font-size: 10pt;
+            color: var(--sand);
+        }
+        
+        .table-wrapper {
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+        
+        .table-title {
+            background: var(--night-blue);
+            color: var(--accent-gold);
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 11pt;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            font-size: 8.5pt;
+        }
+        
+        th {
+            background: var(--desert-red);
+            color: white;
+            padding: 6px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 9pt;
+        }
+        
+        td {
+            padding: 5px 6px;
+            border-bottom: 1px solid var(--dark-sand);
+            vertical-align: top;
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(232, 212, 176, 0.25);
+        }
+        
+        tr:hover {
+            background: rgba(212, 175, 55, 0.15);
+        }
+        
+        .dice-column {
+            font-weight: bold;
+            color: var(--desert-red);
+            text-align: center;
+            width: 50px;
+            font-size: 9pt;
+        }
+        
+        .tip-box {
+            background: rgba(45, 80, 22, 0.08);
+            border-left: 4px solid var(--serpent-green);
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 5px;
+            font-size: 9pt;
+        }
+        
+        .tip-box strong {
+            color: var(--serpent-green);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                padding: 10mm;
+            }
+            .section {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- COPERTINA -->
+        <div class="cover">
+            <h1>🎲 TABELLE MASTER 🎲</h1>
+            <p class="subtitle">The Serpent Road RPG</p>
+            <p class="count">25 TABELLE SUPER DETTAGLIATE</p>
+            <p style="margin-top: 15px; font-size: 11pt; color: var(--sand);">
+                Le tabelle più utili per improvvisare durante le sessioni.<br>
+                Dettagliate, pratiche, immediatamente usabili.
+            </p>
+        </div>
+        
+        <!-- INDICE -->
+        <div class="toc">
+            <h2>📋 INDICE DELLE TABELLE</h2>
+            <ul>
+                <li><a href="#t1">1. Incontri Dune (d20)</a></li>
+                <li><a href="#t2">2. Incontri Canyon Rocciosi (d20)</a></li>
+                <li><a href="#t3">3. Incontri Oasi (d12)</a></li>
+                <li><a href="#t4">4. Incontri Rovine (d20)</a></li>
+                <li><a href="#t5">5. Reazioni NPC (2d6)</a></li>
+                <li><a href="#t6">6. Eventi Viaggio Giornalieri (d20)</a></li>
+                <li><a href="#t7">7. Complicazioni Combattimento (d12)</a></li>
+                <li><a href="#t8">8. Meteo Deserto (d12)</a></li>
+                <li><a href="#t9">9. Fenomeni Mistici (d12)</a></li>
+                <li><a href="#t10">10. Nomi NPC Veloci (d100)</a></li>
+                <li><a href="#t11">11. Professioni NPC (d20)</a></li>
+                <li><a href="#t12">12. Tratti Fisici NPC (d20)</a></li>
+                <li><a href="#t13">13. Personalità NPC (d20)</a></li>
+                <li><a href="#t14">14. Motivazioni NPC (d12)</a></li>
+                <li><a href="#t15">15. Tesori Minori (d20)</a></li>
+                <li><a href="#t16">16. Tesori Maggiori (d12)</a></li>
+                <li><a href="#t17">17. Oggetti Mundani Utili (d20)</a></li>
+                <li><a href="#t18">18. Trappole Rovine (d12)</a></li>
+                <li><a href="#t19">19. Stanze Dungeon (d20)</a></li>
+                <li><a href="#t20">20. Voci e Rumors Città (d20)</a></li>
+                <li><a href="#t21">21. Missioni Quickstart (d12)</a></li>
+                <li><a href="#t22">22. Twist Narrativi (d12)</a></li>
+                <li><a href="#t23">23. Conseguenze Azioni (d12)</a></li>
+                <li><a href="#t24">24. Nomi Luoghi Geografici (d20)</a></li>
+                <li><a href="#t25">25. Cosa Succede Dopo? (d20)</a></li>
+            </ul>
+        </div>
+        
+        <!-- INTRODUZIONE -->
+        <div class="tip-box">
+            <strong>💡 Come Usare Queste Tabelle</strong>
+            <p style="margin-top: 8px;">Queste 25 tabelle coprono il 90% delle situazioni di improvvisazione che incontrerai durante le sessioni. Ogni tabella è dettagliata abbastanza da darti materiale immediato da usare senza ulteriore prep.</p>
+            <p style="margin-top: 8px;"><strong>Consiglio GM:</strong> Stampa questo documento e tienilo dietro lo schermo. Quando serve improvvisare, tira sulla tabella appropriata e narra il risultato. Non serve leggere verbatim - usa come ispirazione!</p>
+        </div>
+
+
+        <!-- ==================== TABELLE INCONTRI ==================== -->
+        
+        <div class="section" id="incontri">
+            <div class="section-header">
+                <h2>⚔️ TABELLE INCONTRI</h2>
+                <p>Per generare incontri casuali in base al terreno</p>
+            </div>
+            
+            <!-- TABELLA 1 -->
+            <div class="table-wrapper" id="t1">
+                <div class="table-title">TABELLA 1 - Incontri nelle Dune (d20)</div>
+                <table>
+                    <tr>
+                        <th class="dice-column">d20</th>
+                        <th style="width:25%">Incontro</th>
+                        <th>Dettagli & Meccaniche</th>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">1</td>
+                        <td><strong>Tempesta Sabbia Massiccia</strong></td>
+                        <td>Visibilità 3m. Dura 2d6 ore. Navigazione impossibile. Tutti Percezione Svantaggio. Erigere riparo (Sopravvivenza Diff 12) o subire 1 Fatica/ora. Possibile perdersi (+1d6 km direzione casuale).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">2</td>
+                        <td><strong>Verme Sabbie (Leggenda)</strong></td>
+                        <td>Tremori terra. Percezione Diff 15 notare in tempo (10 secondi fuggire). Fallimento = emerge sotto gruppo. Imboscata (Vantaggio creatura). Verme: 40 PV, Armatura 3, Morso 4d6+2, Inghiotte (Diff 14 Atletica fuggire).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">3</td>
+                        <td><strong>Scorpioni Giganti - Nido</strong></td>
+                        <td>2d6 scorpioni emergono sabbia raggio 20m. Percezione Diff 13 notare buchi nido prima. Combattimento o fuga (Atletica Diff 12, se tutti superano scappano). Scorpione: 12 PV, Chele 2d6, Veleno Diff 12 o 2d6 extra.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">4</td>
+                        <td><strong>Banditi Sepolti (Imboscata)</strong></td>
+                        <td>4-8 Corsari nascosti sotto sabbia/teli. Furtività d10+4 vs Percezione PG. Se sorpresi: Vantaggio round 1. Vogliono tutto. Negoziazione possibile (Persuasione Diff 14, lasciano 50% beni). Combattimento probabile.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">5</td>
+                        <td><strong>Carovana Distrutta Recente</strong></td>
+                        <td>3 carri bruciati, 2d6 corpi. Tracce indicano attacco 1d6 giorni fa. Sapienza Diff 11: Corsari (Nord). Possibile sopravvissuto ferito nascosto (50%, Percezione Diff 13). Info su assalitori. Bottino: 3d6x10 dinar, equipaggiamento danneggiato.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">6</td>
+                        <td><strong>Nomadi Amichevoli</strong></td>
+                        <td>1d6+2 nomadi tribù locale + 2 cammelli. Reazione 2d6+2 (vedi Tabella 5). Offrono acqua (1d6 litri gratuiti se amichevoli). Info territorio (1 rumor Tabella 20). Commercio prezzi x1.5 (remoto). Possibile guida (100d/giorno).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">7</td>
+                        <td><strong>Rovina Celeste Minore Sepolta</strong></td>
+                        <td>Percezione Diff 13 notare ingresso mezzo-sepolto. Edificio 1d6 stanze. Esplorazione: 60% tesoro minore (Tabella 15), 40% trappola attiva (Tabella 18), 30% costrutto dormiente. Tempo esplorazione: 1d6 ore. Possibili artefatti danneggiati.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">8-9</td>
+                        <td><strong>Tracce Recenti</strong></td>
+                        <td>Orme/segni movimento 1d6 ore fa. Sopravvivenza Diff 11 identificare: (d6) 1-2=Umanoidi, 3-4=Creature, 5=Caravan, 6=Militari. Seguire? Tira nuovamente questa tabella (escludi 8-9) per determinare cosa incontrano. +2 al tiro se seguono.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">10-11</td>
+                        <td><strong>Miraggio Convincente</strong></td>
+                        <td>Città/oasi appare orizzonte (2d6 km distanza apparente). Percezione Diff 12 sospettare illusione. Sapienza Diff 13 confermare miraggio. Se seguono: +2d6 km direzione sbagliata, +1 Fatica gruppo, morale cala. Possibile disidratazione se ostinati.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">12</td>
+                        <td><strong>Formazione Rocciosa Insolita</strong></td>
+                        <td>Pilastri naturali creano ombra (20x20m). Rifugio perfetto calore. 20% nido creature (2d6 arpie o serpenti). 30% graffiti antichi (Sapienza Diff 14 decifrare: "Pericolo Nord" o "Acqua 3 giorni Est"). Luogo riconoscibile (landmark).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">13</td>
+                        <td><strong>Ossame Gigantesco Antico</strong></td>
+                        <td>Scheletro creatura 30m lungo. Specie sconosciuta (pre-Celeste?). Sapienza Diff 15 ipotizzare origine. Inquietante (morale test Diff 10 o Svantaggio 1 ora). Costole creano rifugio. 20% frammento osso utilizzabile (1d6 lance/armi improvvisate).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">14</td>
+                        <td><strong>Mercante Solitario Perso</strong></td>
+                        <td>Mercante disorientato, 50% risorse esaurite. Reazione 2d6 (vedi Tab 5). Disposto pagare guida (50d + 20d/giorno) o commerciare x2 prezzi (disperazione). Info errate su zona (perso!). Possibile complicazione se salvato (gratitudine futura/debito).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">15</td>
+                        <td><strong>Pattuglia Imperiale</strong></td>
+                        <td>4 soldati + 1 sergente (10 PV cad, Armatura 2, spada 2d6). Controllano documenti/permessi. Attitudine: 50% Neutri, 30% Corrotti (tangente 20d), 20% Zelanti. Cercano: criminali, contrabbando, fuggitivi. Combattimento = Rinforzi 2d6 ore.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">16</td>
+                        <td><strong>Avvoltoi Deserto in Cerchio</strong></td>
+                        <td>2d6+3 avvoltoi volteg giano. Seguono gruppo = cattivo presagio. Attaccano se: PG feriti (<50% PV), isolati, deboli. Avvoltoio: 6 PV, Becco 1d6+1, Picchiata 2d6. Possibile indicano cadavere/tesoro vicino (30%, Percezione Diff 12 notare dove guardano).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">17</td>
+                        <td><strong>Cristalli Blu Affioranti</strong></td>
+                        <td>Formazione cristalli 3m alta emergono sabbia. Emanano calore (sconsigliato toccare, 1d6 danno fuoco). 30% contengono artefatto danneggiato (Comune, 0 cariche, riparabile Sapienza Diff 15). 20% energia instabile (esplosione 3d6 se danneggiati).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">18</td>
+                        <td><strong>Zona Gravità Anomala</strong></td>
+                        <td>Area 50m diametro, gravità 50%. Dura 1d6 ore. Salti doppia distanza, oggetti levitano. Atletica/Combattimento -1d6 primi 10 min (adattamento). Disorientante ma non pericoloso. Possibile artefatto malfunzionante sepolto centro (20%).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">19</td>
+                        <td><strong>Costrutto Dormiente Parzialmente Sepolto</strong></td>
+                        <td>Robot Celeste inattivo 70% visibile. Guardiano Sentinel: 18 PV, Armatura 2, Raggio 3d6 (20m). Inattivo finché: rumore forte (combattimento), toccato, energia vicina (artefatti). 50% attivazione se disturbato. Possibile disattivare (Sapienza Diff 16).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">20</td>
+                        <td><strong>Traccia Gigantesca del Serpente</strong></td>
+                        <td>Solco 20-30m largo serpeggia dune. Fresco (<24 ore). Sabbia vitrea ai bordi (calore immenso). Seguire? Porta verso [GM determina basato campagna]. Inquietante (Resistenza Diff 12 o Svantaggio 1 giorno). Possibile visione se dormono qui (Tabella 9).</td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <!-- TABELLA 2 -->
+            <div class="table-wrapper" id="t2">
+                <div class="table-title">TABELLA 2 - Incontri nei Canyon Rocciosi (d20)</div>
+                <table>
+                    <tr>
+                        <th class="dice-column">d20</th>
+                        <th style="width:25%">Incontro</th>
+                        <th>Dettagli & Meccaniche</th>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">1</td>
+                        <td><strong>Crollo Improvviso</strong></td>
+                        <td>Rocce cadono dall'alto! Percezione Diff 13 notare in tempo. Fallimento: Atletica Diff 13 o 3d6 danno contundente. Passaggio bloccato. Rimuovere macerie: 2d6 ore lavoro gruppo oppure trovare via alternativa (+1 giorno).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">2</td>
+                        <td><strong>Nido Arpie Territoriali</strong></td>
+                        <td>2d6 arpie (8 PV, Artigli 1d6+1, Volo 20m). Proteggono 1d6 uova. Molto aggressive. Attaccano se entro 30m nido. Possibile allontanarsi lentamente (Furtività Diff 12). Nido contiene: 2d6x10d in oggetti luccicanti rubati.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">3</td>
+                        <td><strong>Eremita Folle</strong></td>
+                        <td>Vecchio vive grotta 2d6 anni. Ostile intrusi (attacca con bastone 1d6+2). Persuasione Diff 14 calmarlo. Se calmato: sapienza antica (1 info utile: locazione rovina, segreto fazione, mito Serpente). Tesoro grotta: artefatto Comune + 3d6x10d.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">4</td>
+                        <td><strong>Labirinto Grotte Naturali</strong></td>
+                        <td>Sistema 2d6 grotte interconnesse. Navigazione Diff 12 trovare uscita corretta. Fallimento: +2d6 ore persi. Temperatura fresca (sollievo calore!). 30% trovare sorgente acqua nascosta (2d6 litri). Possibile rifugio sicuro (niente incontri notturni qui).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">5</td>
+                        <td><strong>Predatori in Agguato Ombre</strong></td>
+                        <td>1d6+2 Predatori Notturni nascosti crepacci. Furtività d10+3 vs Percezione PG. Imboscata perfetta se sorpresa (Vantaggio 2 round). Aspettano momento debolezza (PG feriti, divisi, distratti). Tattica branco: 2 attaccano, altri fiancheggiano.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">6</td>
+                        <td><strong>Letto Fiume Asciutto + Petroglifi</strong></td>
+                        <td>Canyon largo 20m, fiume asciutto secoli. Pareti coperte petroglifi Celesti. Sapienza Diff 13 decifrare parzialmente: "Via per [luogo]" o "Guardatevi [pericolo]". Seguire letto: possibile porta a oasi (40%) o rovina (30%) se si cammina 1d6 ore.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">7</td>
+                        <td><strong>Eco Amplificate</strong></td>
+                        <td>Ogni suono echeggia x10. Conversazione normale udibile 1 km. Combattimento/urla richiamano creature (30% incontro extra 1d6 round). Vantaggio: comunicare distanze enormi. Svantaggio: impossibile sorpresa, Furtività -2d6 qui.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">8</td>
+                        <td><strong>Nascondiglio Contrabbandieri</strong></td>
+                        <td>Grotta usata 3-6 Corsari. Percezione Diff 14 notare ingresso nascosto. Deposito: merci illegali (2d6x100d valore), armi (1d6 spade/archi), acqua (3d6 litri). Corsari: Reazione 2d6-2 (sospettosi). Possibile commercio nero o combattimento.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">9-10</td>
+                        <td><strong>Pozza Acqua Fresca</strong></td>
+                        <td>Piccola sorgente! 4d6 litri disponibili. Riempire otre: 10 min/otre. Acqua pura (nessun test). Animali vengono bere (incontri notturni +2 tiro). Punto riferimento (landmark). Possibile accampamento sicuro se difeso ingresso.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">11</td>
+                        <td><strong>Ponte Naturale Precario</strong></td>
+                        <td>Arco roccia 30m lungo collega pareti opposte. Sotto: 20m caduta (6d6 danno). Atletica Diff 10 attraversare. Se TUTTI attraversano: tira d6 per persona, 1-2 = ponte trema minaccioso. 3+ persone contemporanee: rischio crollo (Atletica Diff 14 o cade).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">12</td>
+                        <td><strong>Relitto Vascello Celeste</strong></td>
+                        <td>Nave antica schiantata parete 50 anni fa. Arrugginito ma stabile. Esplorazione 2d6 ore. Possibile: tecnologia (40%, Manualità Diff 14 recuperare 1 artefatto danneggiato), ossa equipaggio (inquietante), registri nave (Sapienza Diff 15 decifrare coordinate).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">13</td>
+                        <td><strong>Colonia Serpenti Velenosi</strong></td>
+                        <td>Nido 3d6 serpenti piccoli (2 PV, Morso veleno debole). Non aggressivi se lasciati tranquilli. Se disturbati: 50% attaccano. Veleno: Resistenza Diff 11 o 1d6 danno + Svantaggio 2 ore. Possibile raccogliere veleno (Sopravvivenza Diff 13, 1d6 dosi).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">14</td>
+                        <td><strong>Campo Osservatori Scientifici</strong></td>
+                        <td>2-4 Osservatori studiano formazioni geologiche. Neutrali/curiosi. Offrono: info zona (2 rumors gratuiti), sapienza tecnica (Vantaggio 1 tiro Sapienza oggi), commercio equipaggiamento scientifico. Chiedono aiuto: raccogliere 2d6 campioni roccia (1 ora, 50d pagamento).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">15</td>
+                        <td><strong>Murales Celesti Intatti</strong></td>
+                        <td>Affresco 10x3m parete. Raffigura: Serpente + città Celeste + simboli. Sapienza Diff 15 interpretare: [GM sceglie: profezia, mappa, avvertimento, storia]. Studiare 1 ora = 1 indizio campagna. Fotografare/copiare: valore 100d Osservatori.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">16</td>
+                        <td><strong>Sciame Pipistrelli Disturbati</strong></td>
+                        <td>Rumore forte/luce = migliaia pipistrelli escono grotta. Nuvola dura 1d6 round. Dentro nuvola: Percezione -2d6, attacchi ranged Svantaggio, movimento dimezzato. Nessun danno ma disorientante. Rumore attira predatori (40% incontro ostile 2d6 round).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">17</td>
+                        <td><strong>Altare Antico Serpente</strong></td>
+                        <td>Santuario 2x2m scolpito roccia. Offerte secche (gioielli, armi, ossa). Sapienza Diff 14 capire rituale: richiede sangue (1d6 danno) per "benedizione". Se offerto sangue: tira d6: 1-2=niente, 3-4=visione minore, 5-6=Vantaggio 24 ore. Rischio corruzione (5%).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">18</td>
+                        <td><strong>Cacciatori Tribù Nomade</strong></td>
+                        <td>1d6 Nomadi cacciano (territorio loro da generazioni). Reazione 2d6-1 (diffidenti stranieri). Possibile: accordo (dono 20d valore), permesso passaggio, guida (50d), o conflitto se offesi/trespassing. Sanno 3 segreti zona (condividono se amichevoli).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">19</td>
+                        <td><strong>Dispositivo Celeste Malfunzionante</strong></td>
+                        <td>Macchina 2m cubo incastonata parete. Emette ronzio + luce pulsante. Sapienza Diff 15 analizzare. Modificare: Diff 16 (successo=spegne, fallimento=scarica 3d6 elettrico 10m raggio). Se lasciato attivo: possibile attira costrutti (30% incontro 1d6 ore).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">20</td>
+                        <td><strong>Passaggio Segreto</strong></td>
+                        <td>Percezione Diff 14 notare crepa parete. Squeeze attraverso (5 min/persona, Atletica Diff 10). Conduce: oltre canyon/montagna, risparmio 1-2 giorni viaggio! Possibile uscita vicino: oasi (30%), rovina (20%), accampamento (10%). Segreto prezioso (vendibile 100d info).</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- TABELLA 3 -->
+            <div class="table-wrapper" id="t3">
+                <div class="table-title">TABELLA 3 - Incontri alle Oasi (d12)</div>
+                <table>
+                    <tr>
+                        <th class="dice-column">d12</th>
+                        <th style="width:25%">Incontro</th>
+                        <th>Dettagli & Meccaniche</th>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">1</td>
+                        <td><strong>Oasi Contaminata</strong></td>
+                        <td>Acqua torbida/puzzolente. Sapienza Diff 12 identificare problema (batteri/veleno/magia). Bere senza bollire: Resistenza Diff 13 o malattia (Svantaggio fisico 2d6 giorni, -1d6 PV/giorno, curabile con medicina appropriata). Bollire 1 ora = sicuro.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">2</td>
+                        <td><strong>Banditi Rivendicano Oasi</strong></td>
+                        <td>5-8 Corsari armati controllano accesso. "Tassa": 50d/persona + 20d/animale oppure combattimento. Negoziazione Diff 14 ridurre a metà. Se combattimento: Corsari hanno vantaggio posizione (trincerati palme). Rinforzi possibili (2d6 ore, altri 1d6 banditi).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">3</td>
+                        <td><strong>Carovana Numerosa Riposa</strong></td>
+                        <td>15-25 mercanti/viaggiatori + guardie. Atmosfera festa. Reazione 2d6+1 (numerosi = confidenti). Offrono: commercio normale, info (3 rumors Tab 20), cibo condiviso, possibile alleanza temporanea viaggio (sicurezza numeri). Alcuni cercano passaggio.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">4</td>
+                        <td><strong>Spirito Guardiano Invisibile</strong></td>
+                        <td>Entità protegge oasi. Percepibile (brivido, sussurri). Osserva visitatori. Se rispettano natura (no danni, no violenza): permesso restare. Se violano: attacco spirituale (Fantasma: 12 PV, intangibile, Tocco 3d6 psichico ignora armatura). Scacciabile con rituale (Sapienza Diff 15).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">5</td>
+                        <td><strong>Animali Selvatici Bevono</strong></td>
+                        <td>2d6+2 animali deserto (gazzelle, cammelli selvatici, volpi). Pacifici se lasciati tranquilli. Avvicinarsi: Sopravvivenza Diff 12 non spaventare. Spaventati = fuggono rumorosamente (attira predatori 30%). Possibile cacciare (Diff 13, fornisce 2d6 razioni carne).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">6</td>
+                        <td><strong>Palme Cariche Datteri</strong></td>
+                        <td>Alberi stracarichi frutta matura! 4d6 kg datteri raccoglibili. Atletica Diff 10 arrampicarsi o scuotere. 1 kg datteri = cibo 2 giorni (nutrienti). Conservabili 2 settimane. Valore commercio: 2d/kg. Raccolta attira uccelli/insetti (innocui).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">7</td>
+                        <td><strong>Rifugiati Disperati</strong></td>
+                        <td>2d6 persone (famiglie, anziani, bambini). Fuggiti: guerra (40%), schiavitù (30%), carestia (20%), persecuzione (10%). Chiedono: acqua (critico!), cibo, protezione, trasporto verso città sicura. Se aiutati: gratitudine permanente, possibile ricompensa futura, info valore.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">8</td>
+                        <td><strong>Grotta Santuario Nascosta</strong></td>
+                        <td>Percezione Diff 14 notare ingresso dietro cascatella. Interno: piccolo tempio Serpente. Altare intatto, offerte antiche. Meditare qui 1 ora: recupero +1d6 PV extra. Pregare sinceramente (Empatia Diff 12): possibile visione minore (Tab 9). Luogo sacro (violazione = sfortuna).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">9</td>
+                        <td><strong>Mercante Ambulante Solo</strong></td>
+                        <td>Venditore con mulo. Commercia: beni comuni prezzi normali, info zona (2 rumors gratis), mappe semplici (20d). Personaggio: (d6) 1-2=onesto, 3-4=esagerato, 5=truffatore minore, 6=spia fazione. Possibile assumere guida (80d/giorno, conosce 3 oasi vicine).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">10</td>
+                        <td><strong>Oasi Tranquilla Deserta</strong></td>
+                        <td>Nessun altro presente. Acqua cristallina abbondante (riempire tutto). Ombra perfetta (10+ palme). Riposo lungo senza interruzioni garantito (niente incontri notturni). Recupero ottimale: +1 Fatica extra recuperata. Morale migliora. Luogo memorabile (possibile tornare).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">11</td>
+                        <td><strong>Famiglia Nomade Ospitale</strong></td>
+                        <td>6-10 nomadi (nonni, genitori, figli) accampati. Tradizione ospitalità: offrono cibo/riposo gratuito 1 notte. Condividono: 3 segreti territorio, leggende Serpente, consigli sopravvivenza (+1d6 Sopravvivenza prossimi 3 giorni). Possibile matrimonio/amicizia duratura se rispettati.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">12</td>
+                        <td><strong>Artefatto Sepolto Sotto Acqua</strong></td>
+                        <td>Percezione Diff 15 notare bagliore fondo pozza (3m profondo). Recuperare: Atletica Diff 11. Artefatto: 60% Comune, 30% Non Comune, 10% Raro. Condizione: pieno cariche (miracolo!). Possibile maledetto (5%, GM determina effetto). Qualcuno lo nascose qui deliberatamente?</td>
+                    </tr>
+                </table>
+            </div>
+
+
+        <!-- ==================== TABELLE TESORI ==================== -->
+        
+        <div class="section" id="tesori">
+            <div class="section-header">
+                <h2>💎 TABELLE TESORI & OGGETTI</h2>
+                <p>Per generare loot, ricompense e oggetti utili</p>
+            </div>
+
+            <!-- TABELLA 15 -->
+            <div class="table-wrapper" id="t15">
+                <div class="table-title">TABELLA 15 - Tesori Minori (d20) - Valore 10-500d</div>
+                <table>
+                    <tr><th class="dice-column">d20</th><th style="width:20%">Tesoro</th><th>Valore & Descrizione</th></tr>
+                    <tr><td class="dice-column">1-4</td><td><strong>Denaro</strong></td><td>3d6x10 dinar in monete miste. Peso: 1 slot per 100d. Accettato ovunque.</td></tr>
+                    <tr><td class="dice-column">5-7</td><td><strong>Gemme Grezze</strong></td><td>2d6 pietre semi-preziose. 15d ciascuna. Compatte (10 gemme = 1 slot). Colori: quarzo, turchese, agata.</td></tr>
+                    <tr><td class="dice-column">8-9</td><td><strong>Gioielli</strong></td><td>Anello, bracciale, collana. Valore 50-150d. Possibile: incisione nome precedente proprietario, famiglia nobile.</td></tr>
+                    <tr><td class="dice-column">10-11</td><td><strong>Arte Piccola</strong></td><td>Statua, maschera, vaso decorato. 80-200d collezionisti. Peso: 1-2 slot. Cultura: (d6) 1-4=locale, 5=Celeste, 6=pre-Celeste.</td></tr>
+                    <tr><td class="dice-column">12</td><td><strong>Arma Qualità</strong></td><td>Spada, arco, lancia fattura superiore. +1 danno vs standard. Valore: 150-300d. Possibilelegendaria origine.</td></tr>
+                    <tr><td class="dice-column">13</td><td><strong>Armatura Migliorata</strong></td><td>Armatura leggera/media buona fattura. +1 protezione vs standard (max 3). Valore: 200-400d. Comfort migliorato.</td></tr>
+                    <tr><td class="dice-column">14</td><td><strong>Mappa Locazione</strong></td><td>Porta a: (d6) 1-3=rovina minore, 4-5=oasi nascosta, 6=tesoro sepolto. Valore info: 100d. Accuratezza: 80%.</td></tr>
+                    <tr><td class="dice-column">15</td><td><strong>Documenti Info</strong></td><td>Lettere, contratti, rapporti. Contengono: (d6) 1-2=segreti fazione, 3-4=scandalo, 5=coordinate, 6=password. Valore: varia 50-500d.</td></tr>
+                    <tr><td class="dice-column">16</td><td><strong>Libro Raro</strong></td><td>Storia, poesia, tecnica. Sapienza +1d6 argomento specifico se studiato 1 settimana. Valore: 100-300d studiosi.</td></tr>
+                    <tr><td class="dice-column">17</td><td><strong>Spezie Pregiate</strong></td><td>Zafferano, cannella, pepe. 2d6 dosi. 20d/dose. Conservabili. Leggere. Commerciabili facilmente.</td></tr>
+                    <tr><td class="dice-column">18</td><td><strong>Artefatto Comune</strong></td><td>Tira: (d6) 1-2=Lampada Eterna, 3=Bussola Perfetta, 4=Regolatore Temp, 5=Purificatore Acqua, 6=Strumento Medico. Carica: pieno.</td></tr>
+                    <tr><td class="dice-column">19</td><td><strong>Artefatto Non Comune</strong></td><td>(d6) 1=Lama Vibro, 2=Mantello Camuffamento, 3=Stivali Salto, 4=Guanti Forza, 5=Scanner, 6=Comunicatore. 5d6 cariche. Valore: 500-1000d.</td></tr>
+                    <tr><td class="dice-column">20</td><td><strong>Oggetto Unico Misterioso</strong></td><td>GM crea: parte chiave, reliquia religiosa, frammento importante, o oggetto inspiegabile. Valore: incalcolabile o nullo. Legato campagna.</td></tr>
+                </table>
+            </div>
+
+            <!-- TABELLA 16 -->
+            <div class="table-wrapper" id="t16">
+                <div class="table-title">TABELLA 16 - Tesori Maggiori (d12) - Valore 500-10,000d+</div>
+                <table>
+                    <tr><th class="dice-column">d12</th><th style="width:25%">Tesoro Maggiore</th><th>Valore & Descrizione</th></tr>
+                    <tr><td class="dice-column">1</td><td><strong>Fortuna Monete</strong></td><td>1d6x1000 dinar. Pesante (10 slot). Trasporto problema. Bersaglio banditi. Ma...ricchezza seria!</td></tr>
+                    <tr><td class="dice-column">2</td><td><strong>Gemme Preziose</strong></td><td>3d6 pietre preziose (rubini, smeraldi, diamanti). 100-500d ciascuna. Valore totale: 500-3000d. Compatte!</td></tr>
+                    <tr><td class="dice-column">3</td><td><strong>Corona/Regalia</strong></td><td>Antico simbolo potere. Oro + gemme. Valore materiale: 2000d. Valore storico: 5000d+. Possibile: ricercata legittimi eredi.</td></tr>
+                    <tr><td class="dice-column">4</td><td><strong>Statua Arte Pregiata</strong></td><td>Scultura famoso artista antico. Valore: 1000-3000d. Peso: 5 slot. Riconoscibile (problema se rubata). Musei pagherebbero fortuna.</td></tr>
+                    <tr><td class="dice-column">5</td><td><strong>Artefatto Raro</strong></td><td>(d8) 1=Armatura Celeste, 2=Arma Plasma, 3=Dispositivo Volo, 4=Campo Forza, 5=Teletrasporto, 6=Scanner Avanzato, 7=GM scelta, 8=2 Non Comuni. Pieno cariche. 2000-5000d.</td></tr>
+                    <tr><td class="dice-column">6</td><td><strong>Veicolo Funzionante</strong></td><td>Hover-bike o piccolo veicolo Celeste riparabile (Sapienza Diff 16). Funzionante: valore 3000-8000d. Velocità: 3x viaggio normale. Carburante limitato.</td></tr>
+                    <tr><td class="dice-column">7</td><td><strong>Biblioteca Completa</strong></td><td>200+ libri antichi/rari. Conoscenza immensa. Valore: 5000d+ studiosi. Peso: carrello intero. Possibile: conoscenza perduta critica.</td></tr>
+                    <tr><td class="dice-column">8</td><td><strong>Documenti Politici Esplosivi</strong></td><td>Prove tradimento, corruzione, o complotto alto livello. Valore: IMMENSO persona giusta. Pericoloso estremamente possedere.</td></tr>
+                    <tr><td class="dice-column">9</td><td><strong>Mappa Tesoro Leggendario</strong></td><td>Porta a tesoro maggiore (10,000d+) o rovina importante. Autenticità: 80%. Pericoli route: estremi. Possibile: altri cercano stessa mappa.</td></tr>
+                    <tr><td class="dice-column">10</td><td><strong>Reliquia Religiosa</strong></td><td>Osso santo, testo sacro originale, o simbolo divino. Valore: incalcolabile fedeli. Potere: (30%) benedizione reale (GM determina).</td></tr>
+                    <tr><td class="dice-column">11</td><td><strong>Chiave Speciale</strong></td><td>Apre: volta segreta, prigione importante, o rovina leggendaria. Valore oggetto: minimo. Valore cosa apre: ENORME. Cercata molti.</td></tr>
+                    <tr><td class="dice-column">12</td><td><strong>Artefatto Leggendario Unico</strong></td><td>GM crea oggetto unico campagna. Potere significativo. Conseguenze possedere: alte. Valore: oltre denaro. Possibile: senziente, maledetto, cercato.</td></tr>
+                </table>
+                <div class="tip-box">
+                    <strong>💡 Distribuzione Tesori:</strong> Minori (Tab 15): incontri normali, rovine piccole, banditi. Maggiori (Tab 16): SOLO rovine importanti, boss fight, ricompense quest maggiori. Non inflazionare economia!
+                </div>
+            </div>
+
+            <!-- TABELLA 17 -->
+            <div class="table-wrapper" id="t17">
+                <div class="table-title">TABELLA 17 - Oggetti Mundani Utili (d20)</div>
+                <table>
+                    <tr><th class="dice-column">d20</th><th>Oggetto</th><th>Uso Pratico</th></tr>
+                    <tr><td class="dice-column">1</td><td><strong>Corda 15m Qualità</strong></td><td>Resistente 200kg. Indispensabile esplorazione. Mille usi.</td></tr>
+                    <tr><td class="dice-column">2</td><td><strong>Otre Acqua Grande</strong></td><td>Capacità 5 litri (vs 2 standard). Meno peso tot. Prezioso!</td></tr>
+                    <tr><td class="dice-column">3</td><td><strong>Kit Medico Completo</strong></td><td>Permette: curare ferite (+1d6 PV), stabilizzare morenti, malattie lievi. 10 usi.</td></tr>
+                    <tr><td class="dice-column">4</td><td><strong>Torcia Mai-Spegni</strong></td><td>Olio speciale. Brucia 24 ore (vs 6 normale). Luce affidabile.</td></tr>
+                    <tr><td class="dice-column">5</td><td><strong>Coperta Termica</strong></td><td>Leggera ma calda. Sopravvivenza +1d6 freddo. Essenziale notti.</td></tr>
+                    <tr><td class="dice-column">6</td><td><strong>Set Attrezzi Professionali</strong></td><td>Manualità +1d6 riparazioni specifiche (fabbro/carpentiere/etc). Pesanti (2 slot).</td></tr>
+                    <tr><td class="dice-column">7</td><td><strong>Specchio Segnalazione</strong></td><td>Metallo lucido. Segnala fino 10km giorno soleggiato. Comunicazione semplice.</td></tr>
+                    <tr><td class="dice-column">8</td><td><strong>Binocolo</strong></td><td>Percezione +1d6 distanza. Vede dettagli 1km+. Esplorazione critico.</td></tr>
+                    <tr><td class="dice-column">9</td><td><strong>Rampino + Corda</strong></td><td>Atletica +1d6 scalate. Permette raggiungere luoghi altrimenti impossibili.</td></tr>
+                    <tr><td class="dice-column">10</td><td><strong>Tenda Qualità 4 Persone</strong></td><td>Riparo tempeste. Recupero migliore (+1 Fatica notte). Comfort relativamente.</td></tr>
+                    <tr><td class="dice-column">11</td><td><strong>Kit Scassinatore</strong></td><td>Manualità +1d6 serrature. Grimaldelli, lime, ecc. Illegale città (nascondere!).</td></tr>
+                    <tr><td class="dice-column">12</td><td><strong>Bussola Meccanica Precisa</strong></td><td>Navigazione +1d6. Mai perdersi se funzionante. Backup vitale deserto.</td></tr>
+                    <tr><td class="dice-column">13</td><td><strong>Occhiali Sabbia</strong></td><td>Proteggono occhi tempeste. Percezione nessuna penalità vento/sabbia. Stilosi!</td></tr>
+                    <tr><td class="dice-column">14</td><td><strong>Borraccia Purificatrice</strong></td><td>Filtro ceramica. Acqua torbida → potabile 80%. Riduce malattie. Riutilizzabile.</td></tr>
+                    <tr><td class="dice-column">15</td><td><strong>Kit Riparazione Emergenza</strong></td><td>Nastro, colla, filo, pezzi. Ripara 1 oggetto rotto temporaneamente. 5 usi.</td></tr>
+                    <tr><td class="dice-column">16</td><td><strong>Mappa Regione Dettagliata</strong></td><td>Mostra: città, oasi, pericoli, strade. Navigazione +2d6 area coperta. Valore: 50d.</td></tr>
+                    <tr><td class="dice-column">17</td><td><strong>Fischietto Segnale</strong></td><td>Udibile 500m. Codici semplici. Richiama alleati, segnala emergenza. Leggero.</td></tr>
+                    <tr><td class="dice-column">18</td><td><strong>Set Cucina Portatile</strong></td><td>Pentola, piatti, utensili. Cucina cibo decente (morale +1). Sopravvivenza +1d6 caccia/foraggiamento.</td></tr>
+                    <tr><td class="dice-column">19</td><td><strong>Libro Vuoto + Penna</strong></td><td>Registrare: mappe, info, diario. Sapienza +1d6 ricordare dettagli. Valore campagna: alto.</td></tr>
+                    <tr><td class="dice-column">20</td><td><strong>Tira 2 Volte!</strong></td><td>Zaino ben fornito. 2 oggetti utili trovati. Precedente proprietario preparato.</td></tr>
+                </table>
+            </div>
+
+        </div> <!-- Fine sezione Tesori -->
+
+="width:20%">Motivazione</th>
+                        <th>Obiettivo Specifico & Cosa Farà</th>
+                    </tr>
+                    <tr><td class="dice-column">1</td><td><strong>Ricchezza</strong></td><td>Ossessionato oro/tesori. Cerca: rovine, opportunità commercio, eredità perduta. Rischia vita volentieri. Possibile: debiti enormi, famiglia povera, o avarizia pura.</td></tr>
+                    <tr><td class="dice-column">2</td><td><strong>Fuga Disperata</strong></td><td>Scappa: (d6) 1-2=debiti, 3=crimine, 4=nemici, 5=passato, 6=profezia. Cerca: anonimato, destinazione lontana, nuova identità. Nervoso sempre.</td></tr>
+                    <tr><td class="dice-column">3</td><td><strong>Conoscenza Ossessiva</strong></td><td>Vuole: verità Celesti, natura Serpente, segreti antichi. Rischia tutto per info. Possibile: diventato ossessione malsana. Sacrifica relazioni/salute.</td></tr>
+                    <tr><td class="dice-column">4</td><td><strong>Vendetta Consumante</strong></td><td>Cerca: (d6) 1-2=assassino familiare, 3=traditore, 4=oppressore, 5=rivale, 6=creatura. Obiettivo singolare. Tutto altro secondario. Possibile: autodistruttivo.</td></tr>
+                    <tr><td class="dice-column">5</td><td><strong>Protezione Amato</strong></td><td>Difende: (d6) 1-2=famiglia, 3=amico, 4=villaggio, 5=ideale, 6=oggetto sacro. Sacrificio personale accettabile. Possibile: sovraprotettivo, o giustificato pericolo.</td></tr>
+                    <tr><td class="dice-column">6</td><td><strong>Redenzione Tormentata</strong></td><td>Espia: (d6) 1=tradimento, 2=omicidio, 3=codardia, 4=abuso potere, 5=abbandono, 6=altro orrore. Cerca: perdono impossibile. Possibile: martirio tendenze.</td></tr>
+                    <tr><td class="dice-column">7</td><td><strong>Potere Ambizione</strong></td><td>Vuole: (d6) 1-2=politico, 3=militare, 4=economico, 5=sociale, 6=mistico. Manipola, complotta, tradisce se necessario. Possibile: leader naturale o megalomane.</td></tr>
+                    <tr><td class="dice-column">8</td><td><strong>Sopravvivenza Pura</strong></td><td>Obiettivo: vivere domani. Pragmatico estremo. Nessuna lealtà permanente. Adatta rapido. Possibile: trauma sopravvissuto, o filosofia cinica realista.</td></tr>
+                    <tr><td class="dice-column">9</td><td><strong>Dovere Inflessibile</strong></td><td>Serve: (d6) 1-2=fazione, 3=codice onore, 4=giuramento, 5=famiglia, 6=ideologia. Ordini assoluti. Conflitto interno se ordini vs morale. Rigido leale.</td></tr>
+                    <tr><td class="dice-column">10</td><td><strong>Amore Romantico</strong></td><td>Cerca/protegge amato. Possibile: separati (guerra/distanza), proibito (classi), non corrisposto. Decisioni irrazionali amore. Possibile: tragico o felice fine.</td></tr>
+                    <tr><td class="dice-column">11</td><td><strong>Curiosità Avventura</strong></td><td>Vuole: esplorare, scoprire, vivere. Cerca emozioni. Possibile: giovane, o fugge noia. Rischia stupidamente. Ma: entusiasmo contagioso, morale boost.</td></tr>
+                    <tr><td class="dice-column">12</td><td><strong>Destino/Profezia</strong></td><td>Crede: predetto futuro. Cerca: compiere/evitare profezia. Interpretazione sogni/segni. Possibile: auto-avverante, genuino, o illusorio. Filosofico profondo.</td></tr>
+                </table>
+                <div class="tip-box">
+                    <strong>💡 Creare PNG Veloce (30 secondi):</strong><br>
+                    1. Tira Nome (Tab 10)<br>
+                    2. Tira Professione (Tab 11)<br>
+                    3. Tira 1 Tratto Fisico (Tab 12)<br>
+                    4. Tira Personalità (Tab 13)<br>
+                    5. Tira Motivazione (Tab 14)<br>
+                    <strong>Fatto!</strong> PNG completo memorabile con personalità, obiettivi, skills. Esempio: "Layla, Guida Deserto, cicatrice viso, cinica cuor oro, cerca vendetta contro bandito uccise fratello."
+                </div>
+            </div>
+
+        </div> <!-- Fine sezione NPC -->
+
+/td>
+                        <td>Tempo scorre diverso area 30m: (d6) 1-3=veloce (2x), 4-6=lento (0.5x). Dura 3d6 round. Chi dentro: percezione normale. Chi fuori: vede rallentato/accelerato. Effetti: azioni doppie/dimezzate, invecchiamento rapido piante (secondi = giorni), confusione totale. Pericoloso: possibile restare intrappolati ciclo (Sapienza Diff 15 uscire).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">8</td>
+                        <td><strong>Pioggia Cristalli Energia</strong></td>
+                        <td>Piccoli cristalli piovono cielo 10 minuti (area 100m diametro). Cristalli: tiepidi, luminosi, svaniscono 1 ora dopo. Raccogliere: 2d6 cristalli utilizzabili. Uso: 1 cristallo = ricarica 1d6 cariche artefatto! Valore: 50d cad. Origine: satellite malfunzionante? Fenomeno Celeste? Benedizione Serpente?</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">9</td>
+                        <td><strong>Specchi Sabbia</strong></td>
+                        <td>Sabbia diventa riflettente come specchio 50m raggio. Gruppo vede riflessi ma: versioni alternative (altri vestiti, età diverse, o...morti?). Dura 1d6 ore poi sabbia normale. Psicologicamente disturbante. Possibile: riflessi mostrano futuro possibile (30%, GM fornisce indizio scelta importante), o passato alternativo. Resistenza Diff 12 o turbato 1 giorno.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">10</td>
+                        <td><strong>Canto Antico Impossibile</strong></td>
+                        <td>Musica bellissima riempie aria. Nessuna fonte visibile. Lingua sconosciuta ma emotivamente comprensibile: tristezza? avvertimento? addio? Tutti: Empatia Diff 13 o piangono involontario (catartico, non negativo). Dura 2d6 minuti. Possibile: eco messa funebre Celesti? Registrazione artefatto rotto? Memoria collettiva deserto?</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">11</td>
+                        <td><strong>Stelle Cadenti Innaturali</strong></td>
+                        <td>Doccia meteoriti ma: cadono verso l'alto! Vanno da terra verso cielo. 20+ meteore invertite. Durata: 5 minuti. Bellissimo e impossibile. Astronomia Sapienza Diff 17: violazione fisica totale. Possibile: frammenti atterrano (5%), sono meteoriti "normali" ma tracce energia strana. Valore: 100d cad scienziati. Cosa causò inversione?</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">12</td>
+                        <td><strong>Manifestazione Diretta Serpente</strong></td>
+                        <td>Forma serpentina ENORME (1km+) si materializza sabbia/cielo/stelle. Semi-trasparente. Osserva gruppo direttamente 3d6 secondi. Intelligenza infinita percepibile. Poi: [GM sceglie] 1=scompare, 2=dice 1 parola mente tutti ("Aspetta", "Vieni", "Scegli"), 3=tocca 1 PG (benedizione/marchio). Tutti: Resistenza Diff 15 o svenuti 1 round. Evento più significativo possibile campagna.</td>
+                    </tr>
+                </table>
+                <div class="tip-box">
+                    <strong>💡 Frequenza:</strong> Rarissimi! Usa 1-2 volte per campagna, o in momenti drammatici. Questi eventi cambiano tono sessione - usali quando vuoi ricordare ai giocatori che il deserto è pieno di misteri.
+                </div>
+            </div>
+
+        </div> <!-- Fine sezione Mistico -->
+
+        <td class="dice-column">10-14</td>
+                        <td><strong>Giorno Normale</strong></td>
+                        <td>Viaggio procede routine. Niente eventi particolari. Temperatura normale, terreno standard, velocità prevista. Possibile: conversazioni RP, pianificazione strategica, crafting minore, identificazione oggetti, riposo breve senza conseguenze.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">15</td>
+                        <td><strong>Ritrovamento Fortuito</strong></td>
+                        <td>Oggetto trovato sabbia/rocce! Tira Tabella 17 (Oggetti Mundani Utili) o 30% Tabella 15 (Tesoro Minore). Possibile: abbandonato di proposito, perso combattimento, sepolto tempo. Condizione: (d6) 1-3=buona, 4-5=usurata, 6=danneggiata (riparabile).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">16</td>
+                        <td><strong>Visione Serpente Diurna</strong></td>
+                        <td>1 PG casuale ha visione breve (10 sec) ad occhi aperti: immagine Serpente, simbolo, luogo sconosciuto. Resistenza Diff 11 o stordito 1 round. Visione contiene: [GM crea indizio campagna, avvertimento, o profezia criptica]. Inquietante ma possibilmente utile.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">17</td>
+                        <td><strong>Malattia Ambientale Lieve</strong></td>
+                        <td>1 PG casuale: Resistenza Diff 13 o condizione: (d6) 1-2=colpo calore (Svantaggio fisico), 3-4=disidratazione iniziale (+1 acqua richiesta), 5=scottatura solare (1d6 danno, pelle), 6=sabbia occhi (Percezione -1d6). Dura: 1d6 ore. Curabile: riposo ombra + acqua.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">18</td>
+                        <td><strong>Persi Temporaneamente</strong></td>
+                        <td>Navigazione Diff 14 o deviati 2d6 km direzione sbagliata. Costo: +1d6 ore viaggio + 1 Fatica gruppo. Realizzare errore: Percezione Diff 13 dopo 1 ora, altrimenti dopo 3 ore. Possibile: incontro casuale mentre persi (tira Tabella Incontri con -1).</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">19</td>
+                        <td><strong>Scoperta Archeologica Minore</strong></td>
+                        <td>Percezione Diff 13 notare: frammento tecnologia, moneta antica, testo inciso roccia, o artefatto rotto. Valore: 2d6x10d collezionisti. Sapienza Diff 14 identificare origine/età. Possibile indizio: locazione rovina vicina (50%), o info storica campagna.</td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">20</td>
+                        <td><strong>Incontro Significativo Fato</strong></td>
+                        <td>Tira Tabella Incontri appropriata con +3 al risultato (rendi più interessante/importante). Questo incontro avrà: conseguenze campagna, PNG memorabile, informazioni cruciali, o possibilità alleanza/nemicizia duratura. GM: rendi questo speciale, non casuale!</td>
+                    </tr>
+                </table>
+                <div class="tip-box">
+                    <strong>💡 Frequenza Eventi:</strong> Tira 1 volta/giorno viaggio. Terreno pericoloso: tira 2 volte e usa peggiore. Terreno sicuro: tira solo se viaggio >3 giorni.
+                </div>
+            </div>
+
+
+        <!-- ==================== TABELLE DUNGEON ==================== -->
+        
+        <div class="section" id="dungeon">
+            <div class="section-header">
+                <h2>🏛️ TABELLE DUNGEON & ROVINE</h2>
+                <p>Per generare stanze e trappole al volo</p>
+            </div>
+
+            <!-- TABELLA 18 -->
+            <div class="table-wrapper" id="t18">
+                <div class="table-title">TABELLA 18 - Trappole Rovine Celesti (d12)</div>
+                <table>
+                    <tr><th class="dice-column">d12</th><th style="width:25%">Trappola</th><th>Attivazione & Effetto</th></tr>
+                    <tr><td class="dice-column">1</td><td><strong>Laser Grid</strong></td><td>Percezione Diff 14 notare fasci invisibili. Rompere fascio: scarica 4d6 elettrico. Disarmare: Manualità Diff 15. Aggirare: Atletica Diff 14 (acrobazie).</td></tr>
+                    <tr><td class="dice-column">2</td><td><strong>Pavimento Collasso</strong></td><td>Percezione Diff 13 notare crepe. Peso >50kg: crollo 3m caduta, 3d6 danno. Spikes fondo (50%): +2d6. Atletica Diff 12 afferrare bordo.</td></tr>
+                    <tr><td class="dice-column">3</td><td><strong>Dardi Avvelenati</strong></td><td>Pressione su mattonella. Atletica Diff 13 schivare. Fallimento: 1d6 dardi, 1d6+veleno cad. Veleno: Resistenza Diff 13 o Svantaggio 1 ora.</td></tr>
+                    <tr><td class="dice-column">4</td><td><strong>Gas Nervino</strong></td><td>Stanza sigilla, gas rilasciato. Resistenza Diff 14 ogni round o: primo=tosse, secondo=1d6 danno, terzo=svenimento. Disattivare: pannello nascosto Diff 16.</td></tr>
+                    <tr><td class="dice-column">5</td><td><strong>Muri Schiaccianti</strong></td><td>Pareti si chiudono 1m/round. 6 round = schiacciati 10d6. Disattivare: leva nascosta Percezione Diff 15, Atletica Diff 13 bloccare meccanismo.</td></tr>
+                    <tr><td class="dice-column">6</td><td><strong>Raggio Disintegratore</strong></td><td>Aprire porta sbagliata: raggio 6d6 ignora armatura. Percezione Diff 15 notare porta trappola. Disarmare: codice indovinare (3 tentativi) o Manualità Diff 17.</td></tr>
+                    <tr><td class="dice-column">7</td><td><strong>Allagamento Rapido</strong></td><td>Acqua inonda (serbatoi nascosti). Livello sale 1m/round. 6 round = annegamento. Atletica Diff 13 nuotare, Percezione Diff 14 trovare valvola emergenza.</td></tr>
+                    <tr><td class="dice-column">8</td><td><strong>Campo Stasi</strong></td><td>Entrare zona: Resistenza Diff 15 o paralizzato finché qualcuno disattiva (esterno pannello). Chi dentro: conscio ma immobile. Timeout: 1 ora poi rilascia.</td></tr>
+                    <tr><td class="dice-column">9</td><td><strong>Esplosivo Remoto</strong></td><td>Carica 6d6 area 5m. Attivazione: (d6) 1-3=pressione, 4-5=timer, 6=remoto. Disarmare: Manualità Diff 16 (fallimento=esplode!). Fuggire: possibile.</td></tr>
+                    <tr><td class="dice-column">10</td><td><strong>Proiettore Ologrammi Ostili</strong></td><td>Immagini creature attaccano. Danno psichico! 2d6/round. Resistenza Diff 14 capire illusione = immune. Disattivare: distruggere proiettore (8 PV, Armatura 1).</td></tr>
+                    <tr><td class="dice-column">11</td><td><strong>Gravitone Inverter</strong></td><td>Gravità inverte! Cadono soffitto 3d6 danno. Dura 2d6 round. Atletica Diff 13 afferrare oggetto fisso. Disorientante: Svantaggio tutti tiri.</td></tr>
+                    <tr><td class="dice-column">12</td><td><strong>Trappola Senziente IA</strong></td><td>Sistema difensivo intelligente. Adatta tattiche. Percezione Diff 16 notare telecamere. Possibile: negoziare (Persuasione Diff 15), hackerare (Sapienza Diff 17), o combattere (manifestazione robot 2d6 turrets, 10 PV cad, raggio 2d6).</td></tr>
+                </table>
+            </div>
+
+            <!-- TABELLA 19 -->
+            <div class="table-wrapper" id="t19">
+                <div class="table-title">TABELLA 19 - Contenuto Stanze Dungeon (d20)</div>
+                <table>
+                    <tr><th class="dice-column">d20</th><th style="width:25%">Stanza</th><th>Contenuto & Dettagli</th></tr>
+                    <tr><td class="dice-column">1-2</td><td><strong>Vuota</strong></td><td>Letteralmente nulla. Pareti nude. Polvere. Possibile: segni passaggio precedente (tracce, graffiti, sangue secco).</td></tr>
+                    <tr><td class="dice-column">3-5</td><td><strong>Mostri/Creature</strong></td><td>Tira Incontri Rovine (Tab 4) o usa: (d6) 1-2=Costrutti, 3-4=Creature mutate, 5=Cultisti, 6=Banditi razziatori. Combattimento probabile.</td></tr>
+                    <tr><td class="dice-column">6-8</td><td><strong>Tesoro + Trappola</strong></td><td>Ovvio tesoro al centro! Ma: trappola protegge (Tab 18). Percezione Diff 13+ notare. Possibile: disarmare o rischiare.</td></tr>
+                    <tr><td class="dice-column">9-10</td><td><strong>Puzzle Meccanico</strong></td><td>Porta bloccata richiede: (d6) 1-2=sequenza simboli, 3-4=allineamento cristalli, 5=peso specifico piattaforme, 6=codice matematico. Sapienza Diff 14-16.</td></tr>
+                    <tr><td class="dice-column">11</td><td><strong>Biblioteca/Archivio</strong></td><td>Scaffali dati/libri. Tempo ricerca: 1d6x10 min. Trova: (d6) 1-2=mappa parziale, 3=storia rovina, 4=codice accesso, 5=info Celesti, 6=indizio tesoro.</td></tr>
+                    <tr><td class="dice-column">12</td><td><strong>Laboratorio Attivo</strong></td><td>Esperimenti in corso! Pericoloso: tira Tab Complicazioni Combattimento per evento casuale. Possibile: campioni preziosi, formule, artefatto prototipo.</td></tr>
+                    <tr><td class="dice-column">13</td><td><strong>Sala Controllo</strong></td><td>Console funzionanti. Sapienza Diff 14 interfacciarsi. Possibile: disattivare trappole, aprire porte segrete, attivare difese contro nemici, mappe rovina.</td></tr>
+                    <tr><td class="dice-column">14</td><td><strong>Dormitori/Caserme</strong></td><td>Letti, armadietti personali. Possibile: 2d6 oggetti mundani utili (Tab 17), diari (info), equipaggiamento standard. Posto riposare relativamente sicuro.</td></tr>
+                    <tr><td class="dice-column">15</td><td><strong>Cucina/Mensa</strong></td><td>Cibo antico (non commestibile). Possibile: contenitori sigillati (20% cibo preservato commestibile!), utensili, passaggio servizio (nascosto, Percezione Diff 14).</td></tr>
+                    <tr><td class="dice-column">16</td><td><strong>Sala Cerimonie/Tempio</strong></td><td>Altare centrale, simboli religiosi. Possibile: offerte (tesoro minore), fantasmi/spiriti (Reazione tab 5), benedizione se pregano rispettosamente (30%, Vantaggio 24h).</td></tr>
+                    <tr><td class="dice-column">17</td><td><strong>Giardino Idroponico</strong></td><td>Piante invase tutto! Frutta/erbe raccoglibili. Acqua sistema funzionante. Rifugio tranquillo. 20% piante carnivore/velenose (pericolo).</td></tr>
+                    <tr><td class="dice-column">18</td><td><strong>Prigione/Celle</strong></td><td>Gabbie, catene. Possibile: (d6) 1-3=vuote, 4=resti scheletrici, 5=fantasma prigioniero, 6=prigioniero vivo! (PNG Tab 10-14, info prezioso).</td></tr>
+                    <tr><td class="dice-column">19</td><td><strong>Armeria</strong></td><td>Rastrelliere armi! 2d6 armi (50% rotte). Funzionanti: qualità superiore. Possibile: artefatti armi (30%), armature (20%), munizioni infinite.</td></tr>
+                    <tr><td class="dice-column">20</td><td><strong>Sancta Sanctorum</strong></td><td>Stanza più importante! Tesoro maggiore (Tab 16). Possibile: trappola finale, guardiano boss, puzzle complesso. Ricompensa: degna sforzo!</td></tr>
+                </table>
+            </div>
+
+        </div> <!-- Fine sezione Dungeon -->
+
+        <!-- ==================== TABELLE CITTA & TRAMA ==================== -->
+        
+        <div class="section" id="citta">
+            <div class="section-header">
+                <h2>🏙️ TABELLE CITTÀ & TRAMA</h2>
+                <p>Per rumors, missioni, twist e conseguenze</p>
+            </div>
+
+            <!-- TABELLA 20 -->
+            <div class="table-wrapper" id="t20">
+                <div class="table-title">TABELLA 20 - Voci e Rumors Città/Insediamenti (d20)</div>
+                <table>
+                    <tr><th class="dice-column">d20</th><th style="width:25%">Rumor</th><th>Verità & Possibile Sviluppo</th></tr>
+                    <tr><td class="dice-column">1</td><td><strong>"Banditi attaccano carovane Nord"</strong></td><td>VERO. 60% banda Corsari organizzata. Possibile: missione scorta, bounty leader, infiltrazione.</td></tr>
+                    <tr><td class="dice-column">2</td><td><strong>"Rovina scoperta 3 giorni Est"</strong></td><td>VERO 70%. Possibile: già saccheggiata (40%), piena tesori, o trappola/pericolo estremo.</td></tr>
+                    <tr><td class="dice-column">3</td><td><strong>"Governatore corrotto, tangenti ovunque"</strong></td><td>VERO 80%. Prove: difficili trovare. Possibile: alleato politico cerca aiuto, infiltrazione necessaria.</td></tr>
+                    <tr><td class="dice-column">4</td><td><strong>"Malattia misteriosa diffonde quartiere povero"</strong></td><td>VERO 90%. Causa: (d6) 1-2=naturale, 3-4=acqua contaminata, 5=bioarma antica, 6=maledizione. Serve: guaritore/investigazione.</td></tr>
+                    <tr><td class="dice-column">5</td><td><strong>"Mercante offre lavoro ben pagato domani"</strong></td><td>VERO 100%. Ma: pericoloso. Possibile: scorta, recupero oggetto, missione discutibile moralità. 200-500d pagamento.</td></tr>
+                    <tr><td class="dice-column">6</td><td><strong>"Sparizioni notturne, 5 persone ultima settimana"</strong></td><td>VERO. Causa: (d6) 1-2=cultisti rapiscono, 3-4=creatura notturna, 5=traffico schiavi, 6=portale/fenomeno. Investigazione richiesta.</td></tr>
+                    <tr><td class="dice-column">7</td><td><strong>"Serpente visto distanza, enorme!"</strong></td><td>70% VERO, 30% miraggio/esagerazione. Se vero: significato spirituale? evento imminente? Cultisti interessati.</td></tr>
+                    <tr><td class="dice-column">8</td><td><strong>"Guerra imminente Impero vs Corsari"</strong></td><td>50% VERO. Tensioni alte sempre. Possibile: mobilitazione truppe, mercenari cercati, prezzi inflazione.</td></tr>
+                    <tr><td class="dice-column">9</td><td><strong>"Osservatori cercano volontari spedizione"</strong></td><td>VERO 80%. Destinazione: rovina pericolosa. Pagamento: 100d/giorno + quota tesori trovati. Rischio: alto.</td></tr>
+                    <tr><td class="dice-column">10</td><td><strong>"Nobile cerca guardie corpo, paga 50d/giorno"</strong></td><td>VERO. Ma: nobile ha nemici, minacce morte reali (70%). Possibile: complotto assassinio, intrighi politici.</td></tr>
+                    <tr><td class="dice-column">11</td><td><strong>"Artefatto pericoloso rubato tempio ieri"</strong></td><td>VERO 90%. Artefatto: potente instabile. Ladri: probabilmente Corsari. Tempio offre ricompensa recupero (500d+).</td></tr>
+                    <tr><td class="dice-column">12</td><td><strong>"Fantasmi infestano vecchio quartiere"</strong></td><td>50% VERO fantasmi reali, 50% trucco/superstizione. Possibile: spiriti vendicativi, crimine coperto, tesoro nascosto.</td></tr>
+                    <tr><td class="dice-column">13</td><td><strong>"Oasi 2 giorni Sud sta seccando"</strong></td><td>VERO 70%. Causa: (d6) 1-2=naturale, 3-4=artefatto malfunzionante, 5=sabotaggio, 6=entità spirituale. Catastrofe imminente regione.</td></tr>
+                    <tr><td class="dice-column">14</td><td><strong>"Miniera abbandonata contiene filone oro"</strong></td><td>30% VERO oro, 70% esagerazione/trappola. Abbandonata perché: (d4) 1-2=esaurita, 3=pericolosa (crolli), 4=infestata creature.</td></tr>
+                    <tr><td class="dice-column">15</td><td><strong>"Straniero ricco cerca guida deserto, paga bene"</strong></td><td>VERO. Ma: destinazione pericolosa (rovina/territorio ostile). Possibile: nasconde motivi veri, fugge qualcosa, o legittimo.</td></tr>
+                    <tr><td class="dice-column">16</td><td><strong>"Torneo combattimento settimana prossima, premio 1000d"</strong></td><td>VERO 80%. Regole: (d4) 1=morte consentita, 2=primi sangue, 3=resa, 4=non-letale. Partecipazione: 50d tassa ingresso.</td></tr>
+                    <tr><td class="dice-column">17</td><td><strong>"Schiavi fuggiranno questa notte, aiuto cercato"</strong></td><td>VERO. Rischio: altissimo (crimine capitale). Ricompensa: gratitudine eterna + possibile 200d. Guardie: 8 soldati, pattuglie notte.</td></tr>
+                    <tr><td class="dice-column">18</td><td><strong>"Locandiere nasconde contrabbandieri sotterraneo"</strong></td><td>VERO 60%. Possibile: info prezioso, oggetti mercato nero, connessioni sotterranei, o trappola autorità.</td></tr>
+                    <tr><td class="dice-column">19</td><td><strong>"Profezia: stella cadrà città, distruzione imminente"</strong></td><td>20% VERO letterale, 80% metafora/falso. Se vero: meteorite? arma Celeste? evento magico? Panico cittadini reale.</td></tr>
+                    <tr><td class="dice-column">20</td><td><strong>"GM crea rumor legato campagna"</strong></td><td>Rumor personalizzato riferisce: quest principale, PNG importante, locazione chiave, o segreto grande. SEMPRE vero con twist.</td></tr>
+                </table>
+            </div>
+
+            <!-- TABELLA 21 -->
+            <div class="table-wrapper" id="t21">
+                <div class="table-title">TABELLA 21 - Missioni Quickstart (d12)</div>
+                <table>
+                    <tr><th class="dice-column">d12</th><th style="width:20%">Tipo Missione</th><th>Obiettivo & Complicazione</th></tr>
+                    <tr><td class="dice-column">1</td><td><strong>Scorta Carovana</strong></td><td>Proteggere mercanti 3-5 giorni viaggio. Complicazione: (d4) 1=banditi imboscata, 2=cliente nasconde contrabbando, 3=creatura attacca, 4=tradimento interno.</td></tr>
+                    <tr><td class="dice-column">2</td><td><strong>Recupero Oggetto</strong></td><td>Recuperare: (d4) 1=artefatto rubato, 2=documento importante, 3=persona rapita, 4=reliquia sacra. Da: (d4) 1=banditi, 2=rovina, 3=fazione rivale, 4=creatura.</td></tr>
+                    <tr><td class="dice-column">3</td><td><strong>Investigazione Crimine</strong></td><td>Risolvere: (d4) 1=omicidio misterioso, 2=furto audace, 3=sparizioni, 4=sabotaggio. Complicazione: corruzione autorità, testimoni mentono, o criminale potente.</td></tr>
+                    <tr><td class="dice-column">4</td><td><strong>Esplorazione Rovina</strong></td><td>Mappare/saccheggiare rovina sconosciuta. Complicazione: (d4) 1=già occupata (costrutti/banditi), 2=trappole intense, 3=altro gruppo esploratori (rivali), 4=struttura instabile.</td></tr>
+                    <tr><td class="dice-column">5</td><td><strong>Assassinio/Eliminazione</strong></td><td>Eliminare: (d4) 1=bandito pericoloso, 2=creatura territoriale, 3=PNG corrotto, 4=costrutte malfunzionante. Complicazione: bersaglio più forte previsto, innocenti vicini, morale dubbio.</td></tr>
+                    <tr><td class="dice-column">6</td><td><strong>Diplomatica/Negoziazione</strong></td><td>Negoziare: (d4) 1=tregua tribù, 2=commercio fazioni, 3=rilascio ostaggi, 4=accesso territorio. Complicazione: parti ostili, tradimento, terza parte interferisce.</td></tr>
+                    <tr><td class="dice-column">7</td><td><strong>Salvataggio</strong></td><td>Salvare: (d4) 1=gruppo perso deserto, 2=prigionieri, 3=VIP rapito, 4=villaggio assediato. Complicazione: tempo limitato, nemici numerosi, salvati non vogliono essere salvati.</td></tr>
+                    <tr><td class="dice-column">8</td><td><strong>Sabotaggio</strong></td><td>Sabotare: (d4) 1=deposito nemico, 2=piano politico, 3=operazione militare, 4=rituale cultisti. Complicazione: sicurezza pesante, scoperta = conflitto, alleati dubbi moralità.</td></tr>
+                    <tr><td class="dice-column">9</td><td><strong>Difesa</strong></td><td>Difendere: (d4) 1=villaggio, 2=carovana accampata, 3=installazione, 4=persona VIP. Da: (d4) 1=banditi, 2=creature, 3=fazione, 4=onda multipla. Complicazione: risorse limitate, durata incerta.</td></tr>
+                    <tr><td class="dice-column">10</td><td><strong>Consegna Urgente</strong></td><td>Consegnare: messaggio/pacco in tempo limite. Complicazione: (d4) 1=inseguiti, 2=contenuto pericoloso, 3=meteo estremo, 4=destinatario problematico.</td></tr>
+                    <tr><td class="dice-column">11</td><td><strong>Caccia Mostro</strong></td><td>Cacciare creatura specifica: (d4) 1=scorpione gigante capo, 2=predatore leggendario, 3=verme sabbie, 4=costrutto impazzito. Complicazione: più forte previsto, protegge cuccioli, intelligente evita trappole.</td></tr>
+                    <tr><td class="dice-column">12</td><td><strong>Mistero Arcano</strong></td><td>Investigare: (d4) 1=fenomeno mistico, 2=artefatto attivato, 3=visioni multiple, 4=manifestazione Serpente. Complicazione: pericolo esistenziale, GM lega campagna, nessuna soluzione chiara.</td></tr>
+                </table>
+                <div class="tip-box">
+                    <strong>💡 Ricompense Missioni:</strong> Facile: 50-100d. Moderato: 150-300d. Difficile: 400-800d. Mortale: 1000d+. Aggiusta basato: rischio, durata, committente. Possibile: equipaggiamento, info, favori invece denaro.
+                </div>
+            </div>
+
+            <!-- TABELLA 22 -->
+            <div class="table-wrapper" id="t22">
+                <div class="table-title">TABELLA 22 - Twist Narrativi Improvvisi (d12)</div>
+                <table>
+                    <tr><th class="dice-column">d12</th><th>Twist</th><th>Come Implementare</th></tr>
+                    <tr><td class="dice-column">1</td><td><strong>Alleato è Traditore</strong></td><td>PNG fidato lavora: nemici, fazione rivale, sé stesso. Rivela: momento critico. Possibile: redenzione se confrontato, o boss fight sorpresa.</td></tr>
+                    <tr><td class="dice-column">2</td><td><strong>Nemico era Vittima</strong></td><td>Antagonista: manipolato, ricattato, famiglia ostaggio. Rivela: prima morte. Possibile: alleanza contro vero nemico, tragedia se ucciso prematuramente.</td></tr>
+                    <tr><td class="dice-column">3</td><td><strong>Oggetto Maledetto/Tracciato</strong></td><td>Oggetto cercato: maledetto (effetti negativi), o tracciato (nemici seguono sempre). Scoperta: momento peggiore. Possibile: rimuovere difficile, decisione tenere vs distruggere.</td></tr>
+                    <tr><td class="dice-column">4</td><td><strong>Verità Era Menzogna</strong></td><td>Info "certa": completamente falsa. Committente mentì, documenti falsificati, testimone pagato. Rivela: PG agirono basato menzogne. Conseguenze: potenzialmente disastrose.</td></tr>
+                    <tr><td class="dice-column">5</td><td><strong>Tempo Stringe Improvvisamente</strong></td><td>Scoperta: solo 2d6 ore prima: (d4) 1=rinforzi nemici, 2=crollo struttura, 3=rituale completa, 4=ostaggio ucciso. Cambio tattica: rapidità vs preparazione.</td></tr>
+                    <tr><td class="dice-column">6</td><td><strong>Terza Fazione Interferisce</strong></td><td>Gruppo inaspettato entra scena: (d4) 1=Impero, 2=Corsari, 3=Osservatori, 4=sconosciuti. Obiettivo: proprio (possibile conflitto 3 vie). Complicazione: alleanze temporanee necessarie?</td></tr>
+                    <tr><td class="dice-column">7</td><td><strong>Identità Scambiata</strong></td><td>Persona cercata: non è chi pensavano. Vero bersaglio: (d4) 1=altrove, 2=morto anni, 3=PG stesso!, 4=mai esistito. Conseguenze: missione cambia radicalmente.</td></tr>
+                    <tr><td class="dice-column">8</td><td><strong>Vittoria Era Trappola</strong></td><td>Successo apparente: parte piano nemico. "Recupero" oggetto: esattamente voluto. "Uccisione" boss: attiva backup. Realizzazione: troppo tardi? Possibile: recuperare situazione se veloci.</td></tr>
+                    <tr><td class="dice-column">9</td><td><strong>Passato PG Ritorna</strong></td><td>Elemento background PG: diventa rilevante. (d4) 1=nemico vecchio, 2=debito dimenticato, 3=famiglia/amico, 4=segreto rivelato. Emotivo personale. Scelta difficile imminente.</td></tr>
+                    <tr><td class="dice-column">10</td><td><strong>Doppio Identico</strong></td><td>Scoprono: gemello, clone, impostore perfetto di: (d4) 1=PG, 2=alleato, 3=nemico, 4=committente. Confusione: chi è vero? Paranoia. Possibile: test determinare differenze.</td></tr>
+                    <tr><td class="dice-column">11</td><td><strong>Profezia/Visione Si Avvera</strong></td><td>Predizione precedente (sogno, oracolo, Serpente): si realizza ADESSO. Possibile: evitabile ancora? auto-avverante? destino inevitabile? Scelta PG: combattere fato vs accettare.</td></tr>
+                    <tr><td class="dice-column">12</td><td><strong>Niente Era Reale</strong></td><td>Tutto: simulazione, allucinazione collettiva, realtà alternativa. Evidenze: glitches, impossibilità. Rivela: verità più grande. MEGA twist. Usa: raramente, impatto enorme campagna.</td></tr>
+                </table>
+            </div>
+
+            <!-- TABELLA 23 -->
+            <div class="table-wrapper" id="t23">
+                <div class="table-title">TABELLA 23 - Conseguenze Azioni PG (d12)</div>
+                <table>
+                    <tr><th class="dice-column">d12</th><th>Conseguenza</th><th>Effetto Lungo Termine</th></tr>
+                    <tr><td class="dice-column">1</td><td><strong>Reputazione Migliora</strong></td><td>Fama: eroi, competenti. Effetto: (d4) 1=prezzi -10%, 2=info gratuite, 3=assunti facilmente, 4=riconosciuti positivo. Possibile: attenzione indesiderata anche.</td></tr>
+                    <tr><td class="dice-column">2</td><td><strong>Reputazione Peggiora</strong></td><td>Fama: criminali, inaffidabili. Effetto: (d4) 1=prezzi +50%, 2=rifiutati lavori, 3=guardie sospettose, 4=taglie minori. Riparare: difficile lungo.</td></tr>
+                    <tr><td class="dice-column">3</td><td><strong>Nemico Potente Creato</strong></td><td>Azioni offensive: PNG/fazione influente. Nemico: (d4) 1=nobile, 2=leader militare, 3=boss criminale, 4=entità mistica. Vendetta: inevitabile eventualmente.</td></tr>
+                    <tr><td class="dice-column">4</td><td><strong>Alleato Potente Guadagnato</strong></td><td>Aiutato persona importante. Alleato: (d4) 1=mercante ricco, 2=ufficiale militare, 3=studioso influente, 4=leader tribù. Possibile: favori futuri, info, supporto.</td></tr>
+                    <tr><td class="dice-column">5</td><td><strong>Situazione Politica Cambia</strong></td><td>Azioni: influenzano equilibrio potere. (d4) 1=fazione ascende, 2=guerra evitata/iniziata, 3=leader rimpiazzato, 4=alleanze shift. PG parzialmente responsabili sviluppi.</td></tr>
+                    <tr><td class="dice-column">6</td><td><strong>Locazione Distrutta/Cambiata</strong></td><td>Posto importante: (d4) 1=rovina collassa, 2=villaggio devastato, 3=oasi secca, 4=città bruciata. Possibile: colpa PG diretta, indiretta, o inevitabile. Senso colpa?</td></tr>
+                    <tr><td class="dice-column">7</td><td><strong>PNG Importante Muore</strong></td><td>Morte: (d4) 1=alleato, 2=innocente, 3=neutrale, 4=nemico riformabile. Causa: azioni/inazioni PG. Conseguenze: (d4) 1=vendetta familiari, 2=vuoto potere, 3=rimpianto, 4=opportunità persa.</td></tr>
+                    <tr><td class="dice-column">8</td><td><strong>Artefatto Attivato/Rilasciato</strong></td><td>Oggetto potente: (d4) 1=attivato prematuramente, 2=distrutto (conseguenze), 3=rubato dopo, 4=potere rilasciato. Effetto: (d4) 1=positivo regione, 2=negativo, 3=imprevedibile, 4=catastrofico.</td></tr>
+                    <tr><td class="dice-column">9</td><td><strong>Segreto Rivelato Pubblicamente</strong></td><td>Info sensibile: esposta massa. (d4) 1=corruzione autorità, 2=cospirazione, 3=verità storica, 4=segreto PG. Conseguenze: (d4) 1=caos sociale, 2=caccia colpevoli, 3=riforme, 4=negazione.</td></tr>
+                    <tr><td class="dice-column">10</td><td><strong>Economia Locale Impatta</strong></td><td>Azioni: (d4) 1=liberano commercio (prezzi -20%), 2=bloccano route (prezzi +50%), 3=introducono beni (mercato shift), 4=distruggono risorsa (scarsità). Effetto: permanente area.</td></tr>
+                    <tr><td class="dice-column">11</td><td><strong>Profezia Progredisce</strong></td><td>Azioni PG: avvicinano/allontanano profezia grande. GM: aggiorna stato profezia campagna. PG: possibile ignari contributo destino. Segni: aumentano frequenza (Tab 9).</td></tr>
+                    <tr><td class="dice-column">12</td><td><strong>Nessuna Conseguenza Apparente</strong></td><td>Sembra niente cambiato. MA: GM nota conseguenze future. Effetto: dormiente, emergerà 3-6 sessioni dopo come complicazione maggiore. Sorpresa giocatori quando realizzano connessione.</td></tr>
+                </table>
+                <div class="tip-box">
+                    <strong>💡 Quando Tirare:</strong> Fine sessione o dopo scelte significative PG. Non tutte azioni = conseguenze immediate. Alcune costruiscono gradualmente. Traccia conseguenze per campagna coerente. Giocatori ricordano quando azioni hanno peso reale!
+                </div>
+            </div>
+
+            <!-- TABELLA 24 -->
+            <div class="table-wrapper" id="t24">
+                <div class="table-title">TABELLA 24 - Nomi Luoghi Geografici (d20)</div>
+                <table>
+                    <tr><th class="dice-column">d20</th><th colspan="2">Prefisso (d10)</th><th colspan="2">Suffisso (d10)</th></tr>
+                    <tr>
+                        <td class="dice-column">1</td><td><strong>Sabbie</strong></td><td><strong>Dune</strong></td><td><strong>della Morte</strong></td><td><strong>Rosse</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">2</td><td><strong>Rocce</strong></td><td><strong>Canyon</strong></td><td><strong>del Serpente</strong></td><td><strong>Piangenti</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">3</td><td><strong>Valle</strong></td><td><strong>Pianura</strong></td><td><strong>Celesti</strong></td><td><strong>Dimenticate</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">4</td><td><strong>Oasi</strong></td><td><strong>Pozza</strong></td><td><strong>Benedette</strong></td><td><strong>Nascoste</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">5</td><td><strong>Montagne</strong></td><td><strong>Picchi</strong></td><td><strong>Spezzate</strong></td><td><strong>Eterne</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">6</td><td><strong>Rovine</strong></td><td><strong>Città</strong></td><td><strong>Perdute</strong></td><td><strong>Maledette</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">7</td><td><strong>Passo</strong></td><td><strong>Gola</strong></td><td><strong>dei Venti</strong></td><td><strong>Stretti</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">8</td><td><strong>Pianoro</strong></td><td><strong>Altopiano</strong></td><td><strong>Desolato</strong></td><td><strong>Antico</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">9</td><td><strong>Mar</strong></td><td><strong>Distesa</strong></td><td><strong>di Vetro</strong></td><td><strong>Infinito</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="dice-column">10</td><td><strong>Erg</strong></td><td><strong>Hammada</strong></td><td><strong>del Silenzio</strong></td><td><strong>Dorato</strong></td>
+                    </tr>
+                </table>
+                <div class="tip-box">
+                    <strong>💡 Uso:</strong> Tira d10 per Prefisso + d10 per Suffisso. Esempi: "Sabbie della Morte", "Oasi Nascoste", "Rovine Celesti", "Mar di Vetro". Aggiusta genere grammaticale italiano. Suona esotico memorabile!
+                </div>
+            </div>
+
+            <!-- TABELLA 25 -->
+            <div class="table-wrapper" id="t25">
+                <div class="table-title">TABELLA 25 - Cosa Succede Dopo? (d20) - GM Bloccato</div>
+                <table>
+                    <tr><th class="dice-column">d20</th><th style="width:25%">Evento</th><th>Sviluppo Immediato</th></tr>
+                    <tr><td class="dice-column">1</td><td><strong>Qualcuno Arriva</strong></td><td>PNG/gruppo inaspettato appare. Tira Tab Incontri o crea. Reazione: Tab 5. Possibile: amico, nemico, neutrale complicazione. Cambia dinamica scena.</td></tr>
+                    <tr><td class="dice-column">2</td><td><strong>Rumore/Esplosione Distante</strong></td><td>Suono forte direzione specifica (d8 per direzione). Investigare? Causa: (d6) 1-2=combattimento, 3-4=crollo, 5=esperimento, 6=fenomeno. Distanza: 1d6 km.</td></tr>
+                    <tr><td class="dice-column">3</td><td><strong>Scoperta Inaspettata</strong></td><td>Trovano: (d6) 1=passaggio segreto, 2=oggetto nascosto, 3=tracce recenti, 4=documento importante, 5=PNG nascosto, 6=fenomeno strano. Percezione Diff 13 notare.</td></tr>
+                    <tr><td class="dice-column">4</td><td><strong>Meteo Cambia Drasticamente</strong></td><td>Tira Tab 8. Nuovo meteo inizia 1d6x10 minuti. Prepararsi o subire conseguenze. Possibile: vantaggio tattico se usato intelligente.</td></tr>
+                    <tr><td class="dice-column">5</td><td><strong>Equipaggiamento Guasto</strong></td><td>Oggetto critico (arma, armatura, artefatto, otre) malfunziona. Riparazione: immediata necessaria o penalità. Tempo: 2d6x10 minuti.</td></tr>
+                    <tr><td class="dice-column">6</td><td><strong>Messaggio/Segnale Ricevuto</strong></td><td>Comunicazione: (d6) 1=visiva (fumo, specchio), 2=uditiva (corno, grido), 3=messaggero, 4=magica (artefatto), 5=animale, 6=mistica (visione). Contenuto: urgente.</td></tr>
+                    <tr><td class="dice-column">7</td><td><strong>PNG Importante Agisce</strong></td><td>Alleato/nemico/neutrale importante: fa mossa. (d4) 1=aiuta inaspettato, 2=ostacola, 3=arriva scena, 4=invia comunicazione. GM: usa PNG campagna esistente.</td></tr>
+                    <tr><td class="dice-column">8</td><td><strong>Risorsa Critica Finisce</strong></td><td>(d6) 1=acqua esaurita, 2=cibo finito, 3=munizioni zero, 4=artefatto 0 cariche, 5=medicina finita, 6=luce spenta. Problema immediato: trovare/razionare.</td></tr>
+                    <tr><td class="dice-column">9</td><td><strong>Indizio Importante Rivelato</strong></td><td>Informazione critica emerge: (d4) 1=conversazione sentita, 2=documento trovato, 3=PNG rivela, 4=realizzazione improvvisa. Cambia comprensione situazione.</td></tr>
+                    <tr><td class="dice-column">10</td><td><strong>Scelta Morale Difficile</strong></td><td>Situazione: richiede decisione etica. (d4) 1=salvare A o B, 2=mentire vs dire verità, 3=rubare vs fame, 4=uccidere nemico inerme. Nessuna risposta "giusta". Test Valori.</td></tr>
+                    <tr><td class="dice-column">11</td><td><strong>Fenomeno Mistico</strong></td><td>Tira Tab 9. Evento sovrannaturale. Inquietante, possibilmente pericoloso. Potrebbe essere segno/avvertimento. Impatto psicologico gruppo.</td></tr>
+                    <tr><td class="dice-column">12</td><td><strong>Tempo Stringe Improvvisamente</strong></td><td>Scoprono: solo 1d6 ore prima: (d4) 1=deadline, 2=pericolo arrivo, 3=opportunità sparisce, 4=condizione peggiora. Panico? Piano rapido necessario.</td></tr>
+                    <tr><td class="dice-column">13</td><td><strong>Alleanza Proposta</strong></td><td>Gruppo/PNG offre cooperazione temporanea. (d4) 1=genuina, 2=nasconde motivi, 3=test lealtà, 4=trappola. Vantaggi evidenti ma rischi possibili. Accettare?</td></tr>
+                    <tr><td class="dice-column">14</td><td><strong>Scontro Interno Gruppo</strong></td><td>2 PG (o PG + PNG alleato) conflitto su: decisione, direzione, moralità. Empatia Diff 12 mediare. Fallimento: Svantaggio collaborazione prossima sfida. Successo: legame rafforza.</td></tr>
+                    <tr><td class="dice-column">15</td><td><strong>Opportunità Rischiosa</strong></td><td>Scelta: rischio alto, ricompensa alta. (d4) 1=scorciatoia pericolosa, 2=saccheggiare luogo guardato, 3=affare troppo buono vero, 4=sfida scommessa. Tentazione vs prudenza.</td></tr>
+                    <tr><td class="dice-column">16</td><td><strong>Passato Ritorna</strong></td><td>Elemento background PG/campagna: riemerge. (d4) 1=nemico vecchio, 2=debito, 3=alleato perso, 4=conseguenza azione passata. Emotivo personale. Impossibile ignorare.</td></tr>
+                    <tr><td class="dice-column">17</td><td><strong>Inseguimento Inizia</strong></td><td>Gruppo: inseguito da (d4) 1=guardie, 2=banditi, 3=creature, 4=cacciatori taglie. Distanza iniziale: 1d6 km. Opzioni: correre, nascondersi, affrontare, o negoziare.</td></tr>
+                    <tr><td class="dice-column">18</td><td><strong>Segreto Svelato Accidentalmente</strong></td><td>Info nascosta: rivelata per errore. (d4) 1=segreto PG, 2=PNG mentiva, 3=oggetto nasconde, 4=locazione ha segreto. Conseguenze: immed iate sociali/tattiche. Gestire fallout.</td></tr>
+                    <tr><td class="dice-column">19</td><td><strong>Aiuto Inaspettato</strong></td><td>Assistenza arriva: (d4) 1=PNG, 2=fenomeno naturale favorevole, 3=nemici litigano tra loro, 4=risorsa trovata. Fortuna! Ma possibile: debito futuro o complicazione nascosta.</td></tr>
+                    <tr><td class="dice-column">20</td><td><strong>GM Scelta: Momento Campagna</strong></td><td>Evento perfetto per avanzare trama principale. GM: introduce elemento chiave campagna (antagonista, profezia, artefatto leggendario, rivelazione maggiore). Memorabile significativo!</td></tr>
+                </table>
+                <div class="tip-box">
+                    <strong>💡 Quando Usare:</strong> GM bloccato? Non sai cosa segue? Conversazione stalla? Tira questa tabella! Usa risultato come trampolino creatività. Non serve seguire letterale - adatta situazione. Obiettivo: mantenere momentum + sorprendere giocatori!
+                </div>
+            </div>
+
+        </div> <!-- Fine sezione Città & Trama -->
+
+        <!-- CONCLUSIONE -->
+        <div class="section" style="page-break-before:always;">
+            <div class="section-header" style="background: linear-gradient(90deg, var(--serpent-green) 0%, var(--night-blue) 100%);">
+                <h2 style="text-align:center; font-size:28pt;">🎲 CONCLUSIONE 🎲</h2>
+                <p style="text-align:center; font-size:12pt;">Hai tutto per improvvisare qualsiasi situazione!</p>
+            </div>
+            
+            <div style="margin:30px 0; text-align:center;">
+                <p style="font-size:13pt; margin-bottom:20px;"><strong>Con queste 25 tabelle puoi generare:</strong></p>
+                <ul style="list-style:none; font-size:11pt; line-height:2;">
+                    <li>✅ Incontri memorabili in qualsiasi terreno</li>
+                    <li>✅ PNG completi con personalità in 30 secondi</li>
+                    <li>✅ Eventi viaggio che mantengono tensione</li>
+                    <li>✅ Tesori bilanciati e interessanti</li>
+                    <li>✅ Dungeon pericolosi e gratificanti</li>
+                    <li>✅ Trame con twist e conseguenze reali</li>
+                    <li>✅ Fenomeni mistici che rendono deserto magico</li>
+                    <li>✅ Uscite creative quando sei bloccato</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box" style="margin:30px 0;">
+                <strong>💡 Consiglio Finale del GM:</strong>
+                <p style="margin-top:10px;">Non sei obbligato usare risultato esatto dado. Queste tabelle sono ISPIRAZIONE, non regole. Se tiri qualcosa non si adatta situazione: adatta o ritira. Obiettivo: sessioni fluide divertenti, non schiavitù al dado.</p>
+                <p style="margin-top:10px;"><strong>Ricorda:</strong> Miglior improvvisazione viene da: ascoltare giocatori, costruire su loro idee, e usare tabelle come trampolino creatività tua!</p>
+            </div>
+            
+            <div style="text-align:center; margin:40px 0; font-size:14pt; color:var(--desert-red);">
+                <p><strong>"Il deserto nasconde segreti infiniti.<br>
+                Il dado rivela solo alcuni.<br>
+                Tu, GM, ne crei il significato."</strong></p>
+                <p style="margin-top:30px; font-size:16pt; color:var(--accent-gold);">— Buone Sessioni! —</p>
+            </div>
+            
+            <div style="text-align:center; margin-top:50px; padding-top:20px; border-top:2px solid var(--dark-sand); font-size:9pt; color:#666;">
+                <p><strong>The Serpent Road RPG - TABELLE MASTER</strong></p>
+                <p>25 Tabelle Super Dettagliate per Improvvisazione Totale</p>
+                <p style="margin-top:10px;">Versione 1.0 - Novembre 2025</p>
+            </div>
+        </div>
+
+    </div> <!-- Fine container -->
+</body>
+</html>
