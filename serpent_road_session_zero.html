@@ -1,1 +1,819 @@
-
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - Guida alla sessione 0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--sand) 0%, var(--dark-sand) 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            padding: 20mm;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border: 4px solid var(--accent-gold);
+        }
+        
+        .header h1 {
+            font-size: 36pt;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+        }
+        
+        .header .subtitle {
+            font-size: 16pt;
+            font-style: italic;
+            color: var(--sand);
+            margin-bottom: 10px;
+        }
+        
+        .header .info {
+            font-size: 12pt;
+            color: var(--dark-sand);
+            margin-top: 15px;
+        }
+        
+        h2 {
+            font-size: 24pt;
+            color: var(--night-blue);
+            border-bottom: 4px solid var(--accent-gold);
+            padding-bottom: 10px;
+            margin: 40px 0 20px 0;
+        }
+        
+        h3 {
+            font-size: 18pt;
+            color: var(--desert-red);
+            margin: 25px 0 15px 0;
+        }
+        
+        h4 {
+            font-size: 14pt;
+            color: var(--serpent-green);
+            margin: 15px 0 10px 0;
+        }
+        
+        .section {
+            background: rgba(232, 212, 176, 0.15);
+            border-left: 5px solid var(--accent-gold);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            page-break-inside: avoid;
+        }
+        
+        .timeline {
+            background: linear-gradient(90deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .timeline h3 {
+            color: var(--accent-gold);
+            margin-top: 0;
+        }
+        
+        .phase {
+            background: rgba(232, 212, 176, 0.2);
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .phase-header {
+            font-size: 14pt;
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+        
+        .phase-time {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--night-blue);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 10pt;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .info-box {
+            background: rgba(74, 144, 226, 0.1);
+            border-left: 5px solid #4A90E2;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .info-box h4 {
+            color: #4A90E2;
+            margin-top: 0;
+        }
+        
+        .warning-box {
+            background: rgba(184, 92, 60, 0.15);
+            border-left: 5px solid var(--desert-red);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box h4 {
+            color: var(--desert-red);
+            margin-top: 0;
+        }
+        
+        .tip-box {
+            background: rgba(45, 80, 22, 0.1);
+            border-left: 5px solid var(--serpent-green);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .tip-box h4 {
+            color: var(--serpent-green);
+            margin-top: 0;
+        }
+        
+        .checklist {
+            background: white;
+            border: 2px solid var(--dark-sand);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .checklist h4 {
+            color: var(--night-blue);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            font-size: 14pt;
+            color: var(--accent-gold);
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th {
+            background: var(--night-blue);
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--dark-sand);
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(232, 212, 176, 0.2);
+        }
+        
+        .example {
+            background: rgba(212, 175, 55, 0.15);
+            border: 2px dashed var(--accent-gold);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-style: italic;
+        }
+        
+        .example:before {
+            content: "💬 Esempio:";
+            display: block;
+            font-weight: bold;
+            font-style: normal;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+        
+        strong {
+            color: var(--desert-red);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🐍 Sessione 0 🐍</h1>
+            <p class="subtitle">Guida completa per iniziare la vostra campagna</p>
+            <p class="info">⏱️ Durata: 2-3 ore | 👥 Game Master + Giocatori | 🎯 Obiettivo: Creare gruppo e lanciare avventura</p>
+        </div>
+        
+        <!-- INTRODUZIONE -->
+        <div class="info-box">
+            <h4>📖 Cos'è la sessione 0?</h4>
+            <p>La <strong>sessione 0</strong> è l'incontro preparatorio prima di iniziare a giocare. Non è ancora la "vera" avventura, ma è il momento più importante per:</p>
+            <ul>
+                <li>Presentare il mondo di gioco</li>
+                <li>Creare i personaggi insieme</li>
+                <li>Stabilire aspettative e limiti</li>
+                <li>Decidere che tipo di campagna volete giocare</li>
+                <li>Creare legami tra i personaggi</li>
+                <li>Lanciare il primo gancio narrativo</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Perché è importante?</strong> Una buona sessione 0 previene incomprensioni, crea coesione nel gruppo, e assicura che tutti si divertano!</p>
+        </div>
+        
+        <!-- TIMELINE -->
+        <div class="timeline">
+            <h3>⏰ Timeline della sessione (2-3 ore)</h3>
+            
+            <div class="phase">
+                <div class="phase-header">Fase 1: Benvenuto e introduzione <span class="phase-time">20 min</span></div>
+                <ul style="color: var(--sand); margin-left: 20px;">
+                    <li>Presentazioni del gruppo</li>
+                    <li>Cos'è The Serpent Road (pitch veloce)</li>
+                    <li>Spiegazione della sessione 0</li>
+                </ul>
+            </div>
+            
+            <div class="phase">
+                <div class="phase-header">Fase 2: Il mondo del deserto <span class="phase-time">30 min</span></div>
+                <ul style="color: var(--sand); margin-left: 20px;">
+                    <li>Ambientazione e tono</li>
+                    <li>Le 4 fazioni principali</li>
+                    <li>Il mistero del Serpente</li>
+                    <li>Geografia essenziale</li>
+                </ul>
+            </div>
+            
+            <div class="phase">
+                <div class="phase-header">Fase 3: Aspettative e limiti <span class="phase-time">20 min</span></div>
+                <ul style="color: var(--sand); margin-left: 20px;">
+                    <li>Che tipo di campagna volete?</li>
+                    <li>Linee rosse e strumenti di sicurezza</li>
+                    <li>Impegno e frequenza sessioni</li>
+                </ul>
+            </div>
+            
+            <div class="phase">
+                <div class="phase-header">Fase 4: Creazione personaggi <span class="phase-time">50-70 min</span></div>
+                <ul style="color: var(--sand); margin-left: 20px;">
+                    <li>Concetto e background</li>
+                    <li>Abilità e valori</li>
+                    <li>Equipaggiamento iniziale</li>
+                    <li>Legami tra personaggi</li>
+                </ul>
+            </div>
+            
+            <div class="phase">
+                <div class="phase-header">Fase 5: Lancio campagna <span class="phase-time">20 min</span></div>
+                <ul style="color: var(--sand); margin-left: 20px;">
+                    <li>Situazione iniziale</li>
+                    <li>Primo gancio narrativo</li>
+                    <li>Domande e chiarimenti</li>
+                    <li>Data prima sessione vera</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- FASE 1: BENVENUTO -->
+        <h2>1️⃣ Fase 1: Benvenuto e introduzione (20 min)</h2>
+        
+        <div class="section">
+            <h3>Presentazioni</h3>
+            <p>Inizia con un giro di presentazioni se i giocatori non si conoscono tutti:</p>
+            <ul>
+                <li><strong>Nome</strong></li>
+                <li><strong>Esperienza con giochi di ruolo</strong> (mai giocato? Veterano? Quale sistema?)</li>
+                <li><strong>Cosa ti attrae di The Serpent Road</strong> (deserto? Survival? Mistero?)</li>
+                <li><strong>Aspettative</strong> (azione? Roleplay? Esplorazione?)</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>Pitch del gioco (5 minuti)</h3>
+            <p>Come Game Master, presenta il gioco in modo coinvolgente. Ecco un esempio di pitch:</p>
+            
+            <div class="example">
+                "Benvenuti su The Serpent Road. Immaginate un deserto infinito dove la sabbia nasconde le rovine di una civiltà aliena perduta — i Celesti. La loro tecnologia sembra magia. Il loro impero collassò 2000 anni fa per ragioni misteriose.<br><br>
+                
+                Oggi, quattro fazioni lottano per il controllo del deserto: l'Impero (ordine brutale), i Corsari (libertà caotica), gli Osservatori (custodi della conoscenza), e i Nomadi (indipendenza fiera).<br><br>
+                
+                E poi c'è il Serpente — una forza misteriosa. Un dio? Un'intelligenza artificiale? Una creatura aliena? Nessuno lo sa. Ma tutti sanno che esiste.<br><br>
+                
+                Voi siete viaggiatori, sopravvissuti, cercatori di tesori o gloria. Nel deserto, ogni scelta conta. L'acqua è vita. Due o tre colpi possono uccidervi. La morte è reale. Ma anche le ricompense: artefatti potenti, segreti antichi, gloria immortale.<br><br>
+                
+                Pronti a scoprire cosa nasconde la sabbia?"
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Scopo della sessione 0</h3>
+            <p>Spiega chiaramente cosa farete oggi:</p>
+            <ul>
+                <li><strong>Non giocheremo ancora</strong> — questa è preparazione</li>
+                <li>Impareremo il mondo insieme</li>
+                <li>Creeremo i personaggi collaborativamente</li>
+                <li>Decideremo che tipo di campagna vogliamo</li>
+                <li>Alla fine, avrete tutto pronto per iniziare la prossima volta</li>
+            </ul>
+        </div>
+        
+        <!-- FASE 2: IL MONDO -->
+        <h2>2️⃣ Fase 2: Il mondo del deserto (30 min)</h2>
+        
+        <div class="section">
+            <h3>Ambientazione e tono</h3>
+            <p>Spiega le caratteristiche chiave del mondo:</p>
+            
+            <h4>🏜️ Il deserto</h4>
+            <ul>
+                <li>Ambiente ostile: calore, sete, tempeste di sabbia</li>
+                <li>Sopravvivenza è costante: servono 2L d'acqua al giorno o muori</li>
+                <li>Rovine celesti emergono e scompaiono dalla sabbia</li>
+                <li>Viaggiare è pericoloso: predatori, banditi, perdersi</li>
+            </ul>
+            
+            <h4>⚔️ Combattimento letale</h4>
+            <ul>
+                <li>Non siete supereroi: 2-3 colpi vi uccidono</li>
+                <li>La fuga è spesso la scelta saggia</li>
+                <li>Tattica e posizione contano più della forza bruta</li>
+                <li>Ogni combattimento ha conseguenze</li>
+            </ul>
+            
+            <h4>✨ Tecnologia come magia</h4>
+            <ul>
+                <li>Gli artefatti celesti sono tech avanzatissima</li>
+                <li>Lampade che brillano per sempre, armi al plasma, scudi energetici</li>
+                <li>Usarli è facile, capirli è difficile</li>
+                <li>Alcuni artefatti hanno un prezzo (corruzione, attenzione del Serpente)</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>Le 4 fazioni</h3>
+            <p>Presenta le fazioni principali. Enfatizza che <strong>nessuna è puramente buona o cattiva</strong>:</p>
+            
+            <table>
+                <tr>
+                    <th>Fazione</th>
+                    <th>Ideale</th>
+                    <th>Realtà</th>
+                </tr>
+                <tr>
+                    <td><strong>🏛️ Impero</strong></td>
+                    <td>Ordine, legge, civiltà</td>
+                    <td>Tasse brutali, schiavitù, corruzione</td>
+                </tr>
+                <tr>
+                    <td><strong>🏴‍☠️ Corsari</strong></td>
+                    <td>Libertà, meritocrazia</td>
+                    <td>Violenza, saccheggi, caos</td>
+                </tr>
+                <tr>
+                    <td><strong>📚 Osservatori</strong></td>
+                    <td>Conoscenza, preservazione</td>
+                    <td>Elitismo, segretezza, manipolazione</td>
+                </tr>
+                <tr>
+                    <td><strong>🏕️ Nomadi</strong></td>
+                    <td>Indipendenza, tradizione</td>
+                    <td>Xenofobia, isolamento, rigidità</td>
+                </tr>
+            </table>
+            
+            <div class="tip-box">
+                <h4>💡 Consiglio per il GM</h4>
+                <p>Chiedi ai giocatori: <em>"Quale fazione vi interessa di più? Perché?"</em> Questo ti darà indizi su che tipo di storie vogliono esplorare.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Il mistero del Serpente</h3>
+            <p>Presenta il mistero centrale in modo evocativo ma ambiguo:</p>
+            
+            <div class="example">
+                "Il Serpente è il mistero al centro di tutto. Alcuni dicono sia un dio antico. Altri credono sia un'intelligenza artificiale dei Celesti. C'è chi pensa sia una forza naturale del deserto stesso.<br><br>
+                
+                Appare nei sogni. Lascia marchi su alcune persone, donando poteri ma anche corruzione. Alcune rovine pulsano della sua energia. Creature strane, <em>i Marchiati</em>, sembrano connesse a lui.<br><br>
+                
+                Cosa vuole? Perché i Celesti collassarono? Cosa successe 2000 anni fa?<br><br>
+                
+                Queste sono domande che scoprirete... o forse no. Il mistero può restare tale, se preferite."
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Importante per il GM</h4>
+                <p><strong>Non rivelare la "verità" sul Serpente</strong> — mantieni il mistero! Puoi anche decidere tu stesso la verità durante la campagna, o lasciarla deliberatamente ambigua.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Geografia essenziale</h3>
+            <p>Descrivi brevemente i luoghi chiave:</p>
+            <ul>
+                <li><strong>Khar-Nazur (capitale imperiale):</strong> città fortificata, centro del potere</li>
+                <li><strong>Porti dei Corsari:</strong> città libere sulla costa, caotiche ma ricche</li>
+                <li><strong>Oasi:</strong> insediamenti vitali, controllati dalle varie fazioni</li>
+                <li><strong>Deserto del Velo:</strong> zona mortale dove il Serpente è più presente</li>
+                <li><strong>Rovine celesti:</strong> sparse ovunque, pericolose ma ricche di tesori</li>
+            </ul>
+        </div>
+        
+        <!-- FASE 3: ASPETTATIVE -->
+        <h2>3️⃣ Fase 3: Aspettative e limiti (20 min)</h2>
+        
+        <div class="warning-box">
+            <h4>🎯 Questa è la fase più importante!</h4>
+            <p>Parlare apertamente di aspettative previene il 90% dei problemi ai tavoli di gioco. Non saltate questa fase!</p>
+        </div>
+        
+        <div class="section">
+            <h3>Che tipo di campagna?</h3>
+            <p>Discutete insieme e decidete su questi aspetti:</p>
+            
+            <h4>Tono predominante</h4>
+            <ul>
+                <li><strong>Serio e drammatico:</strong> morte reale, scelte difficili, conseguenze pesanti</li>
+                <li><strong>Equilibrato:</strong> serietà ma con momenti leggeri, morte possibile ma non sadica</li>
+                <li><strong>Avventuroso:</strong> più azione che conseguenze, morte rara</li>
+            </ul>
+            <p><em>Votate o discutete quale preferite!</em></p>
+            
+            <h4>Focus narrativo</h4>
+            <p>Cosa volete nella campagna? (scegliete 2-3 priorità)</p>
+            <ul>
+                <li>🗡️ <strong>Combattimenti tattici</strong></li>
+                <li>🗺️ <strong>Esplorazione e scoperta</strong></li>
+                <li>🎭 <strong>Roleplay e relazioni tra personaggi</strong></li>
+                <li>💰 <strong>Tesori e artefatti</strong></li>
+                <li>🏛️ <strong>Politica e intrighi</strong></li>
+                <li>🐍 <strong>Mistero del Serpente</strong></li>
+                <li>🏜️ <strong>Survival e gestione risorse</strong></li>
+            </ul>
+            
+            <h4>Stile di gioco</h4>
+            <ul>
+                <li><strong>Sandbox:</strong> giocatori scelgono direzione, GM prepara flessibile</li>
+                <li><strong>Campagna strutturata:</strong> GM ha trama pianificata, giocatori la esplorano</li>
+                <li><strong>Missioni episodiche:</strong> avventure autoconcludenti, pochi archi lunghi</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>Linee rosse e sicurezza</h3>
+            <p>Parlate dei contenuti sensibili. Fate un giro di tavolo chiedendo:</p>
+            
+            <div class="checklist">
+                <h4>Temi da discutere</h4>
+                <ul>
+                    <li><strong>Violenza grafica:</strong> quanto dettaglio nelle descrizioni?</li>
+                    <li><strong>Morte dei personaggi:</strong> accettabile? Con preavviso?</li>
+                    <li><strong>Temi maturi:</strong> schiavitù, tortura, violenza contro bambini?</li>
+                    <li><strong>Horror e terrore:</strong> quanto spingere sull'atmosfera disturbante?</li>
+                    <li><strong>Romance:</strong> va bene tra PG e PNG? Fade to black?</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <h4>🛡️ Strumento X-Card</h4>
+                <p>Proponete l'<strong>X-Card</strong>: chiunque può dire "X" (o fare un gesto concordato) in qualsiasi momento per saltare una scena senza spiegazioni. Nessuno chiede perché, si va avanti.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Impegno pratico</h3>
+            <p>Decidete insieme:</p>
+            <ul>
+                <li><strong>Frequenza sessioni:</strong> settimanale? Bisettimanale? Mensile?</li>
+                <li><strong>Durata sessioni:</strong> 2 ore? 3-4 ore? 6 ore?</li>
+                <li><strong>Assenze:</strong> si gioca se manca qualcuno? Quorum minimo?</li>
+                <li><strong>Comunicazione:</strong> gruppo WhatsApp? Discord? Email?</li>
+                <li><strong>Cancellazioni:</strong> quanto preavviso serve?</li>
+            </ul>
+            
+            <div class="warning-box">
+                <h4>⚠️ Siate realistici!</h4>
+                <p>Meglio programmare sessioni meno frequenti ma <strong>costanti</strong> che programmare troppe sessioni e poi cancellarle continuamente.</p>
+            </div>
+        </div>
+        
+        <!-- FASE 4: CREAZIONE PERSONAGGI -->
+        <h2>4️⃣ Fase 4: Creazione personaggi (50-70 min)</h2>
+        
+        <div class="info-box">
+            <h4>🎨 Creazione collaborativa</h4>
+            <p>Create i personaggi <strong>insieme</strong>, non separatamente! Questo permette di:</p>
+            <ul>
+                <li>Creare legami tra personaggi fin dall'inizio</li>
+                <li>Bilanciare le abilità del gruppo</li>
+                <li>Assicurarsi che tutti abbiano spazio per brillare</li>
+                <li>Evitare personaggi solitari che non collaborano</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>Passo 1: Concetto (10 minuti)</h3>
+            <p>Ogni giocatore pensa al <strong>concetto base</strong> del personaggio in 1-2 frasi:</p>
+            
+            <div class="example">
+                <strong>Esempi di concetti:</strong><br>
+                • "Ex-soldato imperiale che ha disertato e ora vive da mercenario"<br>
+                • "Studiosa degli Osservatori ossessionata dalle rovine celesti"<br>
+                • "Corsara spietata che cerca vendetta contro chi ha ucciso la sua ciurma"<br>
+                • "Nomade che ha lasciato la tribù per esplorare il mondo"<br>
+                • "Mercante astuta che usa il commercio per raccogliere informazioni"
+            </div>
+            
+            <div class="tip-box">
+                <h4>💡 Domande guida</h4>
+                <ul>
+                    <li>Chi sei? (ruolo, professione)</li>
+                    <li>Da dove vieni? (fazione, luogo)</li>
+                    <li>Cosa vuoi? (obiettivo a lungo termine)</li>
+                    <li>Perché sei un avventuriero? (cosa ti ha portato qui)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Passo 2: Background e abilità (20 minuti)</h3>
+            
+            <h4>Scegliere il background</h4>
+            <p>Ogni personaggio sceglie 1 background tra i 10 disponibili. Il background determina:</p>
+            <ul>
+                <li><strong>Abilità forti</strong> (partono con dado alto)</li>
+                <li><strong>Abilità deboli</strong> (partono con dado basso)</li>
+                <li><strong>Equipaggiamento iniziale</strong></li>
+                <li><strong>Contatti e conoscenze</strong></li>
+            </ul>
+            
+            <p><strong>Background disponibili:</strong></p>
+            <ol>
+                <li><strong>Soldato/Mercenario:</strong> forte in combattimento e resistenza</li>
+                <li><strong>Studioso/Saggio:</strong> forte in sapienza e percezione</li>
+                <li><strong>Ladro/Truffatore:</strong> forte in agilità e astuzia</li>
+                <li><strong>Esploratore/Scout:</strong> forte in percezione e agilità</li>
+                <li><strong>Mercante:</strong> forte in persuasione e astuzia</li>
+                <li><strong>Guaritore/Medico:</strong> forte in sapienza e persuasione</li>
+                <li><strong>Artigiano:</strong> forte in sapienza e forza</li>
+                <li><strong>Nomade:</strong> forte in resistenza e percezione</li>
+                <li><strong>Cacciatore di tesori:</strong> forte in percezione e combattimento</li>
+                <li><strong>Cultista/Mistico:</strong> forte in sapienza e persuasione</li>
+            </ol>
+            
+            <div class="tip-box">
+                <h4>💡 Bilanciamento gruppo</h4>
+                <p>Assicuratevi che il gruppo abbia una varietà di competenze! Serve almeno qualcuno forte in:</p>
+                <ul>
+                    <li><strong>Combattimento</strong> (per i conflitti)</li>
+                    <li><strong>Percezione</strong> (per esplorare e trovare pericoli)</li>
+                    <li><strong>Persuasione o Astuzia</strong> (per interazioni sociali)</li>
+                    <li><strong>Sapienza</strong> (per capire rovine e artefatti)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Passo 3: Valori (10 minuti)</h3>
+            <p>Ogni personaggio sceglie <strong>5 valori</strong> che lo definiscono moralmente e psicologicamente:</p>
+            
+            <div class="example">
+                <strong>Esempi di valori:</strong><br>
+                • Lealtà, Ambizione, Curiosità, Sopravvivenza, Giustizia<br>
+                • Famiglia, Libertà, Conoscenza, Ricchezza, Vendetta<br>
+                • Onore, Pragmatismo, Compassione, Disciplina, Indipendenza
+            </div>
+            
+            <p>I valori servono per:</p>
+            <ul>
+                <li>Guidare le decisioni del personaggio</li>
+                <li>Creare conflitti interiori interessanti</li>
+                <li>Dare profondità al roleplay</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>Passo 4: Legami tra personaggi (15 minuti)</h3>
+            <p>Questa è la parte più importante! Ogni personaggio deve avere almeno <strong>2 legami</strong> con altri personaggi del gruppo.</p>
+            
+            <h4>Metodo: Giro di tavolo</h4>
+            <ol>
+                <li>Primo giocatore descrive il suo personaggio</li>
+                <li>Secondo giocatore dice: <em>"Ti conosco perché..."</em> e propone un legame</li>
+                <li>Primo giocatore accetta o negozia</li>
+                <li>Si continua finché tutti hanno almeno 2 legami</li>
+            </ol>
+            
+            <div class="example">
+                <strong>Esempi di legami:</strong><br><br>
+                
+                <strong>Legami positivi:</strong><br>
+                • "Hai salvato la vita a mio fratello durante un'imboscata dei Corsari"<br>
+                • "Siamo cresciuti nella stessa oasi, anche se in famiglie diverse"<br>
+                • "Mi hai insegnato a leggere le stelle per navigare nel deserto"<br>
+                • "Ci siamo ubriacati insieme e abbiamo fatto un giuramento di fratellanza"<br><br>
+                
+                <strong>Legami complessi:</strong><br>
+                • "Ti devo 500 dinar per un affare andato male"<br>
+                • "Conosci un segreto pericoloso sul mio passato"<br>
+                • "Abbiamo servito nella stessa unità, ma tu hai disertato e io no"<br>
+                • "Sei l'unico sopravvissuto oltre a me di quella spedizione disastrosa"<br><br>
+                
+                <strong>Legami antagonisti (ma non distruttivi):</strong><br>
+                • "Competiamo per la stessa ricompensa, ma ci rispettiamo"<br>
+                • "Ho rubato qualcosa a te, ma ora stiamo pari"<br>
+                • "Veniamo da fazioni opposte ma abbiamo un nemico comune"
+            </div>
+            
+            <div class="warning-box">
+                <h4>⚠️ Evitate questi legami</h4>
+                <p><strong>NO a:</strong></p>
+                <ul>
+                    <li>"Non ci conosciamo" — troppo debole!</li>
+                    <li>"Voglio ucciderti" — distrugge il gruppo!</li>
+                    <li>"Ti odio ma non so perché" — poco interessante</li>
+                </ul>
+                <p>I legami devono dare <strong>ragioni per stare insieme</strong>, anche se complicate!</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Passo 5: Dettagli finali (10 minuti)</h3>
+            <ul>
+                <li><strong>Nome del personaggio</strong></li>
+                <li><strong>Aspetto fisico</strong> (età, altezza, caratteristiche distintive)</li>
+                <li><strong>Equipaggiamento iniziale</strong> (basato sul background)</li>
+                <li><strong>Un dettaglio memorabile</strong> (cicatrice, oggetto importante, tic)</li>
+            </ul>
+        </div>
+        
+        <!-- FASE 5: LANCIO -->
+        <h2>5️⃣ Fase 5: Lancio della campagna (20 min)</h2>
+        
+        <div class="section">
+            <h3>Situazione iniziale</h3>
+            <p>Il GM presenta la situazione in cui i personaggi si trovano all'inizio della campagna. Deve essere una situazione che:</p>
+            <ul>
+                <li><strong>Giustifica perché il gruppo è insieme</strong></li>
+                <li><strong>Offre un obiettivo chiaro immediato</strong></li>
+                <li><strong>Introduce tensione o mistero</strong></li>
+            </ul>
+            
+            <h4>Esempi di situazioni iniziali</h4>
+            
+            <div class="example">
+                <strong>Situazione 1: "La carovana scomparsa"</strong><br>
+                Siete stati tutti assunti (per motivi diversi) per scortare una carovana attraverso il deserto. Il viaggio doveva durare 3 giorni. Siete al secondo giorno quando notate che la carovana davanti a voi, quella del mercante principale, è scomparsa. Non c'è traccia di combattimento, solo... sabbia. E impronte strane che vanno verso una rovina che non c'era ieri.
+            </div>
+            
+            <div class="example">
+                <strong>Situazione 2: "Prigionieri dei Corsari"</strong><br>
+                Vi siete svegliati nella stiva di una nave corsara, incatenati insieme. Non ricordate come ci siete finiti (ognuno ha una vaga memoria diversa). La nave è attraccata a un porto — sentite voci sopra. Fra un'ora vi porteranno all'asta degli schiavi. È ora di decidere: collaborate per fuggire o accettate il vostro destino?
+            </div>
+            
+            <div class="example">
+                <strong>Situazione 3: "L'oasi avvelenata"</strong><br>
+                Siete tutti arrivati all'Oasi di Zahara per motivi diversi. È un luogo neutrale, gestito dai Nomadi. Questa mattina, però, l'acqua del pozzo è diventata nera e tossica. Il capo tribù vi ha convocati — siete estranei, quindi sospetti. Ma offre un accordo: scoprite chi o cosa ha avvelenato l'oasi, e sarete ricompensati. Rifiutate, e verrete banditi nel deserto senza rifornimenti.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Primo gancio narrativo</h3>
+            <p>Finisci la sessione 0 con un <strong>gancio forte</strong> che faccia venire voglia di giocare:</p>
+            <ul>
+                <li>Una domanda senza risposta</li>
+                <li>Una scelta difficile da fare</li>
+                <li>Un pericolo imminente</li>
+                <li>Un mistero da risolvere</li>
+            </ul>
+            
+            <div class="example">
+                "Mentre discutete cosa fare, sentite un rumore dalla rovina. Non un rumore naturale. Meccanico. Ritmico. Come un cuore che batte. E poi... luce. Blu brillante. Che pulsa in sincronia col suono. La rovina si sta... svegliando?"
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>Domande finali</h3>
+            <p>Riservate 10 minuti per:</p>
+            <ul>
+                <li>Chiarire dubbi sulle regole</li>
+                <li>Rispondere a domande sul mondo</li>
+                <li>Confermare aspettative e accordi</li>
+                <li>Fissare data e ora della prima sessione vera</li>
+            </ul>
+        </div>
+        
+        <!-- CHECKLIST FINALE -->
+        <div class="checklist">
+            <h4>✅ Checklist finale - Avete fatto tutto?</h4>
+            <ul>
+                <li>Presentazioni completate</li>
+                <li>Mondo presentato (fazioni, Serpente, geografia)</li>
+                <li>Tono e tipo di campagna decisi</li>
+                <li>Linee rosse e sicurezza discusse</li>
+                <li>Frequenza e impegno concordati</li>
+                <li>Tutti i personaggi creati con concetto, abilità, valori</li>
+                <li>Ogni personaggio ha almeno 2 legami con altri</li>
+                <li>Situazione iniziale presentata</li>
+                <li>Gancio narrativo lanciato</li>
+                <li>Prima sessione programmata</li>
+            </ul>
+        </div>
+        
+        <!-- CONSIGLI FINALI -->
+        <div class="tip-box">
+            <h4>💡 Consigli finali per il Game Master</h4>
+            <ul>
+                <li><strong>Prendi appunti!</strong> I legami tra personaggi e le preferenze dei giocatori sono oro per la prep</li>
+                <li><strong>Non riempire ogni silenzio</strong> — lascia spazio ai giocatori per pensare</li>
+                <li><strong>Sii flessibile</strong> — se una discussione va lunga ma è produttiva, va bene</li>
+                <li><strong>Crea entusiasmo</strong> — la sessione 0 deve far venire voglia di giocare!</li>
+                <li><strong>Ringrazia tutti</strong> per il tempo dedicato e l'impegno</li>
+            </ul>
+        </div>
+        
+        <!-- FOOTER -->
+        <div style="margin-top: 40px; padding: 30px; background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%); border-radius: 10px; color: white; text-align: center;">
+            <p style="font-size: 16pt; color: var(--accent-gold); margin-bottom: 15px;"><strong>"Il deserto vi attende. Il Serpente osserva. La vostra storia inizia."</strong></p>
+            <p style="font-size: 11pt; color: var(--sand);">Buona fortuna con la vostra campagna! 🐍</p>
+        </div>
+        
+    </div>
+</body>
+</html>
