@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Serpent Road - Indice Completo</title>
+    <title>The Serpent Road - Indice completo</title>
     <style>
         * {
             margin: 0;
@@ -240,10 +240,22 @@
             transform: scale(1.05);
         }
         
-        /* MANUAL PARTS - Special styling */
+        /* MANUAL PARTS - Special styling - SENZA EFFETTI HOVER CHE BLOCCANO I LINK */
         .manual-part {
             border-left: 5px solid var(--accent-gold);
             background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, rgba(232, 212, 176, 0.05) 100%);
+            /* RIMOSSI transform e hover che bloccavano i link */
+            transform: none !important;
+        }
+        
+        .manual-part:hover {
+            /* RIMOSSI tutti gli effetti hover */
+            transform: none !important;
+        }
+        
+        .manual-part::before {
+            /* DISABILITATO l'effetto before che copriva i link */
+            display: none;
         }
         
         .part-number {
@@ -325,9 +337,9 @@
         
         <!-- HERO SECTION -->
         <div class="hero">
-            <h1>THE SERPENT ROAD</h1>
-            <p class="tagline">Manuale Completo del Gioco di Ruolo</p>
-            <p class="version">🐍 Indice Master • Versione 1.0 • Ottobre 2025 🐍</p>
+            <h1>The Serpent Road</h1>
+            <p class="tagline">Manuale completo del gioco di ruolo</p>
+            <p class="version">🐍 Indice master - Versione 1.0 - Novembre 2024 🐍</p>
             
             <div class="stats">
                 <div class="stat-item">
@@ -340,7 +352,7 @@
                 </div>
                 <div class="stat-item">
                     <div class="number">5+7</div>
-                    <div class="label">Manuale + Extra</div>
+                    <div class="label">Manuale + extra</div>
                 </div>
                 <div class="stat-item">
                     <div class="number">100%</div>
@@ -354,9 +366,9 @@
             
             <!-- INTRO BOX -->
             <div class="info-box">
-                <h3>📚 Benvenuto nel Mondo del Deserto</h3>
+                <h3>📚 Benvenuto nel mondo del deserto</h3>
                 <p>Questo è l'indice completo di <strong>The Serpent Road</strong>, un gioco di ruolo ambientato in un deserto post-apocalittico dove antiche rovine celesti nascondono sia tecnologia perduta che un misterioso e gigantesco Serpente.</p>
-                <p><strong>Qui trovi:</strong> Manuale completo (5 parti), materiali per la Sessione 0, cheat sheets di riferimento rapido, tracker per gestire il gioco, <strong>5 appendici</strong> con approfondimenti, cataloghi artefatti, rovine pre-progettate, glossario, e <strong>25 TABELLE MASTER</strong> per improvvisazione totale!</p>
+                <p><strong>Qui trovi:</strong> manuale completo (5 parti), materiali per la sessione 0, cheat sheet di riferimento rapido, tracker per gestire il gioco, <strong>5 appendici</strong> con approfondimenti, cataloghi artefatti, rovine pre-progettate, glossario e <strong>25 tabelle master</strong> per improvvisazione totale!</p>
             </div>
             
             <!-- PITCH SECTION -->
@@ -372,61 +384,61 @@
                 <!-- ELEVATOR PITCH -->
                 <div style="background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%); color: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; text-align: center;">
                     <p style="font-size: 20pt; font-style: italic; line-height: 1.6; color: var(--sand); margin-bottom: 20px;">
-                        "Immagina un deserto infinito dove la sabbia nasconde le rovine di una civiltà aliena perduta. Immagina tecnologia così avanzata da sembrare magia. Immagina un impero in declino, corsari spietati, e un serpente leggendario che forse è un dio, forse un'intelligenza artificiale, forse entrambi."
+                        "Immagina un deserto infinito dove la sabbia nasconde le rovine di una civiltà aliena perduta. Immagina una tecnologia così avanzata da sembrare magia. Immagina un impero in declino, corsari spietati e un serpente leggendario che forse è un dio, forse un'intelligenza artificiale, forse entrambi."
                     </p>
                     <p style="font-size: 16pt; color: var(--accent-gold); font-weight: bold;">
-                        Benvenuto su The Serpent Road — dove sopravvivenza, mistero, e potere perduto si incontrano sotto il sole implacabile.
+                        Benvenuto su The Serpent Road — dove sopravvivenza, mistero e potere perduto si incontrano sotto il sole implacabile.
                     </p>
                 </div>
                 
                 <!-- FEATURE CARDS -->
-                <h3 style="font-size: 20pt; color: var(--night-blue); margin-bottom: 20px; text-align: center;">🌟 Cosa Rende Unico Questo Gioco?</h3>
+                <h3 style="font-size: 20pt; color: var(--night-blue); margin-bottom: 20px; text-align: center;">🌟 Cosa rende unico questo gioco?</h3>
                 
                 <div class="card-grid">
                     <div class="card" style="background: linear-gradient(135deg, rgba(26, 35, 50, 0.1) 0%, rgba(26, 35, 50, 0.05) 100%); border-left: 5px solid var(--night-blue);">
                         <div class="card-icon">🏜️</div>
                         <h3 style="color: var(--night-blue);">Ambientazione originale</h3>
-                        <p>Niente elfi, nani, o draghi. Un deserto post-apocalittico dove sabbia e segreti si mescolano. Rovine Celesti (civiltà aliena morta 2000 anni fa) punteggiano le dune. Tecnologia antica funziona ancora... se sai come usarla. Quattro fazioni (Impero, Corsari, Osservatori, Nomadi) lottano per controllo e sopravvivenza.</p>
+                        <p>Niente elfi, nani o draghi. Un deserto post-apocalittico dove sabbia e segreti si mescolano. Rovine celesti (civiltà aliena morta 2000 anni fa) punteggiano le dune. La tecnologia antica funziona ancora... se sai come usarla. Quattro fazioni (Impero, Corsari, Osservatori, Nomadi) lottano per il controllo e la sopravvivenza.</p>
                     </div>
                     
                     <div class="card" style="background: linear-gradient(135deg, rgba(184, 92, 60, 0.1) 0%, rgba(184, 92, 60, 0.05) 100%); border-left: 5px solid var(--desert-red);">
                         <div class="card-icon">⚔️</div>
-                        <h3 style="color: var(--desert-red);">Combattimento letale & tattico</h3>
-                        <p>2-3 colpi ti uccidono. Non sei un supereroe: sei fragile ma anche astuto. Posizione, terreno, cooperazione contano più dei numeri sulla scheda. Ogni combattimento è teso perché la morte è reale. La figa è spesso l'opzione migliore. Meccaniche semplici (2d6 + abilità) ma scelte tattiche profonde.</p>
+                        <h3 style="color: var(--desert-red);">Combattimento letale e tattico</h3>
+                        <p>2-3 colpi ti uccidono. Non sei un supereroe: sei fragile ma anche astuto. Posizione, terreno, cooperazione contano più dei numeri sulla scheda. Ogni combattimento è teso perché la morte è reale. La fuga è spesso l'opzione migliore. Meccaniche semplici (2d6 + abilità) ma scelte tattiche profonde.</p>
                     </div>
                     
                     <div class="card" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 5px solid var(--accent-gold);">
                         <div class="card-icon">💧</div>
-                        <h3 style="color: var(--accent-gold);">Survival Significativo</h3>
-                        <p>L'acqua non è solo un numero — è vita. 2 litri/giorno o muori di sete in 3 giorni. Navigare nel deserto senza mappa? Ti perdi. Viaggiare senza riposo? Crolli. Calore, tempeste, predatori notturni — il deserto è antagonista costante. Ma la gestione risorse è tesa non tediosa: le meccaniche sono bilanciate tra realismo e divertimento.</p>
+                        <h3 style="color: var(--accent-gold);">Survival significativo</h3>
+                        <p>L'acqua non è solo un numero — è vita. 2 litri al giorno o muori di sete in 3 giorni. Navigare nel deserto senza mappa? Ti perdi. Viaggiare senza riposo? Crolli. Calore, tempeste, predatori notturni — il deserto è un antagonista costante. Ma la gestione delle risorse è tesa non tediosa: le meccaniche sono bilanciate tra realismo e divertimento.</p>
                     </div>
                     
                     <div class="card" style="background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(74, 144, 226, 0.05) 100%); border-left: 5px solid #4A90E2;">
                         <div class="card-icon">✨</div>
-                        <h3 style="color: #4A90E2;">Artefatti "Magia-Tecnologia"</h3>
-                        <p>Niente incantesimi D&D. Niente punti mana. Trovi lampade eterne (luce perpetua), fiaschette infinite (acqua illimitata), lame al plasma (tagliano tutto), mantelli d'ombra (invisibilità). Gli Artefatti Celesti sono una tecnologia così avanzata da sembrare magia. Rarità = potere (Comune → Mitico). Il "Sistema delle cariche" limita gli abusi. Alcuni abusi corrompono chi li usa troppo.</p>
+                        <h3 style="color: #4A90E2;">Artefatti "magia-tecnologia"</h3>
+                        <p>Niente incantesimi D&D. Niente punti mana. Trovi lampade eterne (luce perpetua), fiaschette infinite (acqua illimitata), lame al plasma (tagliano tutto), mantelli d'ombra (invisibilità). Gli artefatti celesti sono una tecnologia così avanzata da sembrare magia. Rarità = potere (Comune → Mitico). Il sistema delle cariche limita gli abusi. Alcuni artefatti corrompono chi li usa troppo.</p>
                     </div>
                     
                     <div class="card" style="background: linear-gradient(135deg, rgba(45, 80, 22, 0.1) 0%, rgba(45, 80, 22, 0.05) 100%); border-left: 5px solid var(--serpent-green);">
                         <div class="card-icon">🐍</div>
                         <h3 style="color: var(--serpent-green);">Il mistero centrale è ambiguo</h3>
-                        <p>Il Serpente — entità/dio/AI/forza — è l'enigma delle campagne che costruirai. Appare nei sogni. Lascia marchi (poteri + corruzione). Alcune rovine pulsano della sua energia. Ma cosa VUOLE? Perché la civiltà Celeste collassò? Cosa successe 2000 anni fa? Le risposte sono tutte ambigue — il GM sceglie la verità (o lascia il mistero irrisolto). Ogni tavolo può dare alla fine un'interpretazione diversa.</p>
+                        <p>Il Serpente — entità, dio, intelligenza artificiale, forza — è l'enigma delle campagne che costruirai. Appare nei sogni. Lascia marchi (poteri + corruzione). Alcune rovine pulsano della sua energia. Ma cosa vuole? Perché la civiltà celeste collassò? Cosa successe 2000 anni fa? Le risposte sono tutte ambigue — il Game Master sceglie la verità (o lascia il mistero irrisolto). Ogni tavolo può dare un'interpretazione diversa.</p>
                     </div>
                     
                     <div class="card" style="background: linear-gradient(135deg, rgba(196, 165, 116, 0.1) 0%, rgba(196, 165, 116, 0.05) 100%); border-left: 5px solid var(--dark-sand);">
                         <div class="card-icon">🎭</div>
-                        <h3 style="color: var(--dark-sand);">Nessuna fazione è "Buona" (nel deserto tutti i buoni sono morti da un pezzo)</h3>
-                        <p>Impero = ordine brutale (schiavitù, tasse crudeli). Corsari = libertà caotica (saccheggi, violenza). Osservatori = saggezza elitista (si accaparrano conoscenza). Nomadi = indipendenza xenofoba. Le scelte morali sono difficili. Le alleanze pragmatiche. I tradimenti inevitabili. I PG devono navigare in una politica grigia".</p>
+                        <h3 style="color: var(--dark-sand);">Nessuna fazione è "buona"</h3>
+                        <p>Nel deserto tutti i buoni sono morti da un pezzo. Impero = ordine brutale (schiavitù, tasse crudeli). Corsari = libertà caotica (saccheggi, violenza). Osservatori = saggezza elitista (si accaparrano la conoscenza). Nomadi = indipendenza xenofoba. Le scelte morali sono difficili. Le alleanze pragmatiche. I tradimenti inevitabili. I personaggi devono navigare in una politica grigia.</p>
                     </div>
                 </div>
                 
                 <!-- TONE & GENRE -->
                 <div style="background: rgba(232, 212, 176, 0.3); padding: 30px; border-radius: 10px; margin-top: 30px; border: 2px solid var(--accent-gold);">
-                    <h3 style="font-size: 18pt; color: var(--night-blue); margin-bottom: 20px; text-align: center;">🎨 Tono & Genere</h3>
+                    <h3 style="font-size: 18pt; color: var(--night-blue); margin-bottom: 20px; text-align: center;">🎨 Tono e genere</h3>
                     
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                         <div>
-                            <h4 style="color: var(--desert-red); margin-bottom: 10px;">📖 Influenze Letterarie</h4>
+                            <h4 style="color: var(--desert-red); margin-bottom: 10px;">📖 Influenze letterarie</h4>
                             <ul style="margin-left: 20px; line-height: 1.8;">
                                 <li><strong>Dune</strong> (Frank Herbert) — deserto, politica, misticismo</li>
                                 <li><strong>The Book of the New Sun</strong> (Gene Wolfe) — dying earth, tecnologia perduta</li>
@@ -435,7 +447,7 @@
                         </div>
                         
                         <div>
-                            <h4 style="color: var(--desert-red); margin-bottom: 10px;">🎬 Influenze Cinematiche</h4>
+                            <h4 style="color: var(--desert-red); margin-bottom: 10px;">🎬 Influenze cinematiche</h4>
                             <ul style="margin-left: 20px; line-height: 1.8;">
                                 <li><strong>Mad Max</strong> — survival brutale, risorse scarse</li>
                                 <li><strong>Blade Runner 2049</strong> — estetica desertica, tecnologia morente</li>
@@ -444,7 +456,7 @@
                         </div>
                         
                         <div>
-                            <h4 style="color: var(--desert-red); margin-bottom: 10px;">🎮 Influenze Videoludiche</h4>
+                            <h4 style="color: var(--desert-red); margin-bottom: 10px;">🎮 Influenze videoludiche</h4>
                             <ul style="margin-left: 20px; line-height: 1.8;">
                                 <li><strong>Journey</strong> — esplorazione desertica evocativa</li>
                                 <li><strong>Kenshi</strong> — survival duro, mondo spietato</li>
@@ -460,50 +472,50 @@
                 
                 <!-- WHY PLAY -->
                 <div style="margin-top: 40px;">
-                    <h3 style="font-size: 20pt; color: var(--night-blue); margin-bottom: 20px; text-align: center;">🎯 Perché Giocare The Serpent Road?</h3>
+                    <h3 style="font-size: 20pt; color: var(--night-blue); margin-bottom: 20px; text-align: center;">🎯 Perché giocare The Serpent Road?</h3>
                     
                     <div class="card-grid">
                         <div class="card" style="border-color: var(--serpent-green);">
-                            <h4 style="color: var(--serpent-green); font-size: 14pt;">✅ Per Giocatori Nuovi</h4>
+                            <h4 style="color: var(--serpent-green); font-size: 14pt;">✅ Per giocatori nuovi</h4>
                             <ul style="margin: 15px 0 15px 20px; line-height: 1.7;">
                                 <li>Sistema <strong>semplicissimo</strong>: 2d6 + dado abilità. Impari in 10 minuti</li>
-                                <li>Manuale guida <strong>passo-passo</strong> creazione personaggio</li>
-                                <li>Sessione 0 strutturata spiega tutto gradualmente</li>
-                                <li>Cheat sheets 1 pagina = riferimento rapido al tavolo</li>
+                                <li>Il manuale guida <strong>passo-passo</strong> nella creazione del personaggio</li>
+                                <li>La sessione 0 strutturata spiega tutto gradualmente</li>
+                                <li>Cheat sheet da 1 pagina = riferimento rapido al tavolo</li>
                                 <li>Nessun libro da 500 pagine da studiare</li>
                             </ul>
                         </div>
                         
                         <div class="card" style="border-color: var(--desert-red);">
-                            <h4 style="color: var(--desert-red); font-size: 14pt;">✅ Per GM Nuovi</h4>
+                            <h4 style="color: var(--desert-red); font-size: 14pt;">✅ Per Game Master nuovi</h4>
                             <ul style="margin: 15px 0 15px 20px; line-height: 1.7;">
-                                <li><strong>Capitolo 9</strong> = guida completa master (filosofia, prep, bilanciamento)</li>
-                                <li>Template prep 30 minuti = sessione pronta velocemente</li>
-                                <li>Tabelle casuali = improvvisazione facile (incontri, tesori, PNG)</li>
+                                <li><strong>Capitolo 9</strong> = guida completa master (filosofia, preparazione, bilanciamento)</li>
+                                <li>Template preparazione 30 minuti = sessione pronta velocemente</li>
+                                <li>Tabelle casuali = improvvisazione facile (incontri, tesori, personaggi non giocanti)</li>
                                 <li>Bestiario con <strong>stat-block pronti</strong> (10 creature)</li>
                                 <li>Consigli pratici per la gestione di giocatori problematici</li>
                             </ul>
                         </div>
                         
                         <div class="card" style="border-color: var(--accent-gold);">
-                            <h4 style="color: var(--accent-gold); font-size: 14pt;">✅ Per Veterani GDR</h4>
+                            <h4 style="color: var(--accent-gold); font-size: 14pt;">✅ Per veterani dei giochi di ruolo</h4>
                             <ul style="margin: 15px 0 15px 20px; line-height: 1.7;">
-                                <li>Sistema elegante ma <strong>profondo</strong> (Tocchi di qualità, Vantaggio/Svantaggio)</li>
-                                <li>Ambientazione <strong>originale</strong> non derivativa (nessun trope fantasy!!)</li>
-                                <li>Combattimento <strong>tattico</strong> dove la posizione > numeri</li>
-                                <li>Il Mistero del Serpente = <strong>sandbox narrativo</strong> (Il GM lo interpreta come vuole)</li>
+                                <li>Sistema elegante ma <strong>profondo</strong> (tocchi di qualità, vantaggio/svantaggio)</li>
+                                <li>Ambientazione <strong>originale</strong> non derivativa (nessun trope fantasy)</li>
+                                <li>Combattimento <strong>tattico</strong> dove la posizione è più importante dei numeri</li>
+                                <li>Il mistero del Serpente = <strong>sandbox narrativo</strong> (il Game Master lo interpreta come vuole)</li>
                                 <li>15 artefatti bilanciati con sistema cariche anti-exploit</li>
                             </ul>
                         </div>
                         
                         <div class="card" style="border-color: var(--night-blue);">
-                            <h4 style="color: var(--night-blue); font-size: 14pt;">✅ Per Chi Cerca Qualcosa di Diverso</h4>
+                            <h4 style="color: var(--night-blue); font-size: 14pt;">✅ Per chi cerca qualcosa di diverso</h4>
                             <ul style="margin: 15px 0 15px 20px; line-height: 1.7;">
-                                <li><strong>Sei stanco dei fantasy medievali?</strong> Questo è uno sci-fi post-apocalittico (desertico)</li>
-                                <li><strong>Sei stanco dei supereroi invincibili?</strong> Qui 2/3 colpi ti uccidono — e la tensione è vera</li>
-                                <li><strong>Sei stanco della magia ?</strong> In The Serpent Road avrai artefatti tecnologici con meccaniche uniche</li>
-                                <li><strong>Vuoi un vero survival ?</strong> In The Serpent Road acqua, fatica, navigazione sono vitali</li>
-                                <li><strong>Vuoi giostrarti in una politica grigia senza bene e male definiti?</strong> Nessuna delle fazioni in The Serpent Road è puramente buona/cattiva</li>
+                                <li><strong>Sei stanco dei fantasy medievali?</strong> Questo è uno sci-fi post-apocalittico desertico</li>
+                                <li><strong>Sei stanco dei supereroi invincibili?</strong> Qui 2-3 colpi ti uccidono — e la tensione è vera</li>
+                                <li><strong>Sei stanco della magia standard?</strong> In The Serpent Road avrai artefatti tecnologici con meccaniche uniche</li>
+                                <li><strong>Vuoi un vero survival?</strong> In The Serpent Road acqua, fatica, navigazione sono vitali</li>
+                                <li><strong>Vuoi una politica grigia senza bene e male definiti?</strong> Nessuna delle fazioni in The Serpent Road è puramente buona o cattiva</li>
                             </ul>
                         </div>
                     </div>
@@ -511,45 +523,45 @@
                 
                 <!-- WHAT TO EXPECT -->
                 <div style="background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%); color: white; padding: 40px; border-radius: 15px; margin-top: 40px;">
-                    <h3 style="font-size: 20pt; color: var(--accent-gold); margin-bottom: 25px; text-align: center;">📜 Cosa Aspettarsi da una Sessione Tipica</h3>
+                    <h3 style="font-size: 20pt; color: var(--accent-gold); margin-bottom: 25px; text-align: center;">📜 Cosa aspettarsi da una sessione tipica</h3>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
                         <div>
-                            <h4 style="color: var(--sand); margin-bottom: 15px; font-size: 14pt;">🌅 Esempio Sessione 1: "Il Mercante scomparso"</h4>
+                            <h4 style="color: var(--sand); margin-bottom: 15px; font-size: 14pt;">🌅 Esempio sessione 1: "Il mercante scomparso"</h4>
                             <p style="color: var(--sand); line-height: 1.7; margin-bottom: 10px;">
-                                <strong>Hook:</strong> Mercante locale assume i PG per trovare una carovana scomparsa nel deserto. Paga bene. Semplice, no!?
+                                <strong>Gancio:</strong> un mercante locale assume i personaggi per trovare una carovana scomparsa nel deserto. Paga bene. Semplice, no?
                             </p>
                             <p style="color: var(--sand); line-height: 1.7; margin-bottom: 10px;">
-                                <strong>Viaggio:</strong> 2 giorni nel deserto. I PG navigano (usano tiri Percezione), gestiscono l'acqua (2L/giorno/persona), hanno incontri casuali (predatori notturni — combattimento teso o fuga intelligente?).
+                                <strong>Viaggio:</strong> 2 giorni nel deserto. I personaggi navigano (usano tiri Percezione), gestiscono l'acqua (2 litri al giorno per persona), hanno incontri casuali (predatori notturni — combattimento teso o fuga intelligente?).
                             </p>
                             <p style="color: var(--sand); line-height: 1.7; margin-bottom: 10px;">
-                                <strong>Scoperta:</strong> La carovana è attaccata dai Corsari? No — peggio!. Una delle Rovine Celesti è emersa dalla tempesta di sabbia. La carovana scomparsa è entrata per riparo... e non è più uscita.
+                                <strong>Scoperta:</strong> la carovana è stata attaccata dai Corsari? No — peggio. Una delle rovine celesti è emersa dalla tempesta di sabbia. La carovana scomparsa è entrata per riparo... e non è più uscita.
                             </p>
                             <p style="color: var(--sand); line-height: 1.7;">
-                                <strong>Esplorazione:</strong> Rovine = puzzle, trappole, guardiano malfunzionante. Alcuni dei sopravvissuti della carovana vengono ritrovati (alcuni marchiati — mutati da esposizione al Velo). Dilemma: ucciderli? Curarli? Scappare? I PG trovano un artefatto raro (Il Cuore Cristallo). Chi lo tiene? Lo vendono? Lo studiano ? Lo usano?
+                                <strong>Esplorazione:</strong> rovine = puzzle, trappole, guardiano malfunzionante. Alcuni dei sopravvissuti della carovana vengono ritrovati (alcuni marchiati — mutati da esposizione al Velo). Dilemma: ucciderli? Curarli? Scappare? I personaggi trovano un artefatto raro (il Cuore di cristallo). Chi lo tiene? Lo vendono? Lo studiano? Lo usano?
                             </p>
                         </div>
                         
                         <div>
-                            <h4 style="color: var(--sand); margin-bottom: 15px; font-size: 14pt;">🌙 Cosa Include una sessione</h4>
+                            <h4 style="color: var(--sand); margin-bottom: 15px; font-size: 14pt;">🌙 Cosa include una sessione</h4>
                             <ul style="color: var(--sand); line-height: 1.8; margin-left: 20px;">
                                 <li><strong>Esplorazione:</strong> 30% tempo (navigare, cercare, scoprire)</li>
                                 <li><strong>Combattimento:</strong> 20% tempo (1-2 scontri tattici tesi)</li>
-                                <li><strong>Social/Roleplay:</strong> 30% tempo (negoziare, mentire, convincere PNG)</li>
-                                <li><strong>Problem-Solving:</strong> 20% tempo (puzzle, dilemmi morali, scelte difficili)</li>
+                                <li><strong>Social/Roleplay:</strong> 30% tempo (negoziare, mentire, convincere personaggi non giocanti)</li>
+                                <li><strong>Problem-solving:</strong> 20% tempo (puzzle, dilemmi morali, scelte difficili)</li>
                             </ul>
                             
                             <h4 style="color: var(--sand); margin: 25px 0 15px 0; font-size: 14pt;">⏱️ Ritmo</h4>
                             <p style="color: var(--sand); line-height: 1.7; margin-bottom: 10px;">
-                                <strong>Sessioni 3-4 ore.</strong> Mix azione/tensione e momenti respiro. Ogni scena conta. Cliffhanger finale ("Il mercante vi tradisce — lavorava per l'Impero!" o "Nel deserto vedete una forma gigantesca muoversi sabbia... E' attratta dal vostro artefatto.").
+                                <strong>Sessioni 3-4 ore.</strong> Mix azione/tensione e momenti respiro. Ogni scena conta. Cliffhanger finale ("Il mercante vi tradisce — lavorava per l'Impero!" o "Nel deserto vedete una forma gigantesca muoversi nella sabbia... È attratta dal vostro artefatto.").
                             </p>
                             
-                            <h4 style="color: var(--sand); margin: 25px 0 15px 0; font-size: 14pt;">🎲 Meccaniche Usate</h4>
+                            <h4 style="color: var(--sand); margin: 25px 0 15px 0; font-size: 14pt;">🎲 Meccaniche usate</h4>
                             <ul style="color: var(--sand); line-height: 1.8; margin-left: 20px;">
                                 <li>Tiri navigazione, percezione, furtività</li>
-                                <li>Combattimento con Tocchi Qualità (colpo critico = +dadi danno)</li>
-                                <li>Gestione acqua/fatica (track risorse)</li>
-                                <li>Tiri sociali (Persuasione vs mercante)</li>
+                                <li>Combattimento con tocchi di qualità (colpo critico = +dadi danno)</li>
+                                <li>Gestione acqua e fatica (track risorse)</li>
+                                <li>Tiri sociali (Persuasione contro mercante)</li>
                                 <li>Decisioni morali (no meccaniche — roleplay)</li>
                             </ul>
                         </div>
@@ -563,49 +575,49 @@
                 <div class="section-header">
                     <span class="icon">🚀</span>
                     <div>
-                        <h2>Inizia Subito</h2>
+                        <h2>Inizia subito</h2>
                         <p>Materiali essenziali per la tua prima sessione</p>
                     </div>
                 </div>
                 
                 <div class="info-box" style="background: rgba(45, 80, 22, 0.1); border-left: 5px solid var(--serpent-green); padding: 20px; border-radius: 8px; margin-bottom: 25px;">
-                    <h3 style="color: var(--serpent-green); margin-bottom: 10px;">⚡ Vuoi giocare SUBITO?</h3>
-                    <p><strong>Percorso veloce:</strong> Scarica la <strong>Quickstart Adventure</strong>, leggi 10 minuti di regole base, e inizia a giocare con l'avventura pre-pronta "La Carovana Scomparsa"!</p>
-                    <p style="margin-top: 10px;"><strong>Tempo:</strong> 30 min setup + 3-4 ore gioco = Prima sessione completa!</p>
+                    <h3 style="color: var(--serpent-green); margin-bottom: 10px;">⚡ Vuoi giocare subito?</h3>
+                    <p><strong>Percorso veloce:</strong> scarica la <strong>quickstart adventure</strong>, leggi 10 minuti di regole base e inizia a giocare con l'avventura pre-pronta "La carovana scomparsa"!</p>
+                    <p style="margin-top: 10px;"><strong>Tempo:</strong> 30 minuti setup + 3-4 ore gioco = prima sessione completa!</p>
                 </div>
                 
                 <div class="card-grid">
                     <!-- QUICKSTART ADVENTURE -->
                     <div class="card" style="border: 3px solid var(--desert-red); background: linear-gradient(135deg, rgba(184, 92, 60, 0.1) 0%, rgba(184, 92, 60, 0.05) 100%);">
                         <div class="card-icon">🗺️</div>
-                        <h3>Quickstart Adventure:<br>"La Carovana Scomparsa"</h3>
-                        <p><strong>Avventura completa pronta all'uso!</strong> Include: regole essenziali (2 pagine), 4 PG pre-generati, avventura strutturata 3-4 ore con mappe, PNG, combattimenti, ed esplorazione rovine. Tutto ciò che serve per giocare SUBITO.</p>
-                        <p class="meta">📄 ~40 pagine • 🎯 Prima Sessione Completa • 👤 GM</p>
-                        <a href="serpent_road_quickstart_adventure.html">Scarica Avventura →</a>
+                        <h3>Quickstart adventure:<br>"La carovana scomparsa"</h3>
+                        <p><strong>Avventura completa pronta all'uso!</strong> Include: regole essenziali (2 pagine), 4 personaggi pre-generati, avventura strutturata 3-4 ore con mappe, personaggi non giocanti, combattimenti ed esplorazione rovine. Tutto ciò che serve per giocare subito.</p>
+                        <p class="meta">📄 ~40 pagine • 🎯 Prima sessione completa • 👤 Game Master</p>
+                        <a href="serpent_road_quickstart_adventure.html">Scarica avventura →</a>
                     </div>
                     
                     <div class="card">
                         <div class="card-icon">📖</div>
                         <h3>Guida alla sessione 0</h3>
-                        <p>Strumento completo per la prima sessione del tuo gruppo. Include introduzione al mondo, creazione collaborativa, aspettative, e lancio campagna.</p>
-                        <p class="meta">🕐 Durata: 2-3 ore • 👥 Per: GM e Giocatori</p>
-                        <a href="serpent_road_session_zero.html">Apri Guida →</a>
+                        <p>Strumento completo per la prima sessione del tuo gruppo. Include introduzione al mondo, creazione collaborativa, aspettative e lancio campagna.</p>
+                        <p class="meta">🕐 Durata: 2-3 ore • 👥 Per: Game Master e giocatori</p>
+                        <a href="serpent_road_session_zero.html">Apri guida →</a>
                     </div>
                     
                     <div class="card">
                         <div class="card-icon">⚡</div>
-                        <h3>Cheat Sheet per giocatori</h3>
+                        <h3>Cheat sheet per giocatori</h3>
                         <p>Riferimento rapido tutto in 1 pagina con le regole essenziali per giocare: tiro base, combattimento, abilità, condizioni. Stampabile.</p>
-                        <p class="meta">📄 1 Pagina • 🎯 Focus: Meccaniche core</p>
-                        <a href="serpent_road_player_cheatsheet.html">Apri Cheat Sheet per il giocatore →</a>
+                        <p class="meta">📄 1 pagina • 🎯 Focus: meccaniche core</p>
+                        <a href="serpent_road_player_cheatsheet.html">Apri cheat sheet per il giocatore →</a>
                     </div>
                     
                     <div class="card">
                         <div class="card-icon">🎲</div>
-                        <h3>Cheat Sheet Game Master</h3>
-                        <p>Riferimento per il GM con tabelle difficoltà, modificatori combattimento, gestione incontri, improvvisazione veloce.</p>
-                        <p class="meta">📄 1 Pagina • 🎯 Focus: Gestione sessione</p>
-                        <a href="serpent_road_gm_cheatsheet.html">Apri Cheat Sheet per ik GM →</a>
+                        <h3>Cheat sheet Game Master</h3>
+                        <p>Riferimento per il Game Master con tabelle difficoltà, modificatori combattimento, gestione incontri, improvvisazione veloce.</p>
+                        <p class="meta">📄 1 pagina • 🎯 Focus: gestione sessione</p>
+                        <a href="serpent_road_gm_cheatsheet.html">Apri cheat sheet per il Game Master →</a>
                     </div>
                 </div>
             </div>
@@ -615,26 +627,26 @@
                 <div class="section-header">
                     <span class="icon">📊</span>
                     <div>
-                        <h2>Tracker e Strumenti</h2>
-                        <p>Schede interattive per gestire personaggi, viaggi, e combattimenti</p>
+                        <h2>Tracker e strumenti</h2>
+                        <p>Schede interattive per gestire personaggi, viaggi e combattimenti</p>
                     </div>
                 </div>
                 
                 <div class="card-grid">
                     <div class="card">
                         <div class="card-icon">👤</div>
-                        <h3>Scheda Personaggio Interattiva</h3>
-                        <p>Scheda completa editabile con tutti gli spazi per Abilità, Valori, Background, Equipaggiamento, Note. Auto-calcola modificatori.</p>
+                        <h3>Scheda personaggio interattiva</h3>
+                        <p>Scheda completa editabile con tutti gli spazi per abilità, valori, background, equipaggiamento, note. Auto-calcola i modificatori.</p>
                         <p class="meta">💾 Salva/Carica JSON • 📱 Responsive</p>
                         <a href="serpent_road_character_sheet.html">Apri la scheda →</a>
                     </div>
                     
                     <div class="card">
                         <div class="card-icon">🗺️</div>
-                        <h3>Tracker Viaggio</h3>
-                        <p>Gestisci i giorni di viaggio, consumo risorse (acqua/cibo), fatica, incontri casuali. Tira automaticamente sulle tabelle.</p>
-                        <p class="meta">🎲 Tabelle integrate • 📈 statistiche</p>
-                        <a href="serpent_road_journey_tracker.html">Apri il Tracker →</a>
+                        <h3>Tracker viaggio</h3>
+                        <p>Gestisci i giorni di viaggio, consumo risorse (acqua e cibo), fatica, incontri casuali. Tira automaticamente sulle tabelle.</p>
+                        <p class="meta">🎲 Tabelle integrate • 📈 Statistiche</p>
+                        <a href="serpent_road_journey_tracker.html">Apri il tracker →</a>
                     </div>
                 </div>
             </div>
@@ -644,67 +656,67 @@
                 <div class="section-header">
                     <span class="icon">📕</span>
                     <div>
-                        <h2>Manuale completo (5 Parti)</h2>
-                        <p>Il cuore del gioco: regole, mondo, personaggi, combattimento, equipaggiamento, creature, e guida GM</p>
+                        <h2>Manuale completo (5 parti)</h2>
+                        <p>Il cuore del gioco: regole, mondo, personaggi, combattimento, equipaggiamento, creature e guida Game Master</p>
                     </div>
                 </div>
                 
                 <div class="tip-box">
-                    <h3>💡 Come leggere il Manuale</h3>
-                    <p><strong>Per i PG:</strong> Leggete le Parti 1-3 (Mondo + Creazione PG + Regole). Le parti 4-5 sono opzionali ma utili.</p>
-                    <p><strong>Per GM:</strong> Leggete tutto, ma iniziate dalla Parte 1 (Mondo) e Parte 5 (Guida GM). Poi approfondite le Parti 2-4.</p>
+                    <h3>💡 Come leggere il manuale</h3>
+                    <p><strong>Per i personaggi:</strong> leggete le parti 1-3 (Mondo + Creazione personaggi + Regole). Le parti 4-5 sono opzionali ma utili.</p>
+                    <p><strong>Per il Game Master:</strong> leggete tutto, ma iniziate dalla parte 1 (Mondo) e parte 5 (Guida Game Master). Poi approfondite le parti 2-4.</p>
                     <p><strong>Lettura lineare consigliata</strong>, ma ogni parte è navigabile indipendentemente.</p>
                 </div>
                 
                 <div class="card-grid">
                     <!-- PARTE 1 -->
                     <div class="card manual-part">
-                        <span class="part-number">PARTE 1</span>
+                        <span class="part-number">Parte 1</span>
                         <div class="card-icon">🌍</div>
-                        <h3>Introduzione e Il Mondo del Deserto</h3>
-                        <p><strong>Capitoli 1-2:</strong> Cosa è The Serpent Road, ambientazione, fazioni (Impero, Corsari, Osservatori, Nomadi), geografia, storia, e mistero del Serpente.</p>
+                        <h3>Introduzione e il mondo del deserto</h3>
+                        <p><strong>Capitoli 1-2:</strong> cosa è The Serpent Road, ambientazione, fazioni (Impero, Corsari, Osservatori, Nomadi), geografia, storia e mistero del Serpente.</p>
                         <p class="meta">📄 ~50 pagine • 🎯 Worldbuilding</p>
-                        <a href="serpent_road_manual_part1.html">Leggi Parte 1 →</a>
+                        <a href="serpent_road_manual_part1.html">Leggi parte 1 →</a>
                     </div>
                     
                     <!-- PARTE 2 -->
                     <div class="card manual-part">
-                        <span class="part-number">PARTE 2</span>
+                        <span class="part-number">Parte 2</span>
                         <div class="card-icon">👥</div>
                         <h3>Creazione del personaggio</h3>
-                        <p><strong>Capitolo 3:</strong> Guida passo-passo per creare PG: Concetto, Abilità (8 con dado d4-d10), Background (10 opzioni), Valori (5 core), equipaggiamento iniziale, esempi completi.</p>
-                        <p class="meta">📄 ~55 pagine • 🎯 Meccaniche per i PG</p>
-                        <a href="serpent_road_manual_part2.html">Leggi la Parte 2 →</a>
+                        <p><strong>Capitolo 3:</strong> guida passo-passo per creare personaggi: concetto, abilità (8 con dado d4-d10), background (10 opzioni), valori (5 core), equipaggiamento iniziale, esempi completi.</p>
+                        <p class="meta">📄 ~55 pagine • 🎯 Meccaniche per i personaggi</p>
+                        <a href="serpent_road_manual_part2.html">Leggi la parte 2 →</a>
                     </div>
                     
                     <!-- PARTE 3 -->
                     <div class="card manual-part">
-                        <span class="part-number">PARTE 3</span>
+                        <span class="part-number">Parte 3</span>
                         <div class="card-icon">⚔️</div>
                         <h3>Sistema di gioco e combattimento</h3>
-                        <p><strong>Capitoli 4-5:</strong> Meccanica base (2d6+abilità), Tocchi di Qualità, cooperazione, Vantaggio/Svantaggio. Combattimento letale tattico: iniziativa, attacco, difesa, morte, armi (20 tipi).</p>
+                        <p><strong>Capitoli 4-5:</strong> meccanica base (2d6+abilità), tocchi di qualità, cooperazione, vantaggio/svantaggio. Combattimento letale tattico: iniziativa, attacco, difesa, morte, armi (20 tipi).</p>
                         <p class="meta">📄 ~60 pagine • 🎯 Regole core</p>
-                        <a href="serpent_road_manual_part3.html">Leggi la Parte 3 →</a>
+                        <a href="serpent_road_manual_part3.html">Leggi la parte 3 →</a>
                     </div>
                     
                     <!-- PARTE 4 -->
                     <div class="card manual-part">
-                        <span class="part-number">PARTE 4</span>
+                        <span class="part-number">Parte 4</span>
                         <div class="card-icon">🗺️</div>
                         <h3>Viaggi, equipaggiamento e artefatti</h3>
-                        <p><strong>Capitoli 6-7-8:</strong> Sistema di viaggio (navigazione, acqua/cibo, fatica, incontri). Economia (Dinar), equipaggiamento completo (40+ oggetti). Catalogo 15 Artefatti Celesti (Comune→Mitico).</p>
+                        <p><strong>Capitoli 6-7-8:</strong> sistema di viaggio (navigazione, acqua/cibo, fatica, incontri). Economia (dinar), equipaggiamento completo (40+ oggetti). Catalogo 15 artefatti celesti (Comune → Mitico).</p>
                         <p class="meta">📄 ~75 pagine • 🎯 Survival + loot</p>
-                        <a href="serpent_road_manual_part4.html">Leggi la Parte 4 →</a>
+                        <a href="serpent_road_manual_part4.html">Leggi la parte 4 →</a>
                     </div>
                     
                     <!-- PARTE 5 -->
                     <div class="card manual-part">
-                        <span class="part-number">PARTE 5</span>
+                        <span class="part-number">Parte 5</span>
                         <div class="card-icon">🎭</div>
-                        <h3>Guida GM, bestiario e tabelle</h3>
-                        <p><strong>Capitoli 9-10-11:</strong> Filosofia del GM, prep sessione, bilanciamento, gestione giocatori, costruire una campagna. Bestiario (10 creature). Tabelle casuali (incontri, tesori, PNG, complicazioni).</p>
-                        <p class="meta">📄 ~70 pagine • 🎯 Strumenti GM</p>
-                        <a href="serpent_road_manual_part5.html">Leggi la Parte 5 →</a>
+                        <h3>Guida Game Master, bestiario e tabelle</h3>
+                        <p><strong>Capitoli 9-10-11:</strong> filosofia del Game Master, preparazione sessione, bilanciamento, gestione giocatori, costruire una campagna. Bestiario (10 creature). Tabelle casuali (incontri, tesori, personaggi non giocanti, complicazioni).</p>
+                        <p class="meta">📄 ~70 pagine • 🎯 Strumenti Game Master</p>
+                        <a href="serpent_road_manual_part5.html">Leggi la parte 5 →</a>
                     </div>
                 </div>
             </div>
@@ -714,15 +726,15 @@
                 <div class="section-header">
                     <span class="icon">📚</span>
                     <div>
-                        <h2>Appendici e Materiale Supplementare</h2>
+                        <h2>Appendici e materiale supplementare</h2>
                         <p>Approfondimenti, cataloghi dettagliati e risorse aggiuntive per espandere il tuo gioco</p>
                     </div>
                 </div>
                 
                 <div class="info-box" style="background: rgba(74, 144, 226, 0.1); border-left: 5px solid #4A90E2; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
-                    <h3 style="color: #4A90E2; margin-bottom: 10px;">💡 Quando usare le Appendici?</h3>
-                    <p><strong>Per GM:</strong> Questi materiali sono risorse opzionali ma preziose per arricchire la tua campagna. Usali come riferimento durante la prep o come fonte d'ispirazione.</p>
-                    <p><strong>Per Giocatori:</strong> Il Glossario è utile per familiarizzare con i termini. Gli altri documenti contengono spoiler e lore avanzato - consultali con il GM.</p>
+                    <h3 style="color: #4A90E2; margin-bottom: 10px;">💡 Quando usare le appendici?</h3>
+                    <p><strong>Per il Game Master:</strong> questi materiali sono risorse opzionali ma preziose per arricchire la tua campagna. Usali come riferimento durante la preparazione o come fonte d'ispirazione.</p>
+                    <p><strong>Per i giocatori:</strong> il glossario è utile per familiarizzare con i termini. Gli altri documenti contengono spoiler e lore avanzato - consultali con il Game Master.</p>
                     <p style="margin-top: 10px;"><em><strong>Non obbligatori</strong> per giocare, ma ampliano notevolmente l'esperienza!</em></p>
                 </div>
                 
@@ -730,67 +742,67 @@
                     <!-- GLOSSARIO -->
                     <div class="card" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(232, 212, 176, 0.05) 100%); border-left: 5px solid var(--accent-gold);">
                         <div class="card-icon">📖</div>
-                        <h3>Glossario Essenziale</h3>
-                        <p>Dizionario completo dei termini del mondo: nomi propri, luoghi, concetti, titoli, con pronuncia e definizioni dettagliate. Organizzato per categoria (Geografia, Fazioni, Tecnologia, Cultura).</p>
-                        <p class="meta">📄 ~20 pagine • 🎯 Riferimento Rapido • 👥 Giocatori & GM</p>
-                        <a href="serpent_road_glossario.html">Consulta Glossario →</a>
+                        <h3>Glossario essenziale</h3>
+                        <p>Dizionario completo dei termini del mondo: nomi propri, luoghi, concetti, titoli, con pronuncia e definizioni dettagliate. Organizzato per categoria (geografia, fazioni, tecnologia, cultura).</p>
+                        <p class="meta">📄 ~20 pagine • 🎯 Riferimento rapido • 👥 Giocatori e Game Master</p>
+                        <a href="serpent_road_glossario.html">Consulta glossario →</a>
                     </div>
                     
                     <!-- IL SERPENTE -->
                     <div class="card" style="background: linear-gradient(135deg, rgba(45, 80, 22, 0.1) 0%, rgba(26, 35, 50, 0.1) 100%); border-left: 5px solid var(--serpent-green);">
                         <div class="card-icon">🐍</div>
-                        <h3>Il Serpente: Mitologia e Meccaniche</h3>
-                        <p>Approfondimento completo sul mistero centrale del gioco: miti, teorie, manifestazioni, Marchi del Serpente (poteri + corruzione), verità possibili. Include meccaniche per corruzione e progressione Marchiati.</p>
-                        <p class="meta">📄 ~30 pagine • 🎯 Lore Avanzato • 👤 Principalmente GM</p>
-                        <a href="serpent_road_il_serpente.html">Scopri il Mistero →</a>
+                        <h3>Il Serpente: mitologia e meccaniche</h3>
+                        <p>Approfondimento completo sul mistero centrale del gioco: miti, teorie, manifestazioni, marchi del Serpente (poteri + corruzione), verità possibili. Include meccaniche per corruzione e progressione marchiati.</p>
+                        <p class="meta">📄 ~30 pagine • 🎯 Lore avanzato • 👤 Principalmente Game Master</p>
+                        <a href="serpent_road_il_serpente.html">Scopri il mistero →</a>
                     </div>
                     
                     <!-- ARTEFATTI CELESTI -->
                     <div class="card" style="background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(232, 212, 176, 0.15) 100%); border-left: 5px solid #4A90E2;">
                         <div class="card-icon">✨</div>
-                        <h3>Catalogo Artefatti Celesti</h3>
-                        <p>Catalogo espanso con 15+ Artefatti Celesti dettagliati: descrizione completa, meccaniche, cariche, effetti collaterali, storia, valori di mercato. Organizzati per rarità (Comune → Mitico).</p>
-                        <p class="meta">📄 ~45 pagine • 🎯 Loot & Tesori • 👤 Principalmente GM</p>
-                        <a href="serpent_road_artefatti_celesti.html">Esplora Artefatti →</a>
+                        <h3>Catalogo artefatti celesti</h3>
+                        <p>Catalogo espanso con 15+ artefatti celesti dettagliati: descrizione completa, meccaniche, cariche, effetti collaterali, storia, valori di mercato. Organizzati per rarità (Comune → Mitico).</p>
+                        <p class="meta">📄 ~45 pagine • 🎯 Loot e tesori • 👤 Principalmente Game Master</p>
+                        <a href="serpent_road_artefatti_celesti.html">Esplora artefatti →</a>
                     </div>
                     
                     <!-- ROVINE CELESTI -->
                     <div class="card" style="background: linear-gradient(135deg, rgba(139, 115, 85, 0.1) 0%, rgba(232, 212, 176, 0.15) 100%); border-left: 5px solid #8B7355;">
                         <div class="card-icon">🏛️</div>
-                        <h3>Guida alle Rovine Celesti</h3>
-                        <p>5-7 Rovine Celesti pre-progettate pronte all'uso: mappe, descrizioni ambientali, abitanti, tesori, trappole, pericoli ambientali, agganci narrativi. Include template per creare rovine custom.</p>
-                        <p class="meta">📄 ~50 pagine • 🎯 Dungeon & Esplorazione • 👤 Solo GM</p>
-                        <a href="serpent_road_rovine_celesti.html">Scopri le Rovine →</a>
+                        <h3>Guida alle rovine celesti</h3>
+                        <p>5-7 rovine celesti pre-progettate pronte all'uso: mappe, descrizioni ambientali, abitanti, tesori, trappole, pericoli ambientali, agganci narrativi. Include template per creare rovine personalizzate.</p>
+                        <p class="meta">📄 ~50 pagine • 🎯 Dungeon ed esplorazione • 👤 Solo Game Master</p>
+                        <a href="serpent_road_rovine_celesti.html">Scopri le rovine →</a>
                     </div>
                     
                     <!-- QUICK REFERENCE -->
                     <div class="card" style="background: linear-gradient(135deg, rgba(26, 35, 50, 0.1) 0%, rgba(184, 92, 60, 0.05) 100%); border-left: 5px solid var(--night-blue);">
                         <div class="card-icon">⚡</div>
-                        <h3>Quick Reference</h3>
-                        <p>Riferimento ultra-compatto a 2 colonne con tabelle difficoltà, modificatori, condizioni, azioni combattimento, e formule chiave. Ottimizzato per stampa affiancata alle Cheat Sheets.</p>
-                        <p class="meta">📄 1-2 pagine • 🎯 Tavolo da Gioco • 👥 Tutti</p>
-                        <a href="serpent_road_quick_reference.html">Scarica Reference →</a>
+                        <h3>Quick reference</h3>
+                        <p>Riferimento ultra-compatto a 2 colonne con tabelle difficoltà, modificatori, condizioni, azioni combattimento e formule chiave. Ottimizzato per stampa affiancata alle cheat sheet.</p>
+                        <p class="meta">📄 1-2 pagine • 🎯 Tavolo da gioco • 👥 Tutti</p>
+                        <a href="serpent_road_quick_reference.html">Scarica reference →</a>
                     </div>
                     
                     <!-- TABELLE MASTER -->
                     <div class="card" style="background: linear-gradient(135deg, rgba(184, 92, 60, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%); border-left: 5px solid var(--desert-red); box-shadow: 0 4px 15px rgba(184, 92, 60, 0.3);">
                         <div class="card-icon">🎲</div>
-                        <h3>⭐ TABELLE MASTER - 25 Tabelle per Improvvisazione Totale</h3>
-                        <p><strong>NUOVO!</strong> 25 tabelle super dettagliate per generare al volo: incontri per terreno, NPC completi (nomi, professioni, tratti, motivazioni), tesori, trappole, stanze dungeon, rumors, missioni, twist narrativi, conseguenze azioni, fenomeni mistici, e molto altro. Ogni risultato completamente spiegato con meccaniche e sviluppi.</p>
-                        <p class="meta">📄 ~40 pagine • 🎯 Improvvisazione GM • 👤 Solo GM • ⚡ ESSENZIALE!</p>
-                        <a href="serpent_road_tabelle_master.html" style="background: var(--desert-red);">Esplora le Tabelle →</a>
+                        <h3>⭐ Tabelle master - 25 tabelle per improvvisazione totale</h3>
+                        <p><strong>Nuovo!</strong> 25 tabelle super dettagliate per generare al volo: incontri per terreno, personaggi non giocanti completi (nomi, professioni, tratti, motivazioni), tesori, trappole, stanze dungeon, voci, missioni, colpi di scena narrativi, conseguenze azioni, fenomeni mistici e molto altro. Ogni risultato completamente spiegato con meccaniche e sviluppi.</p>
+                        <p class="meta">📄 ~40 pagine • 🎯 Improvvisazione Game Master • 👤 Solo Game Master • ⚡ Essenziale!</p>
+                        <a href="serpent_road_tabelle_master.html" style="background: var(--desert-red);">Esplora le tabelle →</a>
                     </div>
                 </div>
                 
                 <div class="tip-box" style="margin-top: 30px;">
-                    <h3>🎲 Consiglio del GM</h3>
+                    <h3>🎲 Consiglio del Game Master</h3>
                     <p><strong>Priorità di lettura appendici:</strong></p>
                     <ol style="margin: 10px 0 10px 20px; line-height: 1.8;">
-                        <li><strong>Glossario</strong> - Leggi subito per familiarizzare con terminologia</li>
-                        <li><strong>Rovine Celesti</strong> - Perfetto per prep avventure esplorative</li>
-                        <li><strong>Artefatti</strong> - Consulta quando vuoi reward speciali</li>
-                        <li><strong>Il Serpente</strong> - Leggi quando campagna progredisce verso misteri profondi</li>
-                        <li><strong>Quick Reference</strong> - Stampa per tavolo se ti piace formato compatto</li>
+                        <li><strong>Glossario</strong> - Leggi subito per familiarizzare con la terminologia</li>
+                        <li><strong>Rovine celesti</strong> - Perfetto per preparare avventure esplorative</li>
+                        <li><strong>Artefatti</strong> - Consulta quando vuoi ricompense speciali</li>
+                        <li><strong>Il Serpente</strong> - Leggi quando la campagna progredisce verso misteri profondi</li>
+                        <li><strong>Quick reference</strong> - Stampa per il tavolo se ti piace il formato compatto</li>
                     </ol>
                     <p style="margin-top: 15px;"><em>Nessuno di questi è obbligatorio - sono tutti <strong>espansioni opzionali</strong> al materiale core!</em></p>
                 </div>
@@ -801,7 +813,7 @@
                 <div class="section-header">
                     <span class="icon">📋</span>
                     <div>
-                        <h2>Riepilogo Contenuti</h2>
+                        <h2>Riepilogo contenuti</h2>
                         <p>Cosa trovi in ogni documento</p>
                     </div>
                 </div>
@@ -812,116 +824,116 @@
                             <th style="padding: 15px; text-align: left; border: 1px solid var(--dark-sand);">Documento</th>
                             <th style="padding: 15px; text-align: left; border: 1px solid var(--dark-sand);">Tipo</th>
                             <th style="padding: 15px; text-align: left; border: 1px solid var(--dark-sand);">Dimensione</th>
-                            <th style="padding: 15px; text-align: left; border: 1px solid var(--dark-sand);">Per Chi</th>
+                            <th style="padding: 15px; text-align: left; border: 1px solid var(--dark-sand);">Per chi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr style="background: rgba(232, 212, 176, 0.3);">
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Guida alla Sessione 0</strong></td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Guida alla sessione 0</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Workshop</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">32KB</td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">GM + Giocatori</td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">Game Master + giocatori</td>
                         </tr>
                         <tr>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Quickstart Adventure</strong></td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Quickstart adventure</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Avventura</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">65KB</td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">GM</td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">Game Master</td>
                         </tr>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Cheat Sheet per i PG</strong></td>
+                        <tr style="background: rgba(232, 212, 176, 0.3);">
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Cheat sheet per i personaggi</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Riferimento</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">15KB</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Giocatori</td>
                         </tr>
-                        <tr style="background: rgba(232, 212, 176, 0.3);">
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Cheat Sheet per il GM</strong></td>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Cheat sheet per il Game Master</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Riferimento</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">18KB</td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">GM</td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">Game Master</td>
                         </tr>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Scheda Personaggio</strong></td>
+                        <tr style="background: rgba(232, 212, 176, 0.3);">
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Scheda personaggio</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Interattivo</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">28KB</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Giocatori</td>
                         </tr>
-                        <tr style="background: rgba(232, 212, 176, 0.3);">
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Tracker Viaggio</strong></td>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Tracker viaggio</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Interattivo</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">35KB</td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">GM</td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">Game Master</td>
                         </tr>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Manuale Parte 1</strong></td>
+                        <tr style="background: rgba(232, 212, 176, 0.3);">
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Manuale parte 1</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Manuale</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">62KB</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Tutti</td>
                         </tr>
-                        <tr style="background: rgba(232, 212, 176, 0.3);">
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Manuale Parte 2</strong></td>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Manuale parte 2</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Manuale</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">71KB</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Tutti</td>
                         </tr>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Manuale Parte 3</strong></td>
+                        <tr style="background: rgba(232, 212, 176, 0.3);">
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Manuale parte 3</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Manuale</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">79KB</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Tutti</td>
                         </tr>
-                        <tr style="background: rgba(232, 212, 176, 0.3);">
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Manuale Parte 4</strong></td>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Manuale parte 4</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Manuale</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">96KB</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Tutti</td>
                         </tr>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Manuale Parte 5</strong></td>
+                        <tr style="background: rgba(232, 212, 176, 0.3);">
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Manuale parte 5</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Manuale</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">88KB</td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">GM (principalmente)</td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">Game Master (principalmente)</td>
                         </tr>
-                        <tr style="background: rgba(232, 212, 176, 0.3);">
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Glossario Essenziale</strong></td>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Glossario essenziale</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Appendice</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">31KB</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Tutti</td>
                         </tr>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Il Serpente: Mitologia</strong></td>
+                        <tr style="background: rgba(232, 212, 176, 0.3);">
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Il Serpente: mitologia</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Appendice</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">41KB</td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">GM (principalmente)</td>
-                        </tr>
-                        <tr style="background: rgba(232, 212, 176, 0.3);">
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Catalogo Artefatti Celesti</strong></td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">Appendice</td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">61KB</td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">GM (principalmente)</td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">Game Master (principalmente)</td>
                         </tr>
                         <tr>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Guida Rovine Celesti</strong></td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Catalogo artefatti celesti</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Appendice</td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">70KB</td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">Solo GM</td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">61KB</td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">Game Master (principalmente)</td>
                         </tr>
                         <tr style="background: rgba(232, 212, 176, 0.3);">
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Quick Reference</strong></td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Guida rovine celesti</strong></td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">Appendice</td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">70KB</td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);">Solo Game Master</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Quick reference</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Appendice</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">26KB</td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);">Tutti</td>
                         </tr>
                         <tr style="background: rgba(184, 92, 60, 0.2);">
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>⭐ TABELLE MASTER</strong></td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>⭐ Tabelle master</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Improvvisazione</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>91KB</strong></td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Solo GM</strong></td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>Solo Game Master</strong></td>
                         </tr>
                         <tr style="background: var(--accent-gold); color: var(--night-blue); font-weight: bold;">
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);" colspan="2"><strong>TOTALE</strong></td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);" colspan="2"><strong>Totale</strong></td>
                             <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>~909KB</strong></td>
-                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>17 Files</strong></td>
+                            <td style="padding: 12px; border: 1px solid var(--dark-sand);"><strong>17 file</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -932,7 +944,7 @@
                 <div class="section-header">
                     <span class="icon">🎯</span>
                     <div>
-                        <h2>Percorsi di Lettura Consigliati</h2>
+                        <h2>Percorsi di lettura consigliati</h2>
                         <p>Come affrontare il materiale in base al tuo ruolo</p>
                     </div>
                 </div>
@@ -940,41 +952,41 @@
                 <div class="card-grid">
                     <div class="card" style="border-color: var(--serpent-green);">
                         <div class="card-icon">🎮</div>
-                        <h3>Per Giocatori Nuovi</h3>
+                        <h3>Per giocatori nuovi</h3>
                         <ol style="margin: 15px 0; padding-left: 20px;">
-                            <li>Guida Sessione 0 (panoramica)</li>
-                            <li>Manuale Parte 1 (mondo)</li>
-                            <li>Manuale Parte 2 (creazione PG)</li>
-                            <li>Cheat Sheet Giocatori (riferimento)</li>
-                            <li>Manuale Parte 3 (regole - leggi durante gioco)</li>
+                            <li>Guida sessione 0 (panoramica)</li>
+                            <li>Manuale parte 1 (mondo)</li>
+                            <li>Manuale parte 2 (creazione personaggi)</li>
+                            <li>Cheat sheet giocatori (riferimento)</li>
+                            <li>Manuale parte 3 (regole - leggi durante il gioco)</li>
                         </ol>
                         <p class="meta">⏱️ Tempo: 3-4 ore lettura</p>
                     </div>
                     
                     <div class="card" style="border-color: var(--desert-red);">
                         <div class="card-icon">🎭</div>
-                        <h3>Per GM Prima Campagna</h3>
+                        <h3>Per Game Master prima campagna</h3>
                         <ol style="margin: 15px 0; padding-left: 20px;">
-                            <li>Manuale Parte 1 (mondo - essenziale!)</li>
-                            <li>Manuale Parte 5 (guida GM)</li>
-                            <li>Guida Sessione 0 (prepara prima sessione)</li>
-                            <li>Cheat Sheet GM (riferimento tavolo)</li>
-                            <li>Manuale Parti 2-4 (approfondisci durante campagna)</li>
+                            <li>Manuale parte 1 (mondo - essenziale!)</li>
+                            <li>Manuale parte 5 (guida Game Master)</li>
+                            <li>Guida sessione 0 (prepara prima sessione)</li>
+                            <li>Cheat sheet Game Master (riferimento tavolo)</li>
+                            <li>Manuale parti 2-4 (approfondisci durante la campagna)</li>
                         </ol>
-                        <p class="meta">⏱️ Tempo: 5-6 ore lettura + prep</p>
+                        <p class="meta">⏱️ Tempo: 5-6 ore lettura + preparazione</p>
                     </div>
                     
                     <div class="card" style="border-color: var(--accent-gold);">
                         <div class="card-icon">⚡</div>
-                        <h3>Per Gioco Rapido "One-Shot"</h3>
+                        <h3>Per gioco rapido "one-shot"</h3>
                         <ol style="margin: 15px 0; padding-left: 20px;">
-                            <li>Cheat Sheet Giocatori (regole minime)</li>
-                            <li>Manuale Parte 2 Cap 3.1-3.3 (creazione veloce)</li>
-                            <li>Manuale Parte 1 Cap 1.1 (intro 5 min)</li>
+                            <li>Cheat sheet giocatori (regole minime)</li>
+                            <li>Manuale parte 2 cap. 3.1-3.3 (creazione veloce)</li>
+                            <li>Manuale parte 1 cap. 1.1 (intro 5 minuti)</li>
                             <li>Inizia a giocare!</li>
-                            <li>Consulta Parte 3 e Cheat Sheets al bisogno</li>
+                            <li>Consulta parte 3 e cheat sheet al bisogno</li>
                         </ol>
-                        <p class="meta">⏱️ Tempo: 30 min prep, 3-4 ore gioco</p>
+                        <p class="meta">⏱️ Tempo: 30 minuti preparazione, 3-4 ore gioco</p>
                     </div>
                 </div>
             </div>
@@ -984,29 +996,29 @@
                 <div class="section-header">
                     <span class="icon">❓</span>
                     <div>
-                        <h2>Domande Frequenti</h2>
+                        <h2>Domande frequenti</h2>
                         <p>Risposte rapide ai dubbi comuni</p>
                     </div>
                 </div>
                 
                 <div style="background: rgba(232, 212, 176, 0.2); padding: 25px; border-radius: 10px;">
                     <h4 style="color: var(--night-blue); margin-bottom: 15px;">❓ Devo leggere tutto il manuale prima di giocare?</h4>
-                    <p style="margin-bottom: 20px;"><strong>No.</strong> Parti 1-2 sono sufficienti per iniziare. Parte 3 puoi consultarla durante gioco. Parti 4-5 sono approfondimenti.</p>
+                    <p style="margin-bottom: 20px;"><strong>No.</strong> Le parti 1-2 sono sufficienti per iniziare. La parte 3 puoi consultarla durante il gioco. Le parti 4-5 sono approfondimenti.</p>
                     
                     <h4 style="color: var(--night-blue); margin-bottom: 15px;">❓ Quanto tempo serve per creare un personaggio?</h4>
-                    <p style="margin-bottom: 20px;"><strong>20-30 minuti</strong> per giocatori nuovi con guida GM. 10-15 minuti per veterani. Usa Scheda Personaggio interattiva per velocizzare.</p>
+                    <p style="margin-bottom: 20px;"><strong>20-30 minuti</strong> per giocatori nuovi con guida Game Master. 10-15 minuti per veterani. Usa la scheda personaggio interattiva per velocizzare.</p>
                     
                     <h4 style="color: var(--night-blue); margin-bottom: 15px;">❓ Serve materiale stampato o posso giocare tutto digitale?</h4>
-                    <p style="margin-bottom: 20px;"><strong>Entrambi ok.</strong> Cheat Sheets stampabili consigliati per riferimento rapido. Scheda Personaggio e Tracker Viaggio funzionano benissimo digitali (salvano dati).</p>
+                    <p style="margin-bottom: 20px;"><strong>Entrambi ok.</strong> Le cheat sheet stampabili sono consigliate per riferimento rapido. La scheda personaggio e il tracker viaggio funzionano benissimo in digitale (salvano i dati).</p>
                     
                     <h4 style="color: var(--night-blue); margin-bottom: 15px;">❓ Quanti giocatori servono?</h4>
-                    <p style="margin-bottom: 20px;"><strong>3-5 giocatori + 1 GM</strong> è ottimale. Possibile 2-6 giocatori con aggiustamenti bilanciamento (vedi Parte 5 Cap 9).</p>
+                    <p style="margin-bottom: 20px;"><strong>3-5 giocatori + 1 Game Master</strong> è ottimale. Possibile 2-6 giocatori con aggiustamenti di bilanciamento (vedi parte 5 cap. 9).</p>
                     
                     <h4 style="color: var(--night-blue); margin-bottom: 15px;">❓ Quanto dura una sessione tipica?</h4>
-                    <p style="margin-bottom: 20px;"><strong>3-4 ore.</strong> Sessione 0 può durare 2-3 ore (setup + creazione PG). Sessioni successive 3-4 ore gioco effettivo.</p>
+                    <p style="margin-bottom: 20px;"><strong>3-4 ore.</strong> La sessione 0 può durare 2-3 ore (setup + creazione personaggi). Le sessioni successive 3-4 ore di gioco effettivo.</p>
                     
-                    <h4 style="color: var(--night-blue); margin-bottom: 15px;">❓ È adatto a principianti GDR?</h4>
-                    <p><strong>Sì!</strong> Sistema 2d6+abilità è semplice. Manuale guida passo-passo. Sessione 0 introduce tutto gradualmente. Ideale per nuovi GM e giocatori.</p>
+                    <h4 style="color: var(--night-blue); margin-bottom: 15px;">❓ È adatto a principianti dei giochi di ruolo?</h4>
+                    <p><strong>Sì!</strong> Il sistema 2d6+abilità è semplice. Il manuale guida passo-passo. La sessione 0 introduce tutto gradualmente. Ideale per nuovi Game Master e giocatori.</p>
                 </div>
             </div>
             
