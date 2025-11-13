@@ -174,11 +174,27 @@
             overflow: hidden;
         }
         
-        /* RIMOSSO completamente ::before per tutte le card */
+        /* Effetti hover SOLO per card SENZA link (card informative) */
+        .card.no-link::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
         
-        /* RIMOSSI completamente gli effetti hover per le card con link */
-        .card:hover {
-            /* Nessun effetto hover */
+        .card.no-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            border-color: var(--accent-gold);
+        }
+        
+        .card.no-link:hover::before {
+            width: 100%;
+            opacity: 0.1;
         }
         
         .card-icon {
@@ -188,6 +204,12 @@
         
         .card h3 {
             font-size: 18pt;
+            color: var(--night-blue);
+            margin-bottom: 10px;
+        }
+        
+        .card h4 {
+            font-size: 14pt;
             color: var(--night-blue);
             margin-bottom: 10px;
         }
@@ -366,37 +388,37 @@
                 <h3 style="font-size: 20pt; color: var(--night-blue); margin-bottom: 20px; text-align: center;">🌟 Cosa rende unico questo gioco?</h3>
                 
                 <div class="card-grid">
-                    <div class="card" style="background: linear-gradient(135deg, rgba(26, 35, 50, 0.1) 0%, rgba(26, 35, 50, 0.05) 100%); border-left: 5px solid var(--night-blue);">
+                    <div class="card no-link" style="background: linear-gradient(135deg, rgba(26, 35, 50, 0.1) 0%, rgba(26, 35, 50, 0.05) 100%); border-left: 5px solid var(--night-blue);">
                         <div class="card-icon">🏜️</div>
                         <h3 style="color: var(--night-blue);">Ambientazione originale</h3>
                         <p>Niente elfi, nani o draghi. Un deserto post-apocalittico dove sabbia e segreti si mescolano. Rovine celesti (civiltà aliena morta 2000 anni fa) punteggiano le dune. La tecnologia antica funziona ancora... se sai come usarla. Quattro fazioni (Impero, Corsari, Osservatori, Nomadi) lottano per il controllo e la sopravvivenza.</p>
                     </div>
                     
-                    <div class="card" style="background: linear-gradient(135deg, rgba(184, 92, 60, 0.1) 0%, rgba(184, 92, 60, 0.05) 100%); border-left: 5px solid var(--desert-red);">
+                    <div class="card no-link" style="background: linear-gradient(135deg, rgba(184, 92, 60, 0.1) 0%, rgba(184, 92, 60, 0.05) 100%); border-left: 5px solid var(--desert-red);">
                         <div class="card-icon">⚔️</div>
                         <h3 style="color: var(--desert-red);">Combattimento letale e tattico</h3>
                         <p>2-3 colpi ti uccidono. Non sei un supereroe: sei fragile ma anche astuto. Posizione, terreno, cooperazione contano più dei numeri sulla scheda. Ogni combattimento è teso perché la morte è reale. La fuga è spesso l'opzione migliore. Meccaniche semplici (2d6 + abilità) ma scelte tattiche profonde.</p>
                     </div>
                     
-                    <div class="card" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 5px solid var(--accent-gold);">
+                    <div class="card no-link" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 5px solid var(--accent-gold);">
                         <div class="card-icon">💧</div>
                         <h3 style="color: var(--accent-gold);">Survival significativo</h3>
                         <p>L'acqua non è solo un numero — è vita. 2 litri al giorno o muori di sete in 3 giorni. Navigare nel deserto senza mappa? Ti perdi. Viaggiare senza riposo? Crolli. Calore, tempeste, predatori notturni — il deserto è un antagonista costante. Ma la gestione delle risorse è tesa non tediosa: le meccaniche sono bilanciate tra realismo e divertimento.</p>
                     </div>
                     
-                    <div class="card" style="background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(74, 144, 226, 0.05) 100%); border-left: 5px solid #4A90E2;">
+                    <div class="card no-link" style="background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(74, 144, 226, 0.05) 100%); border-left: 5px solid #4A90E2;">
                         <div class="card-icon">✨</div>
                         <h3 style="color: #4A90E2;">Artefatti "magia-tecnologia"</h3>
                         <p>Niente incantesimi D&D. Niente punti mana. Trovi lampade eterne (luce perpetua), fiaschette infinite (acqua illimitata), lame al plasma (tagliano tutto), mantelli d'ombra (invisibilità). Gli artefatti celesti sono una tecnologia così avanzata da sembrare magia. Rarità = potere (Comune → Mitico). Il sistema delle cariche limita gli abusi. Alcuni artefatti corrompono chi li usa troppo.</p>
                     </div>
                     
-                    <div class="card" style="background: linear-gradient(135deg, rgba(45, 80, 22, 0.1) 0%, rgba(45, 80, 22, 0.05) 100%); border-left: 5px solid var(--serpent-green);">
+                    <div class="card no-link" style="background: linear-gradient(135deg, rgba(45, 80, 22, 0.1) 0%, rgba(45, 80, 22, 0.05) 100%); border-left: 5px solid var(--serpent-green);">
                         <div class="card-icon">🐍</div>
                         <h3 style="color: var(--serpent-green);">Il mistero centrale è ambiguo</h3>
                         <p>Il Serpente — entità, dio, intelligenza artificiale, forza — è l'enigma delle campagne che costruirai. Appare nei sogni. Lascia marchi (poteri + corruzione). Alcune rovine pulsano della sua energia. Ma cosa vuole? Perché la civiltà celeste collassò? Cosa successe 2000 anni fa? Le risposte sono tutte ambigue — il Game Master sceglie la verità (o lascia il mistero irrisolto). Ogni tavolo può dare un'interpretazione diversa.</p>
                     </div>
                     
-                    <div class="card" style="background: linear-gradient(135deg, rgba(196, 165, 116, 0.1) 0%, rgba(196, 165, 116, 0.05) 100%); border-left: 5px solid var(--dark-sand);">
+                    <div class="card no-link" style="background: linear-gradient(135deg, rgba(196, 165, 116, 0.1) 0%, rgba(196, 165, 116, 0.05) 100%); border-left: 5px solid var(--dark-sand);">
                         <div class="card-icon">🎭</div>
                         <h3 style="color: var(--dark-sand);">Nessuna fazione è "buona"</h3>
                         <p>Nel deserto tutti i buoni sono morti da un pezzo. Impero = ordine brutale (schiavitù, tasse crudeli). Corsari = libertà caotica (saccheggi, violenza). Osservatori = saggezza elitista (si accaparrano la conoscenza). Nomadi = indipendenza xenofoba. Le scelte morali sono difficili. Le alleanze pragmatiche. I tradimenti inevitabili. I personaggi devono navigare in una politica grigia.</p>
@@ -446,7 +468,7 @@
                     <h3 style="font-size: 20pt; color: var(--night-blue); margin-bottom: 20px; text-align: center;">🎯 Perché giocare The Serpent Road?</h3>
                     
                     <div class="card-grid">
-                        <div class="card" style="border-color: var(--serpent-green);">
+                        <div class="card no-link" style="border-color: var(--serpent-green);">
                             <h4 style="color: var(--serpent-green); font-size: 14pt;">✅ Per giocatori nuovi</h4>
                             <ul style="margin: 15px 0 15px 20px; line-height: 1.7;">
                                 <li>Sistema <strong>semplicissimo</strong>: 2d6 + dado abilità. Impari in 10 minuti</li>
@@ -457,7 +479,7 @@
                             </ul>
                         </div>
                         
-                        <div class="card" style="border-color: var(--desert-red);">
+                        <div class="card no-link" style="border-color: var(--desert-red);">
                             <h4 style="color: var(--desert-red); font-size: 14pt;">✅ Per Game Master nuovi</h4>
                             <ul style="margin: 15px 0 15px 20px; line-height: 1.7;">
                                 <li><strong>Capitolo 9</strong> = guida completa master (filosofia, preparazione, bilanciamento)</li>
@@ -468,7 +490,7 @@
                             </ul>
                         </div>
                         
-                        <div class="card" style="border-color: var(--accent-gold);">
+                        <div class="card no-link" style="border-color: var(--accent-gold);">
                             <h4 style="color: var(--accent-gold); font-size: 14pt;">✅ Per veterani dei giochi di ruolo</h4>
                             <ul style="margin: 15px 0 15px 20px; line-height: 1.7;">
                                 <li>Sistema elegante ma <strong>profondo</strong> (tocchi di qualità, vantaggio/svantaggio)</li>
@@ -479,7 +501,7 @@
                             </ul>
                         </div>
                         
-                        <div class="card" style="border-color: var(--night-blue);">
+                        <div class="card no-link" style="border-color: var(--night-blue);">
                             <h4 style="color: var(--night-blue); font-size: 14pt;">✅ Per chi cerca qualcosa di diverso</h4>
                             <ul style="margin: 15px 0 15px 20px; line-height: 1.7;">
                                 <li><strong>Sei stanco dei fantasy medievali?</strong> Questo è uno sci-fi post-apocalittico desertico</li>
@@ -921,7 +943,7 @@
                 </div>
                 
                 <div class="card-grid">
-                    <div class="card" style="border-color: var(--serpent-green);">
+                    <div class="card no-link" style="border-color: var(--serpent-green);">
                         <div class="card-icon">🎮</div>
                         <h3>Per giocatori nuovi</h3>
                         <ol style="margin: 15px 0; padding-left: 20px;">
@@ -934,7 +956,7 @@
                         <p class="meta">⏱️ Tempo: 3-4 ore lettura</p>
                     </div>
                     
-                    <div class="card" style="border-color: var(--desert-red);">
+                    <div class="card no-link" style="border-color: var(--desert-red);">
                         <div class="card-icon">🎭</div>
                         <h3>Per Game Master prima campagna</h3>
                         <ol style="margin: 15px 0; padding-left: 20px;">
@@ -947,7 +969,7 @@
                         <p class="meta">⏱️ Tempo: 5-6 ore lettura + preparazione</p>
                     </div>
                     
-                    <div class="card" style="border-color: var(--accent-gold);">
+                    <div class="card no-link" style="border-color: var(--accent-gold);">
                         <div class="card-icon">⚡</div>
                         <h3>Per gioco rapido "one-shot"</h3>
                         <ol style="margin: 15px 0; padding-left: 20px;">
