@@ -1,1 +1,617 @@
-
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - Cheat Sheet Giocatori</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+        }
+        
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 9pt;
+            line-height: 1.3;
+            color: var(--text-dark);
+            background: white;
+            padding: 0;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 10mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 8mm;
+            text-align: center;
+            margin-bottom: 5mm;
+            border-radius: 3mm;
+        }
+        
+        .header h1 {
+            font-size: 24pt;
+            color: var(--accent-gold);
+            margin-bottom: 2mm;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .header .subtitle {
+            font-size: 11pt;
+            color: var(--sand);
+            font-style: italic;
+        }
+        
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5mm;
+        }
+        
+        .section {
+            background: rgba(232, 212, 176, 0.15);
+            border-left: 3px solid var(--accent-gold);
+            padding: 3mm;
+            margin-bottom: 3mm;
+            page-break-inside: avoid;
+        }
+        
+        .section h2 {
+            font-size: 11pt;
+            color: var(--night-blue);
+            margin-bottom: 2mm;
+            padding-bottom: 1mm;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        
+        .section h3 {
+            font-size: 10pt;
+            color: var(--desert-red);
+            margin: 2mm 0 1mm 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2mm 0;
+            font-size: 8pt;
+        }
+        
+        th {
+            background: var(--night-blue);
+            color: white;
+            padding: 1.5mm;
+            text-align: left;
+            font-size: 8pt;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 1.5mm;
+            border-bottom: 1px solid var(--dark-sand);
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(232, 212, 176, 0.2);
+        }
+        
+        ul, ol {
+            margin-left: 4mm;
+            margin-top: 1mm;
+        }
+        
+        li {
+            margin-bottom: 1mm;
+            line-height: 1.4;
+        }
+        
+        .formula {
+            background: var(--night-blue);
+            color: var(--accent-gold);
+            padding: 2mm;
+            border-radius: 2mm;
+            font-weight: bold;
+            text-align: center;
+            margin: 2mm 0;
+            font-size: 10pt;
+        }
+        
+        .highlight-box {
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid var(--accent-gold);
+            padding: 2mm;
+            margin: 2mm 0;
+            border-radius: 2mm;
+            text-align: center;
+        }
+        
+        .tip {
+            background: rgba(45, 80, 22, 0.1);
+            border-left: 3px solid var(--serpent-green);
+            padding: 2mm;
+            margin: 2mm 0;
+            font-style: italic;
+            font-size: 8pt;
+        }
+        
+        .compact-list {
+            font-size: 8pt;
+            line-height: 1.3;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2mm;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2mm;
+        }
+        
+        strong {
+            color: var(--desert-red);
+        }
+        
+        .icon-box {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--night-blue);
+            padding: 1mm 2mm;
+            border-radius: 2mm;
+            font-weight: bold;
+            font-size: 8pt;
+            margin-right: 1mm;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🐍 The Serpent Road 🐍</h1>
+            <p class="subtitle">Cheat Sheet Giocatori - Regole essenziali</p>
+        </div>
+        
+        <!-- TWO COLUMNS LAYOUT -->
+        <div class="columns">
+            
+            <!-- COLONNA SINISTRA -->
+            <div>
+                
+                <!-- REGOLA BASE -->
+                <div class="section">
+                    <h2>🎲 Come funziona il gioco</h2>
+                    <div class="formula">2d6 + Dado abilità ≥ Difficoltà</div>
+                    
+                    <div class="highlight-box">
+                        <p style="font-size: 9pt; margin-bottom: 1mm;"><strong>Quando tiri?</strong></p>
+                        <p style="font-size: 8pt;">Solo quando l'esito è incerto e le conseguenze interessanti!</p>
+                    </div>
+                    
+                    <h3>Difficoltà tipiche</h3>
+                    <table>
+                        <tr>
+                            <th>Difficoltà</th>
+                            <th>Valore</th>
+                            <th>Esempio</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Facile</strong></td>
+                            <td>7+</td>
+                            <td>Scalare muro con appigli</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Media</strong></td>
+                            <td>9+</td>
+                            <td>Convincere mercante</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Difficile</strong></td>
+                            <td>11+</td>
+                            <td>Evitare trappola nascosta</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Molto difficile</strong></td>
+                            <td>13+</td>
+                            <td>Saltare baratro 6 metri</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- ABILITÀ -->
+                <div class="section">
+                    <h2>💪 Le 8 abilità</h2>
+                    <div class="grid-2">
+                        <div>
+                            <p><span class="icon-box">FORZA</span></p>
+                            <p style="font-size: 7pt; margin: 1mm 0 2mm 0;">Sollevare, spingere, rompere, lottare</p>
+                            
+                            <p><span class="icon-box">AGILITÀ</span></p>
+                            <p style="font-size: 7pt; margin: 1mm 0 2mm 0;">Schivare, equilibrio, acrobazia, furtività</p>
+                            
+                            <p><span class="icon-box">RESISTENZA</span></p>
+                            <p style="font-size: 7pt; margin: 1mm 0 2mm 0;">Incassare danni, resistere veleno/fatica</p>
+                            
+                            <p><span class="icon-box">PERCEZIONE</span></p>
+                            <p style="font-size: 7pt; margin: 1mm 0 2mm 0;">Notare, cercare, orientarsi, iniziativa</p>
+                        </div>
+                        <div>
+                            <p><span class="icon-box">SAPIENZA</span></p>
+                            <p style="font-size: 7pt; margin: 1mm 0 2mm 0;">Conoscenze, lingue, storia, rovine</p>
+                            
+                            <p><span class="icon-box">ASTUZIA</span></p>
+                            <p style="font-size: 7pt; margin: 1mm 0 2mm 0;">Ingannare, bluffare, nascondere</p>
+                            
+                            <p><span class="icon-box">PERSUASIONE</span></p>
+                            <p style="font-size: 7pt; margin: 1mm 0 2mm 0;">Convincere, negoziare, intimidire</p>
+                            
+                            <p><span class="icon-box">COMBATTIMENTO</span></p>
+                            <p style="font-size: 7pt; margin: 1mm 0 2mm 0;">Attaccare, parare, tattica militare</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip">
+                        💡 Il tuo dado abilità va da d4 (inesperto) a d10 (esperto). Più alto è, meglio è!
+                    </div>
+                </div>
+                
+                <!-- MODIFICATORI -->
+                <div class="section">
+                    <h2>✨ Modificatori al tiro</h2>
+                    
+                    <h3>Vantaggio e svantaggio</h3>
+                    <ul class="compact-list">
+                        <li><strong>Vantaggio:</strong> tira 3d6, tieni i 2 <strong>migliori</strong></li>
+                        <li><strong>Svantaggio:</strong> tira 3d6, tieni i 2 <strong>peggiori</strong></li>
+                    </ul>
+                    <p style="font-size: 7pt; margin-top: 1mm; font-style: italic;">Il GM decide quando hai vantaggio (situazione favorevole) o svantaggio (situazione sfavorevole)</p>
+                    
+                    <h3>Cooperazione</h3>
+                    <ul class="compact-list">
+                        <li>Un alleato ti aiuta → <strong>+1d6</strong> al tuo tiro</li>
+                        <li>Massimo <strong>3 alleati</strong> possono aiutare (+3d6 totale)</li>
+                        <li>L'alleato deve essere nella posizione per aiutare</li>
+                    </ul>
+                </div>
+                
+                <!-- TOCCHI DI QUALITÀ -->
+                <div class="section">
+                    <h2>🌟 Tocchi di qualità</h2>
+                    
+                    <table>
+                        <tr>
+                            <th>Situazione</th>
+                            <th>Effetto</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Doppio 6</strong> (6-6)</td>
+                            <td><strong>Critico!</strong> +1d6 danno o effetto speciale</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Doppio 1</strong> (1-1)</td>
+                            <td><strong>Fallimento critico!</strong> Complicazione</td>
+                        </tr>
+                        <tr>
+                            <td>Superi diff. di <strong>5+</strong></td>
+                            <td><strong>Successo straordinario!</strong> Beneficio extra</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- COMBATTIMENTO -->
+                <div class="section">
+                    <h2>⚔️ Combattimento</h2>
+                    
+                    <h3>1. Iniziativa</h3>
+                    <div class="formula">2d6 + Dado (Percezione o Agilità)</div>
+                    <p style="font-size: 7pt; margin-top: 1mm;">Chi ha risultato più alto agisce per primo</p>
+                    
+                    <h3>2. Il tuo turno</h3>
+                    <ol class="compact-list">
+                        <li><strong>Movimento:</strong> fino a 10 metri (gratis)</li>
+                        <li><strong>Azione:</strong> attaccare, usare oggetto, aiutare alleato</li>
+                        <li><strong>Bonus:</strong> parlare, estrarre arma, mirare</li>
+                    </ol>
+                    
+                    <h3>3. Attaccare</h3>
+                    <div class="formula">2d6 + Dado combattimento ≥ 9</div>
+                    <ul class="compact-list">
+                        <li><strong>Se riesci:</strong> tira danni dell'arma</li>
+                        <li><strong>Se il nemico difende:</strong> devi superare il suo tiro</li>
+                        <li><strong>Critico (6-6):</strong> aggiungi +1d6 ai danni!</li>
+                    </ul>
+                    
+                    <h3>4. Difendersi</h3>
+                    <p style="font-size: 8pt; margin-bottom: 1mm;">Quando vieni attaccato, puoi:</p>
+                    <ul class="compact-list">
+                        <li><strong>Parare/Schivare:</strong> 2d6 + Combattimento o Agilità ≥ Attacco nemico</li>
+                        <li><strong>Metterti in copertura:</strong> +1d6 o +2d6 alla difesa</li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <!-- COLONNA DESTRA -->
+            <div>
+                
+                <!-- DANNI E ARMI -->
+                <div class="section">
+                    <h2>🗡️ Armi e danni</h2>
+                    
+                    <table>
+                        <tr>
+                            <th>Tipo arma</th>
+                            <th>Danno</th>
+                            <th>Esempi</th>
+                        </tr>
+                        <tr>
+                            <td>Mischia leggera</td>
+                            <td>1d6</td>
+                            <td>Pugnale, randello</td>
+                        </tr>
+                        <tr>
+                            <td>Mischia media</td>
+                            <td>1d6+2</td>
+                            <td>Spada, ascia</td>
+                        </tr>
+                        <tr>
+                            <td>Mischia pesante</td>
+                            <td>2d6</td>
+                            <td>Spadone, mazza</td>
+                        </tr>
+                        <tr>
+                            <td>Distanza leggera</td>
+                            <td>1d6</td>
+                            <td>Arco corto, fionda</td>
+                        </tr>
+                        <tr>
+                            <td>Distanza media</td>
+                            <td>1d6+2</td>
+                            <td>Arco lungo</td>
+                        </tr>
+                        <tr>
+                            <td>Distanza pesante</td>
+                            <td>2d6</td>
+                            <td>Balestra pesante</td>
+                        </tr>
+                    </table>
+                    
+                    <h3>Modificatori situazionali</h3>
+                    <ul class="compact-list">
+                        <li><strong>Copertura parziale:</strong> +1d6 difesa</li>
+                        <li><strong>Copertura totale:</strong> +2d6 difesa</li>
+                        <li><strong>Attacco da dietro:</strong> +1d6 attacco</li>
+                        <li><strong>Nemico sorpreso:</strong> non può difendersi!</li>
+                        <li><strong>Posizione elevata:</strong> +1d6 attacco</li>
+                    </ul>
+                </div>
+                
+                <!-- PUNTI FERITA -->
+                <div class="section">
+                    <h2>❤️ Punti ferita (HP)</h2>
+                    
+                    <div class="highlight-box">
+                        <p style="font-size: 9pt;"><strong>Inizi con 12-15 HP</strong></p>
+                        <p style="font-size: 7pt; margin-top: 1mm;">Ogni colpo fa 1d6-2d6 danni. 2-3 colpi possono ucciderti!</p>
+                    </div>
+                    
+                    <h3>Quando arrivi a 0 HP</h3>
+                    <ul class="compact-list">
+                        <li>Cadi <strong>incosciente</strong></li>
+                        <li>Muori in <strong>3 round</strong> senza aiuto</li>
+                        <li>Un alleato può <strong>stabilizzarti</strong> (Medicina diff. 9+)</li>
+                        <li>Se vai in <strong>HP negativi</strong> = morte immediata</li>
+                    </ul>
+                    
+                    <h3>Recuperare HP</h3>
+                    <ul class="compact-list">
+                        <li><strong>Riposo breve (1 ora):</strong> recuperi 1d6 HP</li>
+                        <li><strong>Riposo lungo (8 ore):</strong> recuperi metà HP massimi</li>
+                        <li><strong>Cure mediche:</strong> +1d6 HP (richiede kit medico)</li>
+                    </ul>
+                </div>
+                
+                <!-- CONDIZIONI -->
+                <div class="section">
+                    <h2>💢 Condizioni di stato</h2>
+                    
+                    <table>
+                        <tr>
+                            <th>Condizione</th>
+                            <th>Effetto</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Stordito</strong></td>
+                            <td>-1d6 a tutti i tiri, no reazioni</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Prono</strong></td>
+                            <td>-1d6 attacco distanza, +1d6 vs distanza</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Avvelenato</strong></td>
+                            <td>1d6 danno per turno, -1d6 fisico</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accecato</strong></td>
+                            <td>-2d6 attacchi e percezione</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Esausto</strong></td>
+                            <td>-1d6 azioni fisiche, velocità dimezzata</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spaventato</strong></td>
+                            <td>-1d6 contro fonte paura, devi fuggire</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- SURVIVAL -->
+                <div class="section">
+                    <h2>🏜️ Sopravvivere nel deserto</h2>
+                    
+                    <h3>Acqua e cibo</h3>
+                    <ul class="compact-list">
+                        <li><strong>Acqua:</strong> 2 litri al giorno per sopravvivere</li>
+                        <li><strong>Senza acqua:</strong> 1 fatica/giorno, morte dopo 3 giorni</li>
+                        <li><strong>Cibo:</strong> 0,5 kg al giorno</li>
+                        <li><strong>Senza cibo:</strong> 1 fatica ogni 3 giorni</li>
+                    </ul>
+                    
+                    <h3>Fatica</h3>
+                    <table style="font-size: 7pt;">
+                        <tr>
+                            <th>Livello</th>
+                            <th>Effetto</th>
+                        </tr>
+                        <tr>
+                            <td>1-2 fatica</td>
+                            <td>-1d6 alle azioni fisiche</td>
+                        </tr>
+                        <tr>
+                            <td>3-4 fatica</td>
+                            <td>-2d6 alle azioni fisiche</td>
+                        </tr>
+                        <tr>
+                            <td>5+ fatica</td>
+                            <td>Collassi! 2d6 danno immediato</td>
+                        </tr>
+                    </table>
+                    <p style="font-size: 7pt; margin-top: 1mm;">Recuperi 1 fatica per riposo lungo (8 ore)</p>
+                    
+                    <h3>Come guadagni fatica</h3>
+                    <ul class="compact-list">
+                        <li>Marciare più di 8 ore al giorno</li>
+                        <li>Combattere sotto il sole cocente</li>
+                        <li>Non bere/mangiare</li>
+                        <li>Non dormire per 24 ore</li>
+                    </ul>
+                </div>
+                
+                <!-- ARTEFATTI -->
+                <div class="section">
+                    <h2>✨ Usare artefatti celesti</h2>
+                    
+                    <p style="font-size: 8pt; margin-bottom: 2mm;">Gli artefatti sono tecnologia antica che funziona a <strong>cariche</strong>.</p>
+                    
+                    <h3>Come funzionano</h3>
+                    <ul class="compact-list">
+                        <li>Ogni potere costa <strong>cariche</strong> (es. 1-3 cariche)</li>
+                        <li>Quando finiscono le cariche, l'artefatto smette di funzionare</li>
+                        <li>Si <strong>ricarica</strong> automaticamente (solitamente ogni giorno)</li>
+                    </ul>
+                    
+                    <h3>Livelli artefatti</h3>
+                    <ul class="compact-list">
+                        <li><strong>Minore:</strong> effetti utili, sicuri (lampada eterna)</li>
+                        <li><strong>Maggiore:</strong> potenti, qualche rischio (scudo energia)</li>
+                        <li><strong>Reliquia:</strong> estremamente potenti, pericolosi</li>
+                    </ul>
+                    
+                    <div class="tip">
+                        ⚠️ <strong>Attenzione:</strong> Artefatti potenti possono attirare l'attenzione del Serpente o avere effetti collaterali!
+                    </div>
+                </div>
+                
+                <!-- AZIONI COMUNI -->
+                <div class="section">
+                    <h2>🎯 Azioni comuni</h2>
+                    
+                    <div class="grid-2" style="font-size: 7pt;">
+                        <div>
+                            <p style="font-weight: bold; margin-bottom: 1mm;">Esplorazione</p>
+                            <ul style="margin-left: 3mm; line-height: 1.3;">
+                                <li>Cercare: Percezione</li>
+                                <li>Scalare: Forza o Agilità</li>
+                                <li>Nascondersi: Agilità</li>
+                                <li>Seguire tracce: Percezione</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p style="font-weight: bold; margin-bottom: 1mm;">Sociale</p>
+                            <ul style="margin-left: 3mm; line-height: 1.3;">
+                                <li>Convincere: Persuasione</li>
+                                <li>Mentire: Astuzia</li>
+                                <li>Intimidire: Persuasione</li>
+                                <li>Capire intenzioni: Percezione</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="grid-2" style="font-size: 7pt; margin-top: 2mm;">
+                        <div>
+                            <p style="font-weight: bold; margin-bottom: 1mm;">Conoscenza</p>
+                            <ul style="margin-left: 3mm; line-height: 1.3;">
+                                <li>Ricordare: Sapienza</li>
+                                <li>Decifrare: Sapienza</li>
+                                <li>Studiare rovine: Sapienza</li>
+                                <li>Riconoscere artefatto: Sapienza</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p style="font-weight: bold; margin-bottom: 1mm;">Sopravvivenza</p>
+                            <ul style="margin-left: 3mm; line-height: 1.3;">
+                                <li>Orientarsi: Percezione</li>
+                                <li>Trovare acqua: Percezione</li>
+                                <li>Cacciare: Combattimento</li>
+                                <li>Curare ferite: Sapienza</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- FOOTER -->
+        <div style="margin-top: 3mm; padding: 3mm; background: var(--night-blue); color: var(--sand); text-align: center; border-radius: 2mm;">
+            <p style="font-size: 8pt; color: var(--accent-gold); margin-bottom: 1mm;"><strong>"Nel deserto, ogni scelta conta. Ogni dado può essere l'ultimo."</strong></p>
+            <p style="font-size: 7pt; color: var(--sand);">Ricorda: descrivi quello che fai, tira i dadi solo quando serve, e divertiti! 🎲</p>
+        </div>
+        
+    </div>
+</body>
+</html>
