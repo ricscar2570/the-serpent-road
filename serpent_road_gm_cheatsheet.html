@@ -1,1 +1,618 @@
-
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Serpent Road - Cheat Sheet Game Master</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --sand: #E8D4B0;
+            --dark-sand: #C4A574;
+            --desert-red: #B85C3C;
+            --night-blue: #1A2332;
+            --accent-gold: #D4AF37;
+            --text-dark: #2C2416;
+            --serpent-green: #2D5016;
+        }
+        
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            font-size: 9pt;
+            line-height: 1.3;
+            color: var(--text-dark);
+            background: white;
+            padding: 0;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 10mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--night-blue) 0%, var(--desert-red) 100%);
+            color: white;
+            padding: 8mm;
+            text-align: center;
+            margin-bottom: 5mm;
+            border-radius: 3mm;
+        }
+        
+        .header h1 {
+            font-size: 24pt;
+            color: var(--accent-gold);
+            margin-bottom: 2mm;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .header .subtitle {
+            font-size: 11pt;
+            color: var(--sand);
+            font-style: italic;
+        }
+        
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5mm;
+        }
+        
+        .section {
+            background: rgba(232, 212, 176, 0.15);
+            border-left: 3px solid var(--accent-gold);
+            padding: 3mm;
+            margin-bottom: 3mm;
+            page-break-inside: avoid;
+        }
+        
+        .section h2 {
+            font-size: 11pt;
+            color: var(--night-blue);
+            margin-bottom: 2mm;
+            padding-bottom: 1mm;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        
+        .section h3 {
+            font-size: 10pt;
+            color: var(--desert-red);
+            margin: 2mm 0 1mm 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2mm 0;
+            font-size: 8pt;
+        }
+        
+        th {
+            background: var(--night-blue);
+            color: white;
+            padding: 1.5mm;
+            text-align: left;
+            font-size: 8pt;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 1.5mm;
+            border-bottom: 1px solid var(--dark-sand);
+        }
+        
+        tr:nth-child(even) {
+            background: rgba(232, 212, 176, 0.2);
+        }
+        
+        ul, ol {
+            margin-left: 4mm;
+            margin-top: 1mm;
+        }
+        
+        li {
+            margin-bottom: 1mm;
+            line-height: 1.4;
+        }
+        
+        .formula {
+            background: var(--night-blue);
+            color: var(--accent-gold);
+            padding: 2mm;
+            border-radius: 2mm;
+            font-weight: bold;
+            text-align: center;
+            margin: 2mm 0;
+            font-size: 9pt;
+        }
+        
+        .highlight-box {
+            background: rgba(184, 92, 60, 0.15);
+            border: 2px solid var(--desert-red);
+            padding: 2mm;
+            margin: 2mm 0;
+            border-radius: 2mm;
+        }
+        
+        .tip {
+            background: rgba(45, 80, 22, 0.1);
+            border-left: 3px solid var(--serpent-green);
+            padding: 2mm;
+            margin: 2mm 0;
+            font-style: italic;
+            font-size: 8pt;
+        }
+        
+        .compact-list {
+            font-size: 8pt;
+            line-height: 1.3;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2mm;
+        }
+        
+        strong {
+            color: var(--desert-red);
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🐍 The Serpent Road 🐍</h1>
+            <p class="subtitle">Cheat Sheet Game Master - Riferimento rapido</p>
+        </div>
+        
+        <!-- TWO COLUMNS LAYOUT -->
+        <div class="columns">
+            
+            <!-- COLONNA SINISTRA -->
+            <div>
+                
+                <!-- MECCANICA BASE -->
+                <div class="section">
+                    <h2>⚙️ Meccanica base</h2>
+                    <div class="formula">2d6 + Dado abilità ≥ Difficoltà</div>
+                    
+                    <table>
+                        <tr>
+                            <th>Difficoltà</th>
+                            <th>Valore</th>
+                            <th>Quando usare</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Facile</strong></td>
+                            <td>7+</td>
+                            <td>Routine, favorevole</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Media</strong></td>
+                            <td>9+</td>
+                            <td>Standard, sfida normale</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Difficile</strong></td>
+                            <td>11+</td>
+                            <td>Impegnativo, ostile</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Molto difficile</strong></td>
+                            <td>13+</td>
+                            <td>Quasi impossibile</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Eroica</strong></td>
+                            <td>15+</td>
+                            <td>Leggendaria, disperata</td>
+                        </tr>
+                    </table>
+                    
+                    <h3>Modificatori situazionali</h3>
+                    <ul class="compact-list">
+                        <li><strong>Vantaggio:</strong> tira 3d6, tieni i 2 migliori</li>
+                        <li><strong>Svantaggio:</strong> tira 3d6, tieni i 2 peggiori</li>
+                        <li><strong>Cooperazione:</strong> +1d6 per ogni alleato che aiuta (max +3d6)</li>
+                    </ul>
+                </div>
+                
+                <!-- TOCCHI DI QUALITÀ -->
+                <div class="section">
+                    <h2>✨ Tocchi di qualità</h2>
+                    <table>
+                        <tr>
+                            <th>Condizione</th>
+                            <th>Effetto</th>
+                        </tr>
+                        <tr>
+                            <td>Successo con <strong>6 doppi</strong></td>
+                            <td>Successo critico: +1d6 danno (combattimento) o beneficio narrativo</td>
+                        </tr>
+                        <tr>
+                            <td>Fallimento con <strong>1 doppi</strong></td>
+                            <td>Fallimento critico: complicazione, -1d6 difesa per 1 round</td>
+                        </tr>
+                        <tr>
+                            <td>Superare diff. di <strong>5+</strong></td>
+                            <td>Successo straordinario: effetto aggiuntivo a discrezione GM</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- COMBATTIMENTO -->
+                <div class="section">
+                    <h2>⚔️ Combattimento</h2>
+                    
+                    <h3>Iniziativa</h3>
+                    <div class="formula">2d6 + d6 (Percezione o Agilità)</div>
+                    <p style="margin-top: 1mm; font-size: 8pt;">Chi ha risultato più alto agisce per primo</p>
+                    
+                    <h3>Sequenza turno</h3>
+                    <ol class="compact-list">
+                        <li><strong>Movimento:</strong> fino a 10m (azione gratuita)</li>
+                        <li><strong>Azione principale:</strong> attacco, abilità, oggetto</li>
+                        <li><strong>Azione bonus:</strong> parlare, mirare, azione minore</li>
+                    </ol>
+                    
+                    <h3>Attacco e difesa</h3>
+                    <div class="formula">Attacco: 2d6 + Dado combattimento ≥ 9</div>
+                    <div class="formula">Difesa: 2d6 + Dado appropriato ≥ Attacco</div>
+                    
+                    <table style="margin-top: 2mm;">
+                        <tr>
+                            <th>Situazione</th>
+                            <th>Modificatore</th>
+                        </tr>
+                        <tr>
+                            <td>Copertura parziale</td>
+                            <td>+1d6 difesa</td>
+                        </tr>
+                        <tr>
+                            <td>Copertura totale</td>
+                            <td>+2d6 difesa</td>
+                        </tr>
+                        <tr>
+                            <td>Nemico prono</td>
+                            <td>-1d6 attacco distanza, +1d6 mischia</td>
+                        </tr>
+                        <tr>
+                            <td>Attacco da dietro</td>
+                            <td>+1d6 attacco</td>
+                        </tr>
+                        <tr>
+                            <td>Nemico sorpreso</td>
+                            <td>Nessuna difesa primo turno</td>
+                        </tr>
+                    </table>
+                    
+                    <h3>Danni</h3>
+                    <ul class="compact-list">
+                        <li><strong>Mischia leggera:</strong> 1d6 (pugnale, bastone)</li>
+                        <li><strong>Mischia media:</strong> 1d6+2 (spada, ascia)</li>
+                        <li><strong>Mischia pesante:</strong> 2d6 (spadone, mazza)</li>
+                        <li><strong>Distanza leggera:</strong> 1d6 (arco corto)</li>
+                        <li><strong>Distanza media:</strong> 1d6+2 (arco lungo)</li>
+                        <li><strong>Distanza pesante:</strong> 2d6 (balestra)</li>
+                    </ul>
+                </div>
+                
+                <!-- CONDIZIONI -->
+                <div class="section">
+                    <h2>💢 Condizioni</h2>
+                    <ul class="compact-list">
+                        <li><strong>Stordito:</strong> -1d6 a tutti i tiri, no reazioni</li>
+                        <li><strong>Prono:</strong> -1d6 attacchi distanza, +1d6 difesa vs distanza</li>
+                        <li><strong>Avvelenato:</strong> 1d6 danno per turno, -1d6 fisico</li>
+                        <li><strong>Accecato:</strong> -2d6 attacchi e percezione</li>
+                        <li><strong>Esausto:</strong> -1d6 fisico, velocità dimezzata</li>
+                        <li><strong>Spaventato:</strong> -1d6 vs fonte paura, deve fuggire</li>
+                    </ul>
+                </div>
+                
+                <!-- MORTE E FERITE -->
+                <div class="section">
+                    <h2>💀 Morte e ferite</h2>
+                    <ul class="compact-list">
+                        <li><strong>PG normali:</strong> 12-15 HP</li>
+                        <li><strong>0 HP:</strong> incosciente, morto in 3 round senza aiuto</li>
+                        <li><strong>HP negativi:</strong> morte immediata</li>
+                        <li><strong>Stabilizzare:</strong> Medicina diff. 9+ (azione)</li>
+                        <li><strong>Riposo breve (1h):</strong> recupera 1d6 HP</li>
+                        <li><strong>Riposo lungo (8h):</strong> recupera metà HP max</li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <!-- COLONNA DESTRA -->
+            <div>
+                
+                <!-- VIAGGIO E SURVIVAL -->
+                <div class="section">
+                    <h2>🗺️ Viaggio e survival</h2>
+                    
+                    <h3>Consumo risorse</h3>
+                    <ul class="compact-list">
+                        <li><strong>Acqua:</strong> 2L/giorno per persona</li>
+                        <li><strong>Cibo:</strong> 0,5kg/giorno per persona</li>
+                        <li><strong>Senza acqua:</strong> 1 fatica/giorno, morte dopo 3 giorni</li>
+                        <li><strong>Senza cibo:</strong> 1 fatica ogni 3 giorni</li>
+                    </ul>
+                    
+                    <h3>Navigazione</h3>
+                    <div class="formula">Percezione diff. 9+ (una volta al giorno)</div>
+                    <ul class="compact-list">
+                        <li><strong>Successo:</strong> procede correttamente</li>
+                        <li><strong>Fallimento:</strong> devia, +1d6 ore viaggio</li>
+                        <li><strong>Critico (1-1):</strong> perso, +1 giorno</li>
+                    </ul>
+                    
+                    <h3>Fatica</h3>
+                    <ul class="compact-list">
+                        <li><strong>Marcia forzata:</strong> +1 fatica/giorno oltre 8h</li>
+                        <li><strong>Calore estremo:</strong> +1 fatica/giorno</li>
+                        <li><strong>1-2 fatica:</strong> -1d6 fisico</li>
+                        <li><strong>3-4 fatica:</strong> -2d6 fisico</li>
+                        <li><strong>5+ fatica:</strong> collasso, 2d6 danno</li>
+                        <li><strong>Recupero:</strong> -1 fatica per riposo lungo</li>
+                    </ul>
+                    
+                    <h3>Velocità di viaggio</h3>
+                    <table>
+                        <tr>
+                            <th>Terreno</th>
+                            <th>Velocità</th>
+                        </tr>
+                        <tr>
+                            <td>Strada</td>
+                            <td>40 km/giorno</td>
+                        </tr>
+                        <tr>
+                            <td>Deserto piano</td>
+                            <td>30 km/giorno</td>
+                        </tr>
+                        <tr>
+                            <td>Dune/rocce</td>
+                            <td>20 km/giorno</td>
+                        </tr>
+                        <tr>
+                            <td>Montagne</td>
+                            <td>15 km/giorno</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- INCONTRI CASUALI -->
+                <div class="section">
+                    <h2>🎲 Incontri casuali</h2>
+                    <p style="font-size: 8pt; margin-bottom: 2mm;"><strong>Tira 1d6 ogni giorno di viaggio (6 = incontro)</strong></p>
+                    
+                    <table>
+                        <tr>
+                            <th>d6</th>
+                            <th>Incontro</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Predatori (scorpioni giganti, lupi)</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Banditi/Corsari (2-6 nemici)</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Mercanti/Carovana (commercio)</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Rovina celeste (esplorazione)</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Fenomeno (tempesta, miraggio)</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Marchiato/Creatura velo</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- BILANCIAMENTO COMBATTIMENTI -->
+                <div class="section">
+                    <h2>⚖️ Bilanciamento combattimenti</h2>
+                    
+                    <h3>Nemici per difficoltà</h3>
+                    <table>
+                        <tr>
+                            <th>Difficoltà</th>
+                            <th>Nemici (per 4 PG)</th>
+                        </tr>
+                        <tr>
+                            <td>Facile</td>
+                            <td>2-3 deboli o 1 medio</td>
+                        </tr>
+                        <tr>
+                            <td>Media</td>
+                            <td>4-5 deboli o 2 medi</td>
+                        </tr>
+                        <tr>
+                            <td>Difficile</td>
+                            <td>6-8 deboli o 3-4 medi o 1 forte</td>
+                        </tr>
+                        <tr>
+                            <td>Mortale</td>
+                            <td>8+ deboli o 4+ medi o 2 forti</td>
+                        </tr>
+                    </table>
+                    
+                    <h3>Stat-block rapidi</h3>
+                    <div class="grid-2">
+                        <div>
+                            <p style="font-weight: bold; font-size: 8pt;">Debole (bandito)</p>
+                            <ul class="compact-list" style="font-size: 7pt;">
+                                <li>HP: 6-8</li>
+                                <li>Attacco: 2d6+d6</li>
+                                <li>Difesa: 2d6+d4</li>
+                                <li>Danno: 1d6</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p style="font-weight: bold; font-size: 8pt;">Medio (guerriero)</p>
+                            <ul class="compact-list" style="font-size: 7pt;">
+                                <li>HP: 10-12</li>
+                                <li>Attacco: 2d6+d8</li>
+                                <li>Difesa: 2d6+d6</li>
+                                <li>Danno: 1d6+2</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="grid-2" style="margin-top: 2mm;">
+                        <div>
+                            <p style="font-weight: bold; font-size: 8pt;">Forte (campione)</p>
+                            <ul class="compact-list" style="font-size: 7pt;">
+                                <li>HP: 15-18</li>
+                                <li>Attacco: 2d6+d10</li>
+                                <li>Difesa: 2d6+d8</li>
+                                <li>Danno: 2d6</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p style="font-weight: bold; font-size: 8pt;">Boss (leggenda)</p>
+                            <ul class="compact-list" style="font-size: 7pt;">
+                                <li>HP: 25-30</li>
+                                <li>Attacco: 2d6+d12</li>
+                                <li>Difesa: 2d6+d10</li>
+                                <li>Danno: 2d6+2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ARTEFATTI -->
+                <div class="section">
+                    <h2>✨ Artefatti - Sistema cariche</h2>
+                    <table>
+                        <tr>
+                            <th>Livello</th>
+                            <th>Cariche</th>
+                            <th>Ricarica</th>
+                        </tr>
+                        <tr>
+                            <td>Minore</td>
+                            <td>∞ o 6-10</td>
+                            <td>Giornaliera</td>
+                        </tr>
+                        <tr>
+                            <td>Maggiore</td>
+                            <td>4-8</td>
+                            <td>Giornaliera</td>
+                        </tr>
+                        <tr>
+                            <td>Reliquia</td>
+                            <td>1-3</td>
+                            <td>Settimanale</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="tip">
+                        💡 <strong>Tip:</strong> Gli artefatti maggiori/reliquia attirano l'attenzione del Serpente. Considera eventi mistici dopo uso ripetuto.
+                    </div>
+                </div>
+                
+                <!-- IMPROVVISAZIONE -->
+                <div class="section">
+                    <h2>🎭 Improvvisazione rapida</h2>
+                    
+                    <h3>Nomi PNG veloci</h3>
+                    <div class="grid-2">
+                        <div>
+                            <p style="font-size: 8pt; font-weight: bold;">Maschili</p>
+                            <p style="font-size: 7pt;">Kalim, Rashid, Azhar, Tariq, Nasir, Farid, Jabir</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 8pt; font-weight: bold;">Femminili</p>
+                            <p style="font-size: 7pt;">Amira, Zara, Layla, Salma, Nadia, Farah, Yasmin</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Motivazioni PNG (d6)</h3>
+                    <ol class="compact-list">
+                        <li>Sopravvivenza (acqua, cibo, riparo)</li>
+                        <li>Ricchezza (tesoro, artefatti)</li>
+                        <li>Potere (controllo, vendetta)</li>
+                        <li>Conoscenza (segreti, rovine)</li>
+                        <li>Famiglia (proteggere, riunire)</li>
+                        <li>Fede (Serpente, destino)</li>
+                    </ol>
+                    
+                    <h3>Complicazioni (d6)</h3>
+                    <ol class="compact-list">
+                        <li>Arriva rinforzo nemico (1d6 round)</li>
+                        <li>Terreno collassa/crolla</li>
+                        <li>Tempesta di sabbia improvvisa</li>
+                        <li>Artefatto malfunziona</li>
+                        <li>Tradimento di alleato</li>
+                        <li>Manifestazione del Serpente</li>
+                    </ol>
+                </div>
+                
+                <!-- PREP SESSIONE -->
+                <div class="section">
+                    <h2>📝 Prep sessione (30 min)</h2>
+                    <ol class="compact-list">
+                        <li><strong>Obiettivo:</strong> cosa vogliono i PG?</li>
+                        <li><strong>Ostacolo:</strong> cosa si oppone?</li>
+                        <li><strong>3 scene:</strong> intro, sviluppo, climax</li>
+                        <li><strong>PNG chiave:</strong> 2-3 con motivazioni</li>
+                        <li><strong>Combattimento:</strong> 1-2 incontri bilanciati</li>
+                        <li><strong>Ricompensa:</strong> tesoro, informazioni, alleato</li>
+                        <li><strong>Cliffhanger:</strong> gancio per prossima sessione</li>
+                    </ol>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- FOOTER -->
+        <div style="margin-top: 5mm; padding: 3mm; background: var(--night-blue); color: var(--sand); text-align: center; border-radius: 2mm;">
+            <p style="font-size: 9pt; color: var(--accent-gold);"><strong>"Il deserto è implacabile. Il Serpente osserva. Tu sei la storia."</strong></p>
+        </div>
+        
+    </div>
+</body>
+</html>
