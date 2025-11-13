@@ -170,31 +170,15 @@
             border: 2px solid var(--dark-sand);
             border-radius: 10px;
             padding: 20px;
-            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
         
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--accent-gold);
-            transition: width 0.3s ease;
-        }
+        /* RIMOSSO completamente ::before per tutte le card */
         
+        /* RIMOSSI completamente gli effetti hover per le card con link */
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-            border-color: var(--accent-gold);
-        }
-        
-        .card:hover::before {
-            width: 100%;
-            opacity: 0.1;
+            /* Nessun effetto hover */
         }
         
         .card-icon {
@@ -240,22 +224,10 @@
             transform: scale(1.05);
         }
         
-        /* MANUAL PARTS - Special styling - SENZA EFFETTI HOVER CHE BLOCCANO I LINK */
+        /* MANUAL PARTS - Special styling - SENZA EFFETTI HOVER */
         .manual-part {
             border-left: 5px solid var(--accent-gold);
             background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, rgba(232, 212, 176, 0.05) 100%);
-            /* RIMOSSI transform e hover che bloccavano i link */
-            transform: none !important;
-        }
-        
-        .manual-part:hover {
-            /* RIMOSSI tutti gli effetti hover */
-            transform: none !important;
-        }
-        
-        .manual-part::before {
-            /* DISABILITATO l'effetto before che copriva i link */
-            display: none;
         }
         
         .part-number {
@@ -328,7 +300,6 @@
         @media print {
             body { background: white; }
             .container { box-shadow: none; }
-            .card:hover { transform: none; }
         }
     </style>
 </head>
@@ -609,7 +580,7 @@
                         <h3>Cheat sheet per giocatori</h3>
                         <p>Riferimento rapido tutto in 1 pagina con le regole essenziali per giocare: tiro base, combattimento, abilità, condizioni. Stampabile.</p>
                         <p class="meta">📄 1 pagina • 🎯 Focus: meccaniche core</p>
-                        <a href="serpent_road_player_cheatsheet.html">Apri cheat sheet per il giocatore →</a>
+                        <a href="serpent_road_player_cheatsheet.html">Apri cheat sheet →</a>
                     </div>
                     
                     <div class="card">
@@ -617,7 +588,7 @@
                         <h3>Cheat sheet Game Master</h3>
                         <p>Riferimento per il Game Master con tabelle difficoltà, modificatori combattimento, gestione incontri, improvvisazione veloce.</p>
                         <p class="meta">📄 1 pagina • 🎯 Focus: gestione sessione</p>
-                        <a href="serpent_road_gm_cheatsheet.html">Apri cheat sheet per il Game Master →</a>
+                        <a href="serpent_road_gm_cheatsheet.html">Apri cheat sheet →</a>
                     </div>
                 </div>
             </div>
