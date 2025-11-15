@@ -630,7 +630,7 @@
                         <div class="resource-icon">👥</div>
                         <div class="resource-label">GRUPPO</div>
                         <div class="resource-value">
-                            <input type="number" id="partySize" value="4" min="1" max="10" />
+                            <input type="number" id="gruppoSize" value="4" min="1" max="10" />
                             <small>N° Persone</small>
                         </div>
                     </div>
@@ -1027,7 +1027,7 @@
                 water: document.getElementById('water').value,
                 food: document.getElementById('food').value,
                 money: document.getElementById('money').value,
-                partySize: document.getElementById('partySize').value,
+                gruppoSize: document.getElementById('gruppoSize').value,
                 timestamp: new Date().toISOString()
             };
             
@@ -1063,7 +1063,7 @@
                         document.getElementById('water').value = journeyData.water || 40;
                         document.getElementById('food').value = journeyData.food || 20;
                         document.getElementById('money').value = journeyData.money || 200;
-                        document.getElementById('partySize').value = journeyData.partySize || 4;
+                        document.getElementById('gruppoSize').value = journeyData.gruppoSize || 4;
                         
                         alert('✅ Viaggio caricato con successo!');
                     } catch (err) {
@@ -1090,7 +1090,7 @@
                 water: document.getElementById('water').value,
                 food: document.getElementById('food').value,
                 money: document.getElementById('money').value,
-                partySize: document.getElementById('partySize').value,
+                gruppoSize: document.getElementById('gruppoSize').value,
                 timestamp: new Date().toISOString()
             };
             localStorage.setItem('serpentRoadJourney_autosave', JSON.stringify(journeyData));
@@ -1106,7 +1106,7 @@
                 document.getElementById('water').value = journeyData.water || 40;
                 document.getElementById('food').value = journeyData.food || 20;
                 document.getElementById('money').value = journeyData.money || 200;
-                document.getElementById('partySize').value = journeyData.partySize || 4;
+                document.getElementById('gruppoSize').value = journeyData.gruppoSize || 4;
             }
         });
     </script>
