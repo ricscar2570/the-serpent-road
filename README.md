@@ -1,3 +1,11 @@
+# Repository Status — Public 2025 Web Edition
+
+> **Historical/publication repository.** This repository preserves the public HTML/web edition of *The Serpent Road* originally published as version 1.0 in 2025.  
+> It is **not the current production/manual development source** and its rules, page counts, licensing placeholders, contacts, and build notes may be older than the current 2026 development baseline.  
+> The files remain intentionally preserved for public access, provenance, and historical comparison.
+
+---
+
 # 🐍 The Serpent Road RPG
 
 **Un gioco di ruolo completo ambientato in un deserto post-apocalittico**
